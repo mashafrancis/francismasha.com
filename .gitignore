@@ -36,3 +36,10 @@ yarn-error.log*
 .env.production.local
 
 .idea
+
+.yarn
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
