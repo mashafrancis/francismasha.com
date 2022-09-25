@@ -1,33 +1,48 @@
 {
   "name": "francismasha.com",
   "version": "0.0.1",
+  "author": "Francis Masha",
+  "email": "francismasha96@gmail.com",
   "private": true,
   "scripts": {
-    "start": "cross-env SOCKET=true node ./scripts/next-remote-watch.js ./data",
+    "start": "cross-env SOCKET=true node ./scripts/next-remote-watch.js src/data",
     "dev": "next dev",
-    "build": "next build && node ./scripts/generate-sitemap",
+    "build": "next build",
     "serve": "next start",
     "analyze": "cross-env ANALYZE=true next build",
-    "lint": "next lint --fix --dir pages --dir components --dir lib --dir layouts --dir scripts",
+    "lint": "next lint --fix --dir src/pages --dir components --dir lib --dir layouts --dir scripts",
+    "prettier:fix": "prettier --write \"*/**/*.{js,ts,tsx,json}\"",
     "prepare": "husky install"
   },
   "dependencies": {
+    "@fontsource/fira-code": "^4.5.11",
     "@fontsource/inter": "4.5.12",
+    "@fontsource/open-sans": "^4.5.11",
+    "@geist-ui/core": "^2.3.8",
     "@mailchimp/mailchimp_marketing": "^3.0.78",
     "@tailwindcss/forms": "^0.5.3",
+    "@tailwindcss/line-clamp": "^0.4.2",
     "@tailwindcss/typography": "^0.5.7",
     "autoprefixer": "^10.4.12",
+    "axios": "^0.27.2",
+    "clsx": "^1.2.1",
     "esbuild": "^0.15.9",
     "github-slugger": "^1.4.0",
     "gray-matter": "^4.0.3",
     "image-size": "1.0.2",
     "mdx-bundler": "^9.0.1",
     "next": "12.3.1",
+    "next-pwa": "^5.6.0",
     "next-themes": "^0.2.1",
     "postcss": "^8.4.16",
     "preact": "^10.11.0",
     "react": "18.2.0",
+    "react-calendly": "^2.2.3",
     "react-dom": "18.2.0",
+    "react-icons": "^4.4.0",
+    "react-indiana-drag-scroll": "^2.2.0",
+    "react-rough-notation": "^1.0.3",
+    "react-share": "^4.4.0",
     "reading-time": "1.5.0",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-citation": "^0.4.0",
@@ -45,6 +60,10 @@
   "devDependencies": {
     "@next/bundle-analyzer": "12.3.1",
     "@svgr/webpack": "^6.3.1",
+    "@types/react": "18.0.21",
+    "@types/tailwindcss": "^3.1.0",
+    "@typescript-eslint/eslint-plugin": "^5.38.0",
+    "@typescript-eslint/parser": "^5.38.0",
     "cross-env": "^7.0.3",
     "dedent": "^0.7.0",
     "eslint": "8.22.0",
@@ -52,7 +71,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "file-loader": "^6.2.0",
-    "globby": "13.1.2",
+    "globby": "^13.1.2",
     "husky": "^8.0.1",
     "inquirer": "^9.1.2",
     "lint-staged": "^13.0.3",
@@ -73,6 +92,12 @@
     "*.+(js|jsx|ts|tsx|json|css|md|mdx)": [
       "prettier --write"
     ]
+  },
+  "importSort": {
+    ".js, .jsx, .ts, .tsx": {
+      "style": "module",
+      "parser": "typescript"
+    }
   },
   "packageManager": "yarn@3.2.3"
 }
