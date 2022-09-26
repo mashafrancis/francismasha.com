@@ -12,6 +12,7 @@ import { ReactNode } from 'react';
 import { AuthorFrontMatter } from 'types/AuthorFrontMatter';
 import { PostFrontMatter } from 'types/PostFrontMatter';
 import { Toc } from 'types/Toc';
+import Comments from '@/components/comments';
 
 const editUrl = (fileName) =>
 	`${siteMetadata.siteRepo}/blob/master/data/blog/${fileName}`;
@@ -141,12 +142,9 @@ export default function PostLayout({
 								{children}
 							</div>
 							<div className='pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300'>
-								<Link href={discussUrl(slug)} rel='nofollow'>
-									{'Discuss on Twitter'}
-								</Link>
-								{` • `}
 								<Link href={editUrl(fileName)}>{'View on GitHub'}</Link>
 							</div>
+							<Comments frontMatter={frontMatter} />
 						</div>
 						<footer>
 							<div className='xl:sticky xl:top-32'>
@@ -194,7 +192,7 @@ export default function PostLayout({
 								</div>
 								<div className='pt-4 xl:pt-8'>
 									<Link
-										href='/src/pages/blog'
+										href='/blog'
 										className='text-primary-500 hover:text-primary-600 dark:hover:text-primary-400'
 									>
 										&larr; Back to the blog

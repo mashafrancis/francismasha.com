@@ -7,6 +7,7 @@ import formatDate from '../lib/utils/formatDate';
 import ScrollTopAndComment from '../components/ScrollTopAndComment';
 import { ReactNode } from 'react';
 import { PostFrontMatter } from 'types/PostFrontMatter';
+import Comments from '@/components/comments';
 
 interface Props {
 	frontMatter: PostFrontMatter;
@@ -52,6 +53,7 @@ export default function PostLayout({
 							<div className='prose max-w-none pt-10 pb-8 dark:prose-dark'>
 								{children}
 							</div>
+							<Comments frontMatter={frontMatter} />
 						</div>
 						<footer>
 							<div className='flex flex-col text-sm font-medium sm:flex-row sm:justify-between sm:text-base'>
