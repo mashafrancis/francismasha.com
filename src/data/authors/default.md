@@ -4,8 +4,8 @@ shortname: Masha
 avatar: /static/avatar.jpg
 occupation: Software Engineer
 company: Almond
-resume: https://firebasestorage.googleapis.com/v0/b/portfolio-8fa71.appspot.com/o/Karan_Resume.pdf?alt=media&token=b4838b9e-812a-456a-89cc-bb19b4ecb923
-email: contact@francismasha.com
+resume: https://drive.google.com/file/d/15eVNNmNQM-bAIV0qwrudAf8qxKA3vQRD/view?usp=sharing
+email: francismasha96@gmail.com
 twitter: https://twitter.com/mashafrancis
 linkedin: https://www.linkedin.com/in/francis-masha
 github: https://github.com/mashafrancis
