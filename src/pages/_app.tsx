@@ -16,12 +16,7 @@ import LayoutWrapper from '@/components/LayoutWrapper';
 import siteMetadata from '@/data/siteMetadata';
 
 import { GeistProvider } from '@geist-ui/core';
-import {
-	JSXElementConstructor,
-	ReactElement,
-	ReactFragment,
-	ReactPortal,
-} from 'react';
+import { ReactElement } from 'react';
 
 const isDevelopment = process.env.NODE_ENV === 'development';
 const isSocket = process.env.SOCKET;
@@ -43,17 +38,7 @@ export default function App({ Component, pageProps }: AppProps) {
 	);
 }
 
-function GeistProviderWithTheme(props: {
-	children:
-		| string
-		| number
-		| boolean
-		| ReactElement<any, string | JSXElementConstructor<any>>
-		| ReactFragment
-		| ReactPortal
-		| null
-		| undefined;
-}): ReactElement {
+function GeistProviderWithTheme(props): ReactElement {
 	const { resolvedTheme } = useTheme();
 
 	return (
