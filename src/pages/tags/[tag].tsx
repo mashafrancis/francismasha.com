@@ -51,8 +51,8 @@ export default function Tag({
 	posts,
 	tag,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-	// Capitalize and convert space to dash
-	const title = `#${tag.split(' ').join('-').toUpperCase()}`;
+	// Convert space to dash
+	const title = `#${tag.split(' ').join('-')}`;
 
 	return (
 		<>

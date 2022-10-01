@@ -36,7 +36,7 @@ function resolveIcon(entry: Tuple<string>): ReactNode {
 		color: Colors[type],
 	};
 
-	let icon: Maybe<React.ReactNode> = null;
+	let icon: Maybe<ReactNode> = null;
 
 	switch (type) {
 		case ContactType.linkedin:

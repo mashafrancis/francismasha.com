@@ -46,7 +46,7 @@ const MobileNav = () => {
 				</svg>
 			</button>
 			<div
-				className={`fixed top-24 right-0 z-10 h-full w-full transform bg-white opacity-95 duration-300 ease-in-out dark:bg-gray-900 ${
+				className={`fixed top-24 right-0 z-10 h-full w-full transform bg-white backdrop-blur-sm duration-300 ease-in-out dark:bg-gray-900 ${
 					navShow ? 'translate-x-0' : 'translate-x-full'
 				}`}
 			>
@@ -61,7 +61,7 @@ const MobileNav = () => {
 						<div key={link.title} className='px-12 py-4'>
 							<Link
 								href={link.href}
-								className='text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100'
+								className='text-3xl font-semibold tracking-widest text-gray-900 dark:text-gray-100'
 								onClick={onToggleNav}
 							>
 								{link.title}

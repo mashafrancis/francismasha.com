@@ -25,11 +25,20 @@ module.exports = {
 				13: '3.25rem',
 				14: '3.5rem',
 			},
+			divideWidth: {
+				DEFAULT: '1px',
+				0: '0',
+				2: '2px',
+				3: '3px',
+				4: '4px',
+				6: '6px',
+				8: '8px',
+			},
 			fontFamily: {
 				sans: ['CircularStd', ...defaultTheme.fontFamily.sans],
 			},
 			colors: {
-				primary: colors.blue,
+				primary: colors.cyan,
 				gray: colors.neutral,
 				'placeholder-light': '#F0F0F0',
 				'placeholder-dark': '#252525',

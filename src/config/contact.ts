@@ -22,6 +22,6 @@ export const contact: Contact = {
 		linkedin: 'https://linkedin.com/in/francis-masha',
 		twitter: 'https://twitter.com/MashaFrancis',
 		email: 'mailto:contact@francismasha.com',
-		buymeacoffee: 'https://www.buymeacoffee.com/mashafrancis',
+		buymeacoffee: 'https://www.buymeacoffee.com/francismasha',
 	},
 };

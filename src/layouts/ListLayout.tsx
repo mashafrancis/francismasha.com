@@ -35,9 +35,9 @@ export default function ListLayout({
 
 	return (
 		<>
-			<div className='fade-in divide-y-2 divide-gray-100 dark:divide-gray-800'>
+			<div className='fade-in'>
 				<Header title={title}>
-					<div className='relative max-w-lg'>
+					<div className='relative'>
 						<input
 							aria-label='Search articles'
 							type='text'
@@ -60,7 +60,7 @@ export default function ListLayout({
 							/>
 						</svg>
 						<Link
-							href='/src/pages/tags'
+							href='/tags'
 							className='absolute right-10 top-2 text-gray-400 dark:text-gray-300'
 						>
 							<FilterIcon size={30} />
@@ -68,14 +68,14 @@ export default function ListLayout({
 					</div>
 				</Header>
 
-				<ul>
+				<ul className='divide-y divide-gray-200 dark:divide-gray-800'>
 					{!filteredBlogPosts.length && (
 						<p className='mt-8 text-center'>No posts found</p>
 					)}
 					{displayPosts.map((frontMatter) => {
 						const { slug, date, title, summary, tags } = frontMatter;
 						return (
-							<li key={slug} className='py-4'>
+							<li key={slug} className='py-6'>
 								<article className='space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0'>
 									<dl>
 										<dt className='sr-only'>Published on</dt>

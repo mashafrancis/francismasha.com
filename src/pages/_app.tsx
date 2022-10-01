@@ -21,7 +21,15 @@ import { ReactElement } from 'react';
 const isDevelopment = process.env.NODE_ENV === 'development';
 const isSocket = process.env.SOCKET;
 
-export default function App({ Component, pageProps }: AppProps) {
+const GeistProviderWithTheme = (props): ReactElement => {
+	const { resolvedTheme } = useTheme();
+
+	return (
+		<GeistProvider themeType={resolvedTheme}>{props.children}</GeistProvider>
+	);
+};
+
+const App = ({ Component, pageProps }: AppProps) => {
 	return (
 		<ThemeProvider attribute='class' defaultTheme={siteMetadata.theme}>
 			<Head>
@@ -36,12 +44,6 @@ export default function App({ Component, pageProps }: AppProps) {
 			</GeistProviderWithTheme>
 		</ThemeProvider>
 	);
-}
+};
 
-function GeistProviderWithTheme(props): ReactElement {
-	const { resolvedTheme } = useTheme();
-
-	return (
-		<GeistProvider themeType={resolvedTheme}>{props.children}</GeistProvider>
-	);
-}
+export default App;
