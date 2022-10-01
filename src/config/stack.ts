@@ -2,14 +2,15 @@ import { Colors } from './colors';
 
 export enum Stack {
 	// Languages
-	go,
 	typescript,
 	javascript,
 	python,
+	rust,
 
 	// Frontend
 	react,
 	reactnative,
+	nextjs,
 
 	// Backend
 	graphql,
@@ -21,11 +22,11 @@ export enum Stack {
 	gcp,
 
 	// Messaging
-	nats,
+	mqtt,
+	rabbitmq,
 	kafka,
 
 	// Databases
-	arangodb,
 	redis,
 	postgres,
 	mongo,
@@ -34,25 +35,31 @@ export enum Stack {
 	docker,
 	kubernetes,
 	terraform,
+
+	// Electronics
+	arduino,
 }
 
 export const WorkStack = [
-	Stack.go,
 	Stack.typescript,
+	Stack.javascript,
 	Stack.python,
+	Stack.rust,
 	Stack.react,
+	Stack.nextjs,
 	Stack.aws,
 	Stack.gcp,
 	Stack.kubernetes,
 	Stack.docker,
 	Stack.terraform,
-	Stack.nats,
+	Stack.rabbitmq,
+	Stack.mqtt,
 	Stack.kafka,
 	Stack.graphql,
 	Stack.postgres,
 	Stack.redis,
-	Stack.arangodb,
 	Stack.reactnative,
+	Stack.arduino,
 ];
 
 type StackInfoMap = {
@@ -69,13 +76,17 @@ export const StackInfo: Record<Stack, StackInfoMap> = {
 		value: 'JavaScript',
 		color: Colors.javascript,
 	},
-	[Stack.go]: {
-		value: 'Go',
-		color: Colors.go,
+	[Stack.rust]: {
+		value: 'Rust',
+		color: Colors.rust,
 	},
 	[Stack.react]: {
 		value: 'React',
 		color: Colors.react,
+	},
+	[Stack.nextjs]: {
+		value: 'NextJS',
+		color: Colors.nextjs,
 	},
 	[Stack.reactnative]: {
 		value: 'React Native',
@@ -105,17 +116,17 @@ export const StackInfo: Record<Stack, StackInfoMap> = {
 		value: 'Django',
 		color: Colors.django,
 	},
-	[Stack.nats]: {
-		value: 'NATS',
-		color: Colors.nats,
-	},
 	[Stack.kafka]: {
 		value: 'Kafka',
 		color: Colors.kafka,
 	},
-	[Stack.arangodb]: {
-		value: 'ArangoDB',
-		color: Colors.arangodb,
+	[Stack.rabbitmq]: {
+		value: 'RabbitMQ',
+		color: Colors.rabbitmq,
+	},
+	[Stack.mqtt]: {
+		value: 'MQTT',
+		color: Colors.mqtt,
 	},
 	[Stack.postgres]: {
 		value: 'Postgres',
@@ -140,5 +151,9 @@ export const StackInfo: Record<Stack, StackInfoMap> = {
 	[Stack.terraform]: {
 		value: 'Terraform',
 		color: Colors.terraform,
+	},
+	[Stack.arduino]: {
+		value: 'Arduino',
+		color: Colors.arduino,
 	},
 };

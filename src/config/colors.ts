@@ -4,6 +4,7 @@ export const Colors = {
 	python: '#4B8BBE',
 	typescript: '#234A84',
 	javascript: '#F7DF1E',
+	rust: '#a72145',
 
 	// Frontend
 	web: '#2D2D2D',
@@ -41,6 +42,11 @@ export const Colors = {
 	// Messaging
 	nats: '#199bfc',
 	kafka: '#000000',
+	rabbitmq: '#FF6600',
+	mqtt: '#660066',
+
+	// electronics
+	arduino: '#008184',
 
 	// Social
 	linkedin: '#0077B5',

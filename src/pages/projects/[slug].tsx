@@ -58,7 +58,7 @@ export default function Project({
 
 			return (
 				<div
-					className='bg-placeholder-light dark:bg-placeholder-dark mr-2 flex-shrink-0 overflow-hidden rounded'
+					className='mr-2 flex-shrink-0 overflow-hidden rounded bg-placeholder-light dark:bg-placeholder-dark'
 					style={style}
 				>
 					<Image

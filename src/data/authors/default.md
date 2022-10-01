@@ -3,7 +3,7 @@ name: Francis Masha
 shortname: Masha
 avatar: /static/avatar.jpg
 occupation: Software Engineer
-company: Almond
+company: Safaricom PLC
 resume: https://drive.google.com/file/d/15eVNNmNQM-bAIV0qwrudAf8qxKA3vQRD/view?usp=sharing
 email: francismasha96@gmail.com
 twitter: https://twitter.com/mashafrancis
