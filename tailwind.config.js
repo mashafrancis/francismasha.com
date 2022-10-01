@@ -1,7 +1,7 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors');
 
-/** @type {import('tailwindcss/tailwind-config').TailwindConfig } */
+/** @type {import('tailwindcss').Config} */
 module.exports = {
 	experimental: {
 		optimizeUniversalDefaults: true,
@@ -180,5 +180,6 @@ module.exports = {
 		require('@tailwindcss/forms'),
 		require('@tailwindcss/typography'),
 		require('@tailwindcss/line-clamp'),
+		require('autoprefixer'),
 	],
 };

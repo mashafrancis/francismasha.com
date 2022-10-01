@@ -21,7 +21,7 @@ const discussUrl = (slug) =>
 		`${siteMetadata.siteUrl}/blog/${slug}`
 	)}`;
 
-const postDateTemplate: Intl.DateTimeFormatOptions = {
+export const postDateTemplate: Intl.DateTimeFormatOptions = {
 	weekday: 'long',
 	year: 'numeric',
 	month: 'long',
