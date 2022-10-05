@@ -1,3 +1,4 @@
+import '@/css/app.css';
 import '@/css/fonts.css';
 import '@/css/global.css';
 import '@/css/prism.css';

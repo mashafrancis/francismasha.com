@@ -1,18 +1,15 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors');
+const path = require('path');
+
+const fromRoot = (p) => path.join(__dirname, p);
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	experimental: {
 		optimizeUniversalDefaults: true,
 	},
-	content: [
-		'./src/pages/**/*.tsx',
-		'./src/components/**/*.tsx',
-		'./src/layouts/**/*.tsx',
-		'./src/lib/**/*.ts',
-		'./src/data/**/*.mdx',
-	],
+	content: [fromRoot('./src/**/*.+(js|jsx|ts|tsx|mdx|md)')],
 	darkMode: 'class',
 	theme: {
 		extend: {
