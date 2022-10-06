@@ -17,9 +17,13 @@ const LayoutWrapper = ({ children }: Props) => {
 			<div className='flex h-screen flex-col justify-between'>
 				<header className='flex items-center justify-end py-8 sm:justify-between'>
 					<div>
-						<Link href='/' aria-label={siteMetadata.headerTitle}>
+						<Link
+							href='/'
+							aria-label={siteMetadata.headerTitle}
+							className='text-primary underlined block whitespace-nowrap text-2xl font-medium transition focus:outline-none'
+						>
 							{typeof siteMetadata.headerTitle === 'string' ? (
-								<div className='hidden text-2xl font-semibold sm:block'>
+								<div className='hidden text-2xl font-medium sm:block'>
 									{siteMetadata.headerTitle}
 								</div>
 							) : (
@@ -34,7 +38,7 @@ const LayoutWrapper = ({ children }: Props) => {
 								<Link
 									key={link.title}
 									href={link.href}
-									className='p-1 font-normal text-gray-700 hover:text-gray-500 dark:text-gray-100 sm:p-4'
+									className='underlined p-1 font-normal text-gray-700 hover:text-gray-500 focus:outline-none dark:text-gray-100 sm:p-4'
 								>
 									{link.title}
 								</Link>

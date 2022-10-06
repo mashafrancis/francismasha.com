@@ -104,24 +104,10 @@ export default function PostLayout({
 													className='h-10 w-10 rounded-full'
 												/>
 											)}
-											<dl className='whitespace-nowrap text-sm font-medium leading-5'>
+											<dl className='whitespace-nowrap font-medium leading-5'>
 												<dt className='sr-only'>Name</dt>
 												<dd className='text-gray-900 dark:text-gray-100'>
 													{author.name}
-												</dd>
-												<dt className='sr-only'>Twitter</dt>
-												<dd>
-													{author.twitter && (
-														<Link
-															href={author.twitter}
-															className='text-primary-500 hover:text-primary-600 dark:hover:text-primary-400'
-														>
-															{author.twitter.replace(
-																'https://twitter.com/',
-																'@'
-															)}
-														</Link>
-													)}
 												</dd>
 											</dl>
 										</li>
@@ -151,7 +137,7 @@ export default function PostLayout({
 								<div className='divide-gray-100 text-sm font-medium leading-5 dark:divide-gray-800 xl:col-start-1 xl:row-start-2 xl:divide-y'>
 									{tags && (
 										<div className='py-4 xl:py-8'>
-											<h2 className='text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400'>
+											<h2 className='uppercase tracking-wide text-gray-500 dark:text-gray-400'>
 												Tags
 											</h2>
 											<div className='flex flex-wrap'>
@@ -165,7 +151,7 @@ export default function PostLayout({
 										<div className='flex justify-between py-4 xl:block xl:space-y-8 xl:py-8'>
 											{prev && (
 												<div>
-													<h2 className='text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400'>
+													<h2 className='tracking-wide text-gray-500 dark:text-gray-400'>
 														Previous Article
 													</h2>
 													<div className='text-primary-500 hover:text-primary-600 dark:hover:text-primary-400'>
@@ -177,7 +163,7 @@ export default function PostLayout({
 											)}
 											{next && (
 												<div>
-													<h2 className='text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400'>
+													<h2 className=' tracking-wide text-gray-500 dark:text-gray-400'>
 														Next Article
 													</h2>
 													<div className='text-primary-500 hover:text-primary-600 dark:hover:text-primary-400'>
