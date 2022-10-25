@@ -36,7 +36,7 @@ function Contact(): ReactElement {
 						Do you have a project in mind? Want to hire me? or simply wanna
 						chat? Feel free to
 						<span
-							className='ml-2 cursor-pointer !font-normal !text-black !no-underline dark:!text-white'
+							className='ml-2 cursor-pointer !font-bold !text-black !no-underline dark:!text-white'
 							onClick={onScheduleMeeting}
 							role='button'
 							tabIndex={0}
@@ -44,7 +44,7 @@ function Contact(): ReactElement {
 							<RoughNotation
 								show
 								type='underline'
-								strokeWidth={2}
+								strokeWidth={4}
 								animationDelay={250}
 								animationDuration={2000}
 								color={randomColor}

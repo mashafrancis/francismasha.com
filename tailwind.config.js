@@ -118,7 +118,11 @@ module.exports = {
 									fontSize: fontSize('lg'),
 								},
 								a: {
-									textDecoration: 'none',
+									color: theme('colors.primary.500'),
+									'&:hover': {
+										color: `${theme('colors.primary.600')} !important`,
+									},
+									code: { color: theme('colors.primary.400') },
 								},
 								'a:hover,a:focus': {
 									textDecoration: 'underline',
@@ -265,7 +269,11 @@ module.exports = {
 							{
 								color: theme('colors.slate.500'),
 								a: {
-									color: theme('colors.team.current'),
+									color: theme('colors.primary.500'),
+									'&:hover': {
+										color: `${theme('colors.primary.400')} !important`,
+									},
+									code: { color: theme('colors.primary.400') },
 								},
 								strong: {
 									color: theme('colors.white'),

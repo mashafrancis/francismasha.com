@@ -20,3 +20,5 @@ const pe = (m: keyof typeof esca) => esca[m];
  *  converted as string.
  */
 export const escape = (es: string): string => replace.call(es, ca, pe);
+
+// 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;

@@ -13,6 +13,7 @@ export enum Stack {
 	nextjs,
 
 	// Backend
+	java,
 	graphql,
 	node,
 	django,
@@ -47,6 +48,7 @@ export const WorkStack = [
 	Stack.rust,
 	Stack.react,
 	Stack.nextjs,
+	Stack.java,
 	Stack.aws,
 	Stack.gcp,
 	Stack.kubernetes,
@@ -79,6 +81,10 @@ export const StackInfo: Record<Stack, StackInfoMap> = {
 	[Stack.rust]: {
 		value: 'Rust',
 		color: Colors.rust,
+	},
+	[Stack.java]: {
+		value: 'Java',
+		color: Colors.java,
 	},
 	[Stack.react]: {
 		value: 'React',

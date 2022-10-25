@@ -1,4 +1,5 @@
 export enum ContactType {
+	code = 'code',
 	github = 'github',
 	linkedin = 'linkedin',
 	twitter = 'twitter',
@@ -18,6 +19,7 @@ export const contact: Contact = {
 	site: 'francismasha.com',
 	calendly: 'https://calendly.com/francismasha96',
 	links: {
+		code: 'https://code.francismasha.com',
 		github: 'https://github.com/mashafrancis',
 		linkedin: 'https://linkedin.com/in/francis-masha',
 		twitter: 'https://twitter.com/MashaFrancis',

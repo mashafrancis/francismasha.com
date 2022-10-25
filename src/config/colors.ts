@@ -15,6 +15,7 @@ export const Colors = {
 	graphql: '#E535AB',
 	node: '#68A063',
 	django: '#092E20',
+	java: '#D44638',
 
 	// Tools, Libs
 	webpack: '#8DD6F9',

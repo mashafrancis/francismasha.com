@@ -1,7 +1,7 @@
 const siteMetadata = {
 	title: 'Francis Masha',
 	author: 'Francis Masha',
-	headerTitle: 'Francis Masha',
+	headerTitle: 'Francis Masha.',
 	description:
 		'A software engineer who values learning and growing with people, teams, and technologies.',
 	language: 'en-us',

@@ -8,7 +8,7 @@ import type { Project, SubProject } from 'config/projects';
 import { defaultDimensions } from 'config/projects';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import Image from 'next/image';
-import React, { useCallback } from 'react';
+import { Children, useCallback } from 'react';
 import ScrollContainer from 'react-indiana-drag-scroll';
 
 const { projects } = config;
@@ -58,7 +58,7 @@ export default function Project({
 
 			return (
 				<div
-					className='mr-2 flex-shrink-0 overflow-hidden rounded bg-placeholder-light dark:bg-placeholder-dark'
+					className='bg-placeholder-light dark:bg-placeholder-dark mr-2 flex-shrink-0 overflow-hidden rounded'
 					style={style}
 				>
 					<Image
@@ -102,7 +102,7 @@ export default function Project({
 			<H1 className='lg:text-5x mb-4 text-3xl font-bold dark:text-white'>
 				{title}
 			</H1>
-			<p className='mb-4 font-light'>{description}</p>
+			<p className='mb-4 font-normal'>{description}</p>
 
 			<H2>Stack</H2>
 			<StackList stack={stack} />
@@ -118,14 +118,14 @@ export default function Project({
 					className='list mt-4 mb-1 flex overflow-auto'
 					hideScrollbars={false}
 				>
-					{React.Children.toArray(screenshots.map(renderScreenShotList))}
+					{Children.toArray(screenshots.map(renderScreenShotList))}
 				</ScrollContainer>
 			</Conditional>
 
 			<Conditional condition={hasSubProjects}>
 				<H2 className='mt-4'>More Products</H2>
 				<p className='mt-1 mb-4 font-light'>Some additional products</p>
-				{React.Children.toArray(subProjects.map(renderSubProjectList))}
+				{Children.toArray(subProjects.map(renderSubProjectList))}
 			</Conditional>
 		</>
 	);

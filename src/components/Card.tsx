@@ -18,7 +18,7 @@ function Card({ title, description, banner, href }): ReactElement {
 			<div
 				className={`${
 					banner && 'h-full'
-				}  overflow-hidden rounded-md border-2 border-gray-100 border-opacity-60 dark:border-gray-800`}
+				}  overflow-hidden rounded-lg border border-gray-200 border-opacity-80 dark:border-gray-800`}
 			>
 				{banner &&
 					(href ? (
@@ -44,7 +44,7 @@ function Card({ title, description, banner, href }): ReactElement {
 					{href && (
 						<Link
 							href={href}
-							className='text-base font-medium leading-6 text-primary-500 hover:text-primary-600 dark:hover:text-primary-400'
+							className='text-base font-normal leading-6 text-primary-500 hover:text-primary-600 dark:hover:text-primary-400'
 							aria-label={`Link to ${title}`}
 						>
 							Learn more &rarr;

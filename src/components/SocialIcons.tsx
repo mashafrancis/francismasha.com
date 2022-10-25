@@ -4,6 +4,7 @@ import { contact, ContactType } from 'config/contact';
 import { Children, memo, ReactElement, ReactNode } from 'react';
 import { IconBaseProps } from 'react-icons';
 import { FaLinkedinIn as LinkedinIcon } from 'react-icons/fa';
+import { BiCodeAlt as CodeIcon } from 'react-icons/bi';
 import {
 	IoLogoGithub as GithubIcon,
 	IoLogoTwitter as TwitterIcon,
@@ -39,6 +40,9 @@ function resolveIcon(entry: Tuple<string>): ReactNode {
 	let icon: Maybe<ReactNode> = null;
 
 	switch (type) {
+		case ContactType.code:
+			icon = <CodeIcon {...props} />;
+			break;
 		case ContactType.linkedin:
 			icon = <LinkedinIcon {...props} />;
 			break;

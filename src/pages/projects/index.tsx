@@ -11,7 +11,7 @@ export default function Projects() {
 				title={`Projects - ${siteMetadata.author}`}
 				description={siteMetadata.description}
 			/>
-			<div className='fade-in divide-y-2 divide-gray-100 dark:divide-gray-800'>
+			<div className='fade-in divide-y divide-gray-300 dark:divide-gray-800'>
 				<Header title='Projects' />
 				<div className='container py-12'>
 					<div className='-m-4 flex flex-wrap'>
