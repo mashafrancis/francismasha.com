@@ -1,5 +1,5 @@
 import { Header } from '@/components/Form';
-import Link from '@/components/Link';
+import Link from 'next/link';
 import Pagination from '@/components/Pagination';
 import Tag from '@/components/Tag';
 import formatDate from '@/lib/utils/formatDate';

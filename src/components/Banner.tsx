@@ -1,4 +1,4 @@
-import Link from './Link';
+import Link from 'next/link';
 import { useRandomColorPair } from '@/lib/hooks/useRandomColorPair';
 import { memo, ReactElement } from 'react';
 import { RoughNotation } from 'react-rough-notation';

@@ -3,25 +3,15 @@ import { PageSEO } from '@/components/SEO';
 import siteMetadata from '@/data/siteMetadata';
 import { useRandomColorPair } from '@/lib/hooks/useRandomColorPair';
 import { RoughNotation } from 'react-rough-notation';
-import { ReactElement } from 'react';
-import { openPopupWidget } from 'react-calendly';
-import { contact } from 'config/contact';
+import { ReactElement, useState } from 'react';
+import { PopupModal } from 'react-calendly';
+import { contact } from '../config/contact';
 
 function Contact(): ReactElement {
 	const [randomColor] = useRandomColorPair();
+	const [isCalendarOpen, setCalendarOpen] = useState<boolean>(false);
 
-	function onScheduleMeeting(): void {
-		if (!contact.calendly) {
-			console.error('err: calendly link was not provided.');
-			return;
-		}
-
-		const config = {
-			url: contact.calendly,
-		};
-
-		openPopupWidget(config);
-	}
+	const handleCalendarState = () => setCalendarOpen((prevState) => !prevState);
 
 	return (
 		<>
@@ -37,7 +27,7 @@ function Contact(): ReactElement {
 						chat? Feel free to
 						<span
 							className='ml-2 cursor-pointer !font-bold !text-black !no-underline dark:!text-white'
-							onClick={onScheduleMeeting}
+							onClick={handleCalendarState}
 							role='button'
 							tabIndex={0}
 						>
@@ -55,6 +45,14 @@ function Contact(): ReactElement {
 					</p>
 				</div>
 			</div>
+			<PopupModal
+				url={contact.calendly}
+				onModalClose={handleCalendarState}
+				open={isCalendarOpen}
+				rootElement={
+					typeof window !== 'undefined' && document.getElementById('__next')
+				}
+			/>
 		</>
 	);
 }
