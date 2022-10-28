@@ -8,7 +8,7 @@ import type { Project, SubProject } from 'config/projects';
 import { defaultDimensions } from 'config/projects';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import Image from 'next/image';
-import { Children, useCallback } from 'react';
+import { Children, CSSProperties, useCallback } from 'react';
 import ScrollContainer from 'react-indiana-drag-scroll';
 
 const { projects } = config;
@@ -51,7 +51,7 @@ export default function Project({
 
 	const renderScreenShotList = useCallback(
 		(screenshot: string) => {
-			const style: React.CSSProperties = {
+			const style: CSSProperties = {
 				height,
 				width,
 			};
@@ -66,7 +66,7 @@ export default function Project({
 						src={screenshot}
 						height={height}
 						width={width}
-						objectFit='cover'
+						// objectFit='cover'
 						alt=''
 					/>
 				</div>

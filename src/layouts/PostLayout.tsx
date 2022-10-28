@@ -1,4 +1,4 @@
-import Link from '../components/Link';
+import Link from 'next/link';
 import PageTitle from '../components/PageTitle';
 import ScrollTopAndComment from '../components/ScrollTopAndComment';
 import SectionContainer from '../components/SectionContainer';
@@ -98,8 +98,8 @@ export default function PostLayout({
 											{author.avatar && (
 												<Image
 													src={author.avatar}
-													width='38px'
-													height='38px'
+													width='38'
+													height='38'
 													alt='avatar'
 													className='h-10 w-10 rounded-full'
 												/>

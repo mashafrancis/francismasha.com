@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Link from './Link';
+import Link from 'next/link';
 import { ReactElement } from 'react';
 
 function Card({ title, description, banner, href }): ReactElement {

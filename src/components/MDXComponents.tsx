@@ -2,20 +2,24 @@
 import { ComponentType, useMemo } from 'react';
 import { ComponentMap, getMDXComponent } from 'mdx-bundler/client';
 import Image from 'next/image';
-import CustomLink from './Link';
+import Link from 'next/link';
 import TOCInline from './TOCInline';
 import Pre from './Pre';
 import { BlogNewsletterForm } from './NewsletterForm';
+import dynamic from 'next/dynamic';
 
 const Wrapper: ComponentType<{ layout: string }> = ({ layout, ...rest }) => {
-	const Layout = require(`../layouts/${layout}`).default;
+	const Layout = dynamic(() => import(`../layouts/${layout}`), {
+		ssr: false,
+	});
 	return <Layout {...rest} />;
 };
 
 export const MDXComponents: ComponentMap = {
 	Image,
 	TOCInline,
-	a: CustomLink,
+	// @ts-expect-error
+	a: Link,
 	pre: Pre,
 	wrapper: Wrapper,
 	BlogNewsletterForm,

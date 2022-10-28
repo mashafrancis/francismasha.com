@@ -1,4 +1,4 @@
-import Link from './Link';
+import Link from 'next/link';
 
 interface Props {
 	totalPages: number;
