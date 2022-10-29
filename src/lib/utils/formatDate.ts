@@ -10,4 +10,21 @@ const formatDate = (date: string) => {
 	return new Date(date).toLocaleDateString(siteMetadata.locale, options);
 };
 
-export default formatDate;
+const formatDateDay = (date: string) => {
+	const options: Intl.DateTimeFormatOptions = {
+		day: 'numeric',
+	};
+
+	return new Date(date).toLocaleDateString(siteMetadata.locale, options);
+};
+
+const formatDateMonthYear = (date: string) => {
+	const options: Intl.DateTimeFormatOptions = {
+		year: 'numeric',
+		month: 'short',
+	};
+
+	return new Date(date).toLocaleDateString(siteMetadata.locale, options);
+};
+
+export { formatDate, formatDateDay, formatDateMonthYear };

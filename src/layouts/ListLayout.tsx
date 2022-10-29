@@ -2,7 +2,7 @@ import { Header } from '@/components/Form';
 import Link from 'next/link';
 import Pagination from '@/components/Pagination';
 import Tag from '@/components/Tag';
-import formatDate from '@/lib/utils/formatDate';
+import { formatDateDay, formatDateMonthYear } from '@/lib/utils/formatDate';
 import { ComponentProps, useState } from 'react';
 import { BsFilterLeft as FilterIcon } from 'react-icons/bs';
 import { PostFrontMatter } from 'types/PostFrontMatter';
@@ -75,15 +75,18 @@ export default function ListLayout({
 					{displayPosts.map((frontMatter) => {
 						const { slug, date, title, summary, tags } = frontMatter;
 						return (
-							<li key={slug} className='py-6'>
-								<article className='space-y-2 xl:grid xl:grid-cols-6 xl:items-baseline xl:space-y-0'>
-									<dl>
+							<li key={slug} className='py-3'>
+								<article className='items-flex-start grid grid-cols-6 space-y-2 space-y-0'>
+									<dl className='text-center'>
 										<dt className='sr-only'>Published on</dt>
-										<dd className='text-base font-medium leading-6 text-gray-500 dark:text-gray-400'>
-											<time dateTime={date}>{formatDate(date)}</time>
+										<dd className='text-3xl font-bold xl:text-6xl'>
+											<time dateTime={date}>{formatDateDay(date)}</time>
+										</dd>
+										<dd className='font-regular text-base text-gray-500 dark:text-gray-400'>
+											<time dateTime={date}>{formatDateMonthYear(date)}</time>
 										</dd>
 									</dl>
-									<div className='space-y-3 xl:col-span-5'>
+									<div className='col-span-5 space-y-3'>
 										<div>
 											<h3 className='text-2xl font-bold leading-8 tracking-tight'>
 												<Link
