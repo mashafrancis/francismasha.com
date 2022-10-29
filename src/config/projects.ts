@@ -34,7 +34,7 @@ export interface Project {
 export const projects: Project[] = [
 	{
 		title: 'Dynatrace reporting tool',
-		slug: 'dynatrace-reporting-tool',
+		slug: 'dt-edge',
 		banner: '/static/projects/dt-edge/banner.png',
 		website: '#',
 		description:
@@ -85,6 +85,46 @@ export const projects: Project[] = [
 			web: 'https://almondhydroponics.com',
 		},
 		subProjects: [],
+	},
+	{
+		title: 'Personal portfolio',
+		slug: 'portfolio',
+		banner: '/static/projects/portfolio/banner.png',
+		website: 'https://francismasha.com',
+		description: `Simple portfolio web site to know about me, what I like to do and other fun stuff about coding and my personal notes made while working on some projects.`,
+		shortDescription:
+			'Almond is a design sustainable solutions for hydroponic farmers and growing fresh food.',
+		repository: null,
+		stack: [Stack.typescript, Stack.react, Stack.nextjs],
+		dimensions: [360, 640],
+		screenshots: [
+			'https://res.cloudinary.com/almondgreen/image/upload/v1667035479/Portfolio/portfolio-5_c66e6q.png',
+			'https://res.cloudinary.com/almondgreen/image/upload/v1667035479/Portfolio/portfolio-1_iegynz.png',
+			'https://res.cloudinary.com/almondgreen/image/upload/v1667035478/Portfolio/portfolio-3_rik4iq.png',
+			'https://res.cloudinary.com/almondgreen/image/upload/v1667035477/Portfolio/portfolio-4_iza7kp.png',
+			'https://res.cloudinary.com/almondgreen/image/upload/v1667035475/Portfolio/portfolio-2_bvjfuf.png',
+		],
+		deployment: {
+			web: 'https://francismasha.com',
+		},
+		subProjects: [
+			{
+				title: 'notes',
+				description: 'Personal notes and coding tips',
+				repository: '',
+				deployment: {
+					web: 'https://notes.francismasha.com/',
+				},
+			},
+			{
+				title: 'code',
+				description: 'Coding algorithms and data structures',
+				repository: '',
+				deployment: {
+					web: 'https://code.francismasha.com/',
+				},
+			},
+		],
 	},
 	// {
 	// 	title: 'Musings sphere',
