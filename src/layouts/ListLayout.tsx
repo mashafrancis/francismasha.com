@@ -75,18 +75,18 @@ export default function ListLayout({
 					{displayPosts.map((frontMatter) => {
 						const { slug, date, title, summary, tags } = frontMatter;
 						return (
-							<li key={slug} className='py-3'>
-								<article className='items-flex-start grid grid-cols-6 space-y-2 space-y-0'>
-									<dl className='text-center'>
+							<li key={slug} className='py-4'>
+								<article className='items-flex-start grid grid-cols-4 space-y-2 space-y-0 xl:grid-cols-6'>
+									<dl>
 										<dt className='sr-only'>Published on</dt>
-										<dd className='text-3xl font-bold xl:text-6xl'>
+										<dd className='text-4xl font-bold xl:text-6xl'>
 											<time dateTime={date}>{formatDateDay(date)}</time>
 										</dd>
 										<dd className='font-regular text-base text-gray-500 dark:text-gray-400'>
 											<time dateTime={date}>{formatDateMonthYear(date)}</time>
 										</dd>
 									</dl>
-									<div className='col-span-5 space-y-3'>
+									<div className='col-span-3 space-y-3 xl:col-span-5'>
 										<div>
 											<h3 className='text-2xl font-bold leading-8 tracking-tight'>
 												<Link
