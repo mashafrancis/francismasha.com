@@ -31,11 +31,13 @@ export enum Stack {
 	redis,
 	postgres,
 	mongo,
+	mysql,
 
 	// Tools
 	docker,
 	kubernetes,
 	terraform,
+	jenkins,
 
 	// Electronics
 	arduino,
@@ -62,6 +64,8 @@ export const WorkStack = [
 	Stack.redis,
 	Stack.reactnative,
 	Stack.arduino,
+	Stack.mysql,
+	Stack.jenkins,
 ];
 
 type StackInfoMap = {
@@ -161,5 +165,13 @@ export const StackInfo: Record<Stack, StackInfoMap> = {
 	[Stack.arduino]: {
 		value: 'Arduino',
 		color: Colors.arduino,
+	},
+	[Stack.jenkins]: {
+		value: 'Jenkins',
+		color: Colors.jenkins,
+	},
+	[Stack.mysql]: {
+		value: 'MySQL',
+		color: Colors.mysql,
 	},
 };

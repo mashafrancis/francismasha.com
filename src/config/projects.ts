@@ -10,8 +10,8 @@ export type Deployment = {
 export interface SubProject {
 	title: string;
 	description: string;
-	repository: Maybe<string>;
-	deployment: Deployment;
+	repository?: Maybe<string>;
+	deployment?: Deployment;
 }
 
 export const defaultDimensions: Tuple<number> = [450, 220];
@@ -38,8 +38,9 @@ export const projects: Project[] = [
 		banner: '/static/projects/dt-edge/banner.png',
 		website: '#',
 		description:
-			'Better known internally as dt-edge, is a reporting tool built on top of dynatrace APIs. This enables different teams to schedule generated reports for different entities such as host usage, cpu utilization, memory capacity, among others.',
-		shortDescription: 'A reporting tool built on top of dynatrace APIs.',
+			'Better known internally as dt-edge, is a reporting tool built on top of Safaricom dynatrace APIs. This enables different teams to schedule generated reports for different entities such as host usage, cpu utilization, memory capacity, among others.',
+		shortDescription:
+			'A reporting tool built on top of Safaricom dynatrace APIs.',
 		repository: null,
 		stack: [
 			Stack.typescript,
@@ -47,21 +48,32 @@ export const projects: Project[] = [
 			Stack.java,
 			Stack.kubernetes,
 			Stack.docker,
+			Stack.mysql,
+			Stack.jenkins,
 		],
 		dimensions: [360, 640],
 		screenshots: [
-			// 'https://firebasestorage.googleapis.com/v0/b/portfolio-8fa71.appspot.com/o/projects%2Fhypertrade%2Fcharts.png?alt=media&token=62c42939-9371-4413-b85d-f2dd3b4534ca',
-			// 'https://firebasestorage.googleapis.com/v0/b/portfolio-8fa71.appspot.com/o/projects%2Fhypertrade%2Fdataframe.png?alt=media&token=f2e6523c-c9de-4fde-8fb3-434c74eb20d8',
-			// 'https://firebasestorage.googleapis.com/v0/b/portfolio-8fa71.appspot.com/o/projects%2Fhypertrade%2Fportfolio.png?alt=media&token=8f4e3da1-2dc2-4382-9fc8-1fbc18a98146',
-			// 'https://firebasestorage.googleapis.com/v0/b/portfolio-8fa71.appspot.com/o/projects%2Fhypertrade%2Fconfig.png?alt=media&token=f619b1da-47d5-4c33-b4d0-368adaead1c8',
-			// 'https://firebasestorage.googleapis.com/v0/b/portfolio-8fa71.appspot.com/o/projects%2Fhypertrade%2Fconfig-strategy.png?alt=media&token=68693230-4fce-420b-b419-d211a9568dc5',
-			// 'https://firebasestorage.googleapis.com/v0/b/portfolio-8fa71.appspot.com/o/projects%2Fhypertrade%2Fcharts-indicators.png?alt=media&token=21c7875f-5abe-4ceb-8057-4d7a70b67d33',
-			// 'https://firebasestorage.googleapis.com/v0/b/portfolio-8fa71.appspot.com/o/projects%2Fhypertrade%2Ftelegram.png?alt=media&token=110874dd-fb96-4dd2-b299-12a62b092a04',
+			'https://res.cloudinary.com/almondgreen/image/upload/v1667115349/Portfolio/dt-edge/dt-edge-1_elner5.png',
+			'https://res.cloudinary.com/almondgreen/image/upload/v1667115354/Portfolio/dt-edge/dt-edge-3_nahir6.png',
+			'https://res.cloudinary.com/almondgreen/image/upload/v1667115354/Portfolio/dt-edge/dt-edge-4_eg1qki.png',
+			'https://res.cloudinary.com/almondgreen/image/upload/v1667115357/Portfolio/dt-edge/dt-edge-5_yis4lm.png',
+			'https://res.cloudinary.com/almondgreen/image/upload/v1667115356/Portfolio/dt-edge/dt-edge-2_hvc0wu.png',
 		],
 		deployment: {
 			web: '#',
 		},
-		subProjects: [],
+		subProjects: [
+			{
+				title: 'Dynatrace Reporting tool API',
+				description:
+					'These were built using Java Springboot application. The main purpose is to serialize and reshape the data fetched from Dynatrace API.',
+			},
+			{
+				title: 'Reports scheduler app',
+				description:
+					'The scheduler app generates reports for various teams within the business and sends periodically depending on the time set by the team.',
+			},
+		],
 	},
 	{
 		title: 'Almond hydroponics',

@@ -32,6 +32,7 @@ export const Colors = {
 	postgres: '#336791',
 	mongo: '#4DB33D',
 	redis: '#D82C20',
+	mysql: '#3E6E93',
 
 	// Cloud
 	aws: '#FF9900',
@@ -39,6 +40,7 @@ export const Colors = {
 	docker: '#0DB7Ed',
 	kubernetes: '#326CE5',
 	terraform: '#7B42BC',
+	jenkins: '#d24939',
 
 	// Messaging
 	nats: '#199bfc',
