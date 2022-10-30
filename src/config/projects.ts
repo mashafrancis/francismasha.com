@@ -45,6 +45,7 @@ export const projects: Project[] = [
 		stack: [
 			Stack.typescript,
 			Stack.react,
+			Stack.nextjs,
 			Stack.java,
 			Stack.kubernetes,
 			Stack.docker,
@@ -85,8 +86,9 @@ export const projects: Project[] = [
 			'Almond is a design sustainable solutions for hydroponic farmers and growing fresh food.',
 		repository: null,
 		stack: [
-			Stack.javascript,
+			Stack.typescript,
 			Stack.react,
+			Stack.nextjs,
 			Stack.node,
 			Stack.graphql,
 			Stack.aws,
