@@ -12,6 +12,10 @@ export enum Stack {
 	reactnative,
 	nextjs,
 
+	// Styling
+	materialui,
+	tailwind,
+
 	// Backend
 	java,
 	graphql,
@@ -66,6 +70,8 @@ export const WorkStack = [
 	Stack.arduino,
 	Stack.mysql,
 	Stack.jenkins,
+	Stack.materialui,
+	Stack.tailwind,
 ];
 
 type StackInfoMap = {
@@ -173,5 +179,13 @@ export const StackInfo: Record<Stack, StackInfoMap> = {
 	[Stack.mysql]: {
 		value: 'MySQL',
 		color: Colors.mysql,
+	},
+	[Stack.materialui]: {
+		value: 'MaterialUI',
+		color: Colors.materialui,
+	},
+	[Stack.tailwind]: {
+		value: 'TailwindCSS',
+		color: Colors.tailwind,
 	},
 };

@@ -11,6 +11,10 @@ export const Colors = {
 	react: '#61DAF6',
 	nextjs: '#000000',
 
+	// Styling
+	materialui: '#007FFF',
+	tailwind: '#0ea5e9',
+
 	// Backend
 	graphql: '#E535AB',
 	node: '#68A063',

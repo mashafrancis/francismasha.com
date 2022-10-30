@@ -51,6 +51,7 @@ export const projects: Project[] = [
 			Stack.docker,
 			Stack.mysql,
 			Stack.jenkins,
+			Stack.materialui,
 		],
 		dimensions: [360, 640],
 		screenshots: [
@@ -93,6 +94,7 @@ export const projects: Project[] = [
 			Stack.graphql,
 			Stack.aws,
 			Stack.mqtt,
+			Stack.materialui,
 		],
 		screenshots: [],
 		deployment: {
@@ -109,7 +111,7 @@ export const projects: Project[] = [
 		shortDescription:
 			'Almond is a design sustainable solutions for hydroponic farmers and growing fresh food.',
 		repository: null,
-		stack: [Stack.typescript, Stack.react, Stack.nextjs],
+		stack: [Stack.typescript, Stack.react, Stack.nextjs, Stack.tailwind],
 		dimensions: [360, 640],
 		screenshots: [
 			'https://res.cloudinary.com/almondgreen/image/upload/v1667035479/Portfolio/portfolio-5_c66e6q.png',

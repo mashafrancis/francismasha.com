@@ -20,7 +20,7 @@ const formatDateDay = (date: string) => {
 
 const formatDateMonthYear = (date: string) => {
 	const options: Intl.DateTimeFormatOptions = {
-		year: 'numeric',
+		year: '2-digit',
 		month: 'short',
 	};
 

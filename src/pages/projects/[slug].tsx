@@ -68,6 +68,9 @@ export default function Project({
 						width={width}
 						// objectFit='cover'
 						alt=''
+						priority
+						placeholder='blur'
+						blurDataURL='data:...'
 					/>
 				</div>
 			);
