@@ -2,6 +2,13 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 	enabled: process.env.ANALYZE === 'true',
 });
 
+const runtimeCaching = require('next-pwa/cache');
+const withPWA = require('next-pwa')({
+	dest: 'public',
+	disable: process.env.NODE_ENV === 'development',
+	runtimeCaching,
+});
+
 // const runtimeCaching = require('next-pwa/cache');
 // const withPWA = require('next-pwa')({
 // 	dest: 'public',
@@ -62,47 +69,49 @@ const securityHeaders = [
 /**
  * @type {import('next/dist/next-server/server/config').NextConfig}
  **/
-module.exports = withBundleAnalyzer({
-	output: 'standalone',
-	swcMinify: true,
-	reactStrictMode: true,
-	pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
-	// eslint: {
-	// 	dirs: ['pages', 'components', 'lib', 'layouts', 'scripts'],
-	// },
-	eslint: {
-		ignoreDuringBuilds: true,
-	},
-	images: {
-		domains: ['firebasestorage.googleapis.com', 'res.cloudinary.com'],
-	},
-	async headers() {
-		return [
-			{
-				source: '/(.*)',
-				headers: securityHeaders,
-			},
-		];
-	},
-	webpack: (config, { dev, isServer }) => {
-		config.module.rules.push({
-			test: /\.(png|jpe?g|gif|mp4)$/i,
-			use: [
+module.exports = withBundleAnalyzer(
+	withPWA({
+		output: 'standalone',
+		swcMinify: true,
+		reactStrictMode: true,
+		pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
+		// eslint: {
+		// 	dirs: ['pages', 'components', 'lib', 'layouts', 'scripts'],
+		// },
+		eslint: {
+			ignoreDuringBuilds: true,
+		},
+		images: {
+			domains: ['firebasestorage.googleapis.com', 'res.cloudinary.com'],
+		},
+		async headers() {
+			return [
 				{
-					loader: 'file-loader',
-					options: {
-						publicPath: '/_next',
-						name: 'static/media/[name].[hash].[ext]',
-					},
+					source: '/(.*)',
+					headers: securityHeaders,
 				},
-			],
-		});
+			];
+		},
+		webpack: (config) => {
+			config.module.rules.push({
+				test: /\.(png|jpe?g|gif|mp4)$/i,
+				use: [
+					{
+						loader: 'file-loader',
+						options: {
+							publicPath: '/_next',
+							name: 'static/media/[name].[hash].[ext]',
+						},
+					},
+				],
+			});
 
-		config.module.rules.push({
-			test: /\.svg$/,
-			use: ['@svgr/webpack'],
-		});
+			config.module.rules.push({
+				test: /\.svg$/,
+				use: ['@svgr/webpack'],
+			});
 
-		return config;
-	},
-});
+			return config;
+		},
+	})
+);
