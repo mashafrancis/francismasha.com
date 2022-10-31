@@ -81,7 +81,7 @@ export const projects: Project[] = [
 		title: 'Almond hydroponics',
 		slug: 'almond-hydroponics',
 		banner: '/static/projects/almond/banner.png',
-		website: 'https://almondhydroponics.com',
+		website: '#',
 		description: `Almond is a design sustainable solutions for hydroponic farmers, empowering them to grow fresh, clean, and local food in their communities around the globe.`,
 		shortDescription:
 			'Almond is a design sustainable solutions for hydroponic farmers and growing fresh food.',
@@ -98,7 +98,7 @@ export const projects: Project[] = [
 		],
 		screenshots: [],
 		deployment: {
-			web: 'https://almondhydroponics.com',
+			web: '#',
 		},
 		subProjects: [],
 	},
