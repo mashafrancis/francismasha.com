@@ -161,7 +161,7 @@ export const projects: Project[] = [
 	// 	],
 	// 	screenshots: [],
 	// 	deployment: {
-	// 		web: 'https://almondhydroponics.com',
+	// 		web: '#',
 	// 	},
 	// 	subProjects: [],
 	// },
