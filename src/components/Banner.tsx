@@ -23,7 +23,19 @@ function Banner(props: BannerProps): ReactElement {
 					{frontMatter.occupation}.
 				</p>
 				<p className='font-light lg:text-xl'>
-					Read more
+					Read more on my
+					<Link className='ml-2 mr-2 font-normal text-black' href='/projects'>
+						<RoughNotation
+							show
+							type='highlight'
+							animationDelay={250}
+							animationDuration={2000}
+							color={contactColor}
+						>
+							projects
+						</RoughNotation>
+					</Link>
+					,
 					<Link className='ml-2 mr-2 font-normal text-black' href='/about'>
 						<RoughNotation
 							show
@@ -35,7 +47,7 @@ function Banner(props: BannerProps): ReactElement {
 							about me
 						</RoughNotation>
 					</Link>
-					or
+					or you can
 					<Link className='ml-2 font-normal text-black' href='/contact'>
 						<RoughNotation
 							show
@@ -47,6 +59,7 @@ function Banner(props: BannerProps): ReactElement {
 							contact me
 						</RoughNotation>
 					</Link>
+					.
 				</p>
 			</div>
 			<LivingShapes />

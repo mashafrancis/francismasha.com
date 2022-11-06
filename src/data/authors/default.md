@@ -20,6 +20,6 @@ improve customer products and digital experience.
 
 Previously I've worked as a Fullstack Software Engineer at
 the [Andela Kenya](https://www.andela.com) as a contributor to different
-projects where
-I have been attached to different clients both internal and external to the
-company).
+projects where I have been attached to different clients both internal and
+external to the
+company.

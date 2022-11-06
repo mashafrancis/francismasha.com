@@ -20,7 +20,7 @@ function Contact(): ReactElement {
 				description={siteMetadata.description}
 			/>
 			<div className='fade-in divide-y-2 divide-gray-100 dark:divide-gray-800'>
-				<Header title='Contact' />
+				<Header title='Contact.' />
 				<div className='container py-12'>
 					<p>
 						Do you have a project in mind? Want to hire me? or simply wanna

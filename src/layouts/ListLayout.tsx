@@ -88,7 +88,7 @@ export default function ListLayout({
 									</dl>
 									<div className='col-span-3 space-y-4 xl:col-span-5'>
 										<div>
-											<h3 className='text-2xl font-medium leading-8 tracking-tight'>
+											<h3 className='text-2xl font-bold leading-8 tracking-tight'>
 												<Link
 													href={`/blog/${slug}`}
 													className='text-gray-900 dark:text-gray-100'

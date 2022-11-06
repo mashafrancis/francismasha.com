@@ -1,0 +1,42 @@
+---
+title: 'Rust for IoT'
+date: '2022-11-07'
+tags: ['rust', 'iot', 'embedded']
+draft: false
+summary: 'Exploring rust on the esp32 embedded controller'
+images: ['/static/blogs/rust-for-iot.webp']
+authors: ['default']
+---
+
+In this article, I explore these thoughts I have been experimenting on for a while:
+
+- What does it look in practice to start a new projects based on rust in the world of IoT, specifically embedded development on bare metal?
+- Can we use this promising language for new projects in a production environment?
+- Does rust make us develop more maintainable applications faster while keeping our code safe?
+
+## Hardware and setup
+
+```rust
+# Install the required nightly toolchain
+rustup install nightly
+rustup component add rust-src --toolchain nightly
+rustup target add riscv32imc-unknown-none-elf
+
+# Install tooling to check the size of our binary
+rustup component add llvm-tools-preview
+
+# Install helper packages for a smooth development workflow
+cargo install cargo-generate
+cargo install ldproxy
+cargo install espflash
+cargo install espmonitor
+
+# Generate template project
+cargo generate --vcs none --git https://github.com/esp-rs/esp-idf-template cargo
+
+# CD Into your project folder, compile and flash the application
+cd <my-project-dir>
+cargo build && espflash --speed 406800 target/riscv32imc-esp-espidf/debug/wireprobe-rs
+```
+
+[//] # (ARTICLE IS WIP)

@@ -2,22 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ReactElement } from 'react';
 
-// import { BlurrableImage } from '@/components/BlurrableImage';
-
 function Card({ title, description, banner, href }): ReactElement {
 	const image = (
-		// <BlurrableImage
-		// 	img={
-		// 		<img
-		// 			alt={title}
-		// 			src={banner}
-		// 			className='object-cover object-center md:h-36 lg:h-48'
-		// 			width={544}
-		// 			height={306}
-		//
-		// 		/>
-		// 	}
-		// />
 		<Image
 			alt={title}
 			src={banner}

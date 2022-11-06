@@ -57,29 +57,6 @@ module.exports = {
 				slate: {
 					500: 'var(--color-slate-500)',
 				},
-				team: {
-					unknown: 'var(--color-team-unknown)',
-					current: 'var(--color-team-current)',
-					yellow: 'var(--color-team-yellow)',
-					blue: 'var(--color-team-blue)',
-					red: 'var(--color-team-red)',
-				},
-				yellow: {
-					500: 'var(--color-yellow-500)',
-					'500-inverted': 'var(--color-yellow-500-inverted)',
-				},
-				blue: {
-					100: 'var(--color-blue-100)',
-					500: 'var(--color-blue-500)',
-				},
-				red: {
-					500: 'var(--color-red-500)',
-				},
-				green: {
-					100: 'var(--color-green-100)',
-					500: 'var(--color-green-500)',
-					600: 'var(--color-green-600)',
-				},
 			},
 			typography: (theme) => {
 				// some fontSizes return [size, props], others just size :/

@@ -14,6 +14,11 @@ export interface SubProject {
 	deployment?: Deployment;
 }
 
+export type BannerImage = {
+	src: string;
+	blurDataUrl: string;
+};
+
 export const defaultDimensions: Tuple<number> = [450, 220];
 
 export interface Project {
