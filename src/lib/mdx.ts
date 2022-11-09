@@ -26,7 +26,7 @@ import rehypeSlug from 'rehype-slug';
 const root = process.cwd();
 
 export function getFiles(type: 'blog' | 'authors') {
-	const prefixPaths = path.join(root, 'src', 'data', type);
+	const prefixPaths = path.join(root, 'data', type);
 	const files = getAllFilesRecursively(prefixPaths);
 	// Only want to return blog/path and ignore root, replace is needed to work on Windows
 	return files.map((file) =>
@@ -48,8 +48,8 @@ export async function getFileBySlug<T>(
 	type: 'authors' | 'blog',
 	slug: string | string[]
 ) {
-	const mdxPath = path.join(root, 'src', 'data', type, `${slug}.mdx`);
-	const mdPath = path.join(root, 'src', 'data', type, `${slug}.md`);
+	const mdxPath = path.join(root, 'data', type, `${slug}.mdx`);
+	const mdPath = path.join(root, 'data', type, `${slug}.md`);
 	const source = fs.existsSync(mdxPath)
 		? fs.readFileSync(mdxPath, 'utf8')
 		: fs.readFileSync(mdPath, 'utf8');
@@ -126,7 +126,7 @@ export async function getFileBySlug<T>(
 }
 
 export async function getAllFilesFrontMatter(folder: 'blog') {
-	const prefixPaths = path.join(root, 'src', 'data', folder);
+	const prefixPaths = path.join(root, 'data', folder);
 
 	const files = getAllFilesRecursively(prefixPaths);
 

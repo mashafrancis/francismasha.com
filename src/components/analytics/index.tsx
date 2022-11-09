@@ -3,7 +3,7 @@ import GA from './GoogleAnalytics';
 import Plausible from './Plausible';
 import SimpleAnalytics from './SimpleAnalytics';
 import Umami from './Umami';
-import siteMetadata from '../../data/siteMetadata';
+import siteMetadata from '../../../data/siteMetadata';
 import { Analytics as VercelAnalytics } from '@vercel/analytics/react';
 import { useMemo } from 'react';
 

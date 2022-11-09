@@ -14,7 +14,7 @@ import Head from 'next/head';
 import Analytics from '@/components/analytics';
 import { ClientReload } from '@/components/ClientReload';
 import LayoutWrapper from '@/components/LayoutWrapper';
-import siteMetadata from '@/data/siteMetadata';
+import siteMetadata from '../../data/siteMetadata';
 
 import { GeistProvider } from '@geist-ui/core';
 import { ReactElement } from 'react';

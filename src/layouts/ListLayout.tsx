@@ -1,7 +1,7 @@
 import { Header } from '@/components/Form';
 import Link from 'next/link';
 import Pagination from '@/components/Pagination';
-import Tag from '@/components/Tag';
+// import Tag from '@/components/Tag';
 import { formatDateDay, formatDateMonthYear } from '@/lib/utils/formatDate';
 import { ComponentProps, useState } from 'react';
 import { BsFilterLeft as FilterIcon } from 'react-icons/bs';
@@ -96,11 +96,11 @@ export default function ListLayout({
 													{title}
 												</Link>
 											</h3>
-											<div className='flex flex-wrap'>
-												{tags.map((tag) => (
-													<Tag key={tag} text={tag} />
-												))}
-											</div>
+											{/*<div className='flex flex-wrap'>*/}
+											{/*	{tags.map((tag) => (*/}
+											{/*		<Tag key={tag} text={tag} />*/}
+											{/*	))}*/}
+											{/*</div>*/}
 										</div>
 										<div className='prose max-w-none text-gray-500 dark:text-gray-400'>
 											{summary}

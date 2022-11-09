@@ -1,5 +1,5 @@
 import { PageSEO } from '@/components/SEO';
-import siteMetadata from '@/data/siteMetadata';
+import siteMetadata from '../../../../data/siteMetadata';
 import ListLayout from '@/layouts/ListLayout';
 import { getAllFilesFrontMatter } from '@/lib/mdx';
 import { POSTS_PER_PAGE } from 'config';

@@ -6,7 +6,7 @@ import { BlogSEO } from '@/components/SEO';
 import Share from '../components/Share';
 import Tag from '../components/Tag';
 import TOCInline from '../components/TOCInline';
-import siteMetadata from '../data/siteMetadata';
+import siteMetadata from '../../data/siteMetadata';
 import Image from 'next/image';
 import { ReactNode } from 'react';
 import { AuthorFrontMatter } from 'types/AuthorFrontMatter';

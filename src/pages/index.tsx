@@ -1,5 +1,5 @@
 import { PageSEO } from '@/components/SEO';
-import siteMetadata from '@/data/siteMetadata';
+import siteMetadata from '../../data/siteMetadata';
 import { getFileBySlug } from '@/lib/mdx';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import dynamic from 'next/dynamic';

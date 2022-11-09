@@ -1,6 +1,6 @@
 import { Header } from '@/components/Form';
 import { PageSEO } from '@/components/SEO';
-import siteMetadata from '@/data/siteMetadata';
+import siteMetadata from '../../data/siteMetadata';
 import { useRandomColorPair } from '@/lib/hooks/useRandomColorPair';
 import { RoughNotation } from 'react-rough-notation';
 import { ReactElement, useState } from 'react';

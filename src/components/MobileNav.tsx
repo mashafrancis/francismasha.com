@@ -1,4 +1,4 @@
-import headerNavLinks from '../data/headerNavLinks';
+import headerNavLinks from '../../data/headerNavLinks';
 import { useState } from 'react';
 import Link from 'next/link';
 

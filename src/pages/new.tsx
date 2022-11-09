@@ -1,7 +1,7 @@
 import { PageSEO } from '@/components/SEO';
 import PostForm from '@/components/PostForm';
 import { useState } from 'react';
-import siteMetadata from '@/data/siteMetadata';
+import siteMetadata from '../../data/siteMetadata';
 import { postDateTemplate } from '@/layouts/PostLayout';
 
 export default function New() {
