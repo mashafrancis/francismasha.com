@@ -1,0 +1,80 @@
+---
+title: 'Elasticsearch and Kibana installation and configuration'
+date: '2022-11-11'
+tags: ['elasticsearch', 'monitoring']
+draft: false
+summary: 'We explore how to install and configure Elasticsearch and Kibana, to get a cluster ready for ingesting logs from any server'
+images: ['/static/blogs/elk-cluster.jpeg']
+authors: ['default']
+---
+
+I want us to explore how to install and configure Elasticsearch and Kibana, to get a cluster ready for ingesting logs for any server.
+I will be using Rocky Linux (Redhat family) for this setup, and installing Elasticsearch and Kibana as RPM packages.
+
+Elasticsearch is an open-source search and analytics engine. It is a free tool to store and quickly search data, manage and view it with Kibana, with a lot of features such as: indexing several types of data from different appliances, Data Analytics and Observability, Machine Learning, SIEM, Endpoint Security and many more.
+A cluster consists of a number of nodes, but for the purpose of this setup, I will be configuring a one-node cluster in addition to one Kibana instance.
+
+## Installing Elasticsearch
+
+The installation on this article is based on RHEL version 8, you can use yum instead of dnf.
+
+Switch to superuser
+
+```bash
+sudo su
+```
+
+Update applications installed on a system
+
+```bash
+dnf update
+```
+
+Install vim editor - the colored editor may indicate errors in the config files
+
+```bash
+dnf -y install vim
+```
+
+Install java. You can specify the version and release you desire.
+
+```bash
+dnf -y install java
+```
+
+Import the elasticsearch GnuPG key
+
+```bash
+rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+```
+
+Create a file called `elasticsearch.repo` in the `/etc/yum.repos.d/` directory with the command
+
+```bash
+vim /etc/yum.repos.d/elasticsearch.repo
+```
+
+and paste the following then save the file:
+
+```bash
+[elasticsearch]
+name=Elasticsearch repository for  8.x packages
+baseurl=https://artifacts.elastic.co/packages/8.x/yum
+gpgcheck=1
+gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+enabled=0
+autorefresh=1
+type=rpm-md
+```
+
+Install Elasticsearch
+
+```bash
+dnf install --enablerepo=elasticsearch elasticsearch
+systemctl daemon-reload
+systemctl enable elasticsearch.service
+systemctl start elasticsearch.service
+```
+
+Reference link
+[Elasticsearch setup](https://www.elastic.co/guide/en/elasticsearch/reference/current/rpm.html)
