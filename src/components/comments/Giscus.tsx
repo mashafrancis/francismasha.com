@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
 
-import siteMetadata from '@/data/siteMetadata';
+import siteMetadata from '../../../data/siteMetadata';
 
 interface Props {
 	mapping: string;

@@ -7,6 +7,7 @@ import TOCInline from './TOCInline';
 import Pre from './Pre';
 import { BlogNewsletterForm } from './NewsletterForm';
 import dynamic from 'next/dynamic';
+import { H1, H2, H3 } from '@/components/Form';
 
 const Wrapper: ComponentType<{ layout: string }> = ({ layout, ...rest }) => {
 	const Layout = dynamic(() => import(`../layouts/${layout}`), {
@@ -20,6 +21,9 @@ export const MDXComponents: ComponentMap = {
 	TOCInline,
 	// @ts-expect-error
 	a: Link,
+	h1: H1,
+	h2: H2,
+	h3: H3,
 	pre: Pre,
 	wrapper: Wrapper,
 	BlogNewsletterForm,
