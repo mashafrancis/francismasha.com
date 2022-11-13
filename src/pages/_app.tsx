@@ -4,8 +4,8 @@ import '@/css/global.css';
 import '@/css/prism.css';
 import '@/css/tailwind.css';
 import 'katex/dist/katex.css';
-
 import '@fontsource/fira-code';
+import '@fontsource/jetbrains-mono';
 
 import { ThemeProvider, useTheme } from 'next-themes';
 import type { AppProps } from 'next/app';

@@ -4,7 +4,7 @@ date: '2022-11-11'
 tags: ['elasticsearch', 'monitoring']
 draft: false
 summary: 'We explore how to install and configure Elasticsearch and Kibana, to get a cluster ready for ingesting logs from any server'
-images: ['/static/blogs/elk-cluster.jpeg']
+images: ['/static/blogs/elk-cluster.webp']
 authors: ['default']
 ---
 
@@ -13,6 +13,11 @@ I will be using Rocky Linux (Redhat family) for this setup, and installing Elast
 
 Elasticsearch is an open-source search and analytics engine. It is a free tool to store and quickly search data, manage and view it with Kibana, with a lot of features such as: indexing several types of data from different appliances, Data Analytics and Observability, Machine Learning, SIEM, Endpoint Security and many more.
 A cluster consists of a number of nodes, but for the purpose of this setup, I will be configuring a one-node cluster in addition to one Kibana instance.
+
+<callout-info>
+	There are situations where default values are useful, but most of the time
+	they're not necessary or useful.
+</callout-info>
 
 ## Installing Elasticsearch
 

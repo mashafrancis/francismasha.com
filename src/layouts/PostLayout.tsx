@@ -123,7 +123,7 @@ export default function PostLayout({
 									alt='banner'
 								/>
 							)}
-							<div className='prose max-w-none !border-t-0 pt-6 pb-8 dark:prose-dark'>
+							<div className='prose prose-light max-w-none break-words !border-t-0 pt-6 pb-8 dark:prose-dark'>
 								<TOCInline toc={toc} asDisclosure />
 								{children}
 							</div>
