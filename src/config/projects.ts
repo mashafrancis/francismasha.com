@@ -5,6 +5,7 @@ export type Deployment = {
 	web?: string;
 	android?: string;
 	ios?: string;
+	api?: string;
 };
 
 export interface SubProject {
@@ -68,6 +69,7 @@ export const projects: Project[] = [
 		],
 		deployment: {
 			web: '#',
+			api: 'https://www.dynatrace.com/support/help/dynatrace-api',
 		},
 		subProjects: [
 			{

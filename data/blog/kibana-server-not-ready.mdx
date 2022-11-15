@@ -1,0 +1,191 @@
+---
+title: 'Kibana server not ready yet'
+date: '2022-11-15'
+tags: ['elasticsearch', 'kibana', 'troubleshooting']
+draft: false
+summary: 'Troubleshooting kibana server not ready'
+images: ['/static/blogs/kibana.png']
+authors: ['default']
+---
+
+Kibana is a free and open-source analytics and visualization platform for Elasticsearch.
+It provides a browser-based graphical interface for interacting with your Elasticsearch database.
+It is very simple and intuitive. You can perform operations such as search, view, update, delete and query all the indices in your Elasticsearch cluster.
+When it comes to visualization, it offers a wide range of options, including charts, tables, maps, etc.
+
+However, Elasticsearch and Kibana have a notorious reputation for being difficult to set up and configure, especially when getting started.
+As a result, you may encounter the “Kibana server is not ready yet” error when attempting to query your Kibana server.
+
+In this post, we shall attempt to break down the cause of this error and give you potential solutions for them.”
+
+Let’s get started.
+
+## What Causes the “Kibana is Not Ready Yet” Error?
+
+There are five major reasons why this error occurs when attempting to connect to your Kibana cluster.
+
+These include:
+
+1. Elasticsearch service is not running
+2. Incorrect Elasticsearch host settings
+3. Elasticsearch security plugin
+4. Corrupt version indices
+5. Incompatible Elasticsearch and Kibana Stack
+
+So let us look into each of these errors.
+
+## Error # 1 – Elasticsearch Service not Started
+
+The first cause of this error is if the Elasticsearch server is not running. Therefore, ensure that elastic service is up and running. You can do this by running the sytemctl command:
+
+```bash
+systemctl status elasticsearch
+```
+
+If the command above shows the service is running, you are good to go
+
+## Error # 2 – Incorrect Elasticsearch Host Settings
+
+Next is to check your Elasticsearch host settings. Ensure that your kibana cluster is able to access your Elasticsearch cluster.
+You can do this by editing the Elasticsearch and Kibana configuration files.
+
+Run the command below to edit the Elasticsearch configuration
+
+```bash
+vim /etc/elasticsearch/elasticsearch.yml
+```
+
+Locate the entry below and uncomment it:
+
+```bash
+#network.host: localhost
+to
+network.host: localhost
+```
+
+<callout-info>
+	In some cases, the Elasticsearch configuration file is located in the
+	install_dir/config directory.
+</callout-info>
+
+If the above entry might contain your system’s IP address instead of localhost. Ensure to note down the IP address if that’s the case.
+
+Next, edit your Kibana config file:
+
+```bash
+vim /etc/kibana/kibana.yml
+```
+
+Locate the entry below and uncomment the line to set the address for your Elasticsearch service.
+
+```bash
+# elasticsearch.hosts: ["http://localhost:9200"]
+to
+elasticsearch.hosts: ["http://localhost:9200"]
+```
+
+<callout-info>
+	If your previous entry was set to an IP address, replace localhost with the
+	target IP in the above entry as well.
+</callout-info>
+
+## Error # 3 – Xpack Security Plugin
+
+In some cases, Kibana may fail to start if the security plugin is enabled with an incomplete configuration. To resolve this, edit your elasticsearch configuration and comment on the entry xpack plugin.
+
+```bash
+vim /etc/elasticsearch/elasticsearch.yml
+```
+
+Comment the lines below by adding a # sign at the beginning.
+
+```bash
+xpack.security.enabled: true
+xpack.security.enrollment.enabled: true
+```
+
+Save the file and restart the Elasticsearch and Kibana services.
+
+## Error # 4 - Corrupt Versioned Indices
+
+You can also resolve this issue by removing the versioned indices from your Kibana Cluster.
+Start by getting the list of kibana versioned indices by running:
+
+```bash
+curl -XGET "https://localhost:9200/_cat/indices?v&index=.kib*&h=index"
+```
+
+The command should return the kibana indices.
+
+```bash
+index
+.kibana_8
+.kibana-event-log-8.2
+.kibana_security_session_1
+.kibana_task_manager_8.2
+```
+
+Next, start by enabling wildcard support by setting the action.desctructive_requires_name parameter to false for your cluster.
+
+```bash
+curl -XPUT "https://localhost:9200/_cluster/settings" -H 'Content-Type: application/json' -d'
+{
+"persistent" : {
+"action.destructive_requires_name" : false
+	}
+}'
+```
+
+Be careful when running the above command. It will allow various parameters to allow wildcards which can be dangerous in the long run.
+You should get acknowledged by the server.
+
+```bash
+{
+"acknowledged" : true,
+"persistent" : {
+"action" : {
+"destructive_requires_name" : "false"
+	}
+},
+"transient" : { }
+}
+```
+
+Next, run the command below to remove all kibana indices.
+
+```bash
+curl -XDELETE "https://localhost:9200/.kibana*?expand_wildcards=open"
+```
+
+The command above will remove all the indices starting with .kibana.
+<callout-warning>
+The above method is destructive and will drop all the kibana indices. Use
+with caution.
+</callout-warning>
+
+```bash
+{
+"acknowledged" : true
+}
+```
+
+You can verify the indices are removed by running:
+
+```bash
+curl -XGET "https://localhost:9200/_cat/indices?v&index=.kib*&h=index""
+```
+
+This should return an empty result.
+Finally, open your terminal and restart the kibana service:
+
+```bash
+systemctl restart kibana
+```
+
+## Error # 5 – Incompatible Elasticsearch and Kibana Stack
+
+Another major cause of this error is if the Elasticsearch and Kibana stack is incompatible.
+If you are using different versions of the tools, you will run into this error.
+To resolve this issue, ensure Kibana is compatible with the installed Elasticsearch Version. And vice versa.
+ELK Stack Compatibility List is provided in the resource below:
+[Matrix compatibility](https://www.elastic.co/support/matrix#matrix_compatibility)

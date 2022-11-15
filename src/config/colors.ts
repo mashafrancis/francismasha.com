@@ -16,6 +16,7 @@ export const Colors = {
 	tailwind: '#0ea5e9',
 
 	// Backend
+	api: '#68A063',
 	graphql: '#E535AB',
 	node: '#68A063',
 	django: '#092E20',

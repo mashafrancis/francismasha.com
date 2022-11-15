@@ -1,9 +1,7 @@
-import Link from 'next/link';
 import { PageSEO } from '@/components/SEO';
 import Tag from '@/components/Tag';
-import siteMetadata from '../../data/siteMetadata';
+import siteMetadata from '../../../data/siteMetadata';
 import { getAllTags } from '@/lib/tags';
-import kebabCase from '@/lib/utils/kebabCase';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 
 export const getStaticProps: GetStaticProps<{
@@ -34,14 +32,8 @@ export default function Tags({
 					{Object.keys(tags).length === 0 && 'No tags found.'}
 					{sortedTags.map((t) => {
 						return (
-							<div key={t} className='mt-2 mb-2 mr-5'>
-								<Tag text={t} />
-								<Link
-									href={`/tags/${kebabCase(t)}`}
-									className='-ml-2 text-sm font-semibold uppercase text-gray-600 dark:text-gray-300'
-								>
-									{` (${tags[t]})`}
-								</Link>
+							<div key={t} className='mt-2 mb-2 mr-2'>
+								<Tag text={t} count={tags[t].toString()} />
 							</div>
 						);
 					})}

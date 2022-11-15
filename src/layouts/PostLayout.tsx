@@ -76,7 +76,7 @@ export default function PostLayout({
 							<div>
 								<PageTitle>{title}</PageTitle>
 							</div>
-							<p className='text-base leading-6 text-gray-500 dark:text-gray-400'>
+							<p className='py-4 text-base leading-6 text-gray-500 dark:text-gray-400'>
 								{readingTime?.text}
 							</p>
 							<Share title={title} url={url} />
@@ -86,7 +86,7 @@ export default function PostLayout({
 						className='divide-y divide-gray-100 pb-8 dark:divide-gray-800 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:divide-y-0'
 						style={{ gridTemplateRows: 'auto 1fr' }}
 					>
-						<dl className='pt-6 pb-10 xl:sticky xl:top-0 xl:border-b xl:border-gray-100 xl:pt-11 xl:dark:border-gray-800'>
+						<dl className='py-6 xl:sticky xl:top-0 xl:border-b xl:border-gray-100 xl:pt-6 xl:dark:border-gray-800'>
 							<dt className='sr-only'>Authors</dt>
 							<dd>
 								<ul className='flex justify-center space-x-8 sm:space-x-12 xl:block xl:space-x-0 xl:space-y-8'>
@@ -115,7 +115,7 @@ export default function PostLayout({
 								</ul>
 							</dd>
 						</dl>
-						<div className='divide-y-2 divide-gray-100 dark:divide-gray-800 xl:col-span-3 xl:row-span-2 xl:pb-0'>
+						<div className='divide-y-2 divide-gray-100 py-6 dark:divide-gray-800 xl:col-span-3 xl:row-span-2 xl:pb-0'>
 							{banner && (
 								<img
 									src={banner}
