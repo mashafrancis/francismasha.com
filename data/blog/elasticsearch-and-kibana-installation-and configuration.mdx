@@ -11,7 +11,10 @@ authors: ['default']
 I want us to explore how to install and configure Elasticsearch and Kibana, to get a cluster ready for ingesting logs for any server.
 I will be using Rocky Linux (Redhat family) for this setup, and installing Elasticsearch and Kibana as RPM packages.
 
-Elasticsearch is an open-source search and analytics engine. It is a free tool to store and quickly search data, manage and view it with Kibana, with a lot of features such as: indexing several types of data from different appliances, Data Analytics and Observability, Machine Learning, SIEM, Endpoint Security and many more.
+Elasticsearch is an open-source search and analytics engine. It is a free tool to
+store and quickly search data, manage and view it with Kibana, with a lot of features such as:
+indexing several types of data from different appliances, data analytics and observability,
+machine learning, security information and event management (SIEM), endpoint security and many more.
 A cluster consists of a number of nodes, but for the purpose of this setup, I will be configuring a one-node cluster in addition to one Kibana instance.
 
 ## Installing Elasticsearch
@@ -52,7 +55,7 @@ and paste the following then save the file:
 
 ```bash
 [elasticsearch]
-name=Elasticsearch repository for  8.x packages
+name=Elasticsearch repository for 8.x packages
 baseurl=https://artifacts.elastic.co/packages/8.x/yum
 gpgcheck=1
 gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
@@ -182,7 +185,9 @@ server.name: “kibana”
 # use https
 elasticsearch.hosts: [“https://192.0.0.1:9200”]
 elasticsearch.username: “kibana_system”
-elasticsearch.password: “<password>”
+## The password can be turned off, and be stored in the keystore instead
+## Check down for more instructions
+# elasticsearch.password: “<password>”
 # Copy http_ca.crt from the Elasticsearch node:
 elasticsearch.ssl.certificateAuthorities: [ “/etc/kibana/certs/http_ca.crt” ]
 ```
@@ -201,6 +206,22 @@ Also, run the following command to change the password for the “kibana_system�
 
 Use the -i option for interactive, which lets you choose your own password
 
+Create the keystore [if it does not exist]
+
+To create the kibana.keystore, use the create command:
+
+```bash
+/usr/share/kibana/bin/kibana-keystore create
+```
+
+The file kibana.keystore will be created in the config directory defined by the environment variable KBN_PATH_CONF.
+
+To add the elasticsearch.password variable to the keystore, use the following command
+
+```bash
+/usr/share/kibana/bin/kibana-keystore add elasticsearch.username
+```
+
 Finally, allow connections to port 5601 in Kibana:
 
 ```bash
@@ -211,7 +232,15 @@ firewall-cmd --reload
 To check the status from journal for kibana, run the following command:
 
 ```bash
-journalctl --unit kibana
+journalctl -xe --unit kibana
+```
+
+For the UAT setup, if you want to by-pass the security ssl checks, you can change this on the
+
+```bash
+# elasticsearch.ssl.verificationMode: full
+# to
+elasticsearch.ssl.verificationMode: none
 ```
 
 At this point, the Elasticsearch node and the Kibana instance are ready. After changes to the .yml files, you should restart the service using “systemctl restart elasticsearch.service”, then checking the status to see if there are any errors or issues.
@@ -226,3 +255,17 @@ In this blog post, we talked about how to install and configure Elasticsearch an
 	Reference link [Elasticsearch
 	setup](https://www.elastic.co/guide/en/elasticsearch/reference/current/rpm.html)
 </callout-info>
+
+## Errors and solutions
+
+**1. Elasticsearch fails to start when tmp directory defined**
+
+Mount /tmp folder to run exec options. The following command achieves this goal.
+
+```bash
+mount -o remount,exec /tmp
+```
+
+Exec options for the folder /tmp reset on reboot. So, the solution must be run at every start.
+
+[Reference issue](https://github.com/elastic/elasticsearch/issues/18406)
