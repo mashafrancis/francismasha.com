@@ -2,7 +2,7 @@
 title: 'Logstash installation and configuration to ingest syslogs'
 date: '2022-11-13'
 tags: ['elasticsearch', 'monitoring', 'logstash']
-draft: true
+draft: false
 summary: 'Configure Logstash to parse and index server syslogs'
 images: ['/static/blogs/logstash.png']
 authors: ['default']
@@ -38,10 +38,13 @@ Now we will start installing Logstash from a package repository. Run the followi
 ```bash
 rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 ```
+
 Create the following .repo file and add the content below:
+
 ```bash
 vim /etc/yum.repos.d/logstash.repo
 ```
+
 and paste the following then save the file:
 
 ```bash
@@ -54,12 +57,17 @@ enabled=1
 autorefresh=1
 type=rpm-md
 ```
+
 The repository is ready to be installed:
+
 ```bash
 dnf install logstash
 ```
+
 ## Configuring Logstash
+
 Configure the Syslog server using the commands below. My Logstash server IP is 192.168.25.110:
+
 ```bash
 config log syslogd setting
     set status enable
@@ -74,6 +82,7 @@ config log syslogd setting
     set interface-select-method auto
 end
 ```
+
 To configure Logstash, we need to create a new .conf file in the following directory:
 
 ```bash
