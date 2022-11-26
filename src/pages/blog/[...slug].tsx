@@ -27,7 +27,7 @@ export async function getStaticPaths() {
 	};
 }
 
-// @ts-ignore
+// @ts-expect-error
 export const getStaticProps: GetStaticProps<{
 	post: { mdxSource: string; toc: Toc; frontMatter: PostFrontMatter };
 	authorDetails: AuthorFrontMatter[];

@@ -1,8 +1,8 @@
-import '@/css/app.css';
 import '@/css/fonts.css';
 import '@/css/global.css';
 import '@/css/prism.css';
 import '@/css/tailwind.css';
+import '@/css/no-script.css';
 import 'katex/dist/katex.css';
 import '@fontsource/fira-code';
 import '@fontsource/jetbrains-mono';

@@ -18,6 +18,7 @@
 	--color-green-600: #68d94a;
 	--color-red-500: #ff4545;
 	--color-yellow-500: #ffd644;
+	--color-team-current: #0078d4;
 
 	--color-team-unknown: #818890;
 	--color-team-blue: #36a3ff;
@@ -55,22 +56,6 @@
 
 a {
 	text-decoration: none !important;
-}
-
-.set-color-team-current-yellow {
-	--color-team-current: var(--color-team-yellow);
-}
-
-.set-color-team-current-red {
-	--color-team-current: var(--color-team-red);
-}
-
-.set-color-team-current-blue {
-	--color-team-current: var(--color-team-blue);
-}
-
-.set-color-team-current-unknown {
-	--color-team-current: var(--color-team-unknown);
 }
 
 :focus:not(:focus-visible) {
