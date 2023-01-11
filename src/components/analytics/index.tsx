@@ -3,7 +3,6 @@ import GA from './GoogleAnalytics';
 import Plausible from './Plausible';
 import SimpleAnalytics from './SimpleAnalytics';
 import Umami from './Umami';
-import ElasticRUM from './ElasticRUM';
 import siteMetadata from '../../../data/siteMetadata';
 import { Analytics as VercelAnalytics } from '@vercel/analytics/react';
 
@@ -20,7 +19,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 const Analytics = () => {
 	return (
 		<>
-			{isProduction && <ElasticRUM />}
+			{/*{isProduction && loadSomeConsoleStuff()}*/}
 			{isProduction && siteMetadata.analytics.plausibleDataDomain && (
 				<Plausible />
 			)}

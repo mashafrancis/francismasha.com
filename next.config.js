@@ -7,14 +7,7 @@ const withPWA = require('next-pwa')({
 	dest: 'public',
 	disable: process.env.NODE_ENV === 'development',
 	runtimeCaching,
-});
-
-// const runtimeCaching = require('next-pwa/cache');
-// const withPWA = require('next-pwa')({
-// 	dest: 'public',
-// 	disable: process.env.NODE_ENV === 'development',
-// 	runtimeCaching,
-// });
+}); 
 
 // You might need to insert additional domains in script-src if you are using external services
 const ContentSecurityPolicy = `
