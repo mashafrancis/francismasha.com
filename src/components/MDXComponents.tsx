@@ -1,13 +1,14 @@
+import CustomLink from '@/components/CustomLink';
+import { H1, H2, H3 } from '@/components/Form';
+import { getMDXComponent } from 'mdx-bundler/client';
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
 /* eslint-disable react/display-name */
 import { ComponentType, useMemo } from 'react';
-import { ComponentMap, getMDXComponent } from 'mdx-bundler/client';
-import Image from 'next/image';
-import Link from 'next/link';
-import TOCInline from './TOCInline';
-import Pre from './Pre';
+
 import { BlogNewsletterForm } from './NewsletterForm';
-import dynamic from 'next/dynamic';
-import { H1, H2, H3 } from '@/components/Form';
+import Pre from './Pre';
+import TOCInline from './TOCInline';
 
 const Wrapper: ComponentType<{ layout: string }> = ({ layout, ...rest }) => {
 	const Layout = dynamic(() => import(`../layouts/${layout}`), {
@@ -16,17 +17,30 @@ const Wrapper: ComponentType<{ layout: string }> = ({ layout, ...rest }) => {
 	return <Layout {...rest} />;
 };
 
-export const MDXComponents: ComponentMap = {
-	Image,
+function RoundedImage(props) {
+	return <Image alt={props.alt} className='rounded-lg' {...props} />;
+}
+
+function Callout(props) {
+	return (
+		<div className='my-8 flex rounded-lg bg-gray-200 p-4 dark:bg-gray-800'>
+			<div className='mr-4 flex w-4 items-center'>{props.emoji}</div>
+			<div className='callout w-full'>{props.children}</div>
+		</div>
+	);
+}
+
+export const MDXComponents = {
+	Image: RoundedImage,
 	TOCInline,
-	// @ts-expect-error
-	a: Link,
+	a: CustomLink,
 	h1: H1,
 	h2: H2,
 	h3: H3,
 	pre: Pre,
 	wrapper: Wrapper,
 	BlogNewsletterForm,
+	Callout,
 };
 
 interface Props {

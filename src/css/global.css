@@ -85,28 +85,28 @@
 }
 
 #wrapper[data-configuration='1'] > .shape:nth-child(1) {
-	left: 0%;
-	top: 0%;
+	left: 0;
+	top: 0;
 	height: 50%;
 	width: 20%;
 }
 
 #wrapper[data-configuration='1'] > .shape:nth-child(2) {
 	left: 20%;
-	top: 0%;
+	top: 0;
 	height: 50%;
 	width: 30%;
 }
 
 #wrapper[data-configuration='1'] > .shape:nth-child(3) {
 	left: 50%;
-	top: 0%;
+	top: 0;
 	height: 100%;
 	width: 50%;
 }
 
 #wrapper[data-configuration='1'] > .shape:nth-child(4) {
-	left: 0%;
+	left: 0;
 	top: 50%;
 	height: 50%;
 	width: 30%;
@@ -163,7 +163,7 @@
 
 #wrapper[data-configuration='2'] > .shape:nth-child(5) {
 	left: 10%;
-	top: 0%;
+	top: 0;
 	height: 70%;
 	width: 15%;
 }
@@ -183,7 +183,7 @@
 }
 
 #wrapper[data-configuration='3'] > .shape:nth-child(1) {
-	left: 0%;
+	left: 0;
 	top: 16.5%;
 	height: 32%;
 	width: 20%;
@@ -198,13 +198,13 @@
 
 #wrapper[data-configuration='3'] > .shape:nth-child(3) {
 	left: 38%;
-	top: 0%;
+	top: 0;
 	height: 100%;
 	width: 62%;
 }
 
 #wrapper[data-configuration='3'] > .shape:nth-child(4) {
-	left: 0%;
+	left: 0;
 	top: 47.3%;
 	height: 55%;
 	width: 34%;

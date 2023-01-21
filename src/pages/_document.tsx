@@ -10,7 +10,7 @@ import Document, {
 
 class MyDocument extends Document {
 	static async getInitialProps(
-		ctx: DocumentContext,
+		ctx: DocumentContext
 	): Promise<DocumentInitialProps> {
 		const initialProps = await Document.getInitialProps(ctx);
 		const styles = CssBaseline.flush();
@@ -32,7 +32,7 @@ class MyDocument extends Document {
 				<Head>
 					<link
 						rel='apple-touch-icon'
-						sizes='76x76'
+						sizes='180x180'
 						href='/static/favicons/apple-touch-icon.png'
 					/>
 					<link
@@ -48,15 +48,19 @@ class MyDocument extends Document {
 						href='/static/favicons/favicon-16x16.png'
 					/>
 					<link rel='manifest' href='/manifest.json' />
-					<meta name='msapplication-TileColor' content='#000000' />
-					<meta name='theme-color' content='#000000' />
+					<link
+						rel='mask-icon'
+						href='/static/favicons/safari-pinned-tab.svg'
+						color='#5bbad5'
+					/>
+					<meta name='msapplication-TileColor' content='#2d89ef' />
+					<meta name='theme-color' content='#ffffff' />
 					<link rel='alternate' type='application/rss+xml' href='/feed.xml' />
 					<link rel='preconnect' href='https://fonts.gstatic.com' />
 				</Head>
-				<body
-					className='bg-white text-black antialiased dark:bg-gray-900 dark:text-white'>
-				<Main />
-				<NextScript />
+				<body className='bg-white text-black antialiased transition duration-500 dark:bg-gray-900 dark:text-white'>
+					<Main />
+					<NextScript />
 				</body>
 			</Html>
 		);
