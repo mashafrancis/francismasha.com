@@ -1,10 +1,11 @@
+import { Analytics as VercelAnalytics } from '@vercel/analytics/react';
+
+import siteMetadata from '../../../data/siteMetadata';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import GA from './GoogleAnalytics';
 import Plausible from './Plausible';
 import SimpleAnalytics from './SimpleAnalytics';
 import Umami from './Umami';
-import siteMetadata from '../../../data/siteMetadata';
-import { Analytics as VercelAnalytics } from '@vercel/analytics/react';
 
 declare global {
 	interface Window {

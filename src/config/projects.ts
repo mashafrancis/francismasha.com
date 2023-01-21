@@ -39,6 +39,36 @@ export interface Project {
 
 export const projects: Project[] = [
 	{
+		title: 'Sanctissima',
+		slug: 'portfolio',
+		banner: '/static/projects/sanctissima/banner.png',
+		website: 'https://francismasha.com',
+		description: `Simple portfolio web site to know about me, what I like to do and other fun stuff about coding and my personal notes made while working on some projects.`,
+		shortDescription:
+			'Almond is a design sustainable solutions for hydroponic farmers and growing fresh food.',
+		repository: null,
+		stack: [Stack.typescript, Stack.react, Stack.nextjs, Stack.tailwind],
+		dimensions: [360, 640],
+		screenshots: [
+			'https://res.cloudinary.com/almondgreen/image/upload/v1674294477/Portfolio/sanctissima/sanctissima-1_tv0dni.png',
+			'https://res.cloudinary.com/almondgreen/image/upload/v1674294479/Portfolio/sanctissima/sanctissima-2_v78twe.png',
+			'https://res.cloudinary.com/almondgreen/image/upload/v1674294476/Portfolio/sanctissima/sanctissima-3_draaa1.png',
+		],
+		deployment: {
+			web: 'https://sanctissima.co.ke',
+		},
+		subProjects: [
+			{
+				title: 'notes',
+				description: 'Personal notes and coding tips',
+				repository: '',
+				deployment: {
+					web: 'https://notes.francismasha.com/',
+				},
+			},
+		],
+	},
+	{
 		title: 'Dynatrace reporting tool',
 		slug: 'dt-edge',
 		banner: '/static/projects/dt-edge/banner.png',

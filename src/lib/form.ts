@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
+import { useCallback, useEffect } from 'react';
 import { useBeforeunload } from 'react-beforeunload';
 import { FormState } from 'react-hook-form';
-import { useCallback, useEffect } from 'react';
 
 type Props<T> = {
 	formState: FormState<T>;

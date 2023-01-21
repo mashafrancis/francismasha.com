@@ -1,4 +1,4 @@
-import { contact, Contact } from './contact';
+import { Contact, contact } from './contact';
 import { Project, projects } from './projects';
 
 interface Config {

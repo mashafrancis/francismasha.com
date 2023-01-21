@@ -1,8 +1,9 @@
 import Card from '@/components/Card';
 import { Header } from '@/components/Form';
 import { PageSEO } from '@/components/SEO';
-import siteMetadata from '../../../data/siteMetadata';
 import config from 'config';
+
+import siteMetadata from '../../../data/siteMetadata';
 
 export default function Projects() {
 	return (

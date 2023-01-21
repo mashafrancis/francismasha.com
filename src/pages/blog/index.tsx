@@ -1,10 +1,11 @@
-import { getAllFilesFrontMatter } from '@/lib/mdx';
-import siteMetadata from '../../../data/siteMetadata';
-import ListLayout from '@/layouts/ListLayout';
 import { PageSEO } from '@/components/SEO';
+import ListLayout from '@/layouts/ListLayout';
+import { getAllFilesFrontMatter } from '@/lib/mdx';
+import { POSTS_PER_PAGE } from 'config';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { ComponentProps } from 'react';
-import { POSTS_PER_PAGE } from 'config';
+
+import siteMetadata from '../../../data/siteMetadata';
 
 export const getStaticProps: GetStaticProps<{
 	posts: ComponentProps<typeof ListLayout>['posts'];

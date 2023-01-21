@@ -1,60 +1,79 @@
-import headerNavLinks from '../../data/headerNavLinks';
+import clsx from 'clsx';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
+
+import headerNavLinks from '../../data/headerNavLinks';
 import Footer from './Footer';
 import MobileNav from './MobileNav';
-import SectionContainer from './SectionContainer';
 import ThemeSwitch from './ThemeSwitch';
-import siteMetadata from '../../data/siteMetadata';
-import Link from 'next/link';
 
 interface Props {
 	children: ReactNode;
 }
 
+function NavItem({ href, text }) {
+	const router = useRouter();
+	const isActive = router.asPath === href;
+
+	return (
+		<li className='capsize'>
+			<Link
+				href={href}
+				className={clsx(
+					isActive
+						? 'font-semibold text-gray-800 dark:text-gray-100'
+						: 'font-normal text-gray-600 dark:text-gray-300',
+					'underlined mx-3 hidden px-1 transition-all md:inline-block'
+				)}
+			>
+				{text}
+			</Link>
+		</li>
+	);
+}
+
 const LayoutWrapper = ({ children }: Props) => {
 	return (
-		<SectionContainer>
+		<motion.div
+			initial={{ x: 300, opacity: 0 }}
+			animate={{ x: 0, opacity: 1 }}
+			exit={{ x: 300, opacity: 0 }}
+			transition={{
+				type: 'spring',
+				stiffness: 260,
+				damping: 20,
+			}}
+		>
 			<div className='flex h-screen flex-col justify-between'>
-				<header className='flex items-center justify-end py-8 sm:justify-between'>
-					<div>
-						<Link
-							href='/'
-							aria-label={siteMetadata.headerTitle}
-							className='text-primary underlined block whitespace-nowrap text-2xl font-medium transition focus:outline-none'
-						>
-							{typeof siteMetadata.headerTitle === 'string' ? (
-								<div className='hidden text-2xl font-medium sm:block'>
-									{siteMetadata.headerTitle}
-								</div>
-							) : (
-								siteMetadata.headerTitle
-							)}
-						</Link>
-					</div>
+				<nav className='top-0 left-0 right-0 z-10 w-full border-gray-200 p-4 backdrop-blur-lg backdrop-filter dark:border-gray-600 lg:fixed lg:sticky lg:border-b lg:p-2 lg:px-0'>
+					<div className='mx-auto flex max-w-full justify-between px-0 xl:max-w-4xl'>
+						<MobileNav />
 
-					<div className='flex items-center text-base leading-5'>
-						<div className='hidden sm:block'>
-							{headerNavLinks.map((link) => (
-								<Link
-									key={link.title}
-									href={link.href}
-									className='underlined p-1 font-normal text-gray-700 hover:text-gray-500 focus:outline-none dark:text-gray-100 sm:p-4'
-								>
-									{link.title}
-								</Link>
-							))}
+						<div className='ml-[-0.60rem] lg:flex lg:items-center lg:justify-center'>
+							<ul className='hidden lg:flex'>
+								{headerNavLinks.map((link) => (
+									<NavItem
+										key={link.title}
+										href={link.href}
+										text={link.title}
+									/>
+								))}
+							</ul>
+						</div>
+
+						<div className='flex items-center text-base leading-5'>
+							<ThemeSwitch />
 						</div>
 					</div>
-
-					<div className='flex items-center text-base leading-5'>
-						<ThemeSwitch />
-						<MobileNav />
-					</div>
-				</header>
-				<main className='mb-auto'>{children}</main>
+				</nav>
+				<main className='mx-auto mb-auto max-w-3xl px-4 sm:px-6 xl:max-w-4xl xl:px-0'>
+					{children}
+				</main>
 				<Footer />
 			</div>
-		</SectionContainer>
+		</motion.div>
 	);
 };
 

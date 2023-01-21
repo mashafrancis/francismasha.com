@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
+import { useCallback, useEffect, useState } from 'react';
 
 import siteMetadata from '../../../data/siteMetadata';
 

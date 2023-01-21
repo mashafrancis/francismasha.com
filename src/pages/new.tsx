@@ -1,8 +1,9 @@
-import { PageSEO } from '@/components/SEO';
 import PostForm from '@/components/PostForm';
-import { useState } from 'react';
-import siteMetadata from '../../data/siteMetadata';
+import { PageSEO } from '@/components/SEO';
 import { postDateTemplate } from '@/layouts/PostLayout';
+import { useState } from 'react';
+
+import siteMetadata from '../../data/siteMetadata';
 
 export default function New() {
 	const [isCreatingPost, creatingPost] = useState<boolean>(false);

@@ -1,5 +1,6 @@
-import PageTitle from './PageTitle';
 import { ReactElement } from 'react';
+
+import PageTitle from './PageTitle';
 
 export default function Draft(): ReactElement {
 	return (

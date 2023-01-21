@@ -1,14 +1,72 @@
-import headerNavLinks from '../../data/headerNavLinks';
-import { useState } from 'react';
+import cn from 'classnames';
+import styles from 'css/mobile-menu.module.css';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import useDelayedRender from 'use-delayed-render';
+
+function MenuIcon(props: JSX.IntrinsicElements['svg']) {
+	return (
+		<svg
+			className='absolute h-7 w-7 text-gray-900 dark:text-gray-100'
+			width='20'
+			height='20'
+			viewBox='0 0 20 20'
+			fill='none'
+			{...props}
+		>
+			<path
+				d='M2.5 7.5H17.5'
+				stroke='currentColor'
+				strokeWidth='1.5'
+				strokeLinecap='round'
+				strokeLinejoin='round'
+			/>
+			<path
+				d='M2.5 12.5H17.5'
+				stroke='currentColor'
+				strokeWidth='1.5'
+				strokeLinecap='round'
+				strokeLinejoin='round'
+			/>
+		</svg>
+	);
+}
+
+function CrossIcon(props: JSX.IntrinsicElements['svg']) {
+	return (
+		<svg
+			className='absolute h-7 w-7 text-gray-900 dark:text-gray-100'
+			viewBox='0 0 24 24'
+			width='24'
+			height='24'
+			stroke='currentColor'
+			strokeWidth='1.5'
+			strokeLinecap='round'
+			strokeLinejoin='round'
+			fill='none'
+			shapeRendering='geometricPrecision'
+			{...props}
+		>
+			<path d='M18 6L6 18' />
+			<path d='M6 6l12 12' />
+		</svg>
+	);
+}
 
 const MobileNav = () => {
 	const [navShow, setNavShow] = useState(false);
+	const { mounted: isMenuMounted, rendered: isMenuRendered } = useDelayedRender(
+		navShow,
+		{
+			enterDelay: 20,
+			exitDelay: 300,
+		}
+	);
 
 	const onToggleNav = () => {
 		setNavShow((status) => {
 			if (status) {
-				document.body.style.overflow = 'auto';
+				document.body.style.overflow = '';
 			} else {
 				document.body.style.overflow = 'hidden';
 			}
@@ -16,60 +74,89 @@ const MobileNav = () => {
 		});
 	};
 
+	useEffect(() => {
+		return function cleanup() {
+			document.body.style.overflow = '';
+		};
+	}, []);
+
 	return (
 		<div className='sm:hidden'>
 			<button
+				className={cn(styles.burger, 'visible md:hidden')}
+				aria-label='Toggle menu'
 				type='button'
-				className='ml-1 mr-1 h-8 w-8 rounded py-1'
-				aria-label='Toggle Menu'
 				onClick={onToggleNav}
 			>
-				<svg
-					xmlns='http://www.w3.org/2000/svg'
-					viewBox='0 0 20 20'
-					fill='currentColor'
-					className='text-gray-900 dark:text-gray-100'
-				>
-					{navShow ? (
-						<path
-							fillRule='evenodd'
-							d='M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z'
-							clipRule='evenodd'
-						/>
-					) : (
-						<path
-							fillRule='evenodd'
-							d='M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z'
-							clipRule='evenodd'
-						/>
-					)}
-				</svg>
+				<MenuIcon data-hide={navShow} />
+				<CrossIcon data-hide={!navShow} />
 			</button>
-			<div
-				className={`fixed top-24 right-0 z-10 h-full w-full transform bg-white backdrop-blur-sm duration-300 ease-in-out dark:bg-gray-900 ${
-					navShow ? 'translate-x-0' : 'translate-x-full'
-				}`}
-			>
-				<button
-					type='button'
-					aria-label='toggle modal'
-					className='fixed h-full w-full cursor-auto focus:outline-none'
-					onClick={onToggleNav}
-				></button>
-				<nav className='fixed mt-8 h-full'>
-					{headerNavLinks.map((link) => (
-						<div key={link.title} className='px-12 py-4'>
-							<Link
-								href={link.href}
-								className='text-4xl font-bold tracking-widest text-gray-900 dark:text-gray-100'
-								onClick={onToggleNav}
-							>
-								{link.title}
-							</Link>
-						</div>
-					))}
-				</nav>
-			</div>
+			{isMenuMounted && (
+				<ul
+					className={cn(
+						styles.menu,
+						'absolute flex flex-col bg-white antialiased transition duration-500 dark:bg-gray-900',
+						isMenuRendered && styles.menuRendered
+					)}
+				>
+					<li
+						onClick={onToggleNav}
+						className='border-b border-gray-300 px-8 text-lg font-medium text-gray-900 dark:border-gray-700 dark:text-gray-100'
+						style={{ transitionDelay: '150ms' }}
+					>
+						<Link href='/' className='flex w-auto pb-4'>
+							Home
+						</Link>
+					</li>
+					<li
+						onClick={onToggleNav}
+						className='border-b border-gray-300 px-8 text-lg font-medium text-gray-900 dark:border-gray-700 dark:text-gray-100'
+						style={{ transitionDelay: '175ms' }}
+					>
+						<Link href='/projects' className='flex w-auto pb-4'>
+							Projects
+						</Link>
+					</li>
+					<li
+						onClick={onToggleNav}
+						className='border-b border-gray-300 px-8 text-lg font-medium text-gray-900 dark:border-gray-700 dark:text-gray-100'
+						style={{ transitionDelay: '200ms' }}
+					>
+						<Link href='/blog' className='flex w-auto pb-4'>
+							Blog
+						</Link>
+					</li>
+					<li
+						className='border-b border-gray-300 px-8 text-lg font-medium text-gray-900 dark:border-gray-700 dark:text-gray-100'
+						style={{ transitionDelay: '250ms' }}
+					>
+						<Link
+							href='https://notes.francismasha.com'
+							className='flex w-auto pb-4'
+						>
+							Notes
+						</Link>
+					</li>
+					<li
+						onClick={onToggleNav}
+						className='border-b border-gray-300 px-8 text-lg font-medium text-gray-900 dark:border-gray-700 dark:text-gray-100'
+						style={{ transitionDelay: '300ms' }}
+					>
+						<Link href='/about' className='flex w-auto pb-4'>
+							About
+						</Link>
+					</li>
+					<li
+						onClick={onToggleNav}
+						className='border-b border-gray-300 px-8 text-lg font-medium text-gray-900 dark:border-gray-700 dark:text-gray-100'
+						style={{ transitionDelay: '350ms' }}
+					>
+						<Link href='/contact' className='flex w-auto pb-4'>
+							Contact
+						</Link>
+					</li>
+				</ul>
+			)}
 		</div>
 	);
 };

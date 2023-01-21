@@ -8,7 +8,7 @@ import type { Project, SubProject } from 'config/projects';
 import { defaultDimensions } from 'config/projects';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import Image from 'next/image';
-import { Children, CSSProperties, useCallback } from 'react';
+import { CSSProperties, Children, useCallback } from 'react';
 import ScrollContainer from 'react-indiana-drag-scroll';
 
 const { projects } = config;

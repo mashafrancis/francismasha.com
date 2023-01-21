@@ -1,10 +1,10 @@
 import clsx from 'clsx';
 import { Colors } from 'config/colors';
-import { contact, ContactType } from 'config/contact';
-import { Children, memo, ReactElement, ReactNode } from 'react';
+import { ContactType, contact } from 'config/contact';
+import { Children, ReactElement, ReactNode, memo } from 'react';
 import { IconBaseProps } from 'react-icons';
-import { FaLinkedinIn as LinkedinIcon } from 'react-icons/fa';
 import { BiCodeAlt as CodeIcon } from 'react-icons/bi';
+import { FaLinkedinIn as LinkedinIcon } from 'react-icons/fa';
 import {
 	IoLogoGithub as GithubIcon,
 	IoLogoTwitter as TwitterIcon,

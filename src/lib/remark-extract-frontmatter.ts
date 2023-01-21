@@ -1,7 +1,7 @@
-import { Parent } from 'unist';
-import { VFile } from 'vfile';
-import { visit } from 'unist-util-visit';
 import { load } from 'js-yaml';
+import { Parent } from 'unist';
+import { visit } from 'unist-util-visit';
+import { VFile } from 'vfile';
 
 export default function extractFrontmatter() {
 	return (tree: Parent, file: VFile) => {

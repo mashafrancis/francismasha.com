@@ -8,7 +8,7 @@ import { ComponentType, useMemo } from 'react';
 
 import { BlogNewsletterForm } from './NewsletterForm';
 import Pre from './Pre';
-import TOCInline from './TOCInline';
+import TableOfContents from './TableOfContents';
 
 const Wrapper: ComponentType<{ layout: string }> = ({ layout, ...rest }) => {
 	const Layout = dynamic(() => import(`../layouts/${layout}`), {
@@ -32,7 +32,7 @@ function Callout(props) {
 
 export const MDXComponents = {
 	Image: RoundedImage,
-	TOCInline,
+	TableOfContents,
 	a: CustomLink,
 	h1: H1,
 	h2: H2,

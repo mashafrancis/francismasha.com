@@ -1,12 +1,8 @@
+import { HtmlView } from '@/components/HtmlView';
 import { classNames } from '@/lib/classnames';
 import { handleUploadImages, markdownToHtml } from '@/lib/editor';
-import TextareaAutosize, {
-	TextareaAutosizeProps,
-} from 'react-textarea-autosize';
-import TextareaMarkdown, {
-	TextareaMarkdownRef,
-} from 'textarea-markdown-editor';
-import { HtmlView } from '@/components/HtmlView';
+import { Switch } from '@headlessui/react';
+import { useRef, useState } from 'react';
 import {
 	MdCode,
 	MdFormatBold,
@@ -14,8 +10,13 @@ import {
 	MdFormatListBulleted,
 	MdOutlineLink,
 } from 'react-icons/md';
-import { useRef, useState } from 'react';
-import { Switch } from '@headlessui/react';
+import TextareaAutosize, {
+	TextareaAutosizeProps,
+} from 'react-textarea-autosize';
+import TextareaMarkdown, {
+	TextareaMarkdownRef,
+} from 'textarea-markdown-editor';
+
 import { browserEnv } from '../env/browser';
 
 type MarkdownEditorProps = {

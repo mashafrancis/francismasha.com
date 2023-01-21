@@ -1,4 +1,5 @@
 import { bool, envsafe, invalidEnvError, makeValidator, str } from 'envsafe';
+
 import { browserEnv } from './browser';
 
 if (typeof window !== 'undefined') {

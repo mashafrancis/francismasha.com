@@ -1,9 +1,10 @@
 import { PageSEO } from '@/components/SEO';
-import siteMetadata from '../../data/siteMetadata';
 import { getFileBySlug } from '@/lib/mdx';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import dynamic from 'next/dynamic';
 import { AuthorFrontMatter } from 'types/AuthorFrontMatter';
+
+import siteMetadata from '../../data/siteMetadata';
 
 // TODO: Direct share functionality.
 // TODO: Switch geist-ui with something simple.

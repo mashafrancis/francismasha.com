@@ -1,10 +1,11 @@
 import { Header } from '@/components/Form';
 import { PageSEO } from '@/components/SEO';
-import siteMetadata from '../../data/siteMetadata';
 import { useRandomColorPair } from '@/lib/hooks/useRandomColorPair';
-import { RoughNotation } from 'react-rough-notation';
 import { ReactElement, useState } from 'react';
 import { PopupModal } from 'react-calendly';
+import { RoughNotation } from 'react-rough-notation';
+
+import siteMetadata from '../../data/siteMetadata';
 import { contact } from '../config/contact';
 
 function Contact(): ReactElement {

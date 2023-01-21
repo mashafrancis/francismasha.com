@@ -1,9 +1,9 @@
-import Link from 'next/link';
+import LivingShapes from '@/components/LivingShapes';
 import { useRandomColorPair } from '@/lib/hooks/useRandomColorPair';
-import { memo, ReactElement } from 'react';
+import Link from 'next/link';
+import { ReactElement, memo } from 'react';
 import { RoughNotation } from 'react-rough-notation';
 import { AuthorFrontMatter } from 'types/AuthorFrontMatter';
-import LivingShapes from '@/components/LivingShapes';
 
 interface BannerProps {
 	frontMatter: AuthorFrontMatter;

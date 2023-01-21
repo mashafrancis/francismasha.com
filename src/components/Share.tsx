@@ -1,4 +1,5 @@
 import { Colors } from 'config/colors';
+import { ReactElement } from 'react';
 import {
 	FaFacebook as FacebookIcon,
 	FaLinkedinIn as LinkedinIcon,
@@ -12,7 +13,6 @@ import {
 	RedditShareButton,
 	TwitterShareButton,
 } from 'react-share';
-import { ReactElement } from 'react';
 
 interface ShareProps {
 	title: string;

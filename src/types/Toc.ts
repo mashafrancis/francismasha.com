@@ -1,5 +1,5 @@
 export type Toc = {
-	value: string;
-	depth: number;
+	level: number;
+	heading: string;
 	url: string;
 }[];

@@ -1,8 +1,9 @@
 import { PageSEO } from '@/components/SEO';
 import Tag from '@/components/Tag';
-import siteMetadata from '../../../data/siteMetadata';
 import { getAllTags } from '@/lib/tags';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
+
+import siteMetadata from '../../../data/siteMetadata';
 
 export const getStaticProps: GetStaticProps<{
 	tags: Record<string, number>;

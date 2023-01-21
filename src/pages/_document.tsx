@@ -1,31 +1,6 @@
-import { CssBaseline } from '@geist-ui/core';
-import Document, {
-	DocumentContext,
-	DocumentInitialProps,
-	Head,
-	Html,
-	Main,
-	NextScript,
-} from 'next/document';
+import Document, { Head, Html, Main, NextScript } from 'next/document';
 
 class MyDocument extends Document {
-	static async getInitialProps(
-		ctx: DocumentContext
-	): Promise<DocumentInitialProps> {
-		const initialProps = await Document.getInitialProps(ctx);
-		const styles = CssBaseline.flush();
-
-		return {
-			...initialProps,
-			styles: (
-				<>
-					{initialProps.styles}
-					{styles}
-				</>
-			),
-		};
-	}
-
 	render() {
 		return (
 			<Html lang='en' className='scroll-smooth'>
@@ -57,6 +32,10 @@ class MyDocument extends Document {
 					<meta name='theme-color' content='#ffffff' />
 					<link rel='alternate' type='application/rss+xml' href='/feed.xml' />
 					<link rel='preconnect' href='https://fonts.gstatic.com' />
+					<meta
+						content='max-snippet:-1, max-image-preview:large, max-video-preview:-1'
+						name='robots'
+					/>
 				</Head>
 				<body className='bg-white text-black antialiased transition duration-500 dark:bg-gray-900 dark:text-white'>
 					<Main />

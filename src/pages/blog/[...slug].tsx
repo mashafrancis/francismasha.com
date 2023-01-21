@@ -1,3 +1,5 @@
+import fs from 'fs';
+
 import Draft from '@/components/Draft';
 import { MDXLayoutRenderer } from '@/components/MDXComponents';
 import generateRss from '@/lib/generate-rss';
@@ -7,7 +9,6 @@ import {
 	getFileBySlug,
 	getFiles,
 } from '@/lib/mdx';
-import fs from 'fs';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { AuthorFrontMatter } from 'types/AuthorFrontMatter';
 import { PostFrontMatter } from 'types/PostFrontMatter';

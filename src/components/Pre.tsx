@@ -1,5 +1,4 @@
 import { ReactNode, useRef, useState } from 'react';
-
 import { MdContentCopy as CopyIcon } from 'react-icons/md';
 
 interface Props {
