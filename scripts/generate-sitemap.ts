@@ -1,7 +1,9 @@
-const fs = require('fs');
-const { globby } = require('globby');
-const matter = require('gray-matter');
-const prettier = require('prettier');
+import fs from 'fs';
+
+import { globby } from 'globby';
+import matter from 'gray-matter';
+import prettier from 'prettier';
+
 const siteMetadata = require('../data/siteMetadata');
 
 (async () => {
@@ -50,10 +52,10 @@ const siteMetadata = require('../data/siteMetadata');
 									return;
 								}
 								return `
-                        <url>
-                            <loc>${siteMetadata.siteUrl}${route}</loc>
-                        </url>
-                    `;
+        <url>
+            <loc>${siteMetadata.siteUrl}${route}</loc>
+        </url>
+      `;
 							})
 							.join('')}
         </urlset>
