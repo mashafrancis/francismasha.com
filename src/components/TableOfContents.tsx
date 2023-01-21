@@ -1,4 +1,6 @@
 import { H3 } from '@/components/Form';
+import { stringToSlug } from '@/lib/toc';
+import { lockScroll, removeScrollLock } from '@/lib/utils/lockScroll';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
@@ -18,11 +20,19 @@ export default function TableOfContents({
 }: Props) {
 	const [toc, setToc] = useState(tableOfContents);
 
+	const size = useWindowSize();
+
+	useEffect(() => {
+		// In Case user exists from mobile to desktop then remove the scroll lock and TOC active to false
+		if (size.width > 768) {
+			removeScrollLock();
+			setIsTOCActive(false);
+		}
+	}, [size]);
+
 	useEffect(() => {
 		setToc(tableOfContents.filter((table: any) => table.heading.toLowerCase()));
 	}, [tableOfContents]);
-
-	const size = useWindowSize();
 
 	return (
 		<>
@@ -33,7 +43,7 @@ export default function TableOfContents({
 							isTOCActive
 								? 'left-0 top-[44px] opacity-100 md:top-[60px]'
 								: '-left-full opacity-0'
-						} font-barlow bg-darkWhite dark:bg-darkPrimary fixed z-50 flex h-screen w-full flex-col gap-1 overflow-y-scroll p-10 !pb-[100px] text-neutral-800 transition-all duration-500 dark:text-gray-200 md:left-0 md:max-w-[35%] md:p-14 md:opacity-100 lg:max-w-[30%]`}
+						} bg-darkWhite dark:bg-darkPrimary fixed z-50 flex h-screen w-full flex-col gap-1 overflow-y-scroll p-10 !pb-[100px] text-neutral-800 transition-all duration-500 dark:text-gray-200 md:left-0 md:max-w-[35%] md:p-14 md:opacity-100 lg:max-w-[30%]`}
 					>
 						<H3 className='-ml-[5px] mt-2 text-xl font-bold md:-ml-[6px] md:text-2xl'>
 							Table of Contents
@@ -44,14 +54,16 @@ export default function TableOfContents({
 								return (
 									<Link
 										key={content.heading}
-										href={content.url}
+										href={`#${stringToSlug(content.heading)}`}
 										className='hover:bg-darkSecondary relative overflow-hidden rounded-tr-md rounded-br-md border-l-2 border-neutral-300 px-2 py-0.5 font-normal text-neutral-700 hover:text-gray-400 dark:text-neutral-200 dark:hover:border-white md:py-1 md:line-clamp-1'
 										style={{ marginLeft: `${content.level * 15}px` }}
 										onClick={() => {
 											if (size.width < 768) {
+												lockScroll();
 												setIsTOCActive(false);
 											}
 											setIsTOCActive(false);
+											removeScrollLock();
 										}}
 									>
 										{content.heading}
@@ -64,6 +76,7 @@ export default function TableOfContents({
 					<button
 						onClick={() => {
 							setIsTOCActive(!isTOCActive);
+							lockScroll();
 						}}
 						className='fixed bottom-0 z-50 w-full bg-black py-2 font-medium text-white outline-none dark:bg-white dark:text-black md:hidden'
 					>

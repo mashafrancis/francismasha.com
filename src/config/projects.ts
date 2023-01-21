@@ -40,10 +40,10 @@ export interface Project {
 export const projects: Project[] = [
 	{
 		title: 'Sanctissima',
-		slug: 'portfolio',
+		slug: 'sanctissima',
 		banner: '/static/projects/sanctissima/banner.png',
 		website: 'https://francismasha.com',
-		description: `Simple portfolio web site to know about me, what I like to do and other fun stuff about coding and my personal notes made while working on some projects.`,
+		description: `A blog website design to interact with the church youth, through question and answer, accompanied with short articles.`,
 		shortDescription:
 			'Almond is a design sustainable solutions for hydroponic farmers and growing fresh food.',
 		repository: null,

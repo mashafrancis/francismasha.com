@@ -1,14 +1,13 @@
 // import '@/css/fonts.css';
 // import '@/css/global.css';
 import '@/css/app.css';
-// import '@/css/tailwind.css';
 import '@/css/no-script.css';
 import 'katex/dist/katex.css';
 
 import Analytics from '@/components/analytics';
 import { ClientReload } from '@/components/ClientReload';
 import LayoutWrapper from '@/components/LayoutWrapper';
-import { Inter } from '@next/font/google';
+import { Inter, JetBrains_Mono } from '@next/font/google';
 import { AnimatePresence } from 'framer-motion';
 import { ThemeProvider } from 'next-themes';
 import type { AppProps } from 'next/app';
@@ -20,6 +19,19 @@ const isDevelopment = process.env.NODE_ENV === 'development';
 const isSocket = process.env.SOCKET;
 
 const interVariable = Inter({
+	subsets: [
+		'cyrillic',
+		'cyrillic-ext',
+		'greek',
+		'greek-ext',
+		'latin',
+		'latin-ext',
+		'vietnamese',
+	],
+});
+
+export const jetbrainsMonoVariable = JetBrains_Mono({
+	weight: '400',
 	subsets: ['latin'],
 });
 

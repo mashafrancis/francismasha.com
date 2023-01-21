@@ -17,7 +17,7 @@ const editUrl = (fileName) =>
 	`${siteMetadata.siteRepo}/blob/master/data/blog/${fileName}`;
 const discussUrl = (slug) =>
 	`https://mobile.twitter.com/search?q=${encodeURIComponent(
-		`${siteMetadata.siteUrl}/blog/${slug}`,
+		`${siteMetadata.siteUrl}/blog/${slug}`
 	)}`;
 
 export const postDateTemplate: Intl.DateTimeFormatOptions = {
@@ -36,13 +36,13 @@ interface Props {
 }
 
 export default function PostLayout({
-	                                   frontMatter,
-	                                   authorDetails,
-	                                   next,
-	                                   prev,
-	                                   toc,
-	                                   children,
-                                   }: Props) {
+	frontMatter,
+	authorDetails,
+	next,
+	prev,
+	toc,
+	children,
+}: Props) {
 	const { slug, fileName, date, title, tags, readingTime, images } =
 		frontMatter;
 
@@ -53,7 +53,7 @@ export default function PostLayout({
 	const url = `${siteMetadata.siteUrl}/blog/${slug}`;
 
 	return (
-		<section className='mt-[44px] md:mt-[60px]  relative !overflow-hidden'>
+		<section>
 			<BlogSEO url={url} authorDetails={authorDetails} {...frontMatter} />
 			<ScrollProgressBar />
 			<ScrollTopAndComment />
@@ -62,22 +62,19 @@ export default function PostLayout({
 				setIsTOCActive={setIsTOCActive}
 				tableOfContents={toc}
 			/>
-			<article
-				className='fade-in mx-auto mb-16 flex w-full max-w-2xl flex-col items-start justify-center'>
+			<article className='fade-in mx-auto mb-16 flex w-full max-w-2xl flex-col items-start justify-center'>
 				<div className='xl:divide-y xl:divide-gray-200 xl:dark:divide-gray-800'>
 					<header className='pt-6 xl:pb-6'>
 						<div>
 							<PageTitle>{title}</PageTitle>
 						</div>
 
-						<div
-							className='mt-2 flex w-full flex-col items-start justify-between md:flex-row md:items-center'>
+						<div className='mt-2 flex w-full flex-col items-start justify-between md:flex-row md:items-center'>
 							<div className='flex items-center'>
 								<dl className='ml-2'>
 									<dt className='sr-only'>Authors</dt>
 									<dd>
-										<ul
-											className='flex justify-center space-x-8 sm:space-x-12 xl:block xl:space-x-0 xl:space-y-8'>
+										<ul className='flex justify-center space-x-8 sm:space-x-12 xl:block xl:space-x-0 xl:space-y-8'>
 											{authorDetails.map((author) => (
 												<li
 													className='flex items-center space-x-2'
@@ -94,8 +91,7 @@ export default function PostLayout({
 													)}
 													<dl className='ml-2'>
 														<dt className='sr-only'>Name</dt>
-														<dd
-															className='text-sm text-gray-700 dark:text-gray-300'>
+														<dd className='text-sm text-gray-700 dark:text-gray-300'>
 															{author.name}
 														</dd>
 													</dl>
@@ -112,23 +108,21 @@ export default function PostLayout({
 											<time dateTime={date}>
 												{new Date(date).toLocaleDateString(
 													siteMetadata.locale,
-													postDateTemplate,
+													postDateTemplate
 												)}
 											</time>
 										</dd>
 									</div>
 								</dl>
 							</div>
-							<p
-								className='min-w-32 mt-2 text-sm text-gray-600 dark:text-gray-400 md:mt-0'>
+							<p className='min-w-32 mt-2 text-sm text-gray-600 dark:text-gray-400 md:mt-0'>
 								{readingTime?.text}
 							</p>
 						</div>
 					</header>
 					<Suspense fallback={null}>
 						<div className='prose mt-4 w-full max-w-none dark:prose-dark'>
-							<div
-								className='divide-y-2 divide-gray-100 py-6 dark:divide-gray-800 xl:col-span-3 xl:row-span-2 xl:pb-0'>
+							<div className='divide-y-2 divide-gray-100 py-6 dark:divide-gray-800 xl:col-span-3 xl:row-span-2 xl:pb-0'>
 								{banner && (
 									<img
 										src={banner}
@@ -136,12 +130,10 @@ export default function PostLayout({
 										alt='banner'
 									/>
 								)}
-								<div
-									className='prose-light prose max-w-none break-words !border-t-0 pt-6 pb-8 dark:prose-dark'>
+								<div className='prose-light prose max-w-none break-words !border-t-0 pt-6 pb-8 dark:prose-dark'>
 									{children}
 								</div>
-								<div
-									className='pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300'>
+								<div className='pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300'>
 									<Link href={editUrl(fileName)}>{'View on GitHub'}</Link>
 								</div>
 								<Comments frontMatter={frontMatter} />

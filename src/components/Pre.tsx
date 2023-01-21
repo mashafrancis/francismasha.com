@@ -1,6 +1,8 @@
 import { ReactNode, useRef, useState } from 'react';
 import { MdContentCopy as CopyIcon } from 'react-icons/md';
 
+import { jetbrainsMonoVariable } from '../pages/_app';
+
 interface Props {
 	children: ReactNode;
 }
@@ -13,10 +15,12 @@ const Pre = ({ children }: Props) => {
 	const onEnter = () => {
 		setHovered(true);
 	};
+
 	const onExit = () => {
 		setHovered(false);
 		setCopied(false);
 	};
+
 	const onCopy = async () => {
 		setCopied(true);
 		await navigator.clipboard.writeText(textInput.current.textContent);
@@ -30,21 +34,20 @@ const Pre = ({ children }: Props) => {
 			ref={textInput}
 			onMouseEnter={onEnter}
 			onMouseLeave={onExit}
-			className='relative'
+			className={`${jetbrainsMonoVariable.className} relative`}
 		>
 			{hovered && (
 				<CopyIcon
-					// size='small'
 					aria-label='Copy code'
 					type='button'
 					className={`absolute right-2 top-2 h-4 w-4 cursor-pointer rounded dark:bg-gray-800 ${
-						copied ? 'text-green-400 focus:text-green-400' : 'text-white'
+						copied ? 'text-blue-400 focus:text-blue-400' : 'text-black'
 					}`}
 					onClick={onCopy}
 				/>
 			)}
 
-			<pre>{children}</pre>
+			<pre className={`${jetbrainsMonoVariable.className}`}>{children}</pre>
 		</div>
 	);
 };
