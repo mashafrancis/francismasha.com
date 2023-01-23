@@ -11,6 +11,7 @@ import rehypeKatex from 'rehype-katex';
 import rehypePresetMinify from 'rehype-preset-minify';
 import rehypePrismPlus from 'rehype-prism-plus';
 import rehypeSlug from 'rehype-slug';
+import rehypePrettyCode from 'rehype-pretty-code';
 // Remark packages
 import remarkFootnotes from 'remark-footnotes';
 import remarkGfm from 'remark-gfm';
@@ -32,7 +33,7 @@ export function getFiles(type: 'blog' | 'authors') {
 	const files = getAllFilesRecursively(prefixPaths);
 	// Only want to return blog/path and ignore root, replace is needed to work on Windows
 	return files.map((file) =>
-		file.slice(prefixPaths.length + 1).replace(/\\/g, '/')
+		file.slice(prefixPaths.length + 1).replace(/\\/g, '/'),
 	);
 }
 
@@ -48,7 +49,7 @@ export function dateSortDesc(a: string, b: string) {
 
 export async function getFileBySlug<T>(
 	type: 'authors' | 'blog',
-	slug: string | string[]
+	slug: string | string[],
 ) {
 	const mdxPath = path.join(root, 'data', type, `${slug}.mdx`);
 	const mdPath = path.join(root, 'data', type, `${slug}.md`);
@@ -62,7 +63,7 @@ export async function getFileBySlug<T>(
 			root,
 			'node_modules',
 			'esbuild',
-			'esbuild.exe'
+			'esbuild.exe',
 		);
 	} else {
 		process.env.ESBUILD_BINARY_PATH = path.join(
@@ -70,9 +71,27 @@ export async function getFileBySlug<T>(
 			'node_modules',
 			'esbuild',
 			'bin',
-			'esbuild'
+			'esbuild',
 		);
 	}
+
+	/* code theme options */
+	const prettyCodeOptions = {
+		theme: 'one-dark-pro',
+		onVisitLine(node) {
+			// Prevent lines from collapsing in `display: grid` mode, and
+			// allow empty lines to be copy/pasted
+			if (node.children.length === 0) {
+				node.children = [{ type: 'text', value: ' ' }];
+			}
+		},
+		onVisitHighlightedLine(node) {
+			node.properties.className.push('highlighted');
+		},
+		onVisitHighlightedWord(node) {
+			node.properties.className = ['word'];
+		},
+	};
 
 	const toc: Toc = [];
 
@@ -97,12 +116,21 @@ export async function getFileBySlug<T>(
 			options.rehypePlugins = [
 				...(options.rehypePlugins ?? []),
 				rehypeSlug,
-				rehypeAutolinkHeadings,
 				rehypeKatex,
+				[
+					rehypeAutolinkHeadings,
+					{
+						properties: {
+							className: ['anchor'],
+						},
+					},
+				],
+				[rehypePrettyCode, prettyCodeOptions],
 				[rehypeCitation, { path: path.join(root, 'data') }],
 				[rehypePrismPlus, { ignoreMissing: true }],
 				rehypePresetMinify,
 			];
+			options.format = 'mdx';
 			return options;
 		},
 		esbuildOptions: (options) => {

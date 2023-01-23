@@ -8,7 +8,7 @@ interface Props {
 }
 
 const Pre = ({ children }: Props) => {
-	const textInput = useRef(null);
+	const textInput = useRef<HTMLDivElement>(null);
 	const [hovered, setHovered] = useState(false);
 	const [copied, setCopied] = useState(false);
 
@@ -22,11 +22,13 @@ const Pre = ({ children }: Props) => {
 	};
 
 	const onCopy = async () => {
-		setCopied(true);
-		await navigator.clipboard.writeText(textInput.current.textContent);
-		setTimeout(() => {
-			setCopied(false);
-		}, 2000);
+		if (textInput.current !== null) {
+			setCopied(true);
+			await navigator.clipboard.writeText(textInput.current.textContent!);
+			setTimeout(() => {
+				setCopied(false);
+			}, 2000);
+		}
 	};
 
 	return (
@@ -41,7 +43,9 @@ const Pre = ({ children }: Props) => {
 					aria-label='Copy code'
 					type='button'
 					className={`absolute right-2 top-2 h-4 w-4 cursor-pointer rounded dark:bg-gray-800 ${
-						copied ? 'text-blue-400 focus:text-blue-400' : 'text-black'
+						copied
+							? 'text-blue-400 focus:text-blue-400'
+							: 'text-black dark:text-white'
 					}`}
 					onClick={onCopy}
 				/>

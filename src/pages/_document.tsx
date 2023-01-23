@@ -1,9 +1,10 @@
+import { inter } from '@/lib/utils/fonts';
 import Document, { Head, Html, Main, NextScript } from 'next/document';
 
 class MyDocument extends Document {
 	render() {
 		return (
-			<Html lang='en' className='scroll-smooth'>
+			<Html lang='en' className={inter.className}>
 				<Head>
 					<link
 						rel='apple-touch-icon'
@@ -37,7 +38,7 @@ class MyDocument extends Document {
 						name='robots'
 					/>
 				</Head>
-				<body className='bg-white text-black antialiased transition duration-500 dark:bg-gray-900 dark:text-white'>
+				<body className='bg-white text-black antialiased transition duration-500 dark:bg-gray-800 dark:text-white'>
 					<Main />
 					<NextScript />
 				</body>

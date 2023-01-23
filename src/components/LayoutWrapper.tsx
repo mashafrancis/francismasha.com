@@ -1,8 +1,8 @@
 import clsx from 'clsx';
-import { motion } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { ReactNode } from 'react';
+import { ReactNode, useCallback, useEffect, useRef } from 'react';
 
 import headerNavLinks from '../../data/headerNavLinks';
 import Footer from './Footer';
@@ -25,7 +25,7 @@ function NavItem({ href, text }) {
 					isActive
 						? 'font-semibold text-gray-800 dark:text-gray-100'
 						: 'font-normal text-gray-600 dark:text-gray-300',
-					'underlined mx-3 hidden px-1 transition-all md:inline-block'
+					'underlined mx-3 hidden px-1 transition-all md:inline-block',
 				)}
 			>
 				{text}
@@ -35,6 +35,41 @@ function NavItem({ href, text }) {
 }
 
 const LayoutWrapper = ({ children }: Props) => {
+	const navRef = useRef<HTMLDivElement>(null);
+	const control = useAnimation();
+
+	const addShadowToNavbar = useCallback(async () => {
+		if (window.pageYOffset > 10) {
+			navRef.current?.classList.add(
+				...[
+					'shadow',
+					'backdrop-blur-xl',
+					'bg-white/70',
+					'dark:bg-gray-900',
+				],
+			);
+
+			await control.start('visible');
+		} else {
+			navRef.current?.classList.remove(
+				...[
+					'shadow',
+					'backdrop-blur-xl',
+					'bg-white/70',
+					'dark:bg-gray-900',
+				],
+			);
+			await control.start('hidden');
+		}
+	}, [control]);
+
+	useEffect(() => {
+		window.addEventListener('scroll', addShadowToNavbar);
+		return () => {
+			window.removeEventListener('scroll', addShadowToNavbar);
+		};
+	}, [addShadowToNavbar]);
+
 	return (
 		<motion.div
 			initial={{ x: 300, opacity: 0 }}
@@ -47,11 +82,14 @@ const LayoutWrapper = ({ children }: Props) => {
 			}}
 		>
 			<div className='flex h-screen flex-col justify-between'>
-				<nav className='top-0 left-0 right-0 z-10 w-full border-gray-200 p-4 backdrop-blur-lg backdrop-filter dark:border-gray-600 lg:fixed lg:sticky lg:border-b lg:p-2 lg:px-0'>
-					<div className='mx-auto flex max-w-full justify-between px-0 xl:max-w-4xl'>
+				<nav ref={navRef}
+				     className='top-0 left-0 right-0 z-10 w-full p-4 lg:fixed lg:sticky lg:p-2 lg:px-0'>
+					<div
+						className='mx-auto flex max-w-full justify-between px-0 xl:max-w-4xl'>
 						<MobileNav />
 
-						<div className='ml-[-0.60rem] lg:flex lg:items-center lg:justify-center'>
+						<div
+							className='ml-[-0.60rem] lg:flex lg:items-center lg:justify-center'>
 							<ul className='hidden lg:flex'>
 								{headerNavLinks.map((link) => (
 									<NavItem
@@ -68,7 +106,8 @@ const LayoutWrapper = ({ children }: Props) => {
 						</div>
 					</div>
 				</nav>
-				<main className='mx-auto mb-auto max-w-3xl px-4 sm:px-6 xl:max-w-4xl xl:px-0'>
+				<main
+					className='mx-auto mb-auto max-w-3xl px-4 sm:px-6 xl:max-w-4xl xl:px-0'>
 					{children}
 				</main>
 				<Footer />

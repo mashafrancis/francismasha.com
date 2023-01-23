@@ -12,7 +12,7 @@ export default function remarkTocHeadings(options) {
 				heading: textContent,
 				url: '#' + slug(textContent),
 				// @ts-expect-error
-				level: node.depth,
+				level: +node.depth - 2,
 			});
 		});
 }

@@ -9,6 +9,7 @@ import { ComponentType, useMemo } from 'react';
 import { BlogNewsletterForm } from './NewsletterForm';
 import Pre from './Pre';
 import TableOfContents from './TableOfContents';
+import CodeTitle from '@/components/CodeTitle';
 
 const Wrapper: ComponentType<{ layout: string }> = ({ layout, ...rest }) => {
 	const Layout = dynamic(() => import(`../layouts/${layout}`), {
@@ -41,6 +42,7 @@ export const MDXComponents = {
 	wrapper: Wrapper,
 	BlogNewsletterForm,
 	Callout,
+	CodeTitle,
 };
 
 interface Props {

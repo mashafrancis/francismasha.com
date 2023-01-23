@@ -7,7 +7,7 @@ import 'katex/dist/katex.css';
 import Analytics from '@/components/analytics';
 import { ClientReload } from '@/components/ClientReload';
 import LayoutWrapper from '@/components/LayoutWrapper';
-import { Inter, JetBrains_Mono } from '@next/font/google';
+import { JetBrains_Mono } from '@next/font/google';
 import { AnimatePresence } from 'framer-motion';
 import { ThemeProvider } from 'next-themes';
 import type { AppProps } from 'next/app';
@@ -17,18 +17,6 @@ import siteMetadata from '../../data/siteMetadata';
 
 const isDevelopment = process.env.NODE_ENV === 'development';
 const isSocket = process.env.SOCKET;
-
-const interVariable = Inter({
-	subsets: [
-		'cyrillic',
-		'cyrillic-ext',
-		'greek',
-		'greek-ext',
-		'latin',
-		'latin-ext',
-		'vietnamese',
-	],
-});
 
 export const jetbrainsMonoVariable = JetBrains_Mono({
 	weight: '400',
@@ -48,11 +36,9 @@ const App = ({ Component, pageProps }: AppProps) => {
 				initial={false}
 				onExitComplete={() => window.scrollTo(0, 0)}
 			>
-				<main className={interVariable.className}>
-					<LayoutWrapper>
-						<Component {...pageProps} />
-					</LayoutWrapper>
-				</main>
+				<LayoutWrapper>
+					<Component {...pageProps} />
+				</LayoutWrapper>
 			</AnimatePresence>
 		</ThemeProvider>
 	);

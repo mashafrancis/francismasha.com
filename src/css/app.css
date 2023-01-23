@@ -12,11 +12,76 @@ html {
 	scroll-behavior: smooth;
 }
 
+body {
+	overflow-x: hidden;
+}
+
+* {
+	-webkit-tap-highlight-color: transparent;
+	@apply no-underline;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	-webkit-text-fill-color: black !important;
+	-webkit-box-shadow: 0 0 0 999px var(--color-gray-100) inset !important;
+	box-shadow: 0 0 0 999px var(--color-gray-100) inset !important;
+	background-clip: content-box !important;
+}
+
+.dark input:-webkit-autofill,
+.dark input:-webkit-autofill:hover,
+.dark input:-webkit-autofill:focus,
+.dark input:-webkit-autofill:active {
+	-webkit-text-fill-color: white !important;
+	-webkit-box-shadow: 0 0 0 999px var(--color-gray-800) inset !important;
+	box-shadow: 0 0 0 999px var(--color-gray-800) inset !important;
+	background-clip: content-box !important;
+}
+
+input:-webkit-autofill::first-line {
+	font-size: 1.125rem;
+	font-weight: 500;
+	font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+	BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+	sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+	'Noto Color Emoji';
+}
+
+/* I kinda feel like this should be the default... 🤷‍♂️ */
+[hidden] {
+	pointer-events: none;
+}
+
+/* These elements get removed before hydration but they can look funny before hydrating */
+dark-mode,
+light-mode {
+	display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	:focus {
+		transition: outline-offset 0.1s ease;
+		outline-offset: 4px;
+	}
+}
+
+a {
+	text-decoration: none !important;
+	outline: none;
+}
+
+a:hover {
+	text-decoration: none !important;
+}
+
 /*#__next {*/
 /*    @apply bg-gray-50 dark:bg-gray-900;*/
 /*    display: flex;*/
 /*    flex-direction: column;*/
-/*    min-height: 100vh;*/
+/*    !*height: 100vh;*!*/
 /*}*/
 
 /* https://seek-oss.github.io/capsize/ */
@@ -102,60 +167,60 @@ html {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-	@apply text-gray-700 dark:text-gray-300;
+	@apply text-gray-900 dark:text-gray-300;
 }
 
 .token.punctuation {
-	@apply text-gray-700 dark:text-gray-300;
+	@apply text-gray-900 dark:text-gray-300;
 }
 
-.token.property,
-.token.tag,
-.token.boolean,
-.token.number,
-.token.constant,
-.token.symbol,
-.token.deleted {
-	@apply text-green-500;
-}
+/*.token.property,*/
+/*.token.tag,*/
+/*.token.boolean,*/
+/*.token.number,*/
+/*.token.constant,*/
+/*.token.symbol,*/
+/*.token.deleted {*/
+/*	@apply text-green-500;*/
+/*}*/
 
-.token.selector,
-.token.attr-name,
-.token.string,
-.token.char,
-.token.builtin,
-.token.inserted {
-	@apply text-purple-500;
-}
+/*.token.selector,*/
+/*.token.attr-name,*/
+/*.token.string,*/
+/*.token.char,*/
+/*.token.builtin,*/
+/*.token.inserted {*/
+/*	@apply text-purple-500;*/
+/*}*/
 
-.token.operator,
-.token.entity,
-.token.url,
-.language-css .token.string,
-.style .token.string {
-	@apply text-yellow-500;
-}
+/*.token.operator,*/
+/*.token.entity,*/
+/*.token.url,*/
+/*.language-css .token.string,*/
+/*.style .token.string {*/
+/*	@apply text-yellow-500;*/
+/*}*/
 
-.token.atrule,
-.token.attr-value,
-.token.keyword {
-	@apply text-blue-500;
-}
+/*.token.atrule,*/
+/*.token.attr-value,*/
+/*.token.keyword {*/
+/*	@apply text-blue-500;*/
+/*}*/
 
-.token.function,
-.token.class-name {
-	@apply text-pink-500;
-}
+/*.token.function,*/
+/*.token.class-name {*/
+/*	@apply text-pink-500;*/
+/*}*/
 
-.token.regex,
-.token.important,
-.token.variable {
-	@apply text-yellow-500;
-}
+/*.token.regex,*/
+/*.token.important,*/
+/*.token.variable {*/
+/*	@apply text-yellow-500;*/
+/*}*/
 
 code[class*='language-'],
 pre[class*='language-'] {
-	@apply text-gray-800 dark:text-gray-50;
+	@apply text-black dark:text-gray-50;
 }
 
 pre::-webkit-scrollbar {
@@ -197,11 +262,6 @@ input[type='email'] {
 
 .step > h3 {
 	@apply my-0;
-}
-
-.prose .tweet a {
-	text-decoration: inherit;
-	font-weight: inherit;
 }
 
 table {
@@ -259,7 +319,7 @@ table {
 .prose callout-warning *,
 .prose callout-danger *,
 .prose callout-success * {
-	font-size: 0.875rem;
+	font-size: 1rem;
 }
 
 .prose callout-muted.aside,
@@ -272,7 +332,7 @@ table {
 .prose callout-warning.aside *,
 .prose callout-danger.aside *,
 .prose callout-success.aside * {
-	font-size: 0.875rem;
+	font-size: 1rem;
 }
 
 .prose callout-muted.important,
@@ -372,72 +432,44 @@ table {
 	background: #30c85e;
 }
 
-a {
-	text-decoration: none !important;
-}
-
 :focus:not(:focus-visible) {
 	outline: none;
 }
 
-body {
-	overflow-x: hidden;
+/* Code Line Highlighting START */
+code {
+	counter-reset: line;
 }
 
-* {
-	-webkit-tap-highlight-color: transparent;
+code span.line {
+	padding: 0 12px;
+	border-left: 4px solid transparent;
 }
 
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-	-webkit-text-fill-color: black !important;
-	-webkit-box-shadow: 0 0 0 999px var(--color-gray-100) inset !important;
-	box-shadow: 0 0 0 999px var(--color-gray-100) inset !important;
-	background-clip: content-box !important;
+span.line > span {
+	padding: 2px 0;
 }
 
-.dark input:-webkit-autofill,
-.dark input:-webkit-autofill:hover,
-.dark input:-webkit-autofill:focus,
-.dark input:-webkit-autofill:active {
-	-webkit-text-fill-color: white !important;
-	-webkit-box-shadow: 0 0 0 999px var(--color-gray-800) inset !important;
-	box-shadow: 0 0 0 999px var(--color-gray-800) inset !important;
-	background-clip: content-box !important;
-}
+code > .line::before {
+	counter-increment: line;
+	content: counter(line);
 
-input:-webkit-autofill::first-line {
-	font-size: 1.125rem;
+	/* Other styling */
+	display: inline-block;
+	width: 1rem;
+	margin-right: 1rem;
+	text-align: right;
+	color: gray;
 	font-weight: 500;
-	font-family: Inter, ui-sans-serif, system-ui, -apple-system,
-		BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
-		sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
-		'Noto Color Emoji';
+	border-right: 4px solid transparent;
 }
 
-/* I kinda feel like this should be the default... 🤷‍♂️ */
-[hidden] {
-	pointer-events: none;
+.highlighted {
+	background: rgba(200, 200, 255, 0.1);
+	border-left: 4px solid #3777de !important;
+	filter: saturate(1.5);
 }
-
-/* These elements get removed before hydration but they can look funny before hydrating */
-dark-mode,
-light-mode {
-	display: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-	:focus {
-		transition: outline-offset 0.1s ease;
-		outline-offset: 4px;
-	}
-}
-
-a {
-	color: var(--color-team-current);
-}
+/* Code Line Highlighting ENDS */
 
 .underlined {
 	position: relative;
@@ -481,40 +513,11 @@ a {
 	text-decoration: none !important;
 }
 
-/*.underlined:after {*/
-/*    content: '';*/
-/*    height: 2px;*/
-/*    transform: scaleX(0);*/
-/*    transition: transform 0.25s ease;*/
-/*    transform-origin: left;*/
-/*    left: 0;*/
-/*    bottom: -4px;*/
-/*    width: 100%;*/
-/*    display: block;*/
-/*    position: absolute;*/
-/*    transition: left, top, height, width, border-radius;*/
-/*    transition-duration: 750ms;*/
-/*    transition-timing-function: ease-in-out;*/
-/*}*/
-
 .underlined:hover:after,
 .underlined:focus:after,
 .active.underlined:after {
 	background-color: currentColor;
 	transform: scaleX(1);
-}
-
-@media (prefers-reduced-motion) {
-	.underlined:after {
-		opacity: 0;
-		transition: opacity 0.25s ease;
-	}
-
-	.underlined:hover:after,
-	.underlined:focus:after,
-	.active.underlined:after {
-		opacity: 1;
-	}
 }
 
 @media (prefers-reduced-motion) {
@@ -757,4 +760,27 @@ a {
 	top: 68%;
 	height: 32%;
 	width: 20%;
+}
+
+::-webkit-scrollbar {
+	width: 6px;
+}
+
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+::-webkit-scrollbar-thumb {
+	background-color: #b3b3b3;
+}
+
+.dark::-webkit-scrollbar-thumb {
+	background-color: #393e41;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+	display: none;
+}
+
+.lock-scroll {
+	overflow: hidden !important;
 }

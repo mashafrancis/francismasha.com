@@ -54,7 +54,7 @@ vim /etc/yum.repos.d/elastic.repo
 
 and paste the following then save the file:
 
-```bash
+```text
 [elastic-8.x]
 name=Elastic repository for 8.x packages
 baseurl=https://artifacts.elastic.co/packages/8.x/yum
@@ -93,14 +93,13 @@ chkconfig --add metricbeat
 Open the configuration file `/etc/metricbeat/metricbeat.yml`. We shall
 define a few parameters. Go to output section and add this configuration to connect Elasticsearch.
 
-```bash
+```yaml
 output.elasticsearch:
 hosts: ["localhost:9200"]
 protocol: "https"
 username: "elastic"
-password: "${ES_PWD}""
-ssl:
-verification_mode: none
+password: "${ES_PWD}"
+ssl.verification_mode: none
 ```
 
 To configure Logstash, we need to create a new .conf file in the following
@@ -136,10 +135,10 @@ You should have as return: `Enabled elasticsearch-xpack`.
 Since security is enabled, additional configurations are required. So let’s
 open the file: modules.d/elasticsearch-xpack.yml and add this information:
 
-```bash
+```yaml
 - module: elasticsearch
-xpack.enabled: true
-period: 10s
+  xpack.enabled: true
+  period: 10s
 ```
 
 Restart metricbeat and you shall start seeing your metrics on the dashboard
