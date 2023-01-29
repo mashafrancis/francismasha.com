@@ -22,8 +22,7 @@ export default function AuthorLayout({ children, frontMatter }: Props) {
 			<PageSEO title={`About - ${name}`} description={`About me - ${name}`} />
 			<div className='fade-in divide-y divide-gray-300 dark:divide-gray-800'>
 				<Header title='About me.' />
-				<div
-					className='items-start space-y-2 xl:grid xl:grid-cols-3 xl:gap-x-8 xl:space-y-0'>
+				<div className='items-start space-y-2 xl:grid xl:grid-cols-3 xl:gap-x-8 xl:space-y-0'>
 					<div className='flex flex-col items-center space-x-2 pt-8'>
 						<Image
 							src={avatar}
@@ -32,8 +31,7 @@ export default function AuthorLayout({ children, frontMatter }: Props) {
 							height='192'
 							className='h-48 w-48 rounded-full'
 						/>
-						<h3
-							className='pt-4 pb-2 text-2xl font-bold leading-8 tracking-tight'>
+						<h3 className='pt-4 pb-2 text-2xl font-bold leading-8 tracking-tight'>
 							{name}
 						</h3>
 						<div className='font-medium text-gray-500 dark:text-gray-400'>
@@ -42,8 +40,7 @@ export default function AuthorLayout({ children, frontMatter }: Props) {
 						<div className='text-gray-500 dark:text-gray-400'>{company}</div>
 					</div>
 
-					<div
-						className='prose max-w-none pt-8 pb-8 dark:prose-dark xl:col-span-2'>
+					<div className='prose max-w-none pt-8 pb-8 dark:prose-dark xl:col-span-2'>
 						{children}
 						<span className='mt-8'>
 							<a

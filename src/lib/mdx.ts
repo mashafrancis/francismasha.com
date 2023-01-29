@@ -9,9 +9,9 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeCitation from 'rehype-citation';
 import rehypeKatex from 'rehype-katex';
 import rehypePresetMinify from 'rehype-preset-minify';
+import rehypePrettyCode from 'rehype-pretty-code';
 import rehypePrismPlus from 'rehype-prism-plus';
 import rehypeSlug from 'rehype-slug';
-import rehypePrettyCode from 'rehype-pretty-code';
 // Remark packages
 import remarkFootnotes from 'remark-footnotes';
 import remarkGfm from 'remark-gfm';
@@ -33,7 +33,7 @@ export function getFiles(type: 'blog' | 'authors') {
 	const files = getAllFilesRecursively(prefixPaths);
 	// Only want to return blog/path and ignore root, replace is needed to work on Windows
 	return files.map((file) =>
-		file.slice(prefixPaths.length + 1).replace(/\\/g, '/'),
+		file.slice(prefixPaths.length + 1).replace(/\\/g, '/')
 	);
 }
 
@@ -49,7 +49,7 @@ export function dateSortDesc(a: string, b: string) {
 
 export async function getFileBySlug<T>(
 	type: 'authors' | 'blog',
-	slug: string | string[],
+	slug: string | string[]
 ) {
 	const mdxPath = path.join(root, 'data', type, `${slug}.mdx`);
 	const mdPath = path.join(root, 'data', type, `${slug}.md`);
@@ -63,7 +63,7 @@ export async function getFileBySlug<T>(
 			root,
 			'node_modules',
 			'esbuild',
-			'esbuild.exe',
+			'esbuild.exe'
 		);
 	} else {
 		process.env.ESBUILD_BINARY_PATH = path.join(
@@ -71,7 +71,7 @@ export async function getFileBySlug<T>(
 			'node_modules',
 			'esbuild',
 			'bin',
-			'esbuild',
+			'esbuild'
 		);
 	}
 

@@ -1,3 +1,4 @@
+import CodeTitle from '@/components/CodeTitle';
 import CustomLink from '@/components/CustomLink';
 import { H1, H2, H3 } from '@/components/Form';
 import { getMDXComponent } from 'mdx-bundler/client';
@@ -9,7 +10,6 @@ import { ComponentType, useMemo } from 'react';
 import { BlogNewsletterForm } from './NewsletterForm';
 import Pre from './Pre';
 import TableOfContents from './TableOfContents';
-import CodeTitle from '@/components/CodeTitle';
 
 const Wrapper: ComponentType<{ layout: string }> = ({ layout, ...rest }) => {
 	const Layout = dynamic(() => import(`../layouts/${layout}`), {

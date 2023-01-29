@@ -1,4 +1,6 @@
+import { AiOutlineFileText, AiOutlineFolderOpen } from 'react-icons/ai';
 import { BsFileEarmarkCodeFill } from 'react-icons/bs';
+import { IoLogoJavascript } from 'react-icons/io5';
 import {
 	SiCss3,
 	SiGnubash,
@@ -11,8 +13,6 @@ import {
 	SiVercel,
 } from 'react-icons/si';
 import { VscJson } from 'react-icons/vsc';
-import { IoLogoJavascript } from 'react-icons/io5';
-import { AiOutlineFileText, AiOutlineFolderOpen } from 'react-icons/ai';
 
 type Props = {
 	title?: string;
@@ -68,11 +68,10 @@ export default function CodeTitle({ title, lang }: Props) {
 
 	return (
 		<div className='relative !z-10'>
-			<div
-				className='p-0 flex items-center justify-between !mt-4 overflow-x-scroll xs:overflow-auto callout-blue'>
+			<div className='xs:overflow-auto callout-blue !mt-4 flex items-center justify-between overflow-x-scroll p-0'>
 				<div className='flex items-center gap-2'>
-					<Icon className='flex items-center w-4 h-4' />
-					<p className='!my-0 font-[500] text-sm'>{title || lang}</p>
+					<Icon className='flex h-4 w-4 items-center' />
+					<p className='!my-0 text-sm font-[500]'>{title || lang}</p>
 				</div>
 			</div>
 		</div>
