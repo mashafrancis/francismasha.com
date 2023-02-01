@@ -25,11 +25,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 		<body
 			className='bg-white text-black antialiased transition duration-500 dark:bg-gray-800 dark:text-white'>
 		<LayoutWrapper>
-			<main
-				className='flex-auto min-w-0 mt-6 md:mt-0 flex flex-col px-2 md:px-0'>
-				{children}
-				<Analytics />
-			</main>
+			{children}
+			<Analytics />
 		</LayoutWrapper>
 		</body>
 		</html>

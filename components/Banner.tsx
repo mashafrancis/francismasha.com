@@ -30,10 +30,9 @@ function Banner(): ReactElement {
 							animationDuration={2000}
 							color={contactColor}
 						>
-							projects
+							projects,
 						</RoughNotation>
 					</Link>
-					,
 					<Link
 						className='ml-2 mr-2 font-normal text-black'
 						href='/about'
