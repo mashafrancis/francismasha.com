@@ -2,6 +2,7 @@ import { Header } from 'components/Form';
 import Link from 'next/link';
 import { allBlogs } from 'contentlayer/generated';
 import { BsFilterLeft as FilterIcon } from 'react-icons/bs';
+import { dateSortDesc } from 'lib/misc';
 
 export const metadata = {
 	title: 'Blog',
@@ -45,31 +46,26 @@ export default async function BlogPage() {
 
 			<ul className='divide-y divide-gray-200 dark:divide-gray-800'>
 				{allBlogs
-					.sort((a, b) => {
-						if (new Date(a.date) > new Date(b.date)) {
-							return -1;
-						}
-						return 1;
-					})
+					.sort((a, b) => dateSortDesc(a.date, b.date))
 					.map(({ slug, title, summary }) => (
-						<li key={slug} className='py-4'>
-							<article className='items-flex-start grid space-y-2 space-y-0 xl:grid-cols-6'>
-								<div className='col-span-3 xl:col-span-6'>
-									<div>
-										<h3 className='text-2xl font-bold leading-8 tracking-tight'>
-											<Link
-												href={`/blog/${slug}`}
-												className='text-gray-900 dark:text-gray-100'
-											>
+						<li key={slug} className='py-4 hover:bg-gray-100'>
+							<Link
+								href={`/blog/${slug}`}
+								className='text-gray-900 dark:text-gray-100'
+							>
+								<article className='items-flex-start grid space-y-2 space-y-0 xl:grid-cols-6'>
+									<div className='col-span-3 xl:col-span-6'>
+										<div>
+											<h3 className='text-2xl font-bold leading-8 tracking-tight'>
 												{title}
-											</Link>
-										</h3>
+											</h3>
+										</div>
+										<div className='prose max-w-none text-gray-500 dark:text-gray-400'>
+											{summary}
+										</div>
 									</div>
-									<div className='prose max-w-none text-gray-500 dark:text-gray-400'>
-										{summary}
-									</div>
-								</div>
-							</article>
+								</article>
+							</Link>
 						</li>
 					))}
 			</ul>

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useMDXComponent } from 'next-contentlayer/hooks';
+import Pre from './Pre';
 
 const CustomLink = (props) => {
 	const href = props.href;
@@ -25,6 +26,7 @@ function RoundedImage(props) {
 const components = {
 	Image: RoundedImage,
 	a: CustomLink,
+	pre: Pre,
 };
 
 interface MdxProps {

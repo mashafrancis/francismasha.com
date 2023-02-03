@@ -69,10 +69,10 @@ const LayoutWrapper = ({ children }: Props) => {
 							ref={navRef}
 							className='top-0 left-0 right-0 z-10 w-full p-4 lg:fixed lg:sticky lg:p-2 lg:px-0'
 						>
-							<div className='mx-auto flex max-w-full justify-between px-0 xl:max-w-4xl'>
+							<div className='mx-auto items-center flex max-w-full justify-between px-0 xl:max-w-4xl'>
 								<MobileNav />
 
-								<div className='hidden h-6 text-2xl font-normal text-gray-600 dark:text-gray-300 sm:block'>
+								<div className='hidden h-6 text-xl font-normal text-gray-600 dark:text-gray-300 sm:block'>
 									{metadata.headerTitle}
 								</div>
 

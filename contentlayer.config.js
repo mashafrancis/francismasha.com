@@ -14,7 +14,7 @@ const computedFields = {
 
 export const Blog = defineDocumentType(() => ({
 	name: 'Blog',
-	filePathPattern: `blog/*.mdx`,
+	filePathPattern: `**/*.mdx`,
 	contentType: 'mdx',
 	fields: {
 		title: {
@@ -89,7 +89,6 @@ export const Me = defineDocumentType(() => ({
 			required: true,
 		},
 	},
-	computedFields,
 }));
 
 export default makeSource({

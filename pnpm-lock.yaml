@@ -38,6 +38,8 @@ specifiers:
   react-icons: ^4.7.1
   react-indiana-drag-scroll: ^2.2.0
   react-rough-notation: ^1.0.3
+  react-wrap-balancer: ^0.4.0
+  reading-time: ^1.5.0
   rehype-autolink-headings: ^6.1.1
   rehype-pretty-code: ^0.9.3
   rehype-slug: ^5.1.0
@@ -72,6 +74,8 @@ dependencies:
   react-icons: 4.7.1_react@18.2.0
   react-indiana-drag-scroll: 2.2.0_biqbaboplfbrettd7655fr4n2y
   react-rough-notation: 1.0.3_biqbaboplfbrettd7655fr4n2y
+  react-wrap-balancer: 0.4.0_react@18.2.0
+  reading-time: 1.5.0
   rehype-autolink-headings: 6.1.1
   rehype-pretty-code: 0.9.3_shiki@0.14.0
   rehype-slug: 5.1.0
@@ -7623,6 +7627,14 @@ packages:
       rough-notation: 0.5.1
     dev: false
 
+  /react-wrap-balancer/0.4.0_react@18.2.0:
+    resolution: {integrity: sha512-MUsROihHd7bFHCo9kCOifKDYBEZPgKTyGvfa8RcwRQKtT2cL7Um9Cc8A7GvuT8t3np7LAGsEkzdEyJdKrr5lVQ==}
+    peerDependencies:
+      react: ^18.0.0
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /react/18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
     engines: {node: '>=0.10.0'}
@@ -7641,6 +7653,10 @@ packages:
     engines: {node: '>=8.10.0'}
     dependencies:
       picomatch: 2.3.1
+    dev: false
+
+  /reading-time/1.5.0:
+    resolution: {integrity: sha512-onYyVhBNr4CmAxFsKS7bz+uTLRakypIe4R+5A824vBSkQy/hB3fZepoVEf8OVAxzLvK+H/jm9TzpI3ETSm64Kg==}
     dev: false
 
   /regenerate-unicode-properties/10.1.0:

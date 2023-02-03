@@ -7,7 +7,7 @@ import { RoughNotation } from 'react-rough-notation';
 import StackList from 'components/list/StackList';
 import { WorkStack } from 'config/stack';
 import { useRandomColorPair } from 'lib/hooks/useRandomColorPair';
-import { Mdx } from 'components/mdx';
+import { Mdx } from 'components/Mdx';
 
 export const metadata = {
 	title: 'About',
