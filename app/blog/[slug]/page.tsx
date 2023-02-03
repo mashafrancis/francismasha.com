@@ -7,6 +7,7 @@ import { Mdx } from 'components/Mdx';
 import ScrollProgressBar from 'components/ScrollProgressBar';
 import ScrollTopAndComment from 'components/ScrollTopAndComment';
 import PageTitle from 'components/PageTitle';
+import { Grid } from '../../../components/Grid';
 
 export async function generateStaticParams() {
 	return allBlogs.map((post) => ({
@@ -32,7 +33,7 @@ export default async function Blog({ params }) {
 			<PageTitle>
 				<Balancer>{title}</Balancer>
 			</PageTitle>
-			<div className='grid grid-cols-[auto_1fr_auto] items-center mt-4 mb-8 text-sm max-w-[650px]'>
+			<div className='grid grid-cols-[auto_1fr_auto] items-center mt-4 mb-8 text-sm'>
 				<div className='bg-neutral-100 dark:bg-neutral-800 rounded-md px-2 py-1 tracking-tighter font-mono'>
 					{date}
 				</div>
@@ -41,7 +42,9 @@ export default async function Blog({ params }) {
 					{readTime?.text}
 				</p>
 			</div>
-			<Mdx code={body.code} />
+			<Grid>
+				<Mdx code={body.code} />
+			</Grid>
 		</section>
 	);
 }

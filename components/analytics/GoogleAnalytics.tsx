@@ -30,7 +30,7 @@ export const logEvent = (
 	action: any,
 	category: any,
 	label: any,
-	value: any,
+	value: any
 ) => {
 	window.gtag?.('event', action, {
 		event_category: category,

@@ -12,6 +12,7 @@ import ThemeSwitch from './ThemeSwitch';
 import { usePathname } from 'next/navigation';
 import metadata from '../app/metadata';
 import { ThemeProvider } from 'next-themes';
+import { Grid } from './Grid';
 
 interface Props {
 	children: ReactNode;
@@ -64,40 +65,40 @@ const LayoutWrapper = ({ children }: Props) => {
 						damping: 20,
 					}}
 				>
-					<div className='flex h-screen flex-col justify-between'>
-						<nav
-							ref={navRef}
-							className='top-0 left-0 right-0 z-10 w-full p-4 lg:fixed lg:sticky lg:p-2 lg:px-0'
-						>
-							<div className='mx-auto items-center flex max-w-full justify-between px-0 xl:max-w-4xl'>
+					<nav
+						ref={navRef}
+						className='top-0 left-0 right-0 z-10 w-full p-4 lg:fixed lg:sticky lg:p-2 lg:px-0'
+					>
+						<Grid>
+							<div className='col-span-full lg:col-span-8 lg:col-start-3 flex items-center justify-between'>
 								<MobileNav />
 
-								<div className='hidden h-6 text-xl font-normal text-gray-600 dark:text-gray-300 sm:block'>
+								<Link
+									href='/'
+									className='hidden h-6 text-xl font-normal text-gray-600 dark:text-gray-300 sm:block'
+								>
 									{metadata.headerTitle}
-								</div>
+								</Link>
 
 								<div className='ml-[-0.60rem] lg:flex lg:items-center lg:justify-center'>
 									<ul className='hidden lg:flex'>
-										{Object.entries(headerNavLinks).map(
-											([path, { name, href }]) => {
-												const isActive = path === pathname;
-
-												return (
-													<Link
-														key={path}
-														href={href}
-														className={clsx(
-															isActive
-																? 'font-semibold text-gray-800 dark:text-gray-100'
-																: 'font-normal text-gray-600 dark:text-gray-300',
-															'underlined mx-3 hidden px-1 transition-all md:inline-block'
-														)}
-													>
-														{name}
-													</Link>
-												);
-											}
-										)}
+										{headerNavLinks.map(({ name, href }) => {
+											const isActive = href === pathname;
+											return (
+												<Link
+													key={name}
+													href={href}
+													className={clsx(
+														isActive
+															? 'font-semibold text-gray-800 dark:text-gray-100'
+															: 'font-normal text-gray-600 dark:text-gray-300',
+														'underlined mx-3 hidden px-1 transition-all md:inline-block'
+													)}
+												>
+													{name}
+												</Link>
+											);
+										})}
 									</ul>
 								</div>
 
@@ -105,12 +106,16 @@ const LayoutWrapper = ({ children }: Props) => {
 									<ThemeSwitch />
 								</div>
 							</div>
-						</nav>
-						<main className='mx-auto mb-auto max-w-3xl px-4 sm:px-6 xl:max-w-4xl xl:px-0'>
-							{children}
-						</main>
-						<Footer />
-					</div>
+						</Grid>
+					</nav>
+					<main>
+						<Grid>
+							<div className='col-span-full lg:col-span-8 lg:col-start-3 mb-auto px-4 sm:px-6 xl:px-0'>
+								{children}
+							</div>
+						</Grid>
+					</main>
+					<Footer />
 				</motion.div>
 			</ThemeProvider>
 		</AnimatePresence>
@@ -118,5 +123,3 @@ const LayoutWrapper = ({ children }: Props) => {
 };
 
 export default LayoutWrapper;
-
-959424;

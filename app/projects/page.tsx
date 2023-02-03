@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function Projects() {
 	return (
-		<div className='fade-in divide-y divide-gray-300 dark:divide-gray-800'>
+		<section className='fade-in divide-y divide-gray-300 dark:divide-gray-800'>
 			<Header title='Projects.' />
 			<div className='container py-12'>
 				<div className='-m-4 flex flex-wrap'>
@@ -23,6 +23,6 @@ export default function Projects() {
 					))}
 				</div>
 			</div>
-		</div>
+		</section>
 	);
 }

@@ -1,4 +1,4 @@
-const { fontFamily, spacing } = require('tailwindcss/defaultTheme');
+const {fontFamily, spacing} = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors');
 const path = require('path');
 
@@ -21,15 +21,35 @@ module.exports = {
 			fontFamily: {
 				sans: ['CircularStd', ...fontFamily.sans],
 			},
+			colors: {
+				// color scheme is defined in /app.css
+				primary: colors.blue,
+				'blue-opaque': 'rgb(13 42 148 / 18%)',
+				gray: {
+					0: '#fff',
+					100: '#fafafa',
+					200: '#eaeaea',
+					300: '#999999',
+					400: '#888888',
+					500: '#666666',
+					600: '#444444',
+					700: '#333333',
+					800: '#222222',
+					900: '#111111',
+				},
+			},
 			typography: {
 				quoteless: {
 					css: {
-						'blockquote p:first-of-type::before': { content: 'none' },
-						'blockquote p:first-of-type::after': { content: 'none' },
+						'blockquote p:first-of-type::before': {content: 'none'},
+						'blockquote p:first-of-type::after': {content: 'none'},
 					},
 				},
 			},
 		},
+	},
+	future: {
+		hoverOnlyWhenSupported: true,
 	},
 	plugins: [
 		require('@tailwindcss/forms'),

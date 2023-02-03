@@ -21,7 +21,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 		<html
 			lang='en'
 			className={clsx(
-				'text-black bg-white dark:text-white dark:bg-[#111010]',
+				'scroll-smooth text-black bg-white dark:text-white dark:bg-[#111010]',
 				circular.variable
 			)}
 		>

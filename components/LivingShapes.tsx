@@ -30,7 +30,7 @@ const LivingShapes = () => {
 				combination = combinations[index];
 
 			wrapper.dataset.configuration = String(
-				combination.configuration as number,
+				combination.configuration as number
 			);
 			wrapper.dataset.roundness = String(combination.roundness as number);
 

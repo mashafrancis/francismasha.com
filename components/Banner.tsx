@@ -1,20 +1,18 @@
 'use client';
 
 import LivingShapes from 'components/LivingShapes';
-import {useRandomColorPair} from 'lib/hooks/useRandomColorPair';
+import { useRandomColorPair } from 'lib/hooks/useRandomColorPair';
 import Link from 'next/link';
-import {memo, ReactElement} from 'react';
-import {RoughNotation} from 'react-rough-notation';
+import { memo, ReactElement } from 'react';
+import { RoughNotation } from 'react-rough-notation';
 import metadata from 'app/metadata';
 
 function Banner(): ReactElement {
 	const [aboutColor, contactColor] = useRandomColorPair();
 
 	return (
-		<div
-			className='grid gap-2 xl:grid-cols-2 xl:items-center min-h-[75vh]'>
-			<div
-				className='fade-in col-span-1 flex flex-1 flex-col justify-center px-6 py-10 dark:text-white lg:px-0'>
+		<div className='grid gap-2 xl:grid-cols-2 xl:items-center min-h-[75vh]'>
+			<div className='fade-in col-span-1 flex flex-1 flex-col justify-center px-6 py-10 dark:text-white lg:px-0'>
 				<h1 className='text-3xl font-bold dark:text-white lg:text-5xl'>
 					Hi, I'm {metadata.shortname}.
 				</h1>
@@ -34,10 +32,7 @@ function Banner(): ReactElement {
 							projects,
 						</RoughNotation>
 					</Link>
-					<Link
-						className='ml-2 mr-2 font-normal text-black'
-						href='/about'
-					>
+					<Link className='ml-2 mr-2 font-normal text-black' href='/about'>
 						<RoughNotation
 							show
 							type='highlight'
@@ -63,7 +58,7 @@ function Banner(): ReactElement {
 					.
 				</p>
 			</div>
-			<LivingShapes/>
+			<LivingShapes />
 		</div>
 	);
 }

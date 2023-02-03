@@ -63,7 +63,7 @@ const MobileNav = () => {
 		{
 			enterDelay: 20,
 			exitDelay: 300,
-		},
+		}
 	);
 
 	const onToggleNav = () => {
@@ -100,7 +100,7 @@ const MobileNav = () => {
 					className={cn(
 						styles.menu,
 						'absolute flex flex-col bg-white antialiased transition duration-500 dark:bg-gray-900',
-						isMenuRendered && styles.menuRendered,
+						isMenuRendered && styles.menuRendered
 					)}
 				>
 					<li

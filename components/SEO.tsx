@@ -2,7 +2,7 @@
 
 import Head from 'next/head';
 import metadata from '../app/metadata';
-import {usePathname} from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 interface CommonSEOProps {
 	title: string;
@@ -11,55 +11,41 @@ interface CommonSEOProps {
 	ogImage:
 		| string
 		| {
-		'@type': string;
-		url: string;
-	}[];
+				'@type': string;
+				url: string;
+		  }[];
 	twImage: string;
 	canonicalUrl?: string;
 }
 
 const CommonSEO = (props: CommonSEOProps) => {
-	const {
-		title,
-		description,
-		ogType,
-		ogImage,
-		twImage,
-		canonicalUrl
-	} = props;
+	const { title, description, ogType, ogImage, twImage, canonicalUrl } = props;
 	const pathname = usePathname();
 	return (
 		<Head>
 			<title>{title}</title>
-			<meta name='robots' content='follow, index'/>
-			<meta name='description' content={description}/>
-			<meta
-				property='og:url'
-				content={`${metadata.siteUrl}${pathname}`}
-			/>
-			<meta property='og:type' content={ogType}/>
-			<meta property='og:site_name' content={metadata.title.default}/>
-			<meta property='og:description' content={description}/>
-			<meta property='og:title' content={title}/>
+			<meta name='robots' content='follow, index' />
+			<meta name='description' content={description} />
+			<meta property='og:url' content={`${metadata.siteUrl}${pathname}`} />
+			<meta property='og:type' content={ogType} />
+			<meta property='og:site_name' content={metadata.title.default} />
+			<meta property='og:description' content={description} />
+			<meta property='og:title' content={title} />
 			{Array.isArray(ogImage) ? (
-				ogImage.map(({url}) => (
-					<meta property='og:image' content={url} key={url}/>
+				ogImage.map(({ url }) => (
+					<meta property='og:image' content={url} key={url} />
 				))
 			) : (
-				<meta property='og:image' content={ogImage} key={ogImage}/>
+				<meta property='og:image' content={ogImage} key={ogImage} />
 			)}
-			<meta name='twitter:card' content='summary_large_image'/>
-			<meta name='twitter:site' content={metadata.twitter}/>
-			<meta name='twitter:title' content={title}/>
-			<meta name='twitter:description' content={description}/>
-			<meta name='twitter:image' content={twImage}/>
+			<meta name='twitter:card' content='summary_large_image' />
+			<meta name='twitter:site' content={metadata.twitter.title} />
+			<meta name='twitter:title' content={title} />
+			<meta name='twitter:description' content={description} />
+			<meta name='twitter:image' content={twImage} />
 			<link
 				rel='canonical'
-				href={
-					canonicalUrl
-						? canonicalUrl
-						: `${metadata.siteUrl}${pathname}`
-				}
+				href={canonicalUrl ? canonicalUrl : `${metadata.siteUrl}${pathname}`}
 			/>
 		</Head>
 	);
@@ -71,11 +57,9 @@ interface PageSEOProps {
 	imageUrl?: string;
 }
 
-export const PageSEO = ({title, description, imageUrl}: PageSEOProps) => {
-	const ogImageUrl =
-		metadata.siteUrl + (imageUrl ?? metadata.socialBanner);
-	const twImageUrl =
-		metadata.siteUrl + (imageUrl ?? metadata.socialBanner);
+export const PageSEO = ({ title, description, imageUrl }: PageSEOProps) => {
+	const ogImageUrl = metadata.siteUrl + (imageUrl ?? metadata.socialBanner);
+	const twImageUrl = metadata.siteUrl + (imageUrl ?? metadata.socialBanner);
 
 	return (
 		<CommonSEO
@@ -88,7 +72,7 @@ export const PageSEO = ({title, description, imageUrl}: PageSEOProps) => {
 	);
 };
 
-export const TagSEO = ({title, description}: PageSEOProps) => {
+export const TagSEO = ({ title, description }: PageSEOProps) => {
 	const ogImageUrl = metadata.siteUrl + metadata.socialBanner;
 	const twImageUrl = metadata.siteUrl + metadata.socialBanner;
 	const pathname = usePathname();

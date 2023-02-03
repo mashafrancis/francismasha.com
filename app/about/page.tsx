@@ -39,7 +39,7 @@ export default function About() {
 					<div className='text-gray-500 dark:text-gray-400'>{company}</div>
 				</div>
 
-				<div className='prose max-w-none pt-8 pb-8 dark:prose-dark xl:col-span-2'>
+				<div className='prose max-w-none pt-0 pb-0 dark:prose-dark xl:col-span-2'>
 					<Mdx code={body.code} />
 					<span className='mt-8'>
 						<a

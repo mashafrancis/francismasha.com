@@ -49,9 +49,7 @@ const Pre = ({ children }: Props) => {
 					aria-label='Copy code'
 					type='button'
 					className={`absolute right-2 top-2 h-4 w-4 cursor-pointer rounded dark:bg-gray-800 ${
-						copied
-							? 'text-blue-400 focus:text-blue-400'
-							: 'text-black dark:text-white'
+						copied ? 'text-blue-400 focus:text-blue-400' : 'text-white'
 					}`}
 					onClick={onCopy}
 				/>
