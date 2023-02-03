@@ -34,6 +34,7 @@
 		"next-themes": "^0.2.1",
 		"postcss": "^8.4.21",
 		"react": "latest",
+		"react-calendly": "^4.1.1",
 		"react-dom": "latest",
 		"react-icons": "^4.7.1",
 		"react-indiana-drag-scroll": "^2.2.0",
