@@ -7,7 +7,11 @@ const fromRoot = (p) => path.join(__dirname, p);
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	mode: process.env.NODE_ENV ? 'jit' : undefined,
-	content: [fromRoot('./src/**/*.+(js|jsx|ts|tsx|mdx|md)')],
+	content: [
+		'./app/**/*.{ts,tsx}',
+		'./components/**/*.{ts,tsx}',
+		'./content/**/*.mdx',
+	],
 	darkMode: 'class',
 	corePlugins: {
 		aspectRatio: false,
@@ -33,7 +37,7 @@ module.exports = {
 				8: '8px',
 			},
 			fontFamily: {
-				sans: ['Inter', ...fontFamily.sans],
+				sans: ['CircularStd', ...fontFamily.sans],
 			},
 			colors: {
 				// color scheme is defined in /app.css
