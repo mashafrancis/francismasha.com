@@ -19,16 +19,15 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 			lang='en'
 			className={clsx(
 				'text-black bg-white dark:text-white dark:bg-[#111010]',
-				circular.variable,
+				circular.variable
 			)}
 		>
-		<body
-			className='bg-white text-black antialiased transition duration-500 dark:bg-gray-800 dark:text-white'>
-		<LayoutWrapper>
-			{children}
-			<Analytics />
-		</LayoutWrapper>
-		</body>
+			<body className='bg-white text-black antialiased transition duration-500 dark:bg-gray-800 dark:text-white'>
+				<LayoutWrapper>
+					{children}
+					<Analytics />
+				</LayoutWrapper>
+			</body>
 		</html>
 	);
 }

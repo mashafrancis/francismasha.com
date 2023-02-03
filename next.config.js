@@ -62,6 +62,8 @@ const securityHeaders = [
  * @type {import('next/dist/next-server/server/config').NextConfig}
  **/
 const nextConfig = {
+	reactStrictMode: true,
+	swcMinify: true,
 	pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
 	images: {
 		domains: ['firebasestorage.googleapis.com', 'res.cloudinary.com'],

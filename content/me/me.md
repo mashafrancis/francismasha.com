@@ -16,7 +16,10 @@ technologies.
 
 Presently, I am working as a Site Reliability Engineer
 at [Safaricom PLC](https://www.safaricom.co.ke) where I am helping to build and
-improve customer products and digital experience.
+improve customer products and digital experience. Currently, I'm handling a
+project on ELK stack
+setup where we are doing infrastructure and log monitoring for different teams
+within the company.
 
 Previously I've worked as a Fullstack Software Engineer at
 the [Andela Kenya](https://www.andela.com) as a contributor to different
