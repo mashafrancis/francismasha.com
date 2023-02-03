@@ -11,6 +11,33 @@ html {
     min-width: 360px;
 }
 
+.fade-in {
+    animation: fade-in ease 500ms;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.social-icons:last-child .icon {
+    @apply mr-0;
+}
+
+.content {
+    @apply !pb-0;
+}
+
+.collapse .view .title {
+    @apply dark:text-white;
+}
+
 .prose .anchor {
     @apply absolute invisible no-underline;
 

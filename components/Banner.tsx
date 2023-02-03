@@ -1,17 +1,18 @@
 'use client';
 
 import LivingShapes from 'components/LivingShapes';
-import { useRandomColorPair } from 'lib/hooks/useRandomColorPair';
+import {useRandomColorPair} from 'lib/hooks/useRandomColorPair';
 import Link from 'next/link';
-import { memo, ReactElement } from 'react';
-import { RoughNotation } from 'react-rough-notation';
+import {memo, ReactElement} from 'react';
+import {RoughNotation} from 'react-rough-notation';
 import metadata from 'app/metadata';
 
 function Banner(): ReactElement {
 	const [aboutColor, contactColor] = useRandomColorPair();
 
 	return (
-		<div className='banner grid gap-2 xl:grid-cols-2 xl:items-center'>
+		<div
+			className='grid gap-2 xl:grid-cols-2 xl:items-center min-h-[75vh]'>
 			<div
 				className='fade-in col-span-1 flex flex-1 flex-col justify-center px-6 py-10 dark:text-white lg:px-0'>
 				<h1 className='text-3xl font-bold dark:text-white lg:text-5xl'>
@@ -20,7 +21,7 @@ function Banner(): ReactElement {
 				<p className='my-4 text-lg lg:my-4 lg:text-2xl'>
 					{metadata.occupation}.
 				</p>
-				<p className='font-light lg:text-xl'>
+				<p className='font-normal text-gray-600 lg:text-xl'>
 					Read more on my
 					<Link className='ml-2 mr-2 font-normal text-black' href='/projects'>
 						<RoughNotation
@@ -62,7 +63,7 @@ function Banner(): ReactElement {
 					.
 				</p>
 			</div>
-			<LivingShapes />
+			<LivingShapes/>
 		</div>
 	);
 }

@@ -1,82 +1,83 @@
 {
-  "name": "francismasha.com",
-  "version": "0.0.1",
-  "author": "Francis Masha",
-  "email": "francismasha96@gmail.com",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "npm run setup && next build",
-    "start": "next start",
-    "sitemap": "tsx ./scripts/generate-sitemap.ts",
-    "serve": "next start",
-    "analyze": "cross-env ANALYZE=true next build",
-    "lint": "next lint --fix --dir pages --dir components --dir lib --dir layouts --dir scripts",
-    "prettier:fix": "prettier --write \"*/**/*.{js,ts,tsx,json}\"",
-    "prepare": "husky install",
-    "preview": "yarn build && yarn serve",
-    "setup": "node ./lib/setup.mjs"
-  },
-  "dependencies": {
-    "@next/font": "^13.1.6",
-    "@tailwindcss/forms": "^0.5.3",
-    "@tailwindcss/line-clamp": "^0.4.2",
-    "@tailwindcss/typography": "^0.5.9",
-    "@vercel/analytics": "^0.1.8",
-    "@vercel/edge-config": "^0.1.1",
-    "autoprefixer": "^10.4.13",
-    "clsx": "^1.2.1",
-    "contentlayer": "^0.3.0",
-    "envsafe": "^2.0.3",
-    "framer-motion": "^9.0.0",
-    "next": "^13.1.6",
-    "next-contentlayer": "^0.3.0",
-    "next-pwa": "^5.6.0",
-    "next-themes": "^0.2.1",
-    "postcss": "^8.4.21",
-    "react": "latest",
-    "react-dom": "latest",
-    "react-icons": "^4.7.1",
-    "react-rough-notation": "^1.0.3",
-    "rehype-autolink-headings": "^6.1.1",
-    "rehype-pretty-code": "^0.9.2",
-    "rehype-slug": "^5.1.0",
-    "remark-gfm": "^3.0.1",
-    "shiki": "^0.14.0",
-    "tailwindcss": "^3.2.4",
-    "use-delayed-render": "^0.0.7",
-    "use-sound": "^4.0.1"
-  },
-  "devDependencies": {
-    "@types/react": "18.0.27",
-    "@typescript-eslint/eslint-plugin": "^5.50.0",
-    "@typescript-eslint/parser": "^5.50.0",
-    "cross-env": "^7.0.3",
-    "eslint": "8.33.0",
-    "eslint-config-next": "latest",
-    "eslint-plugin-prettier": "^4.2.1",
-    "husky": "^8.0.3",
-    "lint-staged": "^13.1.0",
-    "prettier": "^2.8.3",
-    "prettier-eslint": "^15.0.1",
-    "prettier-eslint-cli": "^7.1.0",
-    "prettier-plugin-import-sort": "^0.0.7",
-    "prettier-plugin-tailwindcss": "^0.2.2",
-    "tsx": "^3.12.2",
-    "typescript": "^4.9.5"
-  },
-  "lint-staged": {
-    "*.+(js|jsx|ts|tsx)": [
-      "eslint --fix"
-    ],
-    "*.+(js|jsx|ts|tsx|json|css|md|mdx)": [
-      "prettier --write"
-    ]
-  },
-  "importSort": {
-    ".js, .jsx, .ts, .tsx": {
-      "style": "module",
-      "parser": "typescript"
-    }
-  }
+	"name": "francismasha.com",
+	"version": "0.0.1",
+	"author": "Francis Masha",
+	"email": "francismasha96@gmail.com",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"sitemap": "tsx ./scripts/generate-sitemap.ts",
+		"serve": "next start",
+		"analyze": "cross-env ANALYZE=true next build",
+		"lint": "next lint --fix --dir pages --dir components --dir lib --dir layouts --dir scripts",
+		"prettier:fix": "prettier --write \"*/**/*.{js,ts,tsx,json}\"",
+		"preview": "pnpm build && pnpm serve",
+		"setup": "node ./lib/setup.mjs"
+	},
+	"dependencies": {
+		"@next/font": "^13.1.6",
+		"@tailwindcss/forms": "^0.5.3",
+		"@tailwindcss/line-clamp": "^0.4.2",
+		"@tailwindcss/typography": "^0.5.9",
+		"@vercel/analytics": "^0.1.8",
+		"@vercel/edge-config": "^0.1.1",
+		"autoprefixer": "^10.4.13",
+		"clsx": "^1.2.1",
+		"contentlayer": "^0.3.0",
+		"envsafe": "^2.0.3",
+		"framer-motion": "^9.0.1",
+		"next": "^13.1.6",
+		"next-contentlayer": "^0.3.0",
+		"next-pwa": "^5.6.0",
+		"next-themes": "^0.2.1",
+		"postcss": "^8.4.21",
+		"react": "latest",
+		"react-dom": "latest",
+		"react-icons": "^4.7.1",
+		"react-indiana-drag-scroll": "^2.2.0",
+		"react-rough-notation": "^1.0.3",
+		"rehype-autolink-headings": "^6.1.1",
+		"rehype-pretty-code": "^0.9.3",
+		"rehype-slug": "^5.1.0",
+		"remark-gfm": "^3.0.1",
+		"shiki": "^0.14.0",
+		"tailwindcss": "^3.2.4",
+		"use-delayed-render": "^0.0.7",
+		"use-sound": "^4.0.1"
+	},
+	"devDependencies": {
+		"@types/react": "18.0.27",
+		"@typescript-eslint/eslint-plugin": "^5.50.0",
+		"@typescript-eslint/parser": "^5.50.0",
+		"cross-env": "^7.0.3",
+		"cssnano": "^5.1.14",
+		"eslint": "8.33.0",
+		"eslint-config-next": "latest",
+		"eslint-plugin-prettier": "^4.2.1",
+		"husky": "^8.0.3",
+		"lint-staged": "^13.1.0",
+		"prettier": "^2.8.3",
+		"prettier-eslint": "^15.0.1",
+		"prettier-eslint-cli": "^7.1.0",
+		"prettier-plugin-import-sort": "^0.0.7",
+		"prettier-plugin-tailwindcss": "^0.2.2",
+		"tsx": "^3.12.2",
+		"typescript": "^4.9.5"
+	},
+	"lint-staged": {
+		"*.+(js|jsx|ts|tsx)": [
+			"eslint --fix"
+		],
+		"*.+(js|jsx|ts|tsx|json|css|md|mdx)": [
+			"prettier --write"
+		]
+	},
+	"importSort": {
+		".js, .jsx, .ts, .tsx": {
+			"style": "module",
+			"parser": "typescript"
+		}
+	}
 }
