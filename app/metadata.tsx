@@ -41,7 +41,11 @@ export default {
 	socialBanner: '/static/banner.png',
 	email: 'contact@francismasha.com',
 	github: 'https://github.com/mashafrancis',
-	twitter: 'https://twitter.com/mashafrancis',
+	twitter: {
+		title: 'Francis Masha',
+		card: 'summary_large_image',
+	},
+	// twitter: 'https://twitter.com/mashafrancis',
 	facebook: 'https://facebook.com',
 	youtube: 'https://youtube.com',
 	linkedin: 'https://www.linkedin.com',

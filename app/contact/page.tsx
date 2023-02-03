@@ -8,7 +8,7 @@ import { RoughNotation } from 'react-rough-notation';
 
 import { contact } from 'config/contact';
 
-function Contact(): ReactElement {
+export default function Contact(): ReactElement {
 	const [randomColor] = useRandomColorPair();
 	const [isCalendarOpen, setCalendarOpen] = useState<boolean>(false);
 
@@ -54,5 +54,3 @@ function Contact(): ReactElement {
 		</>
 	);
 }
-
-export default Contact;

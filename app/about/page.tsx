@@ -7,7 +7,12 @@ import { RoughNotation } from 'react-rough-notation';
 import StackList from 'components/list/StackList';
 import { WorkStack } from 'config/stack';
 import { useRandomColorPair } from 'lib/hooks/useRandomColorPair';
-import { Mdx } from '../../components/mdx';
+import { Mdx } from 'components/mdx';
+
+export const metadata = {
+	title: 'About',
+	description: 'SRE Engineer at Safaricom.',
+};
 
 export default function About() {
 	const { avatar, name, occupation, resume, company, body } = allMes[0];
