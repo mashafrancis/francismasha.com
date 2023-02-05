@@ -1,13 +1,12 @@
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-	enabled: process.env.ANALYZE === 'true',
-});
+const { get } = require('@vercel/edge-config');
+const { withContentlayer } = require('next-contentlayer');
 
-const runtimeCaching = require('next-pwa/cache');
-const withPWA = require('next-pwa')({
-	dest: 'public',
-	disable: process.env.NODE_ENV === 'development',
-	runtimeCaching,
-}); 
+// const runtimeCaching = require('next-pwa/cache');
+// const withPWA = require('next-pwa')({
+// 	dest: 'public',
+// 	disable: process.env.NODE_ENV === 'development',
+// 	runtimeCaching,
+// });
 
 // You might need to insert additional domains in script-src if you are using external services
 const ContentSecurityPolicy = `
@@ -62,49 +61,34 @@ const securityHeaders = [
 /**
  * @type {import('next/dist/next-server/server/config').NextConfig}
  **/
-module.exports = withBundleAnalyzer(
-	withPWA({
-		output: 'standalone',
-		swcMinify: true,
-		reactStrictMode: true,
-		pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
-		// eslint: {
-		// 	dirs: ['pages', 'components', 'lib', 'layouts', 'scripts'],
-		// },
-		eslint: {
-			ignoreDuringBuilds: true,
-		},
-		images: {
-			domains: ['firebasestorage.googleapis.com', 'res.cloudinary.com'],
-		},
-		async headers() {
-			return [
-				{
-					source: '/(.*)',
-					headers: securityHeaders,
-				},
-			];
-		},
-		webpack: (config) => {
-			config.module.rules.push({
-				test: /\.(png|jpe?g|gif|mp4)$/i,
-				use: [
-					{
-						loader: 'file-loader',
-						options: {
-							publicPath: '/_next',
-							name: 'static/media/[name].[hash].[ext]',
-						},
-					},
-				],
-			});
+const nextConfig = {
+	reactStrictMode: true,
+	swcMinify: true,
+	pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
+	images: {
+		domains: ['firebasestorage.googleapis.com', 'res.cloudinary.com'],
+	},
+	experimental: {
+		appDir: true,
+	},
+	redirects() {
+		try {
+			return get('redirects');
+		} catch {
+			return [];
+		}
+	},
+	headers() {
+		return [
+			{
+				source: '/(.*)',
+				headers: securityHeaders,
+			},
+		];
+	},
+	eslint: {
+		ignoreDuringBuilds: true,
+	},
+};
 
-			config.module.rules.push({
-				test: /\.svg$/,
-				use: ['@svgr/webpack'],
-			});
-
-			return config;
-		},
-	})
-);
+module.exports = withContentlayer(nextConfig);

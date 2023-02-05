@@ -1,4 +1,4 @@
-import { Stack, StackInfo } from 'config/stack';
+import { Stack, StackInfo } from '@/config/stack';
 import { Children, ReactElement, useCallback } from 'react';
 
 interface StackListProps {

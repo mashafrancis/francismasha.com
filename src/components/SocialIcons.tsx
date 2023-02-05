@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import { Colors } from 'config/colors';
-import { ContactType, contact } from 'config/contact';
-import { Children, ReactElement, ReactNode, memo } from 'react';
+import { Colors } from '@/config/colors';
+import { contact, ContactType } from '@/config/contact';
+import { Children, memo, ReactElement, ReactNode } from 'react';
 import { IconBaseProps } from 'react-icons';
 import { BiCodeAlt as CodeIcon } from 'react-icons/bi';
 import { FaLinkedinIn as LinkedinIcon } from 'react-icons/fa';
@@ -13,7 +13,7 @@ import {
 	SiBuymeacoffee as BuymeacoffeeIcon,
 	SiGmail as MailIcon,
 } from 'react-icons/si';
-import { Maybe, Tuple } from 'types';
+import { Maybe, Tuple } from '@/types';
 
 interface SocialIconsProps {
 	className?: string;

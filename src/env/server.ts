@@ -4,7 +4,7 @@ import { browserEnv } from './browser';
 
 if (typeof window !== 'undefined') {
 	throw new Error(
-		'This should only be included on the client (but the env vars wont be exposed)'
+		'This should only be included on the client (but the env vars wont be exposed)',
 	);
 }
 

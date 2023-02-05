@@ -1,4 +1,4 @@
-export const Colors = {
+export const Colors: Record<string, string> = {
 	// Languages
 	go: '#00ADD8',
 	python: '#4B8BBE',

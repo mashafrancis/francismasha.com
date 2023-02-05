@@ -1,6 +1,7 @@
-import { Analytics as VercelAnalytics } from '@vercel/analytics/react';
+'use client';
 
-import siteMetadata from '../../../data/siteMetadata';
+import { Analytics as VercelAnalytics } from '@vercel/analytics/react';
+import metadata from '@/app/metadata';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import GA from './GoogleAnalytics';
 import Plausible from './Plausible';
@@ -21,14 +22,12 @@ const Analytics = () => {
 	return (
 		<>
 			{/*{isProduction && loadSomeConsoleStuff()}*/}
-			{isProduction && siteMetadata.analytics.plausibleDataDomain && (
-				<Plausible />
-			)}
-			{isProduction && siteMetadata.analytics.simpleAnalytics && (
+			{isProduction && metadata.analytics.plausibleDataDomain && <Plausible />}
+			{isProduction && metadata.analytics.simpleAnalytics && (
 				<SimpleAnalytics />
 			)}
-			{isProduction && siteMetadata.analytics.umamiWebsiteId && <Umami />}
-			{isProduction && siteMetadata.analytics.googleAnalyticsId && <GA />}
+			{isProduction && metadata.analytics.umamiWebsiteId && <Umami />}
+			{isProduction && metadata.analytics.googleAnalyticsId && <GA />}
 			{isProduction && <VercelAnalytics />}
 		</>
 	);

@@ -1,4 +1,5 @@
-import { Fragment } from 'preact';
+'use client';
+
 import { useEffect } from 'react';
 
 const LivingShapes = () => {
@@ -29,7 +30,7 @@ const LivingShapes = () => {
 				combination = combinations[index];
 
 			wrapper.dataset.configuration = String(
-				combination.configuration as number
+				combination.configuration as number,
 			);
 			wrapper.dataset.roundness = String(combination.roundness as number);
 
@@ -38,22 +39,20 @@ const LivingShapes = () => {
 	}, []);
 
 	return (
-		<Fragment>
-			<div
-				id='wrapper'
-				// className='fade-in flex flex-1 flex-col'
-				data-configuration='1'
-				data-roundness='1'
-			>
-				<div className='shape'></div>
-				<div className='shape'></div>
-				<div className='shape'></div>
-				<div className='shape'></div>
-				<div className='shape'></div>
-				<div className='shape'></div>
-				<div className='shape'></div>
-			</div>
-		</Fragment>
+		<div
+			id='wrapper'
+			// className='fade-in flex flex-1 flex-col'
+			data-configuration='1'
+			data-roundness='1'
+		>
+			<div className='shape'></div>
+			<div className='shape'></div>
+			<div className='shape'></div>
+			<div className='shape'></div>
+			<div className='shape'></div>
+			<div className='shape'></div>
+			<div className='shape'></div>
+		</div>
 	);
 };
 

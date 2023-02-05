@@ -10,7 +10,7 @@ export enum ContactType {
 export interface Contact {
 	twitter: string;
 	site: string;
-	calendly?: string;
+	calendly: string;
 	links: Record<ContactType, string>;
 }
 

@@ -1,5 +1,5 @@
-import { Colors } from 'config/colors';
-import { Deployment } from 'config/projects';
+import { Colors } from '@/config/colors';
+import { Deployment } from '@/config/projects';
 import { Children, ReactElement, ReactNode } from 'react';
 import { AiOutlineLink } from 'react-icons/ai';
 

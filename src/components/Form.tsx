@@ -36,7 +36,7 @@ export function H1(props: BaseProps): ReactElement {
 		<h1
 			className={clsx(
 				'lg:text-5x mb-4 text-3xl font-bold dark:text-white',
-				className
+				className,
 			)}
 		>
 			{children}
@@ -49,7 +49,10 @@ export function H2(props: BaseProps): ReactElement {
 
 	return (
 		<h2
-			className={clsx('mb-4 text-2xl font-semibold dark:text-white', className)}
+			className={clsx(
+				'mb-4 mt-6 text-2xl font-semibold dark:text-white',
+				className,
+			)}
 		>
 			{children}
 		</h2>
@@ -65,5 +68,15 @@ export function H3(props: BaseProps): ReactElement {
 		>
 			{children}
 		</h3>
+	);
+}
+
+export function H6(props: BaseProps): ReactElement {
+	const { className, children } = props;
+
+	return (
+		<h6 className={clsx('mb-1 text-lg font-medium dark:text-white', className)}>
+			{children}
+		</h6>
 	);
 }

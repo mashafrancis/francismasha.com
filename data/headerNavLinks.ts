@@ -1,10 +1,10 @@
 const headerNavLinks = [
-	{ href: '/', title: 'Home' },
-	{ href: '/projects', title: 'Projects' },
-	{ href: '/blog', title: 'Blog' },
-	{ href: 'https://notes.francismasha.com', title: 'Notes' },
-	{ href: '/about', title: 'About' },
-	{ href: '/contact', title: 'Contact' },
+	// { href: '/', name: 'Home' },
+	{ href: '/projects', name: 'Projects' },
+	{ href: '/blog', name: 'Blog' },
+	{ href: 'https://notes.francismasha.com', name: 'Notes' },
+	{ href: '/about', name: 'About' },
+	{ href: '/contact', name: 'Contact' },
 ];
 
 export default headerNavLinks;
