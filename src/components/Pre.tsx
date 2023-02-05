@@ -7,6 +7,7 @@ import { JetBrains_Mono } from '@next/font/google';
 export const jetbrainsMono = JetBrains_Mono({
 	weight: '400',
 	subsets: ['latin'],
+	variable: '--font-jetbrains',
 });
 
 interface Props {
@@ -42,7 +43,7 @@ const Pre = ({ children }: Props) => {
 			ref={textInput}
 			onMouseEnter={onEnter}
 			onMouseLeave={onExit}
-			className={`${jetbrainsMono.className} relative`}
+			className={`${jetbrainsMono.variable} relative`}
 		>
 			{hovered && (
 				<CopyIcon
@@ -55,7 +56,7 @@ const Pre = ({ children }: Props) => {
 				/>
 			)}
 
-			<pre className={`${jetbrainsMono.className}`}>{children}</pre>
+			<pre className={`${jetbrainsMono.variable}`}>{children}</pre>
 		</div>
 	);
 };

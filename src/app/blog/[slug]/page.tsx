@@ -8,6 +8,7 @@ import ScrollProgressBar from '@/components/ScrollProgressBar';
 import ScrollTopAndComment from '@/components/ScrollTopAndComment';
 import PageTitle from '@/components/PageTitle';
 import { Grid } from '@/components/Grid';
+import { jetbrainsMono } from '@/components/Pre';
 
 interface Props {
 	params: {
@@ -40,7 +41,9 @@ export default async function Blog({ params }: Props) {
 				<Balancer>{title}</Balancer>
 			</PageTitle>
 			<div className='mt-4 mb-8 grid grid-cols-[auto_1fr_auto] items-center text-sm'>
-				<div className='rounded-md bg-neutral-100 px-2 py-1 font-mono tracking-tighter dark:bg-neutral-800'>
+				<div
+					className={`rounded-md bg-neutral-100 px-2 py-1 tracking-tighter dark:bg-neutral-800 ${jetbrainsMono.variable} font-mono `}
+				>
 					{date}
 				</div>
 				<div className='mx-2 h-[0.2em] bg-neutral-50 dark:bg-neutral-800' />

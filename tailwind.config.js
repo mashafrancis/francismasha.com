@@ -17,6 +17,7 @@ module.exports = {
 		extend: {
 			fontFamily: {
 				sans: ['CircularStd', ...fontFamily.sans],
+				mono: ['var(--font-jetbrains)', ...fontFamily.mono],
 			},
 			colors: {
 				// color scheme is defined in /app.css

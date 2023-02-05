@@ -1,0 +1,103 @@
+---
+title: 'Elasticsearch performance monitoring'
+date: '2023-02-05'
+tags: ['elasticsearch', 'monitoring']
+draft: false
+summary: 'Top elasticsearch metrics to monitor in your cluster'
+image: '/static/blogs/elk-cluster.webp'
+---
+
+On this article, we are going to look at Elasticsearch’s capabilities and potential
+use cases, and how to check its status. We’ll identify key metrics that you need
+to monitor to maintain the health and performance of your Elasticsearch cluster.
+
+## Use cases
+
+Elasticsearch as a distributed tool is highly scalable and offers near real-time
+search capabilities. All of this adds up to a tool which can support a multitude
+of critical business needs and use cases. Here are some of the use cases:
+
+- Log Collection and Aggregation
+- Gathering and Indexing Large Datasets
+- Collection and Management of Metrics and Event Data
+- Analysis of Logs, Large Datasets, and Metric Data
+- Full Text and Document Search Capabilities
+
+## Importance of Monitoring your Elasticsearch Cluster
+
+As versatile, scalable and useful as Elasticsearch is, it’s essential that the
+infrastructure which hosts your cluster meets its needs, and that the cluster
+is sized correctly to support its data store and the volume of requests it must handle.
+Improperly sized infrastructure and misconfigurations can result in everything
+from sluggish performance to the entire cluster becoming unresponsive and crashing.
+
+## Six areas of concern to monitor in Elasticsearch
+
+On the performance of elasticsearch clusters, you want to have a high index rate,
+large capacity, and fast query response. For those to happen, there are seven areas
+you should consider monitoring: search and query performance, indexing performance,
+node health, cluster health, node utilization, cache utilization and JVM health.
+Let's look into each area and discuss why each is integral to the health and performance of your cluster.
+
+### 1. Cluster Health: Shards and Node Availability
+
+An Elasticsearch cluster can consist of one or more nodes. A node is a member
+of the cluster, hosted on an individual server. Adding additional nodes is what
+allows us to scale the cluster horizontally. Indexes organize the data within the cluster.
+An index is a collection of documents which share a similar characteristic.
+
+Consider the example of an Elasticsearch cluster deployed to store log entries
+from an application. An index might be set up to collect all log entries for a day.
+Each log entry is a document which contains the contents of the log and associated metadata.
+
+In large datasets, the size of an index might exceed the storage capacity on a
+single node. We also want to ensure that we have redundant copies of our index,
+in case something happens to a node. Elasticsearch handles this by dividing an
+index into a defined number of shards. Elasticsearch distributes the shards across
+all nodes in the cluster. By default, an Elasticsearch index has five shards with
+one replica. The result of this default configuration is an index divided into
+five shards, each with a single replica stored on a different node.
+
+It is essential to find the right number of shards for an index because too few
+shards may negatively affect search efficiency and distribution of data across the nodes.
+Conversely, too many nodes create an excessive demand on the resources of the cluster for their management.
+
+When monitoring your Elasticsearch cluster, you can query the cluster health endpoint
+and receive information about the status of the cluster, the number of nodes,
+and the counts of active shards. You can also see counts for relocating shards,
+initializing shards and unassigned shards. An example response of such a request can be seen below.
+
+Relocating and initializing shards indicate rebalancing on the cluster or the
+creation of new shards. Rebalancing occurs when a node is added or removed from
+the cluster and will affect the performance of the cluster. By understanding these
+metrics and how they affect Elasticsearch cluster health, you will have more insight
+into the cluster and can tune the cluster for better performance. One such
+adjustment is adding a shard relocation delay when a node leaves the cluster,
+eliminating excessive overhead if it returns quickly.
+
+### 2. Search Query Performance Metrics: Request Rate and Latency
+
+### 3. Indexing Performance Metrics: Refresh and Merge Times
+
+### 4. Node Health: Memory, Disk, and CPU Metrics
+
+### 5. Caching: Field Data, Node Query and Shard Query Cache
+
+### 6. JVM Health Metrics: Heap, GC, and Pool Size
+
+## Summary
+
+So there you have it — the top Elasticsearch metrics to monitor:
+
+1. Cluster Health – Nodes and Shards
+2. Search Performance – Request Latency and
+3. Search Performance – Request Rate
+4. Indexing Performance – Refresh Times
+5. Indexing Performance – Merge Times
+6. Node Utilization – Thread Pools
+7. Caching – Field Data, Node Query and Shard Query Cache
+8. Node Health – Memory Usage
+9. Node Health – Disk I/O
+10. Node Health – CPU
+11. JVM Health – Heap Usage and Garbage Collection
+12. JVM health – JVM Pool Size
