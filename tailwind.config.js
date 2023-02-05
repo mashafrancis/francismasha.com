@@ -1,16 +1,13 @@
-const {fontFamily, spacing} = require('tailwindcss/defaultTheme');
+const { fontFamily } = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors');
-const path = require('path');
-
-const fromRoot = (p) => path.join(__dirname, p);
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	mode: process.env.NODE_ENV ? 'jit' : undefined,
 	content: [
-		'./app/**/*.{ts,tsx}',
-		'./components/**/*.{ts,tsx}',
-		'./content/**/*.mdx',
+		'./src/app/**/*.{ts,tsx}',
+		'./src/components/**/*.{ts,tsx}',
+		'./src/content/**/*.mdx',
 	],
 	darkMode: 'class',
 	corePlugins: {
@@ -37,12 +34,19 @@ module.exports = {
 					800: '#222222',
 					900: '#111111',
 				},
+				vercel: {
+					pink: '#FF0080',
+					blue: '#0070F3',
+					cyan: '#50E3C2',
+					orange: '#F5A623',
+					violet: '#7928CA',
+				},
 			},
 			typography: {
 				quoteless: {
 					css: {
-						'blockquote p:first-of-type::before': {content: 'none'},
-						'blockquote p:first-of-type::after': {content: 'none'},
+						'blockquote p:first-of-type::before': { content: 'none' },
+						'blockquote p:first-of-type::after': { content: 'none' },
 					},
 				},
 			},

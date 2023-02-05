@@ -11,10 +11,10 @@
 		"sitemap": "tsx ./scripts/generate-sitemap.ts",
 		"serve": "next start",
 		"analyze": "cross-env ANALYZE=true next build",
-		"lint": "next lint --fix --dir pages --dir components --dir lib --dir layouts --dir scripts",
+		"lint": "next lint --fix --dir pages --dir src/components --dir lib --dir layouts --dir scripts",
 		"prettier:fix": "prettier --write \"*/**/*.{js,ts,tsx,json}\"",
 		"preview": "pnpm build && pnpm serve",
-		"setup": "node ./lib/setup.mjs"
+		"setup": "node src/lib/setup.mjs"
 	},
 	"dependencies": {
 		"@next/font": "^13.1.6",
