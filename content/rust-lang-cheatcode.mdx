@@ -1,0 +1,151 @@
+---
+title: 'Rust language cheatcode'
+date: '2023-02-14'
+tags: ['elasticsearch', 'monitoring']
+draft: false
+summary: 'Rust language cheatcode for beginners'
+image: '/static/blogs/elk-cluster.webp'
+---
+
+## Basic Types & Variables
+
+1. Boolean `bool`
+2. Unsigned integers `u8, u16, u32, u64, u128`
+3. Signed integers `i8, i16, i32, i64, i128`
+4. Floating point numbers `f32, f64`
+5. Platform specific integers
+6. `usize` - Unsigned integer. Same number of bits as the platform's pointer type.
+7. `isize` - Signed integer. Same number of bits as the platform's pointer type.
+8. `char` - Unicode scalar value
+9. `&str` - String slice
+10. `String` - Owned string
+
+11. Tuple
+
+```rust
+let coordinates = (82, 64);
+let score = ("Team A", 12)
+```
+
+12. Array & Slice
+
+```rust
+// Arrays must have a known length and all elements must be initialized
+let array = [1, 2, 3, 4, 5];
+let array2 = [0; 3]; // [0, 0, 0]
+
+// Unlike arrays the length of a slice is determined at runtime
+let slice = &array[1 .. 3];
+```
+
+13. HashMap
+
+```rust
+use std::collections::HashMap;
+
+let mut subs = HashMap::new();
+subs.insert(String::from("LGR"), 100000);
+// Insert key if it doesn't have a value
+subs.entry("Golang Dojo".to_owned()) .or_insert(3);
+```
+
+14. Struct
+
+```rust
+// Definition
+struct User {
+username: String,
+active: bool,
+}
+
+// Instantiation
+let user1 = User {
+username: String::from("bogdan"),
+active: true,
+};
+
+// Tuple struct
+struct Color(i32, i32, i32);
+let black = Color(0, 0, 0);
+```
+
+15. Enum
+
+```rust
+// Definition
+enum Command {
+Quit,
+Move { x: i32, y: i32 },
+Speak(String),
+ChangeBGColor(i32, i32, i32),
+}
+
+// Instantiation
+let msg1 = Command::Quit;
+let msg2 = Command::Move{ x: 1, y: 2 };
+let msg3 = Command::Speak("Hi".to_owned());
+let msg4 = Command::ChangeBGColor(0, 0, 0);
+```
+
+16. Constant
+
+```rust
+const MAX_POINTS: u32 = 100_000;
+```
+
+17. Static variable
+
+```rust
+// Unlike constants static variables are
+// stored in a dedicated memory location
+// and can be mutated.
+static MAJOR_VERSION: u32 = 1;
+static mut COUNTER: u32 = 0;
+```
+
+18. Mutability
+
+```rust
+let mut x = 5;
+x = 6;
+```
+
+19. Shadowing
+
+```rust
+let x = 5;
+let x = x * 2;
+```
+
+20. Type alias
+
+```rust
+// `NanoSecond` is a new name for `u64`.
+type NanoSecond = u64;
+```
+
+## Control Flow
+
+## References, Ownership, and Borrowing
+
+## Pattern Matching
+
+## Iterators
+
+## Error Handling
+
+## Combinators
+
+## Multiple error types
+
+## Iterating over errors
+
+## Generics, Traits, and Lifetimes
+
+## Functions, Function Pointers & Closures
+
+## Pointers
+
+## Smart pointers
+
+## Packages, Crates, and Modules
