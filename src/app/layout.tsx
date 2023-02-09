@@ -1,6 +1,5 @@
 import './global.css';
 import '@/css/fonts.css';
-import '@/css/no-script.css';
 import clsx from 'clsx';
 import localFont from '@next/font/local';
 import { ReactNode } from 'react';

@@ -16,6 +16,7 @@ So let's make it work without JavaScript as much as possible.
 	opacity: unset !important;
 	transform: unset !important;
 }
+
 a:not(.underlined):hover,
 a:not(.underlined):focus {
 	text-decoration: underline !important;
