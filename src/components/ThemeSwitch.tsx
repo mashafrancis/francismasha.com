@@ -2,7 +2,6 @@
 
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
-import useSound from 'use-sound';
 
 const ThemeSwitch = () => {
 	const [mounted, setMounted] = useState<boolean>(false);
@@ -10,8 +9,6 @@ const ThemeSwitch = () => {
 
 	// When mounted on client, now we can show the UI
 	useEffect(() => setMounted(true), []);
-
-	const [ThemeSound] = useSound('/static/sounds/switch-on.mp3');
 
 	const ThemeSwitch = () => {
 		setTheme(theme === 'dark' || resolvedTheme === 'dark' ? 'light' : 'dark');
@@ -24,7 +21,6 @@ const ThemeSwitch = () => {
 			className='flex h-9 w-9 items-center justify-center rounded-lg bg-gray-200 ring-gray-300 transition-all hover:ring-2 dark:bg-gray-600'
 			onClick={() => {
 				ThemeSwitch();
-				ThemeSound();
 			}}
 		>
 			{mounted && (

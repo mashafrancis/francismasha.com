@@ -1,6 +1,15 @@
 const { fontFamily } = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors');
 
+function withOpacity(variableName) {
+	return ({ opacityValue }) => {
+		if (opacityValue !== undefined) {
+			return `rgba(var(${variableName}), ${opacityValue})`;
+		}
+		return `rgb(var(${variableName}))`;
+	};
+}
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	mode: process.env.NODE_ENV ? 'jit' : undefined,
@@ -15,6 +24,13 @@ module.exports = {
 	},
 	theme: {
 		extend: {
+			fill: {
+				skin: {
+					base: withOpacity('--color-text-base'),
+					accent: withOpacity('--color-accent'),
+				},
+				transparent: 'transparent',
+			},
 			fontFamily: {
 				sans: ['CircularStd', ...fontFamily.sans],
 				mono: ['var(--font-jetbrains)', ...fontFamily.mono],

@@ -3,6 +3,8 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
+import remarkToc from 'remark-toc';
+import remarkCollapse from 'remark-collapse';
 
 /** @type {import('contentlayer/source-files').ComputedFields} */
 const computedFields = {
@@ -102,6 +104,7 @@ export default makeSource({
 				rehypePrettyCode,
 				{
 					theme: 'one-dark-pro',
+					wrap: true,
 					onVisitLine(node) {
 						// Prevent lines from collapsing in `display: grid` mode, and allow empty
 						// lines to be copy/pasted
@@ -123,6 +126,13 @@ export default makeSource({
 					properties: {
 						className: ['anchor'],
 					},
+				},
+			],
+			remarkToc,
+			[
+				remarkCollapse,
+				{
+					test: 'Table of contents',
 				},
 			],
 		],

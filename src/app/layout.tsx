@@ -25,7 +25,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 				circular.variable,
 			)}
 		>
-			<body className='bg-white text-black antialiased transition duration-500 dark:bg-gray-800 dark:text-white'>
+			<body className='duration-400 bg-white text-black antialiased transition dark:bg-gray-800 dark:text-white'>
 				<LayoutWrapper>
 					{children}
 					<Analytics />

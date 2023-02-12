@@ -43,22 +43,20 @@ export default async function BlogPage() {
 				{/*</div>*/}
 			</Header>
 
-			<ul className='divide-y divide-gray-200 dark:divide-gray-800'>
+			<ul className='divide-y divide-gray-200 dark:divide-gray-600'>
 				{allBlogs
 					.sort((a, b) => dateSortDesc(a.date, b.date))
 					.map(({ slug, title, summary }) => (
 						<li key={slug} className='py-4 hover:bg-gray-100'>
 							<Link
 								href={`/blog/${slug}`}
-								className='text-gray-900 dark:text-gray-100'
+								className='text-gray-900 dark:text-gray-100 dark:hover:text-gray-800'
 							>
 								<article className='items-flex-start grid space-y-2 space-y-0 xl:grid-cols-6'>
 									<div className='col-span-3 xl:col-span-6'>
-										<div>
-											<h3 className='text-xl font-medium leading-8 tracking-tight md:text-2xl md:font-bold'>
-												{title}
-											</h3>
-										</div>
+										<h3 className='grid grid-cols-[auto_1fr_auto] items-center text-xl font-medium leading-8 tracking-tight md:text-2xl md:font-bold'>
+											{title}
+										</h3>
 										<div className='prose max-w-none text-gray-500 dark:text-gray-400 md:block'>
 											{summary}
 										</div>
@@ -71,3 +69,5 @@ export default async function BlogPage() {
 		</section>
 	);
 }
+
+// <div className='mt-4 mb-8 grid grid-cols-[auto_1fr_auto] items-center text-sm'>
