@@ -93,9 +93,30 @@ export const Me = defineDocumentType(() => ({
 	},
 }));
 
+export const OneLoc = defineDocumentType(() => ({
+	name: 'OneLoc',
+	filePathPattern: `iloc/contents/**/*.md`,
+	contentType: 'mdx',
+	fields: {
+		title: {
+			type: 'string',
+			required: true,
+		},
+		category: {
+			type: 'string',
+			required: true,
+		},
+		layout: {
+			type: 'string',
+			required: false,
+		},
+	},
+	computedFields,
+}));
+
 export default makeSource({
 	contentDirPath: 'content',
-	documentTypes: [Blog, Me],
+	documentTypes: [Blog, Me, OneLoc],
 	mdx: {
 		remarkPlugins: [remarkGfm],
 		rehypePlugins: [
@@ -104,7 +125,6 @@ export default makeSource({
 				rehypePrettyCode,
 				{
 					theme: 'one-dark-pro',
-					wrap: true,
 					onVisitLine(node) {
 						// Prevent lines from collapsing in `display: grid` mode, and allow empty
 						// lines to be copy/pasted
