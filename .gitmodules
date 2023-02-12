@@ -1,0 +1,3 @@
+[submodule "content/iloc"]
+	path = content/iloc
+	url = git@github.com:mashafrancis/1loc.git

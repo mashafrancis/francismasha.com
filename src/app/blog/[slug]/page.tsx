@@ -1,4 +1,3 @@
-import { allBlogs } from 'contentlayer/generated';
 import { notFound } from 'next/navigation';
 import Balancer from 'react-wrap-balancer';
 import readingTime from 'reading-time';
@@ -12,6 +11,7 @@ import { jetbrainsMono } from '@/components/Pre';
 
 import Tag from '@/components/Tag';
 import ViewCounter from '@/app/blog/view-counter';
+import { allBlogs } from 'contentlayer/generated';
 
 interface Props {
 	params: {
@@ -26,7 +26,7 @@ export async function generateStaticParams() {
 }
 
 export default async function Blog({ params }: Props) {
-	const post = allBlogs.find(({ slug }) => slug === params.slug);
+	const post = allBlogs.find(({ slug }) => slug.split('/')[1] === params.slug);
 
 	if (!post) {
 		notFound();

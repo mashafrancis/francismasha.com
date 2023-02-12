@@ -65,7 +65,7 @@ const LayoutWrapper = ({ children }: Props) => {
 						damping: 20,
 					}}
 				>
-					<div className='flex h-screen flex-col justify-between'>
+					<div className='flex h-full flex-col justify-between'>
 						<nav
 							ref={navRef}
 							className='top-0 left-0 right-0 z-10 w-full p-4 lg:fixed lg:sticky lg:p-2 lg:px-0'

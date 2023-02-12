@@ -1,7 +1,7 @@
 import { Header } from '@/components/Form';
 import Link from 'next/link';
-import { allBlogs } from 'contentlayer/generated';
 import { dateSortDesc } from '@/lib/misc';
+import { allBlogs } from 'contentlayer/generated';
 
 export const metadata = {
 	title: 'Blog',
@@ -49,7 +49,7 @@ export default async function BlogPage() {
 					.map(({ slug, title, summary }) => (
 						<li key={slug} className='py-4 hover:bg-gray-100'>
 							<Link
-								href={`/blog/${slug}`}
+								href={`/${slug}`}
 								className='text-gray-900 dark:text-gray-100 dark:hover:text-gray-800'
 							>
 								<article className='items-flex-start grid space-y-2 space-y-0 xl:grid-cols-6'>
