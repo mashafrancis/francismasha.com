@@ -43,7 +43,7 @@ const Pre = ({ children }: Props) => {
 			ref={textInput}
 			onMouseEnter={onEnter}
 			onMouseLeave={onExit}
-			className={`${jetbrainsMono.variable} relative`}
+			className={`${jetbrainsMono.variable} relative font-mono`}
 		>
 			{hovered && (
 				<CopyIcon
@@ -56,7 +56,7 @@ const Pre = ({ children }: Props) => {
 				/>
 			)}
 
-			<pre className={`${jetbrainsMono.variable}`}>{children}</pre>
+			<pre className={`${jetbrainsMono.variable} font-mono`}>{children}</pre>
 		</div>
 	);
 };
