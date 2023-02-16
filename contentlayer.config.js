@@ -95,7 +95,7 @@ export const Me = defineDocumentType(() => ({
 
 export const OneLoc = defineDocumentType(() => ({
 	name: 'OneLoc',
-	filePathPattern: `iloc/contents/**/*.md`,
+	filePathPattern: `1loc/**/*.md`,
 	contentType: 'mdx',
 	fields: {
 		title: {
