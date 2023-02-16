@@ -38,5 +38,5 @@ export default function ViewCounter({
 		}
 	}, [slug]);
 
-	return <>{data ? `${views.toLocaleString()} views` : '​'}</>;
+	return <>{`${data ? views.toLocaleString() : '-'} views`}</>;
 }

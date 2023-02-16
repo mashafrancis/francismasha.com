@@ -26,13 +26,17 @@ export async function generateStaticParams() {
 }
 
 export default async function Blog({ params }: Props) {
-	const post = allBlogs.find(({ slug }) => slug.split('/')[1] === params.slug);
+	const post = allBlogs.find(
+		({ slug }) => slug.split('/').at(-1) === params.slug,
+	);
 
 	if (!post) {
 		notFound();
 	}
 
-	const { date, title, body, tags } = post;
+	const { date, title, body, tags, slug: rawSlug } = post;
+
+	const slug = rawSlug.split('/').at(-1);
 
 	const readTime = readingTime(body.code);
 
@@ -50,9 +54,9 @@ export default async function Blog({ params }: Props) {
 					{date}
 				</div>
 				<div className='mx-2 h-[0.2em] bg-neutral-50 dark:bg-neutral-600' />
-				<p className='min-w-32 mt-2 text-sm text-gray-600 dark:text-gray-400 md:mt-0'>
+				<p className='min-w-32 mt-2 font-mono text-sm tracking-tighter text-neutral-500 md:mt-0'>
 					{`${readTime?.text} | `}
-					<ViewCounter slug={post.slug} trackView />
+					<ViewCounter slug={slug} trackView />
 				</p>
 			</div>
 			<Grid>

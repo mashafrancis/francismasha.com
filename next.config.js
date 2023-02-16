@@ -71,26 +71,13 @@ const nextConfig = {
 	experimental: {
 		appDir: true,
 	},
-	// async redirects() {
-	// 	return [
-	// 		{
-	// 			source: '/iloc/:slug',
-	// 			destination: '/news/:slug',
-	// 			permanent: true,
-	// 		},
-	// 	];
-	// 	// try {
-	// 	// 	return get('redirects');
-	// 	// } catch {
-	// 	// 	return [
-	// 	// 		{
-	// 	// 			source: '/old-blog/:slug',
-	// 	// 			destination: '/news/:slug',
-	// 	// 			permanent: true,
-	// 	// 		},
-	// 	// 	];
-	// 	// }
-	// },
+	redirects() {
+		try {
+			return get('redirects');
+		} catch {
+			return [];
+		}
+	},
 	headers() {
 		return [
 			{
