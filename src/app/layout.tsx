@@ -14,6 +14,15 @@ const circular = localFont({
 	display: 'swap',
 });
 
+const sfText = localFont({
+	src: '../../public/fonts/sf-pro-text-regular-webfont.woff2',
+	weight: '500',
+	variable: '--font-sf-text',
+	display: 'swap',
+});
+
+// sf-pro-text-regular-webfont
+
 export const metadata = globalMetadata;
 
 export default function RootLayout({ children }: { children: ReactNode }) {
@@ -22,7 +31,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 			lang='en'
 			className={clsx(
 				'scroll-smooth bg-white text-black dark:bg-[#111010] dark:text-white',
-				circular.variable,
+				sfText.variable,
 			)}
 		>
 			<body className='duration-400 bg-white text-black antialiased transition dark:bg-gray-800 dark:text-white'>

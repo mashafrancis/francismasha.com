@@ -32,7 +32,7 @@ module.exports = {
 				transparent: 'transparent',
 			},
 			fontFamily: {
-				sans: ['CircularStd', ...fontFamily.sans],
+				sans: ['var(--font-sf-text)', ...fontFamily.sans],
 				mono: ['var(--font-jetbrains)', ...fontFamily.mono],
 			},
 			colors: {
