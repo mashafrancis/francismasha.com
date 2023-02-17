@@ -77,9 +77,170 @@ eliminating excessive overhead if it returns quickly.
 
 ### 2. Search Query Performance Metrics: Request Rate and Latency
 
+A data source is only as good as it is useful, and we can measure the effectiveness
+of the cluster by measuring the rate at which the system is processing requests
+and how long each request is taking.
+
+When the cluster receives a request, it may need to access data from multiple shards,
+across multiple nodes. Knowing the rate at which the system is processing and
+returning requests, how many requests are currently in progress, and how long
+requests are taking can provide valuable insights into the health and performance
+of the Elasticsearch cluster.
+
+The request process itself is divided into two phases. The first is the query
+phase, during which the cluster distributes the request to each shard (either primary or replica)
+within the index. During the second, fetch phase, the results of the query are gathered,
+compiled and returned to the user. Typically, the fetch phase takes less time
+than the query phase, so if it’s increasing, make sure to investigate since
+it may indicate problems with the Elasticsearch node itself or the underlying hardware.
+
+We want to be aware of spikes in any of these metrics, as well as any emerging
+trends which might indicate growing problems within the cluster. These metrics
+are calculated by index and are available from the RESTful endpoints on the cluster itself.
+
+Please refer to the table below for metrics which are available from the index
+endpoint which is found at /index_name/\_stats where index_name is the name of
+the index. Performance specific metrics have been highlighted in light blue.
+
 ### 3. Indexing Performance Metrics: Refresh and Merge Times
 
+There are various metrics that count together dictate the indexing performance
+of your Elasticsearch nodes and cluster.
+
+#### Index Refresh
+
+As documents are updated, added, and removed from an index, the cluster needs to
+continually update their indexes and then refresh them across all the nodes.
+All of this is taken care of by the cluster, and as a user, you have limited
+control over this process, other than to configure the refresh interval rate.
+
+You should monitor the number and duration of the refresh operations. If time
+of the refresh increases it may mean that your cluster is not able to keep up
+with the operations and you may need to increase the refresh interval rate,
+so trade how quickly your data is visible for searching for stability.
+
+#### Merge Times
+
+Additions, updates, and deletions are batched and flushed to disk as new segments,
+and as each segment consumes resources, it is important for performance that smaller
+segments are consolidated and merged into larger segments. Like indexing, this
+is managed by the cluster itself.
+
+The number of merge operations and their count can and should be measured.
+Increasing time and number of merges performed by Elasticsearch usually lowers
+the indexing throughput and is one of the common performance bottlenecks.
+In such cases configuration adjustments, rolling indices or reconsidering the sharding strategy may be needed.
+
+#### Indexing Rate
+
+Monitoring the Elasticsearch indexing rate of documents and merge time can help
+with identifying anomalies and related problems before they begin to affect the
+performance of the cluster. Considering these metrics in parallel with the health
+of each node can provide essential clues to potential problems within the system,
+or opportunities to optimize performance.
+
+Index performance metrics can be retrieved from the /\_nodes/stats endpoint and
+can be summarized at the node, index or shard level. This endpoint has a plethora
+of information, and the sections under merges and refresh are where you’ll find
+relevant metrics for index performance.
+
 ### 4. Node Health: Memory, Disk, and CPU Metrics
+
+Each Elasticsearch node runs off physical hardware and needs access to system memory,
+disk storage and CPU cycles for managing the data under its control and responding
+to requests to the cluster.
+
+#### Node Memory Usage
+
+Elasticsearch is a system which is heavily reliant on memory to be performant,
+and so keeping a close eye on memory usage is particularly relevant to the health
+and performance of each node. Configuration changes to improve metrics may also
+adversely affect memory allocation and usage, so it’s important to remember to
+view system health holistically.
+
+#### Node CPU Usage
+
+Monitoring the CPU usage for a node and looking for spikes can help identify
+inefficient processes like heavy search or indexing workload or potential problems
+within the node. CPU performance correlates closely to the garbage collection process
+of the Java Virtual Machine (JVM), which we’ll discuss next. Using software to
+correlate metrics from one area of concern to those of another can also help reduce
+false alarms, or better identify anomalies.
+
+#### Disk Reads and Writes
+
+Finally, high disk reads and writes can indicate a poorly tuned system. Since accessing
+the disk is an expensive process in terms of time, a well-tuned system should
+reduce disk I/O wherever possible.
+
+These metrics are measured at the node level, and reflect the performance of
+the instance or machine on which it is running. The most succinct source of
+these metrics is from the /\_cat/nodes endpoint of each node, and you can pass
+in headers to define the metrics it should return. The following URL will return
+all the metrics listed above.
+
+#### Node Utilization: Thread Pools
+
+Each Elasticsearch node uses several thread pools to perform, queue, and potentially
+reject operations performed. Searching, indexing, running cluster state requests,
+node discovery – those are only examples of operations that use bound thread pools.
+All of that is done to save resources. Each request requires a certain amount of
+memory and CPU power to be performed. Without limits, we could easily overload
+Elasticsearch nodes with unlimited requests and force the cluster into a state
+in which it can’t operate properly.
+
+Before discussing which thread pool types you should consider monitoring we
+should talk about the metrics that are visible for each of them. There are
+three available metrics – the active, the queue, and rejected.
+
+The active metric tells us how many active operations of a given type are there.
+For example, if the active is 10 for the search thread pool it means that the
+number of currently processed search, count, or suggest requests is 10.
+The queue metric determines how many operations of a given type are waiting
+to be processed. Finally, the rejected tells us how many operations of a given
+type were rejected and not processed. This means that there were no available
+active threads and the queue was also full. Having rejections is usually a sign
+of too much traffic sent to Elasticsearch or that the nodes can’t keep up with the load.
+However, keep in mind that the rejected metric is cumulative since the last restart,
+at least in Elasticsearch API response. So it is a good idea to look at the differences
+in time, not the value as it is.
+
+As mentioned there are many thread pool available in Elasticsearch,
+but the ones that you will be likely the most interested in are:
+
+- **search** – The thread pool for the count, search, and suggest operations
+  sent to Elasticsearch. Seeing high numbers of rejected queries may mean that
+  there are a lot of queries sent to your cluster and it can’t keep up with processing.
+- **write** – The thread pool dedicated for indexing – single documents, bulks,
+  and document updates. Of course, you don’t want to drop your indexing requests,
+  so keep an eye on high numbers in the queue and rejections. Rejections in the write
+  thread pool may mean data loss if your indexing client is not able to repeat
+  the request or if it repeats a limited number of times and there were enough rejections.
+- **management** – The thread pool that is dedicated to cluster management.
+  You shouldn’t see much when it comes to the number of threads being used here,
+  usually one or two threads. This is a scaling thread pool, which means that
+  it doesn’t have a limited queue, but the queue is removing tasks after 5 minutes,
+  by default. Seeing rejections in this thread pool means that your cluster is not
+  able to process internal communication in a timely manner and is or soon will
+  be in a very bad state.
+
+Each thread pool has its own type, which can be configured. There is a fixed
+thread pool type, for example, the search and write thread pools use that type.
+It means that they have a fixed number of active threads available and a fixed queue.
+The request that doesn’t fit in the active threads and the queue are rejected.
+There is a fixed_auto_queue_size type with the size of the queue is automatically adjusted,
+but limited as well. Finally, there is a scaling type with a dynamic number of
+threads proportional to the current workload and adjusted on the basis of the
+minimum and maximum values set in the thread pool configuration and a keep-alive
+for threads that are waiting to be processed. The management thread pool uses the scaling type.
+
+Important Metrics for Thread Pools
+
+|          |                                                                |
+| -------- | -------------------------------------------------------------- |
+| Active   | Number of active requests of a given type currently executed   |
+| Queue    | Number of queue requests of a given type waiting for execution |
+| Rejected | Number of rejected requests that Elasticsearch didn’t process  |
 
 ### 5. Caching: Field Data, Node Query and Shard Query Cache
 
