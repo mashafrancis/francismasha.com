@@ -1,4 +1,9 @@
-import { defaultDimensions, projects, SubProject } from '@/config/projects';
+import {
+	defaultDimensions,
+	Deployment,
+	projects,
+	SubProject,
+} from '@/config/projects';
 import { notFound } from 'next/navigation';
 import { Children, CSSProperties, useCallback } from 'react';
 import Image from 'next/image';
@@ -68,7 +73,7 @@ export default function Project({ params }) {
 			<>
 				<H3>{title}</H3>
 				<Conditional condition={!!deployment}>
-					<DeploymentList deployment={deployment} />
+					<DeploymentList deployment={deployment as Deployment} />
 				</Conditional>
 				<p className='mt-2 mb-4 font-light'>{description}</p>
 			</>

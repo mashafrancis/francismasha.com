@@ -2,13 +2,7 @@
 
 import { ReactNode, useRef, useState } from 'react';
 import { MdContentCopy as CopyIcon } from 'react-icons/md';
-import { JetBrains_Mono } from '@next/font/google';
-
-export const jetbrainsMono = JetBrains_Mono({
-	weight: '400',
-	subsets: ['latin'],
-	variable: '--font-jetbrains',
-});
+import { jetbrainsMono } from '@/app/fonts';
 
 interface Props {
 	children: ReactNode;
@@ -43,7 +37,7 @@ const Pre = ({ children }: Props) => {
 			ref={textInput}
 			onMouseEnter={onEnter}
 			onMouseLeave={onExit}
-			className={`${jetbrainsMono.variable} relative font-mono`}
+			className='relative font-mono'
 		>
 			{hovered && (
 				<CopyIcon
@@ -56,7 +50,7 @@ const Pre = ({ children }: Props) => {
 				/>
 			)}
 
-			<pre className={`${jetbrainsMono.variable} font-mono`}>{children}</pre>
+			<pre className={`${jetbrainsMono.className} font-mono`}>{children}</pre>
 		</div>
 	);
 };

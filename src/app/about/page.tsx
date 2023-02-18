@@ -1,22 +1,19 @@
-'use client';
-
 import { Header } from '@/components/Form';
 import { allMes } from 'contentlayer/generated';
 import Image from 'next/image';
-import { RoughNotation } from 'react-rough-notation';
 import StackList from '@/components/list/StackList';
 import { WorkStack } from '@/config/stack';
-import { useRandomColorPair } from '@/lib/hooks/useRandomColorPair';
 import { Mdx } from '@/components/Mdx';
+import type { Metadata } from 'next';
+import Resume from '@/components/Resume';
 
-export const metadata = {
+export const metadata: Metadata = {
 	title: 'About',
 	description: 'SRE Engineer at Safaricom.',
 };
 
 export default function About() {
 	const { avatar, name, occupation, resume, company, body } = allMes[0];
-	const [resumeColor] = useRandomColorPair();
 
 	return (
 		<section className='fade-in divide-y divide-gray-200 dark:divide-gray-500'>
@@ -42,23 +39,7 @@ export default function About() {
 				<div className='dark:prose-dark prose max-w-none pt-0 pb-0 xl:col-span-2'>
 					<Mdx code={body.code} />
 					<span className='mt-8'>
-						<a
-							className='!font-normal !text-black !no-underline dark:!text-white'
-							href={resume}
-							target='_blank'
-							rel='noreferrer'
-						>
-							<RoughNotation
-								show
-								type='box'
-								animationDelay={250}
-								animationDuration={2000}
-								strokeWidth={2}
-								color={resumeColor}
-							>
-								Resume
-							</RoughNotation>
-						</a>
+						<Resume resume={resume} />
 						<h2 className='mt-8 mb-4 text-2xl font-semibold dark:text-white'>
 							Skills
 						</h2>

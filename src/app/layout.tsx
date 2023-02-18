@@ -1,27 +1,14 @@
 import './global.css';
 import '@/css/fonts.css';
 import clsx from 'clsx';
-import localFont from '@next/font/local';
 import { ReactNode } from 'react';
 import Analytics from '@/components/analytics';
 import LayoutWrapper from '../components/LayoutWrapper';
 import globalMetadata from './metadata';
+import type { Metadata } from 'next';
+import { sfText } from '@/app/fonts';
 
-const circular = localFont({
-	src: '../../public/fonts/CircularStd-Book.woff2',
-	weight: '500',
-	variable: '--font-circular',
-	display: 'swap',
-});
-
-const sfText = localFont({
-	src: '../../public/fonts/sf-pro-text-regular-webfont.woff2',
-	weight: '500',
-	variable: '--font-sf-text',
-	display: 'swap',
-});
-
-export const metadata = globalMetadata;
+export const metadata: Metadata = globalMetadata;
 
 export default function RootLayout({ children }: { children: ReactNode }) {
 	return (

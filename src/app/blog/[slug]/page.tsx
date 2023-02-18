@@ -7,11 +7,11 @@ import ScrollProgressBar from '@/components/ScrollProgressBar';
 import ScrollTopAndComment from '@/components/ScrollTopAndComment';
 import PageTitle from '@/components/PageTitle';
 import { Grid } from '@/components/Grid';
-import { jetbrainsMono } from '@/components/Pre';
 
 import Tag from '@/components/Tag';
 import ViewCounter from '@/app/blog/view-counter';
 import { allBlogs } from 'contentlayer/generated';
+import type { Metadata } from 'next';
 
 interface Props {
 	params: {
@@ -23,6 +23,49 @@ export async function generateStaticParams() {
 	return allBlogs.map((post) => ({
 		slug: post.slug,
 	}));
+}
+
+export async function generateMetadata({
+	params,
+}): Promise<Metadata | undefined> {
+	const post = allBlogs.find((post) => post.slug === params.slug);
+	if (!post) {
+		return;
+	}
+
+	const {
+		title,
+		date: publishedTime,
+		summary: description,
+		image,
+		slug,
+	} = post;
+	const ogImage = image
+		? `https://francismasha.com${image}`
+		: `https://francismasha.com/api/og?title=${title}`;
+
+	return {
+		title,
+		description,
+		openGraph: {
+			title,
+			description,
+			type: 'article',
+			publishedTime,
+			url: `https://francismasha.com/blog/${slug}`,
+			images: [
+				{
+					url: ogImage,
+				},
+			],
+		},
+		twitter: {
+			card: 'summary_large_image',
+			title,
+			description,
+			images: [ogImage],
+		},
+	};
 }
 
 export default async function Blog({ params }: Props) {
@@ -38,6 +81,10 @@ export default async function Blog({ params }: Props) {
 
 	const slug = rawSlug.split('/').at(-1);
 
+	if (!slug) {
+		notFound();
+	}
+
 	const readTime = readingTime(body.code);
 
 	return (
@@ -49,7 +96,7 @@ export default async function Blog({ params }: Props) {
 			</PageTitle>
 			<div className='mt-4 mb-8 grid grid-cols-[auto_1fr_auto] items-center text-sm'>
 				<div
-					className={`rounded-md bg-neutral-100 px-2 py-1 tracking-tighter dark:bg-neutral-600 ${jetbrainsMono.variable} font-mono `}
+					className={`rounded-md bg-neutral-100 px-2 py-1 font-mono tracking-tighter dark:bg-neutral-600 `}
 				>
 					{date}
 				</div>

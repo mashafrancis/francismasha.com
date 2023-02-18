@@ -21,10 +21,10 @@ function Banner(): ReactElement {
 				<h1 className='text-3xl font-bold dark:text-white lg:text-5xl'>
 					Hi, I'm {metadata.shortname}.
 				</h1>
-				<p className='my-4 text-lg lg:my-4 lg:text-2xl'>
+				<p className='my-4 text-lg font-bold lg:my-4 lg:text-2xl'>
 					{metadata.occupation}.
 				</p>
-				<p className='font-normal text-gray-600 lg:text-xl'>
+				<p className='text-xl font-normal text-gray-600 dark:text-gray-300'>
 					Read more on my
 					<Link className='ml-2 mr-2 font-normal text-black' href='/projects'>
 						<RoughNotation

@@ -65,7 +65,7 @@ const LayoutWrapper = ({ children }: Props) => {
 						damping: 20,
 					}}
 				>
-					<div className='flex h-screen flex-col justify-between'>
+					<div className='flex flex-col justify-between'>
 						<nav
 							ref={navRef}
 							className='top-0 left-0 right-0 z-10 w-full p-4 lg:fixed lg:sticky lg:p-2 lg:px-0'
@@ -76,7 +76,7 @@ const LayoutWrapper = ({ children }: Props) => {
 
 									<Link
 										href='/'
-										className='hidden h-6 text-xl font-normal text-gray-600 dark:text-gray-300 sm:block'
+										className='hidden h-6 text-xl font-medium text-gray-600 dark:text-gray-300 sm:block'
 									>
 										{metadata.headerTitle}
 									</Link>

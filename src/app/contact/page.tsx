@@ -16,7 +16,10 @@ export default function Contact(): ReactElement {
 
 	return (
 		<Fragment>
-			<div className='fade-in divide-y divide-gray-200 dark:divide-gray-500'>
+			<div
+				className='fade-in divide-y divide-gray-200 dark:divide-gray-500'
+				id='contact'
+			>
 				<Header title='Contact.' />
 				<div className='container py-12'>
 					<p>
@@ -49,7 +52,7 @@ export default function Contact(): ReactElement {
 				open={isCalendarOpen}
 				rootElement={
 					typeof window !== 'undefined' &&
-					(document.getElementById('__next') as HTMLElement)
+					(document.getElementById('contact') as HTMLElement)
 				}
 			/>
 		</Fragment>

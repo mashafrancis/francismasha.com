@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 const LivingShapes = () => {
 	useEffect(() => {
 		const wrapper =
-			typeof window !== 'undefined' && document.getElementById('wrapper');
+			typeof window !== 'undefined' ? document.getElementById('wrapper') : null;
 		const rand = (min, max) =>
 			Math.floor(Math.random() * (max - min + 1) + min);
 		const uniqueRand = (min, max, prev) => {
@@ -29,9 +29,11 @@ const LivingShapes = () => {
 			const index = uniqueRand(0, combinations.length - 1, prev),
 				combination = combinations[index];
 
+			// @ts-ignore
 			wrapper.dataset.configuration = String(
 				combination.configuration as number,
 			);
+			// @ts-ignore
 			wrapper.dataset.roundness = String(combination.roundness as number);
 
 			prev = index;
@@ -41,7 +43,7 @@ const LivingShapes = () => {
 	return (
 		<div
 			id='wrapper'
-			// className='fade-in flex flex-1 flex-col'
+			className='fade-in flex flex-1 flex-col'
 			data-configuration='1'
 			data-roundness='1'
 		>
