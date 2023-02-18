@@ -107,6 +107,10 @@ pre {
 	scrollbar-width: none; /* Firefox */
 }
 
+pre span {
+	font-style: normal !important;
+}
+
 /* Remove Safari input shadow on mobile */
 input[type='text'],
 input[type='email'] {

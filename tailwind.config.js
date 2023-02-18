@@ -33,7 +33,7 @@ module.exports = {
 			},
 			fontFamily: {
 				sans: ['var(--font-sf-text)', ...fontFamily.sans],
-				mono: ['var(--font-jetbrains)', ...fontFamily.mono],
+				mono: ['var(--font-jetbrains) !important', ...fontFamily.mono],
 			},
 			colors: {
 				// color scheme is defined in /app.css

@@ -131,6 +131,15 @@ const MobileNav = () => {
 						</Link>
 					</li>
 					<li
+						onClick={onToggleNav}
+						className='border-b border-gray-300 px-8 text-lg font-medium text-gray-900 dark:border-gray-700 dark:text-gray-100'
+						style={{ transitionDelay: '200ms' }}
+					>
+						<Link href='/1loc' className='flex w-auto pb-4'>
+							1loc
+						</Link>
+					</li>
+					<li
 						className='border-b border-gray-300 px-8 text-lg font-medium text-gray-900 dark:border-gray-700 dark:text-gray-100'
 						style={{ transitionDelay: '250ms' }}
 					>

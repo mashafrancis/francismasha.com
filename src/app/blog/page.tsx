@@ -59,7 +59,10 @@ export default async function BlogPage() {
 				{allBlogs
 					.sort((a, b) => dateSortDesc(a.date, b.date))
 					.map(({ slug, title, summary }) => (
-						<li key={slug} className='py-4 hover:bg-gray-700'>
+						<li
+							key={slug}
+							className='py-4 hover:bg-gray-100 dark:hover:bg-gray-700'
+						>
 							<Link
 								href={`/${slug}`}
 								className='text-gray-900 dark:text-gray-100'

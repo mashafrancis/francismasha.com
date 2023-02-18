@@ -50,7 +50,9 @@ const Pre = ({ children }: Props) => {
 				/>
 			)}
 
-			<pre className={`${jetbrainsMono.className} font-mono`}>{children}</pre>
+			<pre className={`${jetbrainsMono.className} font-mono not-italic`}>
+				{children}
+			</pre>
 		</div>
 	);
 };
