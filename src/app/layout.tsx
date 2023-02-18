@@ -21,8 +21,6 @@ const sfText = localFont({
 	display: 'swap',
 });
 
-// sf-pro-text-regular-webfont
-
 export const metadata = globalMetadata;
 
 export default function RootLayout({ children }: { children: ReactNode }) {
