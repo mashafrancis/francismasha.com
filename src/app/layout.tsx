@@ -10,6 +10,9 @@ import { sfText } from '@/app/fonts';
 
 export const metadata: Metadata = globalMetadata;
 
+const APP_NAME = 'Masha Portfolio';
+const APP_DESCRIPTION = 'A software engineer learning';
+
 export default function RootLayout({ children }: { children: ReactNode }) {
 	return (
 		<html
@@ -20,6 +23,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 			)}
 		>
 			<head>
+				<meta name='application-name' content={APP_NAME} />
+				<meta name='apple-mobile-web-app-title' content={APP_NAME} />
+				<meta name='description' content={APP_DESCRIPTION} />
+				<meta name='format-detection' content='telephone=no' />
+				<meta name='mobile-web-app-capable' content='yes' />
 				<link
 					rel='apple-touch-icon'
 					sizes='180x180'
