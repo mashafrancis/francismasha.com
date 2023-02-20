@@ -13,6 +13,7 @@ import { usePathname } from 'next/navigation';
 import metadata from '../app/metadata';
 import { ThemeProvider } from 'next-themes';
 import { Grid } from './Grid';
+import { fancyId } from '@/lib/utils/misc';
 
 interface Props {
 	children: ReactNode;
@@ -90,18 +91,20 @@ const LayoutWrapper = ({ children }: Props) => {
 											{headerNavLinks.map(({ name, href }) => {
 												const isActive = href === pathname;
 												return (
-													<Link
-														key={name}
-														href={href}
-														className={clsx(
-															isActive
-																? 'font-semibold text-gray-800 dark:text-gray-100'
-																: 'font-normal text-gray-600 dark:text-gray-300',
-															'underlined mx-3 hidden px-1 transition-all md:inline-block',
-														)}
-													>
-														{name}
-													</Link>
+													<li key={fancyId()}>
+														<Link
+															key={name}
+															href={href}
+															className={clsx(
+																isActive
+																	? 'font-semibold text-gray-800 dark:text-gray-100'
+																	: 'font-normal text-gray-600 dark:text-gray-300',
+																'underlined mx-3 hidden px-1 transition-all md:inline-block',
+															)}
+														>
+															{name}
+														</Link>
+													</li>
 												);
 											})}
 										</ul>

@@ -1,12 +1,12 @@
 const { get } = require('@vercel/edge-config');
 const { withContentlayer } = require('next-contentlayer');
 
-// const runtimeCaching = require('next-pwa/cache');
-// const withPWA = require('next-pwa')({
-// 	dest: 'public',
-// 	disable: process.env.NODE_ENV === 'development',
-// 	runtimeCaching,
-// });
+const runtimeCaching = require('next-pwa/cache');
+const withPWA = require('next-pwa')({
+	dest: 'public',
+	disable: process.env.NODE_ENV === 'development',
+	runtimeCaching,
+});
 
 // You might need to insert additional domains in script-src if you are using external services
 const ContentSecurityPolicy = `
@@ -91,4 +91,4 @@ const nextConfig = {
 	},
 };
 
-module.exports = withContentlayer(nextConfig);
+module.exports = withPWA(withContentlayer(nextConfig));

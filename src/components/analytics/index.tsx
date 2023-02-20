@@ -1,6 +1,5 @@
 'use client';
 
-import { Analytics as VercelAnalytics } from '@vercel/analytics/react';
 import metadata from '@/app/metadata';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import GA from './GoogleAnalytics';
@@ -28,7 +27,7 @@ const Analytics = () => {
 			)}
 			{isProduction && metadata.analytics.umamiWebsiteId && <Umami />}
 			{isProduction && metadata.analytics.googleAnalyticsId && <GA />}
-			{isProduction && <VercelAnalytics />}
+			{/*{isProduction && <VercelAnalytics />}*/}
 		</>
 	);
 };
