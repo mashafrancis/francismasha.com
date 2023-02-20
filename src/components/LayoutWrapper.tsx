@@ -26,6 +26,10 @@ const LayoutWrapper = ({ children }: Props) => {
 		pathname = '/blog';
 	}
 
+	if (pathname?.includes('/projects/')) {
+		pathname = '/projects';
+	}
+
 	const addShadowToNavbar = useCallback(async () => {
 		if (window.pageYOffset > 10) {
 			navRef.current?.classList.add(

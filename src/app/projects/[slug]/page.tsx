@@ -1,3 +1,5 @@
+'use client';
+
 import {
 	defaultDimensions,
 	Deployment,
@@ -11,6 +13,7 @@ import { H2, H3, Header } from '@/components/Form';
 import Conditional from '@/components/Conditional';
 import DeploymentList from '@/components/list/DeploymentList';
 import StackList from '@/components/list/StackList';
+import ScrollContainer from 'react-indiana-drag-scroll';
 
 export async function generateStaticParams() {
 	return projects.map((post) => ({
@@ -98,15 +101,15 @@ export default function Project({ params }) {
 				<DeploymentList deployment={deployment} />
 			</Conditional>
 
-			{/*<Conditional condition={hasScreenshots}>*/}
-			{/*	<H2 className='my-4'>Screenshots</H2>*/}
-			{/*	<ScrollContainer*/}
-			{/*		className='list mt-4 mb-1 flex overflow-auto'*/}
-			{/*		hideScrollbars={false}*/}
-			{/*	>*/}
-			{/*		{Children.toArray(screenshots.map(renderScreenShotList))}*/}
-			{/*	</ScrollContainer>*/}
-			{/*</Conditional>*/}
+			<Conditional condition={hasScreenshots}>
+				<H2 className='my-4'>Screenshots</H2>
+				<ScrollContainer
+					className='list mt-4 mb-1 flex overflow-auto'
+					hideScrollbars={false}
+				>
+					{Children.toArray(screenshots.map(renderScreenShotList))}
+				</ScrollContainer>
+			</Conditional>
 
 			<Conditional condition={hasSubProjects}>
 				<H2 className='mt-4'>More Products</H2>
