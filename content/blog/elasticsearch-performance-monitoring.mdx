@@ -82,12 +82,12 @@ about monitoring the system health of each of the nodes in a subsequent section.
 **Important Metrics for Cluster Health**
 | | |
 | ------ | --------------------------------------------------------------------- |
-| Status | The status of the cluster:<br/>Red: No shards have been allocated.<br/>Yellow: Only the primary shards have been allocated.<br/>Green: All shards have been allocated. |
-| Nodes | Current threads in use, and maximum number. |
-| Count of Active Shards | Counts and total time spent with garbage collection. |
-| Relocating Shards | Usage statistics for heap and non-heap processes and pools. |
-| Initializing Shards | Current threads in use, and maximum number. |
-| Unassigned Shards | Counts and total time spent with garbage collection. |
+| Status | The status of the cluster:<br/>- **Red**: No shards have been allocated.<br/>- **Yellow**: Only the primary shards have been allocated.<br/>- **Green**: All shards have been allocated. |
+| Nodes | This metric includes the total number of nodes in the cluster, <br/>and includes the count of successful and failed nodes. |
+| Count of Active Shards | The number of active shards within the cluster. |
+| Relocating Shards | Count of shards being moved due to the loss of a node. |
+| Initializing Shards | Count of shards being initialized due to the addition of an index. |
+| Unassigned Shards | Count of shards for which replicas have not been created or assigned yet. |
 | | |
 
 ### 2. Search Query Performance Metrics: Request Rate and Latency
@@ -114,8 +114,19 @@ trends which might indicate growing problems within the cluster. These metrics
 are calculated by index and are available from the RESTful endpoints on the cluster itself.
 
 Please refer to the table below for metrics which are available from the index
-endpoint which is found at /index_name/\_stats where index_name is the name of
-the index. Performance specific metrics have been highlighted in light blue.
+endpoint which is found at `/index_name/_stats` where index_name is the name of
+the index. Performance specific metrics have been `highlighted`.
+
+**Important Metrics for Request Performance**
+| | |
+| ------ | -------------------------------------------------------------- |
+| `Query load` | Total number of queries currently in progress, being <br/>processed by the cluster. |
+| Number of fetches currently <br/>in progress | Count of fetches in progress within the cluster. |
+| `Total number of queries` | Aggregated number of all queries processed by the cluster |
+| `Total time spent on queries` | Total time consumed by all queries in milliseconds. |
+| Total number of fetches | Aggregated number of all fetches processed by the cluster. |
+| Total time spent on fetches | Total time consumed by all fetches in milliseconds. |
+| | |
 
 ### 3. Indexing Performance Metrics: Refresh and Merge Times
 
@@ -159,6 +170,16 @@ can be summarized at the node, index or shard level. This endpoint has a plethor
 of information, and the sections under merges and refresh are where you’ll find
 relevant metrics for index performance.
 
+**Important Metrics for Index Performance**
+| | |
+| ------ | -------------------------------------------------------------- |
+| Total refreshes | Count of the total number of refreshes. |
+| Total time spent refreshing | Aggregation of all time spent refreshing. Measure in milliseconds. |
+| Current merges | Merges currently being processed. |
+| Total merges | Count of the total number of merges. |
+| Total time spent merging | Aggregation of all time spent merging segments. |
+| | |
+
 ### 4. Node Health: Memory, Disk, and CPU Metrics
 
 Each Elasticsearch node runs off physical hardware and needs access to system memory,
@@ -190,9 +211,22 @@ reduce disk I/O wherever possible.
 
 These metrics are measured at the node level, and reflect the performance of
 the instance or machine on which it is running. The most succinct source of
-these metrics is from the /\_cat/nodes endpoint of each node, and you can pass
+these metrics is from the `/_cat/nodes` endpoint of each node, and you can pass
 in headers to define the metrics it should return. The following URL will return
 all the metrics listed above.
+
+**Important Metrics for Node Health**
+| | |
+| ------ | -------------------------------------------------------------- |
+| Total disk capacity | Total disk capacity on the node’s host machine. |
+| Total disk usage | Total disk usage on the node’s host machine. |
+| Total available disk space | Total disk space available. |
+| Percentage of disk used | Percentage of disk which is already used. |
+| Current RAM usage | Current memory usage (unit of measurement). |
+| RAM percentage | Percentage of memory being used. |
+| Maximum RAM | Total amount of memory on the node’s host machine. |
+| CPU | Percentage of the CPU in use. |
+| | |
 
 #### Node Utilization: Thread Pools
 
@@ -338,7 +372,7 @@ monitoring memory usage on a healthy JVM on a single node. Routine and predictab
 increases and decreases in memory usage indicate that memory is being actively managed,
 and the garbage collector is being taxed beyond its abilities and affecting performance as a result.
 
-JVM metrics can be retrieved from the /\_nodes/stats endpoint.
+JVM metrics can be retrieved from the `/_nodes/stats` endpoint.
 
 **Important Metrics for JVM Health**
 | | |
