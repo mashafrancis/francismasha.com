@@ -54,7 +54,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 				<meta name='msapplication-TileColor' content='#2d89ef' />
 				<meta name='theme-color' content='#ffffff' />
 				<link rel='alternate' type='application/rss+xml' href='/feed.xml' />
-				<link rel='preconnect' href='https://fonts.gstatic.com' />
 				<meta
 					content='max-snippet:-1, max-image-preview:large, max-video-preview:-1'
 					name='robots'

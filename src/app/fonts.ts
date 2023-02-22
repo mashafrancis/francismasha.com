@@ -1,5 +1,5 @@
-import localFont from '@next/font/local';
-import { JetBrains_Mono, Roboto_Mono } from '@next/font/google';
+import localFont from 'next/font/local';
+import { JetBrains_Mono, Roboto_Mono } from 'next/font/google';
 
 const circular = localFont({
 	src: '../../public/fonts/CircularStd-Book.woff2',
