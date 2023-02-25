@@ -20,7 +20,7 @@ specifiers:
   eslint: 8.34.0
   eslint-config-next: latest
   eslint-plugin-prettier: ^4.2.1
-  framer-motion: ^9.1.6
+  framer-motion: ^10.0.0
   husky: ^8.0.3
   kysely: 0.23.4
   kysely-planetscale: 1.3.0
@@ -50,7 +50,7 @@ specifiers:
   remark-gfm: ^3.0.1
   remark-toc: 8.0.1
   shiki: ^0.14.1
-  swr: 2.0.3
+  swr: 2.0.4
   tailwindcss: ^3.2.7
   tsx: ^3.12.3
   typescript: 5.0.0-beta
@@ -69,7 +69,7 @@ dependencies:
   clsx: 1.2.1
   contentlayer: 0.3.0_esbuild@0.17.5
   envsafe: 2.0.3
-  framer-motion: 9.1.6_biqbaboplfbrettd7655fr4n2y
+  framer-motion: 10.0.0_biqbaboplfbrettd7655fr4n2y
   kysely: 0.23.4
   kysely-planetscale: 1.3.0_3b4ga6arylazwmj6lzyyulo5vq
   next: 13.2.1_cjvs77x4vzem7filyw3iie4dii
@@ -92,7 +92,7 @@ dependencies:
   remark-gfm: 3.0.1
   remark-toc: 8.0.1
   shiki: 0.14.1
-  swr: 2.0.3_react@18.2.0
+  swr: 2.0.4_react@18.2.0
   tailwindcss: 3.2.7_postcss@8.4.21
   use-delayed-render: 0.0.7_react@18.2.0
 
@@ -4843,8 +4843,8 @@ packages:
     resolution: {integrity: sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==}
     dev: false
 
-  /framer-motion/9.1.6_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-3y4p8xGspkEe7eWPdKncg4IvYeUwvHeky9em6dqKu6gnrmo2iBdrChX0s+emhbv00/VuBhdf33rw38J/cxaBrA==}
+  /framer-motion/10.0.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-qVmndcu4Z3q5ftqcbUCvVewHc5yiw4uIZyM0uvJ0/spj9lza/FnWywUUc8DNIZTG1my6nFsNLRPGDruP4o6eIw==}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
@@ -8601,8 +8601,8 @@ packages:
       stable: 0.1.8
     dev: true
 
-  /swr/2.0.3_react@18.2.0:
-    resolution: {integrity: sha512-sGvQDok/AHEWTPfhUWXEHBVEXmgGnuahyhmRQbjl9XBYxT/MSlAzvXEKQpyM++bMPaI52vcWS2HiKNaW7+9OFw==}
+  /swr/2.0.4_react@18.2.0:
+    resolution: {integrity: sha512-4GUiTjknRUVuw4MWUHR7mzJ9G/DWL+yZz/TgWDfiA0OZ9tL6qyrTkN2wPeboBpL3OJTkej3pexh3mWCnv8cFkQ==}
     engines: {pnpm: '7'}
     peerDependencies:
       react: ^16.11.0 || ^17.0.0 || ^18.0.0
