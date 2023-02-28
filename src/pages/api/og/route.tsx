@@ -6,10 +6,7 @@ export const config = {
 };
 
 const font = fetch(
-	new URL(
-		'../../../public/fonts/sf-pro-text-regular-webfont.woff2',
-		import.meta.url,
-	),
+	new URL('/public/fonts/sf-pro-text-regular-webfont.woff2', import.meta.url),
 ).then((res) => res.arrayBuffer());
 
 export default async function handler(req: NextRequest) {
