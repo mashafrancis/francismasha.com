@@ -6,7 +6,7 @@ import Analytics from '@/components/analytics';
 import LayoutWrapper from '../components/LayoutWrapper';
 import globalMetadata from './metadata';
 import type { Metadata } from 'next';
-import { sfText } from '@/app/fonts';
+import { fontHeading, jetbrainsMono, sfText } from '@/app/fonts';
 
 export const metadata: Metadata = globalMetadata;
 
@@ -20,6 +20,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 			className={clsx(
 				'scroll-smooth bg-white text-black dark:bg-[#111010] dark:text-white',
 				sfText.variable,
+				fontHeading.variable,
+				jetbrainsMono.variable,
 			)}
 		>
 			<head>

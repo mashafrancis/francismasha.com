@@ -39,6 +39,36 @@ export interface Project {
 
 export const projects: Project[] = [
 	{
+		title: 'Heimdall',
+		slug: 'heimdall',
+		banner: '/static/projects/heimdall/banner.png',
+		website: 'https://heimdall.francismasha.com',
+		description: `A utility tool for getting insights into your API's performance with global monitoring and analysis.`,
+		shortDescription:
+			'Almond is a design sustainable solutions for hydroponic farmers and growing fresh food.',
+		repository: null,
+		stack: [Stack.typescript, Stack.react, Stack.nextjs, Stack.tailwind],
+		dimensions: [360, 640],
+		screenshots: [
+			'https://res.cloudinary.com/almondgreen/image/upload/v1674294477/Portfolio/sanctissima/sanctissima-1_tv0dni.png',
+			'https://res.cloudinary.com/almondgreen/image/upload/v1674294479/Portfolio/sanctissima/sanctissima-2_v78twe.png',
+			'https://res.cloudinary.com/almondgreen/image/upload/v1674294476/Portfolio/sanctissima/sanctissima-3_draaa1.png',
+		],
+		deployment: {
+			web: 'https://heimdall.francismasha.com',
+		},
+		subProjects: [
+			{
+				title: 'notes',
+				description: 'Personal notes and coding tips',
+				repository: '',
+				deployment: {
+					web: 'https://notes.francismasha.com/',
+				},
+			},
+		],
+	},
+	{
 		title: 'Sanctissima',
 		slug: 'sanctissima',
 		banner: '/static/projects/sanctissima/banner.png',

@@ -34,6 +34,7 @@ module.exports = {
 			fontFamily: {
 				sans: ['var(--font-sf-text)', ...fontFamily.sans],
 				mono: ['var(--font-jetbrains) !important', ...fontFamily.mono],
+				heading: ['var(--font-heading)', ...fontFamily.sans],
 			},
 			colors: {
 				// color scheme is defined in /app.css
@@ -75,7 +76,6 @@ module.exports = {
 	plugins: [
 		require('@tailwindcss/forms'),
 		require('@tailwindcss/typography'),
-		require('@tailwindcss/line-clamp'),
 		require('autoprefixer'),
 	],
 };

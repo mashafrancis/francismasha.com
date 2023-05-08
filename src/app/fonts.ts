@@ -13,3 +13,8 @@ export const jetbrainsMono = JetBrains_Mono({
 	subsets: ['latin'],
 	variable: '--font-jetbrains',
 });
+
+export const fontHeading = localFont({
+	src: '../../public/fonts/CalSans-SemiBold.woff2',
+	variable: '--font-heading',
+});

@@ -10,8 +10,8 @@ interface Props {
 
 const Pre = ({ children }: Props) => {
 	const textInput = useRef<HTMLDivElement>(null);
-	const [hovered, setHovered] = useState(false);
-	const [copied, setCopied] = useState(false);
+	const [hovered, setHovered] = useState<boolean>(false);
+	const [copied, setCopied] = useState<boolean>(false);
 
 	const onEnter = () => {
 		setHovered(true);
