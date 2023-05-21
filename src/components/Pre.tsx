@@ -2,7 +2,7 @@
 
 import { ReactNode, useRef, useState } from 'react';
 import { MdContentCopy as CopyIcon } from 'react-icons/md';
-import { jetbrainsMono } from '@/app/fonts';
+import { fontMono } from '@/app/fonts';
 
 interface Props {
 	children: ReactNode;
@@ -50,7 +50,7 @@ const Pre = ({ children }: Props) => {
 				/>
 			)}
 
-			<pre className={`${jetbrainsMono.className} font-mono not-italic`}>
+			<pre className={`${fontMono.className} font-mono not-italic`}>
 				{children}
 			</pre>
 		</div>

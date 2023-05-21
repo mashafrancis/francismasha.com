@@ -13,7 +13,7 @@ function StackList(props: StackListProps): ReactElement {
 
 		return (
 			<span
-				className='mr-3 mb-3 rounded-full px-3 py-2 text-xs font-medium text-white'
+				className='mb-3 mr-3 rounded-full px-3 py-2 text-xs font-medium text-white'
 				style={{ background: color }}
 				key={stack}
 			>

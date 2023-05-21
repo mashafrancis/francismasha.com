@@ -33,7 +33,6 @@ export default {
 		shortcut: '/favicon.ico',
 	},
 	language: 'en-us',
-	theme: 'system', // system, dark or light
 	siteUrl: 'https://francismasha.com',
 	siteRepo: 'https://github.com/mashafrancis/portfolio',
 	siteLogo: '/static/images/logo.png',

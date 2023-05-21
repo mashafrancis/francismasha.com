@@ -23,13 +23,13 @@ export default function ViewCounter({
 	slug: string;
 	trackView: boolean;
 }) {
-	const { data } = useSWR<PostView[]>('/blog/views', fetcher);
+	const { data } = useSWR<PostView[]>('/api/views', fetcher);
 	const viewsForSlug = data?.find((view) => view.slug === slug);
 	const views = Number(viewsForSlug?.count || 0);
 
 	useEffect(() => {
 		const registerView = () =>
-			fetch(`/blog/views/${slug}`, {
+			fetch(`/api/views/${slug}`, {
 				method: 'POST',
 			});
 

@@ -94,7 +94,7 @@ export default async function Blog({ params }: Props) {
 			<PageTitle>
 				<Balancer>{title}</Balancer>
 			</PageTitle>
-			<div className='mt-4 mb-8 grid grid-cols-[auto_1fr_auto] items-center text-sm'>
+			<div className='mb-8 mt-4 grid grid-cols-[auto_1fr_auto] items-center text-sm'>
 				<div
 					className={`rounded-md bg-neutral-100 px-2 py-1 font-mono tracking-tighter dark:bg-neutral-600 `}
 				>

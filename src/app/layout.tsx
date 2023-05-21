@@ -3,10 +3,13 @@ import '@/css/fonts.css';
 import clsx from 'clsx';
 import { ReactNode } from 'react';
 import Analytics from '@/components/analytics';
-import LayoutWrapper from '../components/LayoutWrapper';
 import globalMetadata from './metadata';
 import type { Metadata } from 'next';
-import { fontHeading, jetbrainsMono, sfText } from '@/app/fonts';
+import { fontHeading, fontMono, fontSans } from '@/app/fonts';
+import { ThemeProvider } from '@/components/ThemeProvider';
+import Footer from '@/components/Footer';
+import { Grid } from '@/components/Grid';
+import LayoutNavigation from '@/components/LayoutNavigation';
 
 export const metadata: Metadata = globalMetadata;
 
@@ -19,9 +22,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 			lang='en'
 			className={clsx(
 				'scroll-smooth bg-white text-black dark:bg-[#111010] dark:text-white',
-				sfText.variable,
+				fontSans.variable,
 				fontHeading.variable,
-				jetbrainsMono.variable,
+				fontMono.variable,
 			)}
 		>
 			<head>
@@ -62,10 +65,20 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 				/>
 			</head>
 			<body className='duration-400 bg-white text-black antialiased transition dark:bg-gray-800 dark:text-white'>
-				<LayoutWrapper>
-					{children}
+				<ThemeProvider attribute='class' defaultTheme='system' enableSystem>
+					<div className='flex min-h-screen flex-col'>
+						<LayoutNavigation />
+						<main className='mb-8 flex-1'>
+							<Grid>
+								<div className='col-span-full mb-auto px-4 sm:px-6 lg:col-span-8 lg:col-start-3 xl:px-0'>
+									{children}
+								</div>
+							</Grid>
+						</main>
+						<Footer />
+					</div>
 					<Analytics />
-				</LayoutWrapper>
+				</ThemeProvider>
 			</body>
 		</html>
 	);

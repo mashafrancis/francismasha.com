@@ -28,7 +28,7 @@ export default function About() {
 						priority
 						className='h-48 w-48 rounded-full'
 					/>
-					<h3 className='pt-4 pb-2 text-2xl font-bold leading-8 tracking-tight'>
+					<h3 className='pb-2 pt-4 text-2xl font-bold leading-8 tracking-tight'>
 						{name}
 					</h3>
 					<div className='font-medium text-gray-500 dark:text-gray-400'>
@@ -37,11 +37,11 @@ export default function About() {
 					<div className='text-gray-500 dark:text-gray-400'>{company}</div>
 				</div>
 
-				<div className='dark:prose-dark prose max-w-none pt-0 pb-0 xl:col-span-2'>
+				<div className='dark:prose-dark prose max-w-none pb-0 pt-0 xl:col-span-2'>
 					<Mdx code={body.code} />
 					<span className='mt-8'>
 						<Resume resume={resume} />
-						<h2 className='mt-8 mb-4 text-2xl font-semibold dark:text-white'>
+						<h2 className='mb-4 mt-8 text-2xl font-semibold dark:text-white'>
 							Skills
 						</h2>
 						<StackList stack={WorkStack} />

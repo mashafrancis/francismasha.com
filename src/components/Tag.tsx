@@ -13,7 +13,7 @@ export default function Tag({ text, size = 'sm', count }: Props) {
 			className={`inline-block ${
 				size === 'sm'
 					? 'my-1 underline-offset-4'
-					: 'my-3 mx-1 underline-offset-8'
+					: 'mx-1 my-3 underline-offset-8'
 			}`}
 		>
 			<Link
