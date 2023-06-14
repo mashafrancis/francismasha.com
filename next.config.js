@@ -70,6 +70,7 @@ const nextConfig = {
 	},
 	experimental: {
 		appDir: true,
+		instrumentationHook: true,
 		// typedRoutes: true,
 	},
 	redirects() {
