@@ -14,9 +14,9 @@ function withOpacity(variableName) {
 module.exports = {
 	mode: process.env.NODE_ENV ? 'jit' : undefined,
 	content: [
-		'./src/app/**/*.{ts,tsx}',
-		'./src/components/**/*.{ts,tsx}',
-		'./src/content/**/*.mdx',
+		'./app/**/*.{ts,tsx}',
+		'./components/**/*.{ts,tsx}',
+		'./content/**/*.mdx',
 	],
 	darkMode: 'class',
 	corePlugins: {

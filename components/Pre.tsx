@@ -2,7 +2,7 @@
 
 import { ReactNode, useRef, useState } from 'react';
 import { MdContentCopy as CopyIcon } from 'react-icons/md';
-import { fontMono } from '@/app/fonts';
+import { fontMono } from '@/lib/fonts';
 
 interface Props {
 	children: ReactNode;

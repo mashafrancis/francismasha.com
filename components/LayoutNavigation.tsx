@@ -5,7 +5,7 @@ import { useAnimation } from 'framer-motion';
 import Link from 'next/link';
 import { useCallback, useEffect, useRef } from 'react';
 
-import headerNavLinks from '../../data/headerNavLinks';
+import headerNavLinks from '../data/headerNavLinks';
 import MobileNav from './MobileNav';
 import ThemeSwitch from './ThemeSwitch';
 import { usePathname } from 'next/navigation';

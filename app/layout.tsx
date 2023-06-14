@@ -5,7 +5,7 @@ import { ReactNode } from 'react';
 import Analytics from '@/components/analytics';
 import globalMetadata from './metadata';
 import type { Metadata } from 'next';
-import { fontHeading, fontMono, fontSans } from '@/app/fonts';
+import { fontHeading, fontMono, fontSans } from '@/lib/fonts';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import Footer from '@/components/Footer';
 import { Grid } from '@/components/Grid';
