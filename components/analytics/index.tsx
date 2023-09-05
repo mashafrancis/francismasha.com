@@ -6,6 +6,8 @@ import GA from './GoogleAnalytics';
 import Plausible from './Plausible';
 import SimpleAnalytics from './SimpleAnalytics';
 import Umami from './Umami';
+import TinyBird from '@/components/analytics/TinyBird';
+import Loglib from '@loglib/tracker/react';
 
 declare global {
 	interface Window {
@@ -27,6 +29,13 @@ const Analytics = () => {
 			)}
 			{isProduction && metadata.analytics.umamiWebsiteId && <Umami />}
 			{isProduction && metadata.analytics.googleAnalyticsId && <GA />}
+			<TinyBird />
+			<Loglib
+				config={{
+					id: 'francismasha',
+					consent: 'granted',
+				}}
+			/>
 			{/*{isProduction && <VercelAnalytics />}*/}
 		</>
 	);

@@ -12,6 +12,7 @@ import Tag from '@/components/Tag';
 import ViewCounter from '@/app/blog/view-counter';
 import { allBlogs } from 'contentlayer/generated';
 import type { Metadata } from 'next';
+import { TrackView } from '@loglib/tracker/react';
 
 interface Props {
 	params: {
@@ -88,41 +89,48 @@ export default async function Blog({ params }: Props) {
 	const readTime = readingTime(body.code);
 
 	return (
-		<section>
-			<ScrollProgressBar />
-			<ScrollTopAndComment />
-			<PageTitle>
-				<Balancer>{title}</Balancer>
-			</PageTitle>
-			<div className='mb-8 mt-4 grid grid-cols-[auto_1fr_auto] items-center text-sm'>
-				<div
-					className={`rounded-md bg-neutral-100 px-2 py-1 font-mono tracking-tighter dark:bg-neutral-600 `}
-				>
-					{date}
+		<TrackView
+			name={slug}
+			payload={{
+				foo: 'bar',
+			}}
+		>
+			<section>
+				<ScrollProgressBar />
+				<ScrollTopAndComment />
+				<PageTitle>
+					<Balancer>{title}</Balancer>
+				</PageTitle>
+				<div className='mb-8 mt-4 grid grid-cols-[auto_1fr_auto] items-center text-sm'>
+					<div
+						className={`rounded-md bg-neutral-100 px-2 py-1 font-mono tracking-tighter dark:bg-neutral-600 `}
+					>
+						{date}
+					</div>
+					<div className='mx-2 h-[0.2em] bg-neutral-50 dark:bg-neutral-600' />
+					<p className='min-w-32 mt-2 font-mono text-sm tracking-tighter text-neutral-500 md:mt-0'>
+						{`${readTime?.text} | `}
+						<ViewCounter slug={slug} trackView />
+					</p>
 				</div>
-				<div className='mx-2 h-[0.2em] bg-neutral-50 dark:bg-neutral-600' />
-				<p className='min-w-32 mt-2 font-mono text-sm tracking-tighter text-neutral-500 md:mt-0'>
-					{`${readTime?.text} | `}
-					<ViewCounter slug={slug} trackView />
-				</p>
-			</div>
-			<Grid>
-				<Mdx code={body.code} />
-			</Grid>
+				<Grid>
+					<Mdx code={body.code} />
+				</Grid>
 
-			<Grid>
-				<ul className='col-span-full lg:col-span-10 lg:col-start-2'>
-					{tags && (
-						<div className='py-4 xl:py-8'>
-							<div className='flex flex-wrap'>
-								{tags.map((tag) => (
-									<Tag key={tag} text={tag} />
-								))}
+				<Grid>
+					<ul className='col-span-full lg:col-span-10 lg:col-start-2'>
+						{tags && (
+							<div className='py-4 xl:py-8'>
+								<div className='flex flex-wrap'>
+									{tags.map((tag) => (
+										<Tag key={tag} text={tag} />
+									))}
+								</div>
 							</div>
-						</div>
-					)}
-				</ul>
-			</Grid>
-		</section>
+						)}
+					</ul>
+				</Grid>
+			</section>
+		</TrackView>
 	);
 }

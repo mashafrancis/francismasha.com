@@ -1,0 +1,567 @@
+---
+title: 'Recreating Vercel Blob Storage with Cloudflare R2'
+date: '2023-07-25'
+tags: ['cloudflare', 'r2', 'react', 'next.js']
+draft: false
+summary: 'Uploading files to Cloudflare R2 with Node.js (Express) and Next.js'
+image: '/static/blogs/amazing-placeholder-blurhash.jpeg'
+---
+
+In this document, we will configure the backend Node.js (Express) to receive files
+sent via POST requests from the React frontend and upload those files to Cloudflare R2.
+We will not only cover the file upload process but also explore resizing and
+\format conversion of uploaded images using the sharp package.
+
+Basic operations for Cloudflare R2 have already been covered in a previously
+published article. For instructions on creating a Cloudflare account and
+activating R2, please refer to the existing documentation.
+
+## Project setup
+
+Create a folder named 'cloudflare_r2_node' for performing the test. Inside this
+folder, create separate projects for the backend Node.js and frontend React.
+
+```bash
+mkdir cloudflare_r2_node
+```
+
+## BackEnd Configuration
+
+Create a 'backend' folder inside the 'cloudflare_r2_node' folder.
+
+```bash
+mkdir backend
+```
+
+### Express Server Initial Configuration
+
+First, install 'express' and 'nodemon' to use Express. Nodemon automatically detects file changes and reloads the server, making development more efficient.
+
+```bash
+npm install express
+npm install nodemon --save-dev
+```
+
+It is not mandatory, but if you want to use import statements, add 'type': 'module' to the package.json file.
+If you don't want to use import statements, you can use 'require' to import modules.
+
+```json
+{
+	"name": "backend",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"express": "^4.18.2"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.22"
+	},
+	"type": "module"
+}
+```
+
+Create an 'index.js' file in the root of the 'backend' folder and write the following code to test the functionality of Express.
+
+```typescript
+import express from 'express';
+
+const app = express();
+const port = 3000;
+
+app.get('/', (req, res) => res.send('Hello World!'));
+
+app.listen(port, function () {
+	console.log(`Example app listening on port ${port}!`);
+});
+```
+
+After creating the file, run the 'npx nodemon index.js' command to start Express.
+
+```bash
+npx nodemon index.js
+[nodemon] 2.0.22
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,mjs,json
+[nodemon] starting `node index.js`
+Example app listening on port 3000!
+```
+
+To verify that Express is running correctly, access localhost:3000. Upon accessing "/", the server is configured to return the string "Hello World", so you should see "Hello World" displayed on the screen.
+
+Hello World
+
+### Installing necessary packages"
+
+#### multer Installation
+
+To efficiently handle files sent as multipart/form-data from the frontend, we will install the multer middleware.
+
+Terminal
+
+```bash
+npm install multer
+```
+
+#### @aws-sdk/client-s3 Installation
+
+We will perform uploads to Cloudflare R2 using the AWS S3 SDK, specifically the @aws-sdk/client-s3 package. Cloudflare R2 allows us to interact with AWS S3 using their command-line tools or libraries.
+
+```bash
+npm install @aws-sdk/client-s3
+```
+
+#### dotenv Installation
+
+We will perform uploads to Cloudflare R2 using the AWS S3 SDK, specifically the @aws-sdk/client-s3 package. Cloudflare R2 allows us to interact with AWS S3 using their command-line tools or libraries.
+
+Terminal
+
+```bash
+npm install dotenv
+```
+
+#### CORS Installation
+
+Since the frontend and backend have different port numbers for their development servers, sending requests can result in CORS-related errors. To mitigate these errors, we need to install and configure CORS.
+
+```bash
+npm install cors
+```
+
+Now that we have installed the necessary packages for the backend during the verification process, let's check the package.json file to confirm their versions.
+
+```json
+{
+	"name": "backend",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"@aws-sdk/client-s3": "^3.363.0",
+		"cors": "^2.8.5",
+		"dotenv": "^16.3.1",
+		"express": "^4.18.2",
+		"multer": "^1.4.5-lts.1"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.22"
+	},
+	"type": "module"
+}
+```
+
+To verify if we can successfully retrieve the information of the file sent through a POST request, we will add a new route called "upload" and set up the multer middleware. Since we don't need to save the file locally, we will use the memoryStorage configuration in multer. If the file is successfully received, the file information will be displayed in the console using "req.file".
+
+```typescript
+import express from 'express';
+import multer from 'multer';
+import cors from 'cors';
+
+const app = express();
+const port = 3000;
+app.use(cors());
+
+const storage = multer.memoryStorage();
+const upload = multer({
+	storage,
+});
+
+app.post('/upload', upload.single('file'), (req, res) => {
+	console.log(req.file);
+	res.send('File Upload');
+});
+
+app.listen(port, function () {
+	console.log(`Example app listening on port ${port}!`);
+});
+```
+
+## FrontEnd Configuration
+
+Using React, we will create a form where users can select a file, and then send it to the Express server using a POST request.
+
+### Creationg a React Project
+
+To create a React project, we will use Vite. Run the command 'npm create vite' and you will be asked a few questions. Choose React for the framework and JavaScript for the variant. Set the project name as 'frontend' as an argument for the command.
+
+```bash
+npm create vite@latest frontend
+✔ Select a framework: › React
+✔ Select a variant: › JavaScript
+
+Scaffolding project in /Users/mac/Desktop/cloudflare_r2_node/frontend...
+
+Done. Now run:
+
+cd frontend
+npm install
+npm run dev
+```
+
+After the command finishes, navigate to the 'frontend' folder that was created and run the command 'npm install' to install the JavaScript packages.
+
+```bash
+cd frontend
+npm install
+```
+
+### Creating a input form
+
+To add an input form, make updates to the 'App.jsx' file located in the 'src' folder. Set the 'type' attribute of the input element as 'file'. When a file is selected, the 'handleChange' function is executed via the onChange event, and the selected file is saved in the 'file' state using the useState hook. When the 'Upload' button is clicked, the 'handleSubmit' function is executed via the submit event. It saves the file information in a formData object and sends a POST request to the backend using the fetch function.
+
+```jsx
+import { useState } from 'react';
+
+function App() {
+	const [file, setFile] = useState('');
+
+	const handleChange = (e) => {
+		setFile(e.target.files[0]);
+	};
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		const formData = new FormData();
+		formData.append('file', file);
+		const response = await fetch('http://localhost:3000/upload', {
+			method: 'POST',
+			body: formData,
+		});
+
+		const message = await response.text();
+		console.log(message);
+	};
+
+	return (
+		<>
+			<h1>File Upload</h1>
+			<form onSubmit={handleSubmit}>
+				<div>
+					<label htmlFor='file'>Select file:</label>
+					<input type='file' name='file' onChange={handleChange} />
+				</div>
+				<div>
+					<button type='submit'>Upload</button>
+				</div>
+			</form>
+		</>
+	);
+}
+
+export default App;
+```
+
+Since default styles are already set, comment out the line in 'main.jsx' where 'index.css' is import
+
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App.jsx';
+// import './index.css'
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+	<React.StrictMode>
+		<App />
+	</React.StrictMode>,
+);
+```
+
+Once the file updates are complete, run the command 'npm run dev' to start the React development server.
+
+```bash
+npm run dev
+
+> frontend@0.0.0 dev
+> vite
+
+
+  VITE v4.3.9  ready in 637 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h to show help
+```
+
+When accessing [http://localhost:5173/](http://localhost:5173/) in the browser, you will see the file upload page.
+
+File Upload Screen
+
+### File Upload Confirmation
+
+Ensure that "npx nodemon index.js" is running in the backend folder, then select a file and click the "Upload" button. The terminal running Express should display the information of the submitted file.
+
+```bash
+{
+  fieldname: 'file',
+  originalname: 'test.png',
+  encoding: '7bit',
+  mimetype: 'image/png',
+  buffer: <Buffer 89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 0a b2 00 00 07 40 08 06 00 00 00 99 d8 4b 70 00 00 0a e3 69 43 43 50 49 43 43 20 50 72 6f 66 69 ... 729878 more bytes>,
+  size: 729928
+}
+```
+
+It has been confirmed that files can be sent from the frontend React to Express using a POST request and successfully received.
+
+## File Upload to R ２
+
+Now that we have successfully received the file data sent from the frontend React to the backend Express, the next step is to upload the file from Express to Cloudflare R2. The remaining tasks will be performed in the backend folder and on the Cloudflare dashboard.
+
+Assuming that you already have a Cloudflare account and have activated R2.
+
+To use Cloudflare R2, there is a free tier available, but you will need to provide payment information to enable it.
+
+### Creating a Backet
+
+Once R2 is enabled, the Overview page will be displayed. In R2, you can create buckets to store files as objects within them. From the dashboard, you can create buckets by clicking the 'Create bucket' button.
+
+Overview Screen
+
+A bucket is a container for storing objects (files). Unlike a file system, it doesn't have a directory (folder) structure, and objects are identified by keys assigned to them. By including "/" in the key (e.g., test/test.csv), you can organize objects as if they were stored under the "test" directory. However, there are no actual directories.
+
+For the purpose of testing, we are using the name "reffect" for the bucket. You can choose any name you like when creating a bucket.
+
+Setting Bucket Name
+
+Once the creation is complete, the following screen will be displayed. From this screen, you can view the objects stored in the bucket. Since it was just created, the bucket is empty and there are no images or files inside it.
+
+Bucket Confirmation Screen
+
+### Creating a API Token
+
+To upload to R2, we will use the package @aws-sdk/client-s3. To use @aws-sdk/client-s3, you need to configure the R2 API Token. You can create the API Token from the Cloudflare dashboard.
+
+Click on "Manage R2 API Tokens" located in the top right corner of the R2 Overview page on the dashboard.
+
+Cloudflare Dashboard
+
+On the API Tokens screen, click on the "Create API token" button.
+
+API Token Screen
+
+Select "Edit: Allow edit access of all objects and List, Write, and Delete operations of all buckets" to enable operations such as creating objects in the bucket. Then click on the "Create API Token" button.
+
+API Token Creation Screen
+
+nce created, you will need the "Access Key ID" and "Secret Access Key" that are displayed. It is important to keep this information secure and not share it with others. Please make sure to store the key information in a safe place as it cannot be retrieved later.
+
+### API Token Configuration
+
+Create a .env file in the backend folder. In the .env file, set the API Token information obtained earlier as environment variables. These environment variables set in the .env file can be accessed in the code using dotenv.
+
+.env
+
+```text
+R2_ACCESS_KEY_ID=2627242a9c1bf30695b2c1241cab8ac9
+R2_SECRET_ACCESS_KEY=8d893715f1410b681ce31e5fe0eab2159c018d45f355924ca932a73c861c5796
+ENDPOINT=https://a51248e16eb1cfe6a9a262e7XXXXX.r2.cloudflarestorage.com
+```
+
+Add the following code to the index.js file to handle the file upload to R2. In this code, create an S3 instance using the S3Client imported from @aws-sdk/client-s3. When creating the instance, set the API Token environment variables from the .env file.
+
+For the PutObjectCommand arguments object, set the file information received from React as shown below. The Bucket should be the name of the Bucket you created in R2.
+
+index.js
+
+```typescript
+import express from 'express';
+import multer from 'multer';
+import cors from 'cors';
+import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
+import dotenv from 'dotenv';
+
+const app = express();
+const port = 3000;
+app.use(cors());
+dotenv.config();
+
+const storage = multer.memoryStorage();
+const upload = multer({
+	storage,
+});
+
+app.post('/upload', upload.single('file'), async (req, res) => {
+	const S3 = new S3Client({
+		region: 'auto',
+		endpoint: process.env.ENDPOINT,
+		credentials: {
+			accessKeyId: process.env.R2_ACCESS_KEY_ID,
+			secretAccessKey: process.env.R2_SECRET_ACCESS_KEY,
+		},
+	});
+
+	await S3.send(
+		new PutObjectCommand({
+			Body: req.file.buffer,
+			Bucket: 'reffect',
+			Key: req.file.originalname,
+			ContentType: req.file.mimetype,
+		}),
+	);
+	res.send('File Upload');
+});
+
+app.listen(port, function () {
+	console.log(`Example app listening on port ${port}!`);
+});
+```
+
+When you use the created code to upload a file, the file will be successfully uploaded to R2, and you can verify the uploaded file in the dashboard. In the Objects column, the file name will be displayed, and in the Type column, the mime value "image/png" will be displayed.
+
+Confirm uploaded file
+
+We have understood the process of sending a file from the frontend React to the backend Express, and then uploading it to R2.
+
+## Resizing and Format Conversion of Files
+
+When uploading and saving files, there are cases where we may want to resize or convert the files to a higher compression format instead of storing them as they are. To achieve this, we can use the 'sharp' package for resizing and file conversion. Let's install the 'sharp' package.
+
+Terminal
+
+```bash
+npm install sharp
+```
+
+### Resizieng Images
+
+We will use the 'resize' method from the 'sharp' package to resize the received file before uploading it to R2. In this case, we will set the width of the image to 400. It is also possible to set the height if needed. For more details, please refer to [sharp documentation](https://sharp.pixelplumbing.com/)
+
+```typescript
+const resizeFileBuffer = await sharp(req.file.buffer)
+	.resize({ width: 400 })
+	.toBuffer();
+
+await S3.send(
+	new PutObjectCommand({
+		// Body: req.file.buffer,
+		Body: resizeFileBuffer,
+		Bucket: 'reffect',
+		Key: req.file.originalname,
+		ContentType: req.file.mimetype,
+	}),
+);
+```
+
+After making the code changes, we will proceed with the file upload. Since we are uploading the same file, the file name remains unchanged, but you will notice that the file size has become smaller.
+
+Resized File
+
+If you want to confirm the actual file size, you can download the file from the dashboard and check it.
+
+### Converting to webp Format
+
+By using sharp, you can perform conversion to the webp format. The webp format offers high compression rates, allowing you to reduce file sizes. You can also set the 'quality' option as an additional parameter. Lowering the quality will result in a decrease in image quality but a smaller file size.
+
+In the 'webp' method, a quality of 75 is set as the argument.
+
+```typescript
+const webpFileBuffer = await sharp(req.file.buffer)
+	.webp({ quality: 75 })
+	.toBuffer();
+```
+
+With this, you can convert the image to webp format. However, please note that the file extension will be changed to 'webp' and the MIME type will be different from the uploaded file. To obtain the file extension and MIME type from the converted 'fileBuffer', you can use the 'file-type' package. Please make sure to install the 'file-type' package before using it.
+
+```bash
+npm install file-type
+```
+
+Use the 'fileTypeFromBuffer' function from the installed 'file-type' package. It will return an object with 'ext' and 'mime' properties.
+
+```typescript
+import { fileTypeFromBuffer } from 'file-type';
+
+const fileInfo = await fileTypeFromBuffer(webpFileBuffer);
+
+//fileInfoの中身
+{ 'webp', mime: 'image/webp' }
+```
+
+For obtaining the file name, you can use the 'path' module to extract the name of the file without the extension from 'req.file.originalname'.
+
+```typescript
+import path from 'path';
+
+const { name } = path.parse(req.file.originalname);
+```
+
+Here is the final code:
+
+index.js
+
+```other
+import express from 'express';
+import multer from 'multer';
+import cors from 'cors';
+import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
+import dotenv from 'dotenv';
+import sharp from 'sharp';
+import { fileTypeFromBuffer } from 'file-type';
+import path from 'path';
+
+const app = express();
+const port = 3001;
+app.use(cors());
+dotenv.config();
+
+const storage = multer.memoryStorage();
+const upload = multer({
+  storage,
+});
+
+app.post('/upload', upload.single('file'), async (req, res) => {
+  const S3 = new S3Client({
+    region: 'auto',
+    endpoint: process.env.ENDPOINT,
+    credentials: {
+      accessKeyId: process.env.R2_ACCESS_KEY_ID,
+      secretAccessKey: process.env.R2_SECRET_ACCESS_KEY,
+    },
+  });
+
+  const webpFileBuffer = await sharp(req.file.buffer)
+    .webp({ quality: 75 })
+    .toBuffer();
+
+  const fileInfo = await fileTypeFromBuffer(webpFileBuffer);
+
+  const { name } = path.parse(req.file.originalname);
+
+  await S3.send(
+    new PutObjectCommand({
+      Body: webpFileBuffer,
+      Bucket: 'reffect',
+      Key: `${name}.${fileInfo.ext}`,
+      ContentType: fileInfo.mime,
+    })
+  );
+
+  res.send('File Upload');
+});
+
+app.listen(port, function () {
+  console.log(`Example app listening on port ${port}!`);
+});
+```
+
+Just like before, you can upload a file and verify on the dashboard that the uploaded file is in the webp format.
+
+webp File Confirmation
+
+Now, in addition to uploading files to R2, you can also perform resizing or other modifications before uploading the files.
+
+Happy Coding 🎉

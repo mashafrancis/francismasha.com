@@ -11,5 +11,5 @@ module.exports = {
 	bracketSpacing: true,
 	// pnpm doesn't support plugin auto loading
 	// https://github.com/tailwindlabs/prettier-plugin-tailwindcss#installation
-	plugins: [require('prettier-plugin-tailwindcss')],
+	plugins: ['prettier-plugin-tailwindcss'],
 };
