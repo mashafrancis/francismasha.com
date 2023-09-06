@@ -10,6 +10,7 @@ import { ThemeProvider } from '@/components/ThemeProvider';
 import Footer from '@/components/Footer';
 import { Grid } from '@/components/Grid';
 import LayoutNavigation from '@/components/LayoutNavigation';
+import Heimdall from '@heimdall-logs/tracker/react';
 
 export const metadata: Metadata = globalMetadata;
 
@@ -77,6 +78,15 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 						</main>
 						<Footer />
 					</div>
+					<Heimdall
+						config={{
+							id: 'portfolio',
+							consent: 'granted',
+							// host: 'http://localhost:8000',
+							// env: "prod",
+							debug: true,
+						}}
+					/>
 					<Analytics />
 				</ThemeProvider>
 			</body>

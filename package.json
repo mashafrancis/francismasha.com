@@ -17,6 +17,7 @@
 		"setup": "node lib/setup.mjs"
 	},
 	"dependencies": {
+		"@heimdall-logs/tracker": "0.0.1",
 		"@loglib/tracker": "0.6.2",
 		"@planetscale/database": "1.11.0",
 		"@tailwindcss/forms": "^0.5.6",
