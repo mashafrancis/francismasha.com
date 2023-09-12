@@ -91,6 +91,12 @@ const nextConfig = {
 	eslint: {
 		ignoreDuringBuilds: true,
 	},
+	rewrites: async () => [
+		{
+			source: '/api/heimdall',
+			destination: process.env.NEXT_PUBLIC_HEIMDALL_API,
+		},
+	],
 };
 
 module.exports = withPWA(withContentlayer(nextConfig));

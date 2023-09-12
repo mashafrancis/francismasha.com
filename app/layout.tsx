@@ -80,11 +80,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 					</div>
 					<Heimdall
 						config={{
-							id: 'portfolio',
+							id: 'francismasha',
 							consent: 'granted',
+							host: '/api/heimdall',
+							autoTrack: true,
 							// host: 'http://localhost:8000',
 							// env: "prod",
-							debug: true,
+							// debug: true,
 						}}
 					/>
 					<Analytics />
