@@ -7,7 +7,7 @@ import Plausible from './Plausible';
 import SimpleAnalytics from './SimpleAnalytics';
 import Umami from './Umami';
 import TinyBird from '@/components/analytics/TinyBird';
-import Loglib from '@loglib/tracker/react';
+import Heimdall from '@heimdall-logs/tracker/react';
 
 declare global {
 	interface Window {
@@ -30,10 +30,15 @@ const Analytics = () => {
 			{isProduction && metadata.analytics.umamiWebsiteId && <Umami />}
 			{isProduction && metadata.analytics.googleAnalyticsId && <GA />}
 			<TinyBird />
-			<Loglib
+			<Heimdall
 				config={{
 					id: 'francismasha',
 					consent: 'granted',
+					host: '/api/heimdall',
+					autoTrack: true,
+					// host: 'http://localhost:8000',
+					// env: "prod",
+					// debug: true,
 				}}
 			/>
 			{/*{isProduction && <VercelAnalytics />}*/}

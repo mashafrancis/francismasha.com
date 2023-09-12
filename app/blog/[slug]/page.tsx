@@ -12,7 +12,7 @@ import Tag from '@/components/Tag';
 import ViewCounter from '@/app/blog/view-counter';
 import { allBlogs } from 'contentlayer/generated';
 import type { Metadata } from 'next';
-import { TrackView } from '@loglib/tracker/react';
+import { TrackView } from '@heimdall-logs/tracker/react';
 
 interface Props {
 	params: {
