@@ -1,25 +1,11 @@
-'use client';
-
-import {
-	defaultDimensions,
-	Deployment,
-	projects,
-	SubProject,
-} from '@/config/projects';
+import { Deployment, projects, SubProject } from '@/config/projects';
 import { notFound } from 'next/navigation';
-import { Children, CSSProperties, useCallback } from 'react';
-import Image from 'next/image';
+import { Children, useCallback } from 'react';
 import { H2, H3, Header } from '@/components/Form';
 import Conditional from '@/components/Conditional';
 import DeploymentList from '@/components/list/DeploymentList';
 import StackList from '@/components/list/StackList';
-import ScrollContainer from 'react-indiana-drag-scroll';
-
-export async function generateStaticParams() {
-	return projects.map((post) => ({
-		slug: post.slug,
-	}));
-}
+import ScreenshotScroll from '@/components/screenshot-scroll';
 
 export default function Project({ params }) {
 	const project = projects.find(({ slug }) => slug === params.slug);
@@ -39,37 +25,6 @@ export default function Project({ params }) {
 		screenshots,
 		subProjects,
 	} = project;
-
-	const [height, width] = dimensions ?? defaultDimensions;
-
-	const renderScreenShotList = useCallback(
-		(screenshot: string) => {
-			const style: CSSProperties = {
-				height,
-				width,
-			};
-
-			return (
-				<div
-					className='bg-placeholder-light dark:bg-placeholder-dark mr-2 flex-shrink-0 overflow-hidden rounded'
-					style={style}
-				>
-					<Image
-						loading='eager'
-						src={screenshot}
-						height={height}
-						width={width}
-						// objectFit='cover'
-						alt=''
-						priority
-						placeholder='blur'
-						blurDataURL='data:...'
-					/>
-				</div>
-			);
-		},
-		[height, width],
-	);
 
 	const renderSubProjectList = useCallback(
 		({ title, deployment, description }: SubProject) => (
@@ -103,12 +58,7 @@ export default function Project({ params }) {
 
 			<Conditional condition={hasScreenshots}>
 				<H2 className='my-4'>Screenshots</H2>
-				<ScrollContainer
-					className='list mb-1 mt-4 flex overflow-auto'
-					hideScrollbars={false}
-				>
-					{Children.toArray(screenshots.map(renderScreenShotList))}
-				</ScrollContainer>
+				<ScreenshotScroll screenshots={screenshots} dimensions={dimensions} />
 			</Conditional>
 
 			<Conditional condition={hasSubProjects}>

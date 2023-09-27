@@ -20,12 +20,6 @@ interface Props {
 	};
 }
 
-export async function generateStaticParams() {
-	return allBlogs.map((post) => ({
-		slug: post.slug,
-	}));
-}
-
 export async function generateMetadata({
 	params,
 }): Promise<Metadata | undefined> {
@@ -96,6 +90,13 @@ export default async function Blog({ params }: Props) {
 			}}
 		>
 			<section>
+				<script
+					type='application/ld+json'
+					suppressHydrationWarning
+					dangerouslySetInnerHTML={{
+						__html: JSON.stringify(post.body),
+					}}
+				></script>
 				<ScrollProgressBar />
 				<ScrollTopAndComment />
 				<PageTitle>

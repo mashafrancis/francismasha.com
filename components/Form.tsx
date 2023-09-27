@@ -16,7 +16,7 @@ export function Header(props: HeaderProps): ReactElement {
 
 	return (
 		<div className='space-y-2 pb-8 pt-6 md:space-y-5'>
-			<h1 className='mb-4 font-heading text-3xl font-bold text-black dark:text-white md:text-4xl'>
+			<h1 className='mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-4xl'>
 				{title}
 			</h1>
 			{subtitle && (

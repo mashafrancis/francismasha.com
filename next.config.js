@@ -68,11 +68,6 @@ const nextConfig = {
 	images: {
 		domains: ['firebasestorage.googleapis.com', 'res.cloudinary.com'],
 	},
-	experimental: {
-		appDir: true,
-		instrumentationHook: true,
-		// typedRoutes: true,
-	},
 	redirects() {
 		try {
 			return get('redirects');
@@ -87,9 +82,6 @@ const nextConfig = {
 				headers: securityHeaders,
 			},
 		];
-	},
-	eslint: {
-		ignoreDuringBuilds: true,
 	},
 	rewrites: async () => [
 		{

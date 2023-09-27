@@ -32,7 +32,7 @@ function Card({ title, description, banner, href }): ReactElement {
 						image
 					))}
 				<div className='p-6'>
-					<h2 className='mb-3 text-xl font-bold leading-8'>
+					<h2 className='mb-3 text-xl font-semibold leading-8 tracking-tight'>
 						{href ? (
 							<Link href={href} aria-label={`Link to ${title}`}>
 								{title}

@@ -67,9 +67,9 @@ export default async function BlogPage() {
 								href={`/${slug}`}
 								className='text-gray-900 dark:text-gray-100'
 							>
-								<article className='items-flex-start grid space-y-0 space-y-2 xl:grid-cols-6'>
+								<article className='items-flex-start grid space-y-0 xl:grid-cols-6'>
 									<div className='col-span-3 xl:col-span-6'>
-										<h3 className='grid grid-cols-[auto_1fr_auto] items-center text-xl font-bold leading-8'>
+										<h3 className='grid grid-cols-[auto_1fr_auto] items-center text-xl font-semibold leading-8 tracking-tight'>
 											<Balancer>{title}</Balancer>
 										</h3>
 										<div className='prose max-w-none text-gray-500 dark:text-gray-400 md:block'>
