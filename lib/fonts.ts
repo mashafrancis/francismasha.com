@@ -1,5 +1,4 @@
 import localFont from 'next/font/local';
-import { JetBrains_Mono } from 'next/font/google';
 
 export const fontSans = localFont({
 	src: [
@@ -32,10 +31,10 @@ export const fontSans = localFont({
 	variable: '--font-sf-text',
 });
 
-export const fontMono = JetBrains_Mono({
-	weight: '400',
-	subsets: ['latin'],
-	variable: '--font-jetbrains',
+export const fontMono = localFont({
+	src: '../public/fonts/GeistMono-Regular.otf',
+	variable: '--font-heading',
+	display: 'swap',
 });
 
 export const fontHeading = localFont({

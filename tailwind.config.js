@@ -32,9 +32,8 @@ module.exports = {
 				transparent: 'transparent',
 			},
 			fontFamily: {
-				sans: ['var(--font-sf-text)', ...fontFamily.sans],
-				mono: ['var(--font-jetbrains) !important', ...fontFamily.mono],
-				heading: ['var(--font-heading)', ...fontFamily.sans],
+				sans: ['var(--font-geist-sans)'],
+				mono: ['var(--font-geist-mono)'],
 			},
 			colors: {
 				// color scheme is defined in /app.css

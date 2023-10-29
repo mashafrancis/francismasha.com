@@ -66,7 +66,12 @@ const nextConfig = {
 	swcMinify: true,
 	pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
 	images: {
-		domains: ['firebasestorage.googleapis.com', 'res.cloudinary.com'],
+		remotePatterns: [
+			{
+				protocol: 'https',
+				hostname: '**',
+			},
+		],
 	},
 	redirects() {
 		try {

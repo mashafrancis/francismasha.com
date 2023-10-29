@@ -59,7 +59,7 @@ const LayoutNavigation = () => {
 
 						<Link
 							href='/'
-							className='hidden h-6 font-heading text-xl text-gray-600 dark:text-gray-300 sm:block'
+							className='font-heading hidden h-6 text-xl text-gray-600 dark:text-gray-300 sm:block'
 						>
 							{metadata.headerTitle}
 						</Link>

@@ -13,6 +13,8 @@ import ViewCounter from '@/app/blog/view-counter';
 import { allBlogs } from 'contentlayer/generated';
 import type { Metadata } from 'next';
 import { TrackView } from '@heimdall-logs/tracker/react';
+import { getViewsCount } from '@/lib/metrics';
+import { Suspense } from 'react';
 
 interface Props {
 	params: {
@@ -104,14 +106,16 @@ export default async function Blog({ params }: Props) {
 				</PageTitle>
 				<div className='mb-8 mt-4 grid grid-cols-[auto_1fr_auto] items-center text-sm'>
 					<div
-						className={`rounded-md bg-neutral-100 px-2 py-1 font-mono tracking-tighter dark:bg-neutral-600 `}
+						className={`rounded-md bg-neutral-100 px-2 py-1 tracking-tighter dark:bg-neutral-600 `}
 					>
 						{date}
 					</div>
 					<div className='mx-2 h-[0.2em] bg-neutral-50 dark:bg-neutral-600' />
-					<p className='min-w-32 mt-2 font-mono text-sm tracking-tighter text-neutral-500 md:mt-0'>
+					<p className='min-w-32 mt-2 font-mono text-sm tracking-tighter text-neutral-600 dark:text-neutral-400 md:mt-0'>
 						{`${readTime?.text} | `}
-						<ViewCounter slug={slug} trackView />
+						<Suspense fallback={<p className='h-5' />}>
+							<Views slug={post.slug} />
+						</Suspense>
 					</p>
 				</div>
 				<Grid>
@@ -134,4 +138,15 @@ export default async function Blog({ params }: Props) {
 			</section>
 		</TrackView>
 	);
+}
+
+async function Views({ slug }: { slug: string }) {
+	let views: { slug: string; count: number }[];
+	try {
+		views = await getViewsCount();
+	} catch (error) {
+		console.error(error);
+	}
+
+	return <ViewCounter allViews={views} slug={slug} trackView />;
 }
