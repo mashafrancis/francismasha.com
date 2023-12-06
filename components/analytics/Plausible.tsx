@@ -5,6 +5,9 @@ import metadata from '@/app/metadata';
 const PlausibleScript = () => {
 	return (
 		<>
+			{/*<script defer data-domain="francismasha.com"*/}
+			{/*        src="https://plausible.io/js/script.js"></script>*/}
+
 			<Script
 				strategy='lazyOnload'
 				data-domain={metadata.analytics.plausibleDataDomain}
