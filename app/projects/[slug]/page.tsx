@@ -1,17 +1,19 @@
-import { Deployment, projects, SubProject } from '@/config/projects';
-import { notFound } from 'next/navigation';
-import { Children, useCallback } from 'react';
-import { H2, H3, Header } from '@/components/Form';
-import Conditional from '@/components/Conditional';
-import DeploymentList from '@/components/list/DeploymentList';
-import StackList from '@/components/list/StackList';
-import ScreenshotScroll from '@/components/screenshot-scroll';
+import { notFound } from 'next/navigation'
+
+import { Children, useCallback } from 'react'
+
+import Conditional from '@/components/Conditional'
+import { H2, H3, Header } from '@/components/Form'
+import DeploymentList from '@/components/list/DeploymentList'
+import StackList from '@/components/list/StackList'
+import ScreenshotScroll from '@/components/screenshot-scroll'
+import { Deployment, SubProject, projects } from '@/config/projects'
 
 export default function Project({ params }) {
-	const project = projects.find(({ slug }) => slug === params.slug);
+	const project = projects.find(({ slug }) => slug === params.slug)
 
 	if (!project) {
-		notFound();
+		notFound()
 	}
 
 	const {
@@ -24,7 +26,7 @@ export default function Project({ params }) {
 		deployment,
 		screenshots,
 		subProjects,
-	} = project;
+	} = project
 
 	const renderSubProjectList = useCallback(
 		({ title, deployment, description }: SubProject) => (
@@ -36,12 +38,12 @@ export default function Project({ params }) {
 				<p className='mb-4 mt-2 font-light'>{description}</p>
 			</>
 		),
-		[],
-	);
+		[]
+	)
 
-	const hasDeployments = !!deployment;
-	const hasScreenshots = !!screenshots.length;
-	const hasSubProjects = !!subProjects.length;
+	const hasDeployments = !!deployment
+	const hasScreenshots = !!screenshots.length
+	const hasSubProjects = !!subProjects.length
 
 	return (
 		<section>
@@ -67,5 +69,5 @@ export default function Project({ params }) {
 				{Children.toArray(subProjects.map(renderSubProjectList))}
 			</Conditional>
 		</section>
-	);
+	)
 }

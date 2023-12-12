@@ -7,5 +7,5 @@ export default function robots() {
 		],
 		sitemap: 'https://francismasha.com/sitemap.xml',
 		host: 'https://francismasha.com',
-	};
+	}
 }

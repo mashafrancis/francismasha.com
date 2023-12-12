@@ -1,4 +1,4 @@
-import { Colors } from './colors';
+import { Colors } from './colors'
 
 export enum Stack {
 	// Languages
@@ -72,12 +72,12 @@ export const WorkStack = [
 	Stack.jenkins,
 	Stack.materialui,
 	Stack.tailwind,
-];
+]
 
 type StackInfoMap = {
-	value: string;
-	color: string;
-};
+	value: string
+	color: string
+}
 
 export const StackInfo: Record<Stack, StackInfoMap> = {
 	[Stack.typescript]: {
@@ -188,4 +188,4 @@ export const StackInfo: Record<Stack, StackInfoMap> = {
 		value: 'TailwindCSS',
 		color: Colors.tailwind,
 	},
-};
+}

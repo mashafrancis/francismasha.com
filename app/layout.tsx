@@ -1,17 +1,22 @@
-import './global.css';
-import '@/css/fonts.css';
-import clsx from 'clsx';
-import { ReactNode } from 'react';
-import Analytics from '@/components/analytics';
-import type { Metadata } from 'next';
-import { ThemeProvider } from '@/components/ThemeProvider';
-import Footer from '@/components/Footer';
-import { Grid } from '@/components/Grid';
-import LayoutNavigation from '@/components/LayoutNavigation';
-import { GeistMono, GeistSans } from 'geist/font';
+import type { Metadata } from 'next'
 
-const title = 'Masha Portfolio';
-const description = 'A software engineer learning';
+import { ReactNode } from 'react'
+
+import Footer from '@/components/Footer'
+import { Grid } from '@/components/Grid'
+import LayoutNavigation from '@/components/LayoutNavigation'
+import { ThemeProvider } from '@/components/ThemeProvider'
+import Analytics from '@/components/analytics'
+import '@/css/fonts.css'
+import { SpeedInsights } from '@vercel/speed-insights/next'
+import clsx from 'clsx'
+import { GeistMono } from 'geist/font/mono'
+import { GeistSans } from 'geist/font/sans'
+
+import './global.css'
+
+const title = 'Masha Portfolio'
+const description = 'A software engineer learning'
 
 export const metadata: Metadata = {
 	metadataBase: new URL('https://safaricomobservability.com/'),
@@ -38,7 +43,7 @@ export const metadata: Metadata = {
 		statusBarStyle: 'black-translucent',
 		startupImage: ['/apple-touch-icon.png'],
 	},
-};
+}
 
 export default function RootLayout({ children }: { children: ReactNode }) {
 	return (
@@ -47,7 +52,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 			className={clsx(
 				'scroll-smooth bg-white text-black dark:bg-[#111010] dark:text-white',
 				GeistSans.variable,
-				GeistMono.variable,
+				GeistMono.variable
 			)}
 		>
 			<body className='duration-400 bg-white text-black antialiased transition dark:bg-gray-800 dark:text-white'>
@@ -64,8 +69,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 						<Footer />
 					</div>
 					<Analytics />
+					<SpeedInsights />
 				</ThemeProvider>
 			</body>
 		</html>
-	);
+	)
 }

@@ -1,40 +1,41 @@
-import { Maybe, Tuple } from '@/types';
-import { Stack } from './stack';
+import { Maybe, Tuple } from '@/types'
+
+import { Stack } from './stack'
 
 export type Deployment = {
-	web?: string;
-	android?: string;
-	ios?: string;
-	api?: string;
-};
+	web?: string
+	android?: string
+	ios?: string
+	api?: string
+}
 
 export interface SubProject {
-	title: string;
-	description: string;
-	repository?: Maybe<string>;
-	deployment?: Deployment;
+	title: string
+	description: string
+	repository?: Maybe<string>
+	deployment?: Deployment
 }
 
 export type BannerImage = {
-	src: string;
-	blurDataUrl: string;
-};
+	src: string
+	blurDataUrl: string
+}
 
-export const defaultDimensions: Tuple<number> = [450, 220];
+export const defaultDimensions: Tuple<number> = [450, 220]
 
 export interface Project {
-	title: string;
-	slug: string;
-	website?: string;
-	banner: string;
-	description: string;
-	shortDescription?: string;
-	repository: Maybe<string>;
-	stack: Stack[];
-	dimensions?: Tuple<number>; // Tuple of [height, width]
-	screenshots: string[];
-	deployment: Deployment;
-	subProjects: SubProject[];
+	title: string
+	slug: string
+	website?: string
+	banner: string
+	description: string
+	shortDescription?: string
+	repository: Maybe<string>
+	stack: Stack[]
+	dimensions?: Tuple<number> // Tuple of [height, width]
+	screenshots: string[]
+	deployment: Deployment
+	subProjects: SubProject[]
 }
 
 export const projects: Project[] = [
@@ -429,4 +430,4 @@ export const projects: Project[] = [
 	// 	website: 'https://kcards-server.herokuapp.com',
 	// 	subProjects: [],
 	// },
-];
+]

@@ -1,6 +1,7 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { ReactElement } from 'react';
+import Image from 'next/image'
+import Link from 'next/link'
+
+import { ReactElement } from 'react'
 
 function Card({ title, description, banner, href }): ReactElement {
 	const image = (
@@ -14,7 +15,7 @@ function Card({ title, description, banner, href }): ReactElement {
 			placeholder='blur'
 			blurDataURL='data:...'
 		/>
-	);
+	)
 
 	return (
 		<div className='md p-4 md:w-1/2' style={{ maxWidth: '544px' }}>
@@ -56,7 +57,7 @@ function Card({ title, description, banner, href }): ReactElement {
 				</div>
 			</div>
 		</div>
-	);
+	)
 }
 
-export default Card;
+export default Card

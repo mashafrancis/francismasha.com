@@ -1,8 +1,8 @@
-'use client';
+'use client'
 
-import { AnimatePresence, motion } from 'framer-motion';
-import { ThemeProvider as NextThemesProvider } from 'next-themes';
-import { ThemeProviderProps } from 'next-themes/dist/types';
+import { AnimatePresence, motion } from 'framer-motion'
+import { ThemeProvider as NextThemesProvider } from 'next-themes'
+import { ThemeProviderProps } from 'next-themes/dist/types'
 
 export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
 	return (
@@ -26,5 +26,5 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
 				</motion.div>
 			</NextThemesProvider>
 		</AnimatePresence>
-	);
+	)
 }

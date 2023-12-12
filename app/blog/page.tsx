@@ -1,16 +1,18 @@
-import { Header } from '@/components/Form';
-import Link from 'next/link';
-import { dateSortDesc } from '@/lib/misc';
-import { allBlogs } from 'contentlayer/generated';
-import type { Metadata } from 'next';
-import Balancer from 'react-wrap-balancer';
+import type { Metadata } from 'next'
+import Link from 'next/link'
+
+import { Header } from '@/components/Form'
+import { getBlogPosts } from '@/lib/db/blog'
+import { dateSortDesc } from '@/lib/misc'
+import Balancer from 'react-wrap-balancer'
 
 export const metadata: Metadata = {
 	title: 'Blog',
 	description: 'Read my thoughts on software development, design, and more.',
-};
+}
 
 export default async function BlogPage() {
+	let allBlogs = getBlogPosts()
 	// const [searchValue, setSearchValue] = useState<string>('');
 	// const filteredBlogPosts = allBlogs.filter(({title, summary, tags}) => {
 	// 	const searchContent = title + summary + tags.join(' ');
@@ -57,14 +59,14 @@ export default async function BlogPage() {
 
 			<ul className='divide-y divide-gray-200 dark:divide-gray-600'>
 				{allBlogs
-					.sort((a, b) => dateSortDesc(a.date, b.date))
-					.map(({ slug, title, summary }) => (
+					.sort((a, b) => dateSortDesc(a.metadata.date, b.metadata.date))
+					.map(({ slug, metadata: { title, summary } }) => (
 						<li
 							key={slug}
 							className='py-4 hover:bg-gray-100 dark:hover:bg-gray-700'
 						>
 							<Link
-								href={`/${slug}`}
+								href={`/blog/${slug}`}
 								className='text-gray-900 dark:text-gray-100'
 							>
 								<article className='items-flex-start grid space-y-0 xl:grid-cols-6'>
@@ -82,7 +84,7 @@ export default async function BlogPage() {
 					))}
 			</ul>
 		</section>
-	);
+	)
 }
 
 // <div className='mt-4 mb-8 grid grid-cols-[auto_1fr_auto] items-center text-sm'>

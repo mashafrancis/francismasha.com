@@ -1,5 +1,6 @@
-import { useMemo } from 'react';
-import { Tuple } from '@/types';
+import { useMemo } from 'react'
+
+import { Tuple } from '@/types'
 
 export function useRandomColorPair(): Tuple<string> {
 	const colors: Tuple<string>[] = [
@@ -7,9 +8,9 @@ export function useRandomColorPair(): Tuple<string> {
 		['#EAF4F4', '#FFEDD8'],
 		['#F9E5D8', '#EDE9F6'],
 		['#EEEBFF', '#FFFAD4'],
-	];
+	]
 
-	const random = Math.round(Math.random() * (colors.length - 1));
+	const random = Math.round(Math.random() * (colors.length - 1))
 
-	return useMemo(() => colors[random], []);
+	return useMemo(() => colors[random], [])
 }

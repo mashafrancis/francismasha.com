@@ -1,6 +1,6 @@
-import Script from 'next/script';
+import Script from 'next/script'
 
-import metadata from '@/app/metadata';
+import metadata from '@/app/metadata'
 
 const PlausibleScript = () => {
 	return (
@@ -19,12 +19,12 @@ const PlausibleScript = () => {
         `}
 			</Script>
 		</>
-	);
-};
+	)
+}
 
-export default PlausibleScript;
+export default PlausibleScript
 
 // https://plausible.io/docs/custom-event-goals
 export const logEvent = (eventName: any, ...rest: any[]) => {
-	return window.plausible?.(eventName, ...rest);
-};
+	return window.plausible?.(eventName, ...rest)
+}

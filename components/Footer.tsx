@@ -1,9 +1,9 @@
-import { memo, ReactElement } from 'react';
+import { ReactElement, memo } from 'react'
 
-import SocialIcons from './SocialIcons';
+import SocialIcons from './SocialIcons'
 
 function Footer(): ReactElement {
-	const year: number = new Date().getFullYear();
+	const year: number = new Date().getFullYear()
 
 	return (
 		<footer className='bottom-0 z-20 mt-4 flex w-full flex-col items-center py-8 font-light dark:text-white lg:py-8'>
@@ -12,7 +12,7 @@ function Footer(): ReactElement {
 				&copy; {year} Francis Masha Konde.
 			</span>
 		</footer>
-	);
+	)
 }
 
-export default memo(Footer);
+export default memo(Footer)

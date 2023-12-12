@@ -1,4 +1,4 @@
-import localFont from 'next/font/local';
+import localFont from 'next/font/local'
 
 export const fontSans = localFont({
 	src: [
@@ -29,16 +29,16 @@ export const fontSans = localFont({
 		},
 	],
 	variable: '--font-sf-text',
-});
+})
 
 export const fontMono = localFont({
 	src: '../public/fonts/GeistMono-Regular.otf',
 	variable: '--font-heading',
 	display: 'swap',
-});
+})
 
 export const fontHeading = localFont({
 	src: '../public/fonts/CalSans-SemiBold.woff2',
 	variable: '--font-heading',
 	display: 'swap',
-});
+})

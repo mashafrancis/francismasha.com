@@ -1,11 +1,13 @@
-'use client';
+'use client'
 
-import { lockScroll } from '@/lib/utils/lockScroll';
-import cn from '@/lib/classnames';
-import styles from '@/css/mobile-menu.module.css';
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import useDelayedRender from 'use-delayed-render';
+import Link from 'next/link'
+
+import { useEffect, useState } from 'react'
+
+import styles from '@/css/mobile-menu.module.css'
+import cn from '@/lib/classnames'
+import { lockScroll } from '@/lib/utils/lockScroll'
+import useDelayedRender from 'use-delayed-render'
 
 function MenuIcon(props: JSX.IntrinsicElements['svg']) {
 	return (
@@ -32,7 +34,7 @@ function MenuIcon(props: JSX.IntrinsicElements['svg']) {
 				strokeLinejoin='round'
 			/>
 		</svg>
-	);
+	)
 }
 
 function CrossIcon(props: JSX.IntrinsicElements['svg']) {
@@ -53,36 +55,36 @@ function CrossIcon(props: JSX.IntrinsicElements['svg']) {
 			<path d='M18 6L6 18' />
 			<path d='M6 6l12 12' />
 		</svg>
-	);
+	)
 }
 
 const MobileNav = () => {
-	const [navShow, setNavShow] = useState(false);
+	const [navShow, setNavShow] = useState(false)
 	const { mounted: isMenuMounted, rendered: isMenuRendered } = useDelayedRender(
 		navShow,
 		{
 			enterDelay: 20,
 			exitDelay: 300,
-		},
-	);
+		}
+	)
 
 	const onToggleNav = () => {
 		setNavShow((status) => {
 			if (status) {
-				document.body.style.overflow = '';
+				document.body.style.overflow = ''
 			} else {
-				document.body.style.overflow = 'hidden';
+				document.body.style.overflow = 'hidden'
 			}
-			return !status;
-		});
-		lockScroll();
-	};
+			return !status
+		})
+		lockScroll()
+	}
 
 	useEffect(() => {
 		return function cleanup() {
-			document.body.style.overflow = '';
-		};
-	}, []);
+			document.body.style.overflow = ''
+		}
+	}, [])
 
 	return (
 		<div className='sm:hidden'>
@@ -100,7 +102,7 @@ const MobileNav = () => {
 					className={cn(
 						styles.menu,
 						'absolute flex flex-col bg-white antialiased transition duration-500 dark:bg-gray-900',
-						isMenuRendered && styles.menuRendered,
+						isMenuRendered && styles.menuRendered
 					)}
 				>
 					<li
@@ -171,7 +173,7 @@ const MobileNav = () => {
 				</ul>
 			)}
 		</div>
-	);
-};
+	)
+}
 
-export default MobileNav;
+export default MobileNav

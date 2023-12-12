@@ -1,36 +1,35 @@
-import { notFound } from 'next/navigation';
-import Balancer from 'react-wrap-balancer';
+import { notFound } from 'next/navigation'
 
-import { Mdx } from '@/components/Mdx';
-import ScrollProgressBar from '@/components/ScrollProgressBar';
-import ScrollTopAndComment from '@/components/ScrollTopAndComment';
-import PageTitle from '@/components/PageTitle';
-
-import { allOneLocs } from 'contentlayer/generated';
-import { Grid } from '@/components/Grid';
+import { Grid } from '@/components/Grid'
+import { Mdx } from '@/components/Mdx'
+import PageTitle from '@/components/PageTitle'
+import ScrollProgressBar from '@/components/ScrollProgressBar'
+import ScrollTopAndComment from '@/components/ScrollTopAndComment'
+import { getAllOneLoc } from '@/lib/db/oneLoc'
+import Balancer from 'react-wrap-balancer'
 
 interface Props {
 	params: {
-		slug: string;
-	};
+		slug: string
+	}
 }
 
 export async function generateStaticParams() {
-	return allOneLocs.map((snippet) => ({
+	return getAllOneLoc().map((snippet) => ({
 		slug: snippet.slug,
-	}));
+	}))
 }
 
 export default async function OneLoc({ params }: Props) {
-	const snippet = allOneLocs.find(
-		({ slug }) => slug.split('/').at(-1) === params.slug,
-	);
+	const snippet = getAllOneLoc().find(
+		({ slug }) => slug.split('/').at(-1) === params.slug
+	)
 
 	if (!snippet) {
-		notFound();
+		notFound()
 	}
 
-	const { title, body } = snippet;
+	const { metadata, content } = snippet
 
 	return (
 		<section>
@@ -39,13 +38,13 @@ export default async function OneLoc({ params }: Props) {
 			<Grid>
 				<div className='col-span-full dark:prose-invert lg:col-span-10 lg:col-start-2'>
 					<PageTitle>
-						<Balancer>{title}</Balancer>
+						<Balancer>{metadata.title}</Balancer>
 					</PageTitle>
 				</div>
 			</Grid>
 			<Grid>
-				<Mdx code={body.code} />
+				<Mdx code={content} />
 			</Grid>
 		</section>
-	);
+	)
 }

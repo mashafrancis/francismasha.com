@@ -1,27 +1,34 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import { useMDXComponent } from 'next-contentlayer/hooks';
-import Pre from './Pre';
-import { H1, H2, H3 } from './Form';
+import Image from 'next/image'
+import Link from 'next/link'
 
-const CustomLink = (props) => {
-	const href = props.href;
-	const isInternalLink = href && (href.startsWith('/') || href.startsWith('#'));
+import { createElement } from 'react'
 
-	if (isInternalLink) {
+import { slugify } from '@/lib/utils/misc'
+import { MDXRemote } from 'next-mdx-remote/rsc'
+import { highlight } from 'sugar-high'
+
+import Pre from './Pre'
+
+function CustomLink(props) {
+	let href = props.href
+
+	if (href.startsWith('/')) {
 		return (
 			<Link href={href} {...props}>
 				{props.children}
 			</Link>
-		);
+		)
 	}
 
-	// eslint-disable-next-line jsx-a11y/anchor-has-content
-	return <a target='_blank' rel='noopener noreferrer' {...props} />;
-};
+	if (href.startsWith('#')) {
+		return <a {...props} />
+	}
+
+	return <a target='_blank' rel='noopener noreferrer' {...props} />
+}
 
 function RoundedImage(props) {
-	return <Image alt={props.alt} className='rounded-lg' {...props} />;
+	return <Image alt={props.alt} className='rounded-lg' {...props} />
 }
 
 function Callout(props) {
@@ -30,29 +37,54 @@ function Callout(props) {
 			<div className='mr-4 flex w-4 items-center'>{props.emoji}</div>
 			<div className='callout w-full'>{props.children}</div>
 		</div>
-	);
+	)
+}
+
+function createHeading(level: number) {
+	// eslint-disable-next-line react/display-name
+	return ({ children }) => {
+		let slug = slugify(children)
+		return createElement(
+			`h${level}`,
+			{ id: slug },
+			[
+				createElement('a', {
+					href: `#${slug}`,
+					key: `link-${slug}`,
+					className: 'anchor',
+				}),
+			],
+			children
+		)
+	}
+}
+
+function Code({ children, ...props }) {
+	let codeHTML = highlight(children)
+	return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />
 }
 
 const components = {
 	Image: RoundedImage,
 	a: CustomLink,
 	pre: Pre,
-	h1: H1,
-	h2: H2,
-	h3: H3,
+	h1: createHeading(1),
+	h2: createHeading(2),
+	h3: createHeading(3),
+	h4: createHeading(4),
+	h5: createHeading(5),
+	h6: createHeading(6),
+	code: Code,
 	Callout,
-};
-
-interface MdxProps {
-	code: string;
 }
 
-export function Mdx({ code }: MdxProps) {
-	const Component = useMDXComponent(code);
-
+export function Mdx(props) {
 	return (
 		<article className='prose prose-neutral prose-quoteless col-span-full dark:prose-invert lg:col-span-10 lg:col-start-2'>
-			<Component components={{ ...components }} />
+			<MDXRemote
+				{...props}
+				components={{ ...components, ...(props.components || {}) }}
+			/>
 		</article>
-	);
+	)
 }

@@ -1,19 +1,23 @@
-import { Header } from '@/components/Form';
-import { allMes } from 'contentlayer/generated';
-import Image from 'next/image';
-import StackList from '@/components/list/StackList';
-import { WorkStack } from '@/config/stack';
-import { Mdx } from '@/components/Mdx';
-import type { Metadata } from 'next';
-import Resume from '@/components/Resume';
+import type { Metadata } from 'next'
+import Image from 'next/image'
+
+import { Header } from '@/components/Form'
+import { Mdx } from '@/components/Mdx'
+import Resume from '@/components/Resume'
+import StackList from '@/components/list/StackList'
+import { WorkStack } from '@/config/stack'
+import { getAllMe } from '@/lib/db/allMe'
 
 export const metadata: Metadata = {
 	title: 'About',
 	description: 'SRE Engineer at Safaricom.',
-};
+}
 
 export default function About() {
-	const { avatar, name, occupation, resume, company, body } = allMes[0];
+	const {
+		content,
+		metadata: { avatar, name, occupation, resume, company },
+	} = getAllMe()[0]
 
 	return (
 		<section className='fade-in divide-y divide-gray-200 dark:divide-gray-500'>
@@ -38,7 +42,7 @@ export default function About() {
 				</div>
 
 				<div className='dark:prose-dark prose max-w-none pb-0 pt-0 xl:col-span-2'>
-					<Mdx code={body.code} />
+					<Mdx code={content} />
 					<span className='mt-8'>
 						<Resume resume={resume} />
 						<h2 className='mb-4 mt-8 text-2xl font-semibold dark:text-white'>
@@ -49,5 +53,5 @@ export default function About() {
 				</div>
 			</div>
 		</section>
-	);
+	)
 }

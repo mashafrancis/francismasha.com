@@ -1,17 +1,19 @@
-'use client';
+'use client'
 
-import { ArrowIcon } from '@/components/Icons';
-import clsx from 'clsx';
-import type { Variant } from 'framer-motion';
-import { motion, useReducedMotion } from 'framer-motion';
-import type { LinkProps } from 'next/link';
-import Link from 'next/link';
-import type { ComponentProps, ReactNode } from 'react';
+import type { LinkProps } from 'next/link'
+import Link from 'next/link'
 
-import { H6 } from './Form';
-import { ElementState, useElementState } from '@/lib/hooks/useElementState';
+import type { ComponentProps, ReactNode } from 'react'
 
-type ArrowIconProps = ComponentProps<typeof ArrowIcon>;
+import { ArrowIcon } from '@/components/Icons'
+import { ElementState, useElementState } from '@/lib/hooks/useElementState'
+import clsx from 'clsx'
+import type { Variant } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
+
+import { H6 } from './Form'
+
+type ArrowIconProps = ComponentProps<typeof ArrowIcon>
 
 const arrowVariants: Record<
 	ArrowIconProps['direction'],
@@ -63,24 +65,24 @@ const arrowVariants: Record<
 		},
 		active: { x: 12, y: -12 },
 	},
-};
+}
 
 type ArrowButtonBaseProps = {
-	direction?: ArrowIconProps['direction'];
-	children?: ReactNode | ReactNode[];
-	className?: string;
-	textSize?: 'small' | 'medium';
-};
+	direction?: ArrowIconProps['direction']
+	children?: ReactNode | ReactNode[]
+	className?: string
+	textSize?: 'small' | 'medium'
+}
 
 type ArrowLinkProps = {
-	direction?: ArrowIconProps['direction'];
+	direction?: ArrowIconProps['direction']
 } & ({ href?: string; to?: never } | { href?: never; to: LinkProps['href'] }) &
-	ArrowButtonBaseProps & { prefetch?: 'intent' | 'render' | 'none' };
+	ArrowButtonBaseProps & { prefetch?: 'intent' | 'render' | 'none' }
 
 type ArrowButtonProps = {
-	onClick?: JSX.IntrinsicElements['button']['onClick'];
-	type?: JSX.IntrinsicElements['button']['type'];
-} & ArrowButtonBaseProps;
+	onClick?: JSX.IntrinsicElements['button']['onClick']
+	type?: JSX.IntrinsicElements['button']['type']
+} & ArrowButtonBaseProps
 
 // whileFocus takes precedence over whileTap, so while we can't move the arrow
 // on focus (or on tap), we can still color and animate the circle.
@@ -93,18 +95,18 @@ function getBaseProps({ textSize, className }: ArrowButtonBaseProps) {
 				'text-xl': textSize === 'medium',
 				'text-lg': textSize === 'small',
 			},
-			className,
+			className
 		),
-	};
+	}
 }
 
 function ArrowButtonContent({
 	children,
 	direction = 'right',
 }: Pick<ArrowButtonBaseProps, 'children' | 'direction'>) {
-	const circumference = 28 * 2 * Math.PI;
-	const strokeDasharray = `${circumference} ${circumference}`;
-	const shouldReduceMotion = useReducedMotion();
+	const circumference = 28 * 2 * Math.PI
+	const strokeDasharray = `${circumference} ${circumference}`
+	const shouldReduceMotion = useReducedMotion()
 
 	return (
 		<>
@@ -162,12 +164,12 @@ function ArrowButtonContent({
 				<span className='ml-8 text-xl font-medium'>{children}</span>
 			) : null}
 		</>
-	);
+	)
 }
 
 function ArrowButton({ onClick, type, ...props }: ArrowButtonProps) {
-	const [ref, state] = useElementState();
-	const shouldReduceMotion = useReducedMotion();
+	const [ref, state] = useElementState()
+	const shouldReduceMotion = useReducedMotion()
 
 	return (
 		<motion.button
@@ -180,14 +182,14 @@ function ArrowButton({ onClick, type, ...props }: ArrowButtonProps) {
 		>
 			<ArrowButtonContent {...props} />
 		</motion.button>
-	);
+	)
 }
 
-const MotionLink = motion(Link);
+const MotionLink = motion(Link)
 
 function ArrowLink({ to, href, ...props }: ArrowLinkProps) {
-	const [ref, state] = useElementState();
-	const shouldReduceMotion = useReducedMotion();
+	const [ref, state] = useElementState()
+	const shouldReduceMotion = useReducedMotion()
 
 	if (href) {
 		return (
@@ -200,7 +202,7 @@ function ArrowLink({ to, href, ...props }: ArrowLinkProps) {
 			>
 				<ArrowButtonContent {...props} />
 			</motion.a>
-		);
+		)
 	} else if (to) {
 		return (
 			<MotionLink
@@ -212,9 +214,9 @@ function ArrowLink({ to, href, ...props }: ArrowLinkProps) {
 			>
 				<ArrowButtonContent {...props} />
 			</MotionLink>
-		);
+		)
 	}
-	throw new Error('Must provide either to or href to ArrowLink');
+	throw new Error('Must provide either to or href to ArrowLink')
 }
 
 function BackLink({
@@ -222,14 +224,14 @@ function BackLink({
 	className,
 	children,
 }: { to: LinkProps['href'] } & Pick<ArrowLinkProps, 'className' | 'children'>) {
-	const [ref, state] = useElementState();
-	const shouldReduceMotion = useReducedMotion();
+	const [ref, state] = useElementState()
+	const shouldReduceMotion = useReducedMotion()
 	return (
 		<MotionLink
 			href={to}
 			className={clsx(
 				'text-primary flex items-center space-x-4 focus:outline-none',
-				className,
+				className
 			)}
 			ref={ref}
 			animate={state}
@@ -243,7 +245,7 @@ function BackLink({
 			</motion.span>
 			<H6>{children}</H6>
 		</MotionLink>
-	);
+	)
 }
 
-export { ArrowButton, ArrowLink, BackLink };
+export { ArrowButton, ArrowLink, BackLink }

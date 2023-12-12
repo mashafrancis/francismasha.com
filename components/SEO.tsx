@@ -1,26 +1,27 @@
-'use client';
+'use client'
 
-import Head from 'next/head';
-import metadata from '../app/metadata';
-import { usePathname } from 'next/navigation';
+import Head from 'next/head'
+import { usePathname } from 'next/navigation'
+
+import metadata from '../app/metadata'
 
 interface CommonSEOProps {
-	title: string;
-	description: string;
-	ogType: string;
+	title: string
+	description: string
+	ogType: string
 	ogImage:
 		| string
 		| {
-				'@type': string;
-				url: string;
-		  }[];
-	twImage: string;
-	canonicalUrl?: string;
+				'@type': string
+				url: string
+		  }[]
+	twImage: string
+	canonicalUrl?: string
 }
 
 const CommonSEO = (props: CommonSEOProps) => {
-	const { title, description, ogType, ogImage, twImage, canonicalUrl } = props;
-	const pathname = usePathname();
+	const { title, description, ogType, ogImage, twImage, canonicalUrl } = props
+	const pathname = usePathname()
 	return (
 		<Head>
 			<title>{title}</title>
@@ -48,18 +49,18 @@ const CommonSEO = (props: CommonSEOProps) => {
 				href={canonicalUrl ? canonicalUrl : `${metadata.siteUrl}${pathname}`}
 			/>
 		</Head>
-	);
-};
+	)
+}
 
 interface PageSEOProps {
-	title: string;
-	description: string;
-	imageUrl?: string;
+	title: string
+	description: string
+	imageUrl?: string
 }
 
 export const PageSEO = ({ title, description, imageUrl }: PageSEOProps) => {
-	const ogImageUrl = metadata.siteUrl + (imageUrl ?? metadata.socialBanner);
-	const twImageUrl = metadata.siteUrl + (imageUrl ?? metadata.socialBanner);
+	const ogImageUrl = metadata.siteUrl + (imageUrl ?? metadata.socialBanner)
+	const twImageUrl = metadata.siteUrl + (imageUrl ?? metadata.socialBanner)
 
 	return (
 		<CommonSEO
@@ -69,13 +70,13 @@ export const PageSEO = ({ title, description, imageUrl }: PageSEOProps) => {
 			ogImage={ogImageUrl}
 			twImage={twImageUrl}
 		/>
-	);
-};
+	)
+}
 
 export const TagSEO = ({ title, description }: PageSEOProps) => {
-	const ogImageUrl = metadata.siteUrl + metadata.socialBanner;
-	const twImageUrl = metadata.siteUrl + metadata.socialBanner;
-	const pathname = usePathname();
+	const ogImageUrl = metadata.siteUrl + metadata.socialBanner
+	const twImageUrl = metadata.siteUrl + metadata.socialBanner
+	const pathname = usePathname()
 	return (
 		<>
 			<CommonSEO
@@ -94,8 +95,8 @@ export const TagSEO = ({ title, description }: PageSEOProps) => {
 				/>
 			</Head>
 		</>
-	);
-};
+	)
+}
 
 // interface BlogSeoProps extends PostFrontMatter {
 // 	authorDetails?: AuthorFrontMatter[];

@@ -1,18 +1,19 @@
-'use client';
+'use client'
 
-import { useTheme } from 'next-themes';
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
+
+import { useTheme } from 'next-themes'
 
 const ThemeSwitch = () => {
-	const [mounted, setMounted] = useState<boolean>(false);
-	const { theme, setTheme, resolvedTheme } = useTheme();
+	const [mounted, setMounted] = useState<boolean>(false)
+	const { theme, setTheme, resolvedTheme } = useTheme()
 
 	// When mounted on client, now we can show the UI
-	useEffect(() => setMounted(true), []);
+	useEffect(() => setMounted(true), [])
 
 	const ThemeSwitch = () => {
-		setTheme(theme === 'dark' || resolvedTheme === 'dark' ? 'light' : 'dark');
-	};
+		setTheme(theme === 'dark' || resolvedTheme === 'dark' ? 'light' : 'dark')
+	}
 
 	return (
 		<button
@@ -20,7 +21,7 @@ const ThemeSwitch = () => {
 			type='button'
 			className='flex h-9 w-9 items-center justify-center rounded-lg bg-gray-200 ring-gray-300 transition-all hover:ring-2 dark:bg-gray-600'
 			onClick={() => {
-				ThemeSwitch();
+				ThemeSwitch()
 			}}
 		>
 			{mounted && (
@@ -49,7 +50,7 @@ const ThemeSwitch = () => {
 				</svg>
 			)}
 		</button>
-	);
-};
+	)
+}
 
-export default ThemeSwitch;
+export default ThemeSwitch

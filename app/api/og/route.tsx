@@ -1,16 +1,17 @@
-import { ImageResponse } from '@vercel/og';
-import { NextRequest } from 'next/server';
+import { NextRequest } from 'next/server'
 
-export const runtime = 'edge';
+import { ImageResponse } from '@vercel/og'
+
+export const runtime = 'edge'
 
 const font = fetch(
-	new URL('/public/fonts/sf-pro-text-regular-webfont.woff2', import.meta.url),
-).then((res) => res.arrayBuffer());
+	new URL('/public/fonts/sf-pro-text-regular-webfont.woff2', import.meta.url)
+).then((res) => res.arrayBuffer())
 
 export async function GET(req: NextRequest): Promise<Response | ImageResponse> {
-	const { searchParams } = req.nextUrl;
-	const postTitle = searchParams.get('title');
-	const fontData = await font;
+	const { searchParams } = req.nextUrl
+	const postTitle = searchParams.get('title')
+	const fontData = await font
 
 	return new ImageResponse(
 		(
@@ -53,6 +54,6 @@ export async function GET(req: NextRequest): Promise<Response | ImageResponse> {
 					style: 'normal',
 				},
 			],
-		},
-	);
+		}
+	)
 }

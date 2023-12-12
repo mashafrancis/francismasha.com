@@ -1,36 +1,37 @@
-'use client';
+'use client'
 
-import { ReactNode, useRef, useState } from 'react';
-import { MdContentCopy as CopyIcon } from 'react-icons/md';
-import { fontMono } from '@/lib/fonts';
+import { ReactNode, useRef, useState } from 'react'
+
+import { fontMono } from '@/lib/fonts'
+import { MdContentCopy as CopyIcon } from 'react-icons/md'
 
 interface Props {
-	children: ReactNode;
+	children: ReactNode
 }
 
 const Pre = ({ children }: Props) => {
-	const textInput = useRef<HTMLDivElement>(null);
-	const [hovered, setHovered] = useState<boolean>(false);
-	const [copied, setCopied] = useState<boolean>(false);
+	const textInput = useRef<HTMLDivElement>(null)
+	const [hovered, setHovered] = useState<boolean>(false)
+	const [copied, setCopied] = useState<boolean>(false)
 
 	const onEnter = () => {
-		setHovered(true);
-	};
+		setHovered(true)
+	}
 
 	const onExit = () => {
-		setHovered(false);
-		setCopied(false);
-	};
+		setHovered(false)
+		setCopied(false)
+	}
 
 	const onCopy = async () => {
 		if (textInput.current !== null) {
-			setCopied(true);
-			await navigator.clipboard.writeText(textInput.current.textContent!);
+			setCopied(true)
+			await navigator.clipboard.writeText(textInput.current.textContent!)
 			setTimeout(() => {
-				setCopied(false);
-			}, 2000);
+				setCopied(false)
+			}, 2000)
 		}
-	};
+	}
 
 	return (
 		<div
@@ -54,7 +55,7 @@ const Pre = ({ children }: Props) => {
 				{children}
 			</pre>
 		</div>
-	);
-};
+	)
+}
 
-export default Pre;
+export default Pre

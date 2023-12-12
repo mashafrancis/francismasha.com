@@ -1,18 +1,18 @@
-'use client';
+'use client'
 
-import { Header } from '@/components/Form';
-import { useRandomColorPair } from '@/lib/hooks/useRandomColorPair';
-import { Fragment, ReactElement, useState } from 'react';
-import { PopupModal } from 'react-calendly';
-import { RoughNotation } from 'react-rough-notation';
+import { Fragment, ReactElement, useState } from 'react'
 
-import { contact } from '@/config/contact';
+import { Header } from '@/components/Form'
+import { contact } from '@/config/contact'
+import { useRandomColorPair } from '@/lib/hooks/useRandomColorPair'
+import { PopupModal } from 'react-calendly'
+import { RoughNotation } from 'react-rough-notation'
 
 export default function Contact(): ReactElement {
-	const [randomColor] = useRandomColorPair();
-	const [isCalendarOpen, setCalendarOpen] = useState<boolean>(false);
+	const [randomColor] = useRandomColorPair()
+	const [isCalendarOpen, setCalendarOpen] = useState<boolean>(false)
 
-	const handleCalendarState = () => setCalendarOpen((prevState) => !prevState);
+	const handleCalendarState = () => setCalendarOpen((prevState) => !prevState)
 
 	return (
 		<Fragment>
@@ -56,5 +56,5 @@ export default function Contact(): ReactElement {
 				}
 			/>
 		</Fragment>
-	);
+	)
 }

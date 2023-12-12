@@ -1,5 +1,6 @@
-import Script from 'next/script';
-import metadata from '@/app/metadata';
+import Script from 'next/script'
+
+import metadata from '@/app/metadata'
 
 const GAScript = () => {
 	return (
@@ -20,21 +21,21 @@ const GAScript = () => {
         `}
 			</Script>
 		</>
-	);
-};
+	)
+}
 
-export default GAScript;
+export default GAScript
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/events
 export const logEvent = (
 	action: any,
 	category: any,
 	label: any,
-	value: any,
+	value: any
 ) => {
 	window.gtag?.('event', action, {
 		event_category: category,
 		event_label: label,
 		value: value,
-	});
-};
+	})
+}

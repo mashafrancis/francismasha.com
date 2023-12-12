@@ -1,10 +1,11 @@
-import Link from 'next/link';
-import { slugify } from '@/lib/utils/misc';
+import Link from 'next/link'
+
+import { slugify } from '@/lib/utils/misc'
 
 export interface Props {
-	text: string;
-	size?: 'sm' | 'lg';
-	count?: string;
+	text: string
+	size?: 'sm' | 'lg'
+	count?: string
 }
 
 export default function Tag({ text, size = 'sm', count }: Props) {
@@ -36,5 +37,5 @@ export default function Tag({ text, size = 'sm', count }: Props) {
 				)}
 			</Link>
 		</li>
-	);
+	)
 }

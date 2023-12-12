@@ -77,4 +77,4 @@ export const Colors: Record<string, string> = {
 	resume: '#EEEBFF',
 	opensource: '#26BE00',
 	tutorial: '#4dd0e1',
-};
+}

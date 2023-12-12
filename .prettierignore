@@ -3,7 +3,7 @@
 \.build
 \.cache
 \.editorconfig
-.env.local
+.env
 \.git
 \.gitignore
 \.ignore
@@ -12,3 +12,4 @@ node_modules
 #package.json
 \.next
 public
+dist

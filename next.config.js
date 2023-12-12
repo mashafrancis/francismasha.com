@@ -1,12 +1,11 @@
-const { get } = require('@vercel/edge-config');
-const { withContentlayer } = require('next-contentlayer');
+const { get } = require('@vercel/edge-config')
 
-const runtimeCaching = require('next-pwa/cache');
+const runtimeCaching = require('next-pwa/cache')
 const withPWA = require('next-pwa')({
 	dest: 'public',
 	disable: process.env.NODE_ENV === 'development',
 	runtimeCaching,
-});
+})
 
 // You might need to insert additional domains in script-src if you are using external services
 const ContentSecurityPolicy = `
@@ -18,7 +17,7 @@ const ContentSecurityPolicy = `
   connect-src *;
   font-src 'self';
   frame-src giscus.app www.youtube.com calendly.com drawsql.app
-`;
+`
 
 const securityHeaders = [
 	// https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
@@ -56,7 +55,7 @@ const securityHeaders = [
 		key: 'Permissions-Policy',
 		value: 'camera=(), microphone=(), geolocation=()',
 	},
-];
+]
 
 /**
  * @type {import('next/dist/next-server/server/config').NextConfig}
@@ -75,9 +74,9 @@ const nextConfig = {
 	},
 	redirects() {
 		try {
-			return get('redirects');
+			return get('redirects')
 		} catch {
-			return [];
+			return []
 		}
 	},
 	headers() {
@@ -86,7 +85,7 @@ const nextConfig = {
 				source: '/(.*)',
 				headers: securityHeaders,
 			},
-		];
+		]
 	},
 	rewrites: async () => [
 		{
@@ -94,6 +93,6 @@ const nextConfig = {
 			destination: process.env.NEXT_PUBLIC_HEIMDALL_API,
 		},
 	],
-};
+}
 
-module.exports = withPWA(withContentlayer(nextConfig));
+module.exports = nextConfig

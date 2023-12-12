@@ -1,24 +1,22 @@
-'use client';
+'use client'
 
-import { useEffect } from 'react';
-import { Boundary } from '@/components/Boundary';
-import Button from '@/components/Button';
+import { useEffect } from 'react'
 
-export default function Error({ error, reset }: any) {
+export default function Error({
+	error,
+	reset,
+}: {
+	error: Error
+	reset: () => void
+}) {
 	useEffect(() => {
-		console.log('logging error:', error);
-	}, [error]);
+		// Log the error to an error reporting service
+		console.error(error)
+	}, [error])
 
 	return (
-		<Boundary labels={['Error UI']} color='pink'>
-			<div className='space-y-4'>
-				<div className='text-vercel-pink'>
-					<strong className='font-bold'>Error:</strong> {error?.message}
-				</div>
-				<div>
-					<Button onClick={() => reset()}>Try Again</Button>
-				</div>
-			</div>
-		</Boundary>
-	);
+		<div>
+			<p>Oh no, something went wrong... maybe refresh?</p>
+		</div>
+	)
 }

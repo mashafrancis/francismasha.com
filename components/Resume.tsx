@@ -1,10 +1,10 @@
-'use client';
+'use client'
 
-import { RoughNotation } from 'react-rough-notation';
-import { useRandomColorPair } from '@/lib/hooks/useRandomColorPair';
+import { useRandomColorPair } from '@/lib/hooks/useRandomColorPair'
+import { RoughNotation } from 'react-rough-notation'
 
 export default function Resume({ resume }: { resume: string }) {
-	const [resumeColor] = useRandomColorPair();
+	const [resumeColor] = useRandomColorPair()
 
 	return (
 		<a
@@ -24,5 +24,5 @@ export default function Resume({ resume }: { resume: string }) {
 				Resume
 			</RoughNotation>
 		</a>
-	);
+	)
 }

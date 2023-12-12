@@ -107,4 +107,4 @@ export default {
 			shortname: process.env.NEXT_PUBLIC_DISQUS_SHORTNAME,
 		},
 	},
-};
+}

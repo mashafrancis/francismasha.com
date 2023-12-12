@@ -5,6 +5,6 @@ const headerNavLinks = [
 	{ href: 'https://notes.francismasha.com', name: 'Notes' },
 	{ href: '/about', name: 'About' },
 	{ href: '/contact', name: 'Contact' },
-];
+]
 
-export default headerNavLinks;
+export default headerNavLinks

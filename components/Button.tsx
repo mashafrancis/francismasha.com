@@ -1,11 +1,12 @@
-import clsx from 'clsx';
-import { ButtonHTMLAttributes } from 'react';
+import { ButtonHTMLAttributes } from 'react'
+
+import clsx from 'clsx'
 
 export default function Button({
 	kind = 'default',
 	...props
 }: ButtonHTMLAttributes<HTMLButtonElement> & {
-	kind?: 'default' | 'error';
+	kind?: 'default' | 'error'
 }) {
 	return (
 		<button
@@ -17,5 +18,5 @@ export default function Button({
 			})}
 			{...props}
 		/>
-	);
+	)
 }

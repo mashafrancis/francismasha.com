@@ -35,5 +35,5 @@ export function DefaultTags() {
 				name='robots'
 			/>
 		</>
-	);
+	)
 }

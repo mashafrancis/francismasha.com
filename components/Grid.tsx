@@ -1,20 +1,21 @@
-import clsx from 'clsx';
-import type { ElementType, ReactNode } from 'react';
-import { forwardRef } from 'react';
+import type { ElementType, ReactNode } from 'react'
+import { forwardRef } from 'react'
+
+import clsx from 'clsx'
 
 interface GridProps {
-	children: ReactNode;
-	overflow?: boolean;
-	className?: string;
-	as?: ElementType;
-	nested?: boolean;
-	rowGap?: boolean;
-	featured?: boolean;
+	children: ReactNode
+	overflow?: boolean
+	className?: string
+	as?: ElementType
+	nested?: boolean
+	rowGap?: boolean
+	featured?: boolean
 }
 
 const Grid = forwardRef<HTMLElement, GridProps>(function Grid(
 	{ children, className, as: Tag = 'div', featured, nested, rowGap },
-	ref,
+	ref
 ) {
 	return (
 		<Tag
@@ -38,13 +39,13 @@ const Grid = forwardRef<HTMLElement, GridProps>(function Grid(
 						'mx-auto max-w-7xl': !nested,
 						'gap-y-4 lg:gap-y-6': rowGap,
 					},
-					className,
+					className
 				)}
 			>
 				{children}
 			</div>
 		</Tag>
-	);
-});
+	)
+})
 
-export { Grid };
+export { Grid }
