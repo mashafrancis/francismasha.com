@@ -156,13 +156,8 @@ export default async function Blog({ params }: Props) {
 let incrementViews = cache(increment)
 
 async function Views({ slug }: { slug: string }) {
-	let views: { slug: string; count: number }[]
-	try {
-		views = await getViewsCount()
-		await incrementViews(slug)
-	} catch (error) {
-		console.error(error)
-	}
+	let views = await getViewsCount()
+	await incrementViews(slug)
 
 	return <ViewCounter allViews={views} slug={slug} />
 }

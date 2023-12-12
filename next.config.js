@@ -1,12 +1,5 @@
 const { get } = require('@vercel/edge-config')
 
-const runtimeCaching = require('next-pwa/cache')
-const withPWA = require('next-pwa')({
-	dest: 'public',
-	disable: process.env.NODE_ENV === 'development',
-	runtimeCaching,
-})
-
 // You might need to insert additional domains in script-src if you are using external services
 const ContentSecurityPolicy = `
   default-src 'self' vercel.live;
@@ -64,6 +57,9 @@ const nextConfig = {
 	reactStrictMode: true,
 	swcMinify: true,
 	pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
+	experimental: {
+		ppr: true,
+	},
 	images: {
 		remotePatterns: [
 			{
