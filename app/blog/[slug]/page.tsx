@@ -125,12 +125,12 @@ export default async function Blog({ params }: Props) {
 					{date}
 				</div>
 				<div className='mx-2 h-[0.2em] bg-neutral-50 dark:bg-neutral-600' />
-				<p className='min-w-32 mt-2 font-mono text-sm tracking-tighter text-neutral-600 dark:text-neutral-400 md:mt-0'>
+				<div className='min-w-32 mt-2 font-mono text-sm tracking-tighter text-neutral-600 dark:text-neutral-400 md:mt-0'>
 					{`${readTime?.text} | `}
 					<Suspense fallback={<p className='h-5' />}>
 						<Views slug={post.slug} />
 					</Suspense>
-				</p>
+				</div>
 			</div>
 			<Grid>
 				<Mdx source={content} />
