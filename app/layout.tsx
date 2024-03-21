@@ -50,7 +50,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 		<html
 			lang='en'
 			className={clsx(
-				'scroll-smooth bg-white text-black dark:bg-[#111010] dark:text-white',
+				'scroll-smooth bg-white text-black dark:bg-[#111010] dark:text-white antialiased',
 				GeistSans.variable,
 				GeistMono.variable
 			)}
