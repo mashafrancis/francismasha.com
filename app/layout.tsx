@@ -1,19 +1,19 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next'
 
-import { ReactNode } from "react";
+import type { ReactNode } from 'react'
 
-import Footer from "@/components/Footer";
-import { Grid } from "@/components/Grid";
-import LayoutNavigation from "@/components/LayoutNavigation";
-import { ThemeProvider } from "@/components/ThemeProvider";
-import Analytics from "@/components/analytics";
-import "@/css/fonts.css";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import clsx from "clsx";
-import { GeistMono } from "geist/font/mono";
-import { GeistSans } from "geist/font/sans";
+import Footer from '@/components/Footer'
+import { Grid } from '@/components/Grid'
+import LayoutNavigation from '@/components/LayoutNavigation'
+import { ThemeProvider } from '@/components/ThemeProvider'
+import Analytics from '@/components/analytics'
+import '@/css/fonts.css'
+import { SpeedInsights } from '@vercel/speed-insights/next'
+import clsx from 'clsx'
+import { GeistMono } from 'geist/font/mono'
 
-import "./global.css";
+import './global.css'
+import { fontSans } from '@/lib/fonts'
 
 const title = "Masha Portfolio";
 const description = "A software engineer learning";
@@ -51,7 +51,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       lang="en"
       className={clsx(
         "scroll-smooth bg-white text-black dark:bg-[#111010] dark:text-white antialiased",
-        GeistSans.variable,
+        fontSans.variable,
         GeistMono.variable,
       )}
     >

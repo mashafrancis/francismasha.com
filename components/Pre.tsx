@@ -1,9 +1,9 @@
 "use client";
 
-import { ReactNode, useRef, useState } from "react";
+import type { ReactNode } from 'react'
+import { useRef, useState } from 'react'
 
-import { fontMono } from "@/lib/fonts";
-import { MdContentCopy as CopyIcon } from "react-icons/md";
+import { MdContentCopy as CopyIcon } from 'react-icons/md'
 
 interface Props {
   children: ReactNode;
@@ -51,9 +51,7 @@ const Pre = ({ children }: Props) => {
         />
       )}
 
-      <pre className={`${fontMono.className} font-mono not-italic`}>
-        {children}
-      </pre>
+      <pre className="font-mono not-italic">{children}</pre>
     </div>
   );
 };
