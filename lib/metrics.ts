@@ -1,8 +1,16 @@
-import { unstable_noStore as noStore } from 'next/cache'
+import { unstable_noStore as noStore } from "next/cache";
+import { sql } from "@/lib/postgres";
 
-import { queryBuilder } from 'lib/planetscale'
+export async function getViewsCount(): Promise<
+  { slug: string; count: number }[]
+> {
+  if (!process.env.POSTGRES_URL) {
+    return [];
+  }
 
-export async function getViewsCount() {
-	noStore()
-	return queryBuilder.selectFrom('views').select(['slug', 'count']).execute()
+  noStore();
+  return sql`
+      SELECT slug, count
+      FROM views
+  `;
 }

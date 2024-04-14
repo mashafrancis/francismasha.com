@@ -1,3 +1,3 @@
-export type Maybe<T> = T | null
+export type Maybe<T> = T | null;
 
-export type Tuple<T> = [T, T]
+export type Tuple<T> = [T, T];

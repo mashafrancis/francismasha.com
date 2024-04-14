@@ -1,23 +1,15 @@
-'use server'
+"use server";
 
-import { unstable_noStore as noStore } from 'next/cache'
+import { unstable_noStore as noStore } from "next/cache";
 
-import { queryBuilder } from '@/lib/planetscale'
+import { sql } from "@/lib/postgres";
 
 export async function increment(slug: string) {
-	noStore()
-	const data = await queryBuilder
-		.selectFrom('views')
-		.where('slug', '=', slug)
-		.select(['count'])
-		.execute()
-
-	const views = !data.length ? 0 : Number(data[0].count)
-
-	await queryBuilder
-		.insertInto('views')
-		.values({ slug, count: 1 })
-		.onDuplicateKeyUpdate({ count: views + 1 })
-		.execute()
-	return
+  noStore();
+  await sql`
+      INSERT INTO views (slug, count)
+      VALUES (${slug}, 1) ON CONFLICT (slug)
+    DO
+      UPDATE SET count = views.count + 1
+  `;
 }

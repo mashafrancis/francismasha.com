@@ -1,16 +1,16 @@
-import { Contact, contact } from './contact'
-import { Project, projects } from './projects'
+import { Contact, contact } from "./contact";
+import { Project, projects } from "./projects";
 
 interface Config {
-	contact: Contact
-	projects: Project[]
+  contact: Contact;
+  projects: Project[];
 }
 
 const config: Config = {
-	contact,
-	projects,
-}
+  contact,
+  projects,
+};
 
-export const POSTS_PER_PAGE = 10
+export const POSTS_PER_PAGE = 10;
 
-export default config
+export default config;

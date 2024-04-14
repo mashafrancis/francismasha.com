@@ -1,14 +1,14 @@
-import { ReactElement, ReactNode } from 'react'
+import type { ReactElement, ReactNode } from 'react'
 
 interface ConditionalProps {
-	condition: boolean
-	children: ReactNode
+  condition: boolean;
+  children: ReactNode;
 }
 
 function Conditional(props: ConditionalProps): ReactElement {
-	const { condition, children } = props
+  const { condition, children } = props;
 
-	return <>{Boolean(condition) && children}</>
+  return <>{Boolean(condition) && children}</>;
 }
 
-export default Conditional
+export default Conditional;
