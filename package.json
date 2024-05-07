@@ -5,14 +5,15 @@
   "email": "francismasha96@gmail.com",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbo",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "sitemap": "tsx ./scripts/generate-sitemap.ts",
     "serve": "next start",
     "analyze": "cross-env ANALYZE=true next build",
-    "lint": "next lint --fix --dir pages --dir components --dir lib --dir layouts --dir scripts",
     "format": "biome format --write .",
+    "format:fix": "biome format --apply .",
+    "lint:fix": "biome lint --apply .",
     "preview": "pnpm build && pnpm serve",
     "setup": "node lib/setup.mjs"
   },

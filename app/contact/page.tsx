@@ -1,18 +1,18 @@
-"use client";
+'use client'
 
-import { Fragment, ReactElement, useState } from "react";
+import { Fragment, ReactElement, useState } from 'react'
 
-import { Header } from "@/components/Form";
-import { contact } from "@/config/contact";
-import { useRandomColorPair } from "@/lib/hooks/useRandomColorPair";
-import { PopupModal } from "react-calendly";
-import { RoughNotation } from "react-rough-notation";
+import { Header } from '@/components/Form'
+import { contact } from '@/config/contact'
+import { useRandomColorPair } from '@/lib/hooks/useRandomColorPair'
+import { PopupModal } from 'react-calendly'
+import { RoughNotation } from 'react-rough-notation'
 
 export default function Contact(): ReactElement {
-  const [randomColor] = useRandomColorPair();
-  const [isCalendarOpen, setCalendarOpen] = useState<boolean>(false);
+  const [randomColor] = useRandomColorPair()
+  const [isCalendarOpen, setCalendarOpen] = useState<boolean>(false)
 
-  const handleCalendarState = () => setCalendarOpen((prevState) => !prevState);
+  const handleCalendarState = () => setCalendarOpen((prevState) => !prevState)
 
   return (
     <Fragment>
@@ -51,10 +51,10 @@ export default function Contact(): ReactElement {
         onModalClose={handleCalendarState}
         open={isCalendarOpen}
         rootElement={
-          typeof window !== "undefined" &&
-          (document.getElementById("contact") as HTMLElement)
+          typeof window !== 'undefined' &&
+          (document.getElementById('contact') as HTMLElement)
         }
       />
     </Fragment>
-  );
+  )
 }

@@ -1,16 +1,16 @@
-import { Children, ReactElement, useCallback } from "react";
+import { Children, ReactElement, useCallback } from 'react'
 
-import { Stack, StackInfo } from "@/config/stack";
+import { Stack, StackInfo } from '@/config/stack'
 
 interface StackListProps {
-  stack: Stack[];
+  stack: Stack[]
 }
 
 function StackList(props: StackListProps): ReactElement {
-  const { stack } = props;
+  const { stack } = props
 
   const renderList = useCallback((stack) => {
-    const { value, color } = StackInfo[stack];
+    const { value, color } = StackInfo[stack]
 
     return (
       <span
@@ -20,14 +20,14 @@ function StackList(props: StackListProps): ReactElement {
       >
         {value}
       </span>
-    );
-  }, []);
+    )
+  }, [])
 
   return (
     <div className="mb-2 flex flex-wrap">
       {Children.toArray(stack.map(renderList))}
     </div>
-  );
+  )
 }
 
-export default StackList;
+export default StackList

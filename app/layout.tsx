@@ -11,48 +11,49 @@ import '@/css/fonts.css'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import clsx from 'clsx'
 import { GeistMono } from 'geist/font/mono'
+import { GeistSans } from 'geist/font/sans'
 
 import './global.css'
-import { fontSans } from '@/lib/fonts'
 
-const title = "Masha Portfolio";
-const description = "A software engineer learning";
+const title = 'Masha Portfolio'
+const description = 'A software engineer learning'
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://safaricomobservability.com/"),
+  metadataBase: new URL('https://safaricomobservability.com/'),
   title: {
     default: title,
     template: `%s | ${title}`,
   },
   description,
-  manifest: "/manifest.json",
+  manifest: '/manifest.json',
   keywords: [
-    "Monitoring",
-    "Open Source app analytics",
-    "safaricom",
-    "safaricom observability",
+    'Monitoring',
+    'Open Source app analytics',
+    'safaricom',
+    'safaricom observability',
   ],
   icons: {
-    icon: "/static/favicons/favicon.ico",
-    shortcut: "/static/favicons/favicon-16x16.png",
-    apple: "/static/favicons/apple-touch-icon.png",
+    icon: '/static/favicons/favicon.ico',
+    shortcut: '/static/favicons/favicon-16x16.png',
+    apple: '/static/favicons/apple-touch-icon.png',
   },
   appleWebApp: {
     title,
     capable: true,
-    statusBarStyle: "black-translucent",
-    startupImage: ["/apple-touch-icon.png"],
+    statusBarStyle: 'black-translucent',
+    startupImage: ['/apple-touch-icon.png'],
   },
-};
+}
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="en"
       className={clsx(
-        "scroll-smooth bg-white text-black dark:bg-[#111010] dark:text-white antialiased",
-        fontSans.variable,
+        'scroll-smooth bg-white text-black dark:bg-[#111010] dark:text-white antialiased',
+        // fontSans.variable,
         GeistMono.variable,
+        GeistSans.variable,
       )}
     >
       <body className="duration-400 bg-white text-black antialiased transition dark:bg-gray-800 dark:text-white">
@@ -73,5 +74,5 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </ThemeProvider>
       </body>
     </html>
-  );
+  )
 }

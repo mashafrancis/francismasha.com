@@ -3,387 +3,393 @@
 @tailwind utilities;
 
 ::selection {
-	background-color: #47a3f3;
-	color: #fefefe;
+    background-color: #47a3f3;
+    color: #fefefe;
 }
 
 @layer base {
-	:root {
-		--sh-class: #2d5e9d;
-		--sh-identifier: #354150;
-		--sh-sign: #8996a3;
-		--sh-string: #007f7a;
-		--sh-keyword: #e02518;
-		--sh-comment: #a19595;
-		--sh-jsxliterals: #6266d1;
-	}
+    :root {
+        --sh-class: #2d5e9d;
+        --sh-identifier: #354150;
+        --sh-sign: #8996a3;
+        --sh-string: #007f7a;
+        --sh-keyword: #e02518;
+        --sh-comment: #a19595;
+        --sh-jsxliterals: #6266d1;
+    }
 
-	.dark {
-		--sh-class: #4c97f8;
-		--sh-identifier: white;
-		--sh-keyword: #f47067;
-		--sh-string: #0fa295;
-	}
+    .dark {
+        --sh-class: #4c97f8;
+        --sh-identifier: white;
+        --sh-keyword: #f47067;
+        --sh-string: #0fa295;
+    }
 }
 
-html {
-	min-width: 360px;
+html,
+body,
+#__next,
+.main {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-size: 90%;
+    min-width: 360px;
 }
 
 body {
-	overflow-x: hidden;
+    overflow-x: hidden;
 }
 
 .fade-in {
-	animation: fade-in ease 500ms;
-	animation-iteration-count: 1;
-	animation-fill-mode: forwards;
+    animation: fade-in ease 500ms;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 }
 
 @keyframes fade-in {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .social-icons:last-child .icon {
-	@apply mr-0;
+    @apply mr-0;
 }
 
 .content {
-	@apply !pb-0;
+    @apply !pb-0;
 }
 
 .collapse .view .title {
-	@apply dark:text-white;
+    @apply dark:text-white;
 }
 
 .prose .anchor {
-	@apply invisible absolute no-underline;
+    @apply invisible absolute no-underline;
 
-	margin-left: -1em;
-	padding-right: 0.5em;
-	width: 80%;
-	max-width: 700px;
-	cursor: pointer;
+    margin-left: -1em;
+    padding-right: 0.5em;
+    width: 80%;
+    max-width: 700px;
+    cursor: pointer;
 }
 
 .anchor:hover {
-	@apply visible;
+    @apply visible;
 }
 
 .prose a {
-	@apply decoration-neutral-400 decoration-[0.1em] underline-offset-2 transition-all dark:decoration-neutral-600;
+    @apply decoration-neutral-400 decoration-[0.1em] underline-offset-2 transition-all dark:decoration-neutral-600;
 }
 
 .prose .anchor:after {
-	@apply text-neutral-300 dark:text-neutral-700;
-	content: '#';
+    @apply text-neutral-300 dark:text-neutral-700;
+    content: '#';
 }
 
 .prose *:hover > .anchor {
-	@apply visible;
+    @apply visible;
 }
 
 .prose pre {
-	@apply overflow-x-auto rounded-lg border border-neutral-200 bg-neutral-50 dark:border-neutral-900 dark:bg-neutral-900;
+    @apply overflow-x-auto rounded-lg border border-neutral-200 bg-neutral-50 dark:border-neutral-900 dark:bg-neutral-900;
 }
 
 .prose code {
-	@apply rounded-lg px-1 py-0.5;
+    @apply rounded-lg px-1 py-0.5;
 }
 
 .prose pre code {
-	@apply p-0;
-	border: initial;
-	line-height: 1.5;
+    @apply p-0;
+    border: initial;
+    line-height: 1.5;
 }
 
 .prose code span {
-	@apply font-medium;
+    @apply font-medium;
 }
 
 .prose img {
-	/* Don't apply styles to next/image */
-	@apply m-0;
+    /* Don't apply styles to next/image */
+    @apply m-0;
 }
 
 .prose h2,
 h3,
 h4 {
-	@apply font-medium tracking-tighter !important;
+    @apply font-medium tracking-tighter !important;
 }
 
 .prose strong {
-	@apply font-medium;
+    @apply font-medium;
 }
 
 .prose > :first-child {
-	/* Override removing top margin, causing layout shift */
-	margin-top: 1.25em !important;
-	margin-bottom: 1.25em !important;
+    /* Override removing top margin, causing layout shift */
+    margin-top: 1.25em !important;
+    margin-bottom: 1.25em !important;
 }
 
 pre::-webkit-scrollbar {
-	display: none;
+    display: none;
 }
 
 pre {
-	-ms-overflow-style: none; /* IE and Edge */
-	scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
 }
 
 #wrapper {
-	aspect-ratio: 1.618;
-	/*width: 50vmin;*/
-	position: relative;
+    aspect-ratio: 1.618;
+    /*width: 50vmin;*/
+    position: relative;
 }
 
 #wrapper > .shape {
-	height: 30%;
-	width: 30%;
-	background-color: rgba(255 255 255 / 5%);
-	position: absolute;
-	transition: left, top, height, width, border-radius;
-	transition-duration: 750ms;
-	transition-timing-function: ease-in-out;
+    height: 30%;
+    width: 30%;
+    background-color: rgba(255 255 255 / 5%);
+    position: absolute;
+    transition: left, top, height, width, border-radius;
+    transition-duration: 750ms;
+    transition-timing-function: ease-in-out;
 }
 
 #wrapper > .shape:nth-child(1) {
-	background-color: rgb(176, 190, 197);
-	z-index: 2;
+    background-color: rgb(176, 190, 197);
+    z-index: 2;
 }
 
 #wrapper > .shape:nth-child(2) {
-	background-color: rgb(245, 245, 245);
-	z-index: 2;
+    background-color: rgb(245, 245, 245);
+    z-index: 2;
 }
 
 #wrapper > .shape:nth-child(3) {
-	background-color: rgb(155, 93, 229);
-	z-index: 1;
+    background-color: rgb(155, 93, 229);
+    z-index: 1;
 }
 
 #wrapper > .shape:nth-child(4) {
-	background-color: rgb(241, 91, 181);
-	z-index: 2;
+    background-color: rgb(241, 91, 181);
+    z-index: 2;
 }
 
 #wrapper > .shape:nth-child(5) {
-	background-color: rgb(254, 228, 64);
-	z-index: 2;
+    background-color: rgb(254, 228, 64);
+    z-index: 2;
 }
 
 #wrapper > .shape:nth-child(6) {
-	background-color: rgb(0, 187, 249);
-	z-index: 2;
+    background-color: rgb(0, 187, 249);
+    z-index: 2;
 }
 
 #wrapper > .shape:nth-child(7) {
-	background-color: rgb(0, 245, 212);
-	z-index: 2;
+    background-color: rgb(0, 245, 212);
+    z-index: 2;
 }
 
 #wrapper[data-configuration='1'] > .shape:nth-child(1) {
-	left: 0;
-	top: 0;
-	height: 50%;
-	width: 20%;
+    left: 0;
+    top: 0;
+    height: 50%;
+    width: 20%;
 }
 
 #wrapper[data-configuration='1'] > .shape:nth-child(2) {
-	left: 20%;
-	top: 0;
-	height: 50%;
-	width: 30%;
+    left: 20%;
+    top: 0;
+    height: 50%;
+    width: 30%;
 }
 
 #wrapper[data-configuration='1'] > .shape:nth-child(3) {
-	left: 50%;
-	top: 0;
-	height: 100%;
-	width: 50%;
+    left: 50%;
+    top: 0;
+    height: 100%;
+    width: 50%;
 }
 
 #wrapper[data-configuration='1'] > .shape:nth-child(4) {
-	left: 0;
-	top: 50%;
-	height: 50%;
-	width: 30%;
+    left: 0;
+    top: 50%;
+    height: 50%;
+    width: 30%;
 }
 
 #wrapper[data-configuration='1'] > .shape:nth-child(5) {
-	left: 30%;
-	top: 50%;
-	height: 50%;
-	width: 20%;
+    left: 30%;
+    top: 50%;
+    height: 50%;
+    width: 20%;
 }
 
 #wrapper[data-configuration='1'] > .shape:nth-child(6) {
-	left: 70%;
-	top: 50%;
-	height: 50%;
-	width: 30%;
+    left: 70%;
+    top: 50%;
+    height: 50%;
+    width: 30%;
 }
 
 #wrapper[data-configuration='1'] > .shape:nth-child(7) {
-	left: 85%;
-	top: 75%;
-	height: 25%;
-	width: 15%;
+    left: 85%;
+    top: 75%;
+    height: 25%;
+    width: 15%;
 }
 
 #wrapper[data-configuration='2'] > .shape:nth-child(1) {
-	left: 25%;
-	top: 20%;
-	height: 80%;
-	width: 15%;
+    left: 25%;
+    top: 20%;
+    height: 80%;
+    width: 15%;
 }
 
 #wrapper[data-configuration='2'] > .shape:nth-child(2) {
-	left: 40%;
-	top: 20%;
-	height: 50%;
-	width: 10%;
+    left: 40%;
+    top: 20%;
+    height: 50%;
+    width: 10%;
 }
 
 #wrapper[data-configuration='2'] > .shape:nth-child(3) {
-	left: 50%;
-	top: 0%;
-	height: 100%;
-	width: 25%;
+    left: 50%;
+    top: 0%;
+    height: 100%;
+    width: 25%;
 }
 
 #wrapper[data-configuration='2'] > .shape:nth-child(4) {
-	left: 0%;
-	top: 0%;
-	height: 50%;
-	width: 10%;
+    left: 0%;
+    top: 0%;
+    height: 50%;
+    width: 10%;
 }
 
 #wrapper[data-configuration='2'] > .shape:nth-child(5) {
-	left: 10%;
-	top: 0;
-	height: 70%;
-	width: 15%;
+    left: 10%;
+    top: 0;
+    height: 70%;
+    width: 15%;
 }
 
 #wrapper[data-configuration='2'] > .shape:nth-child(6) {
-	left: 75%;
-	top: 10%;
-	height: 80%;
-	width: 15%;
+    left: 75%;
+    top: 10%;
+    height: 80%;
+    width: 15%;
 }
 
 #wrapper[data-configuration='2'] > .shape:nth-child(7) {
-	left: 90%;
-	top: 40%;
-	height: 60%;
-	width: 10%;
+    left: 90%;
+    top: 40%;
+    height: 60%;
+    width: 10%;
 }
 
 #wrapper[data-configuration='3'] > .shape:nth-child(1) {
-	left: 0;
-	top: 16.5%;
-	height: 32%;
-	width: 20%;
+    left: 0;
+    top: 16.5%;
+    height: 32%;
+    width: 20%;
 }
 
 #wrapper[data-configuration='3'] > .shape:nth-child(2) {
-	left: 20%;
-	top: 2.7%;
-	height: 55%;
-	width: 34%;
+    left: 20%;
+    top: 2.7%;
+    height: 55%;
+    width: 34%;
 }
 
 #wrapper[data-configuration='3'] > .shape:nth-child(3) {
-	left: 38%;
-	top: 0;
-	height: 100%;
-	width: 62%;
+    left: 38%;
+    top: 0;
+    height: 100%;
+    width: 62%;
 }
 
 #wrapper[data-configuration='3'] > .shape:nth-child(4) {
-	left: 0;
-	top: 47.3%;
-	height: 55%;
-	width: 34%;
+    left: 0;
+    top: 47.3%;
+    height: 55%;
+    width: 34%;
 }
 
 #wrapper[data-configuration='3'] > .shape:nth-child(5) {
-	left: 34%;
-	top: 56.4%;
-	height: 32%;
-	width: 20%;
+    left: 34%;
+    top: 56.4%;
+    height: 32%;
+    width: 20%;
 }
 
 #wrapper[data-configuration='3'] > .shape:nth-child(6) {
-	left: 66%;
-	top: 45%;
-	height: 55%;
-	width: 34%;
+    left: 66%;
+    top: 45%;
+    height: 55%;
+    width: 34%;
 }
 
 #wrapper[data-configuration='3'] > .shape:nth-child(7) {
-	left: 80%;
-	top: 68%;
-	height: 32%;
-	width: 20%;
+    left: 80%;
+    top: 68%;
+    height: 32%;
+    width: 20%;
 }
 
 ::-webkit-scrollbar {
-	width: 6px;
+    width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-	background: transparent;
+    background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-	background-color: #b3b3b3;
+    background-color: #b3b3b3;
 }
 
 .dark::-webkit-scrollbar-thumb {
-	background-color: #393e41;
+    background-color: #393e41;
 }
 
 .no-scrollbar::-webkit-scrollbar {
-	display: none;
+    display: none;
 }
 
 .lock-scroll {
-	overflow: hidden !important;
+    overflow: hidden !important;
 }
 
 pre > code {
-	display: grid;
+    display: grid;
 }
 
 code {
-	counter-reset: line;
+    counter-reset: line;
 }
 
 code > .line::before {
-	counter-increment: line;
-	content: counter(line);
+    counter-increment: line;
+    content: counter(line);
 
-	/* Other styling */
-	display: inline-block;
-	width: 1rem;
-	margin-right: 2rem;
-	text-align: right;
-	color: gray;
+    /* Other styling */
+    display: inline-block;
+    width: 1rem;
+    margin-right: 2rem;
+    text-align: right;
+    color: gray;
 }
 
 code[data-line-numbers-max-digits='2'] > .line::before {
-	width: 2rem;
+    width: 2rem;
 }
 
 code[data-line-numbers-max-digits='3'] > .line::before {
-	width: 3rem;
+    width: 3rem;
 }
 
 .prose callout-muted a,
@@ -391,7 +397,7 @@ code[data-line-numbers-max-digits='3'] > .line::before {
 .prose callout-warning a,
 .prose callout-danger a,
 .prose callout-success a {
-	text-decoration: underline;
+    text-decoration: underline;
 }
 
 .prose callout-muted p,
@@ -399,8 +405,8 @@ code[data-line-numbers-max-digits='3'] > .line::before {
 .prose callout-warning p,
 .prose callout-danger p,
 .prose callout-success p {
-	margin-bottom: 0;
-	margin-top: 0;
+    margin-bottom: 0;
+    margin-top: 0;
 }
 
 .prose callout-muted,
@@ -408,8 +414,8 @@ code[data-line-numbers-max-digits='3'] > .line::before {
 .prose callout-warning,
 .prose callout-danger,
 .prose callout-success {
-	margin-bottom: 0;
-	margin-top: 0;
+    margin-bottom: 0;
+    margin-top: 0;
 }
 
 .prose callout-muted,
@@ -417,11 +423,11 @@ code[data-line-numbers-max-digits='3'] > .line::before {
 .prose callout-warning,
 .prose callout-danger,
 .prose callout-success {
-	display: block;
-	border-left: solid 4px;
-	padding: 0.5rem;
-	position: relative;
-	border-radius: 0.5rem;
+    display: block;
+    border-left: solid 4px;
+    padding: 0.5rem;
+    position: relative;
+    border-radius: 0.5rem;
 }
 
 .prose callout-muted,
@@ -434,7 +440,7 @@ code[data-line-numbers-max-digits='3'] > .line::before {
 .prose callout-warning *,
 .prose callout-danger *,
 .prose callout-success * {
-	font-size: 1rem;
+    font-size: 1rem;
 }
 
 .prose callout-muted.aside,
@@ -447,7 +453,7 @@ code[data-line-numbers-max-digits='3'] > .line::before {
 .prose callout-warning.aside *,
 .prose callout-danger.aside *,
 .prose callout-success.aside * {
-	font-size: 1rem;
+    font-size: 1rem;
 }
 
 .prose callout-muted.important,
@@ -460,8 +466,8 @@ code[data-line-numbers-max-digits='3'] > .line::before {
 .prose callout-warning.important *,
 .prose callout-danger.important *,
 .prose callout-success.important * {
-	font-size: 1rem;
-	font-weight: bold;
+    font-size: 1rem;
+    font-weight: bold;
 }
 
 .prose callout-muted:before,
@@ -469,136 +475,136 @@ code[data-line-numbers-max-digits='3'] > .line::before {
 .prose callout-warning:before,
 .prose callout-danger:before,
 .prose callout-success:before {
-	border-top-right-radius: 0.5rem;
-	border-bottom-right-radius: 0.5rem;
-	content: '';
-	position: absolute;
-	inset: 0;
-	opacity: 0.1;
-	pointer-events: none;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.1;
+    pointer-events: none;
 }
 
 .prose .callout > p {
-	margin: 0 !important;
+    margin: 0 !important;
 }
 
 /* the warning yellow is really inaccessible in light mode, so we have a special case for light mode */
 .light .prose callout-warning,
 .light .prose callout-warning ol > li:before {
-	color: #676000;
+    color: #676000;
 }
 
 .light .prose callout-warning:before {
-	background: #ffd800;
+    background: #ffd800;
 }
 
 .prose callout-warning,
 .prose callout-warning ol > li:before {
-	color: #ffd644;
+    color: #ffd644;
 }
 
 .prose callout-warning:before {
-	background: #ffd644;
+    background: #ffd644;
 }
 
 /* the muted gray is really inaccessible in light mode, so we have a special case for light mode */
 .light .prose callout-muted,
 .light .prose callout-muted ol > li:before {
-	color: #4c4b5e;
+    color: #4c4b5e;
 }
 
 .light .prose callout-muted:before {
-	background: #3c3e4d;
+    background: #3c3e4d;
 }
 
 .prose callout-muted,
 .prose callout-muted ol > li:before {
-	color: #b9b9c3;
+    color: #b9b9c3;
 }
 
 .prose callout-muted:before {
-	background: #3c3e4d;
+    background: #3c3e4d;
 }
 
 .prose callout-info,
 .prose callout-info ol > li:before {
-	color: #4b96ff;
+    color: #4b96ff;
 }
 
 .prose callout-info:before {
-	background: #4b96ff;
+    background: #4b96ff;
 }
 
 .prose callout-danger,
 .prose callout-danger ol > li:before {
-	color: #ff4545;
+    color: #ff4545;
 }
 
 .prose callout-danger:before {
-	background: #ff4545;
+    background: #ff4545;
 }
 
 .prose callout-success,
 .prose callout-success ol > li:before {
-	color: #30c85e;
+    color: #30c85e;
 }
 
 .prose callout-success:before {
-	background: #30c85e;
+    background: #30c85e;
 }
 
 .underlined {
-	position: relative;
-	text-decoration: none !important;
-	white-space: nowrap;
+    position: relative;
+    text-decoration: none !important;
+    white-space: nowrap;
 }
 
 .underlined:focus {
-	outline: none;
-	text-decoration: none !important;
+    outline: none;
+    text-decoration: none !important;
 }
 
 .underlined:after {
-	content: '';
-	height: 2px;
-	transform: scaleX(0);
-	transition: transform 0.25s ease;
-	transform-origin: left;
-	left: 0;
-	bottom: -4px;
-	width: 100%;
-	display: block;
-	position: absolute;
-	transition-duration: 400ms;
-	transition-timing-function: ease-in-out;
+    content: '';
+    height: 2px;
+    transform: scaleX(0);
+    transition: transform 0.25s ease;
+    transform-origin: left;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    display: block;
+    position: absolute;
+    transition-duration: 400ms;
+    transition-timing-function: ease-in-out;
 }
 
 .underlined:hover:after,
 .underlined:focus:after,
 .active.underlined:after {
-	background-color: currentColor;
-	transform: scaleX(1);
+    background-color: currentColor;
+    transform: scaleX(1);
 }
 
 @media (prefers-reduced-motion) {
-	.underlined:after {
-		opacity: 0;
-		transition: opacity 0.25s ease;
-	}
+    .underlined:after {
+        opacity: 0;
+        transition: opacity 0.25s ease;
+    }
 
-	.underlined:hover:after,
-	.underlined:focus:after,
-	.active.underlined:after {
-		opacity: 1;
-	}
+    .underlined:hover:after,
+    .underlined:focus:after,
+    .active.underlined:after {
+        opacity: 1;
+    }
 }
 
 #tag-text {
-	@apply relative underline decoration-dashed hover:-top-0.5 focus-visible:p-1;
+    @apply relative underline decoration-dashed hover:-top-0.5 focus-visible:p-1;
 }
 
 #tag-text svg {
-	@apply -mr-2 inline-block h-6 w-6 scale-75 opacity-80;
+    @apply -mr-2 inline-block h-6 w-6 scale-75 opacity-80;
 }
 
 /*svg {*/

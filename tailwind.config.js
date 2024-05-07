@@ -1,24 +1,24 @@
-const { fontFamily } = require("tailwindcss/defaultTheme");
-const colors = require("tailwindcss/colors");
+const { fontFamily } = require('tailwindcss/defaultTheme')
+const colors = require('tailwindcss/colors')
 
 function withOpacity(variableName) {
   return ({ opacityValue }) => {
     if (opacityValue !== undefined) {
-      return `rgba(var(${variableName}), ${opacityValue})`;
+      return `rgba(var(${variableName}), ${opacityValue})`
     }
-    return `rgb(var(${variableName}))`;
-  };
+    return `rgb(var(${variableName}))`
+  }
 }
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  mode: process.env.NODE_ENV ? "jit" : undefined,
+  mode: process.env.NODE_ENV ? 'jit' : undefined,
   content: [
-    "./app/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./content/**/*.mdx",
+    './app/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './content/**/*.mdx',
   ],
-  darkMode: "class",
+  darkMode: 'class',
   corePlugins: {
     aspectRatio: false,
   },
@@ -26,20 +26,20 @@ module.exports = {
     extend: {
       fill: {
         skin: {
-          base: withOpacity("--color-text-base"),
-          accent: withOpacity("--color-accent"),
+          base: withOpacity('--color-text-base'),
+          accent: withOpacity('--color-accent'),
         },
-        transparent: "transparent",
+        transparent: 'transparent',
       },
       fontFamily: {
-        sans: ["var(--font-sans)", ...fontFamily.sans],
-        mono: ["var(--font-geist-mono)", ...fontFamily.mono],
+        sans: ['var(--font-geist-sans)', ...fontFamily.sans],
+        mono: ['var(--font-geist-mono)', ...fontFamily.mono],
       },
       typography: {
         quoteless: {
           css: {
-            "blockquote p:first-of-type::before": { content: "none" },
-            "blockquote p:first-of-type::after": { content: "none" },
+            'blockquote p:first-of-type::before': { content: 'none' },
+            'blockquote p:first-of-type::after': { content: 'none' },
           },
         },
       },
@@ -49,8 +49,8 @@ module.exports = {
     hoverOnlyWhenSupported: true,
   },
   plugins: [
-    require("@tailwindcss/forms"),
-    require("@tailwindcss/typography"),
-    require("autoprefixer"),
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+    require('autoprefixer'),
   ],
-};
+}

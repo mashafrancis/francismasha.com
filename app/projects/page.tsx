@@ -1,10 +1,10 @@
-import Card from "@/components/Card";
-import { Header } from "@/components/Form";
-import config from "@/config";
+import Card from '@/components/Card'
+import { Header } from '@/components/Form'
+import config from '@/config'
 
 export const metadata = {
-  title: "Projects",
-};
+  title: 'Projects',
+}
 
 export default function Projects() {
   return (
@@ -24,5 +24,5 @@ export default function Projects() {
         </div>
       </div>
     </section>
-  );
+  )
 }

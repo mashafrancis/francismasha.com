@@ -1,53 +1,53 @@
-"use client";
+'use client'
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from 'react'
 
-import { fancyId } from "@/lib/utils/misc";
-import clsx from "clsx";
-import { useAnimation } from "framer-motion";
+import { fancyId } from '@/lib/utils/misc'
+import clsx from 'clsx'
+import { useAnimation } from 'framer-motion'
 
-import metadata from "../app/metadata";
-import headerNavLinks from "../data/headerNavLinks";
-import { Grid } from "./Grid";
-import MobileNav from "./MobileNav";
-import ThemeSwitch from "./ThemeSwitch";
+import metadata from '../app/metadata'
+import headerNavLinks from '../data/headerNavLinks'
+import { Grid } from './Grid'
+import MobileNav from './MobileNav'
+import ThemeSwitch from './ThemeSwitch'
 
 const LayoutNavigation = () => {
-  const navRef = useRef<HTMLDivElement>(null);
-  const control = useAnimation();
-  let pathname = usePathname();
-  if (pathname?.includes("/blog/")) {
-    pathname = "/blog";
+  const navRef = useRef<HTMLDivElement>(null)
+  const control = useAnimation()
+  let pathname = usePathname()
+  if (pathname?.includes('/blog/')) {
+    pathname = '/blog'
   }
 
-  if (pathname?.includes("/projects/")) {
-    pathname = "/projects";
+  if (pathname?.includes('/projects/')) {
+    pathname = '/projects'
   }
 
   const addShadowToNavbar = useCallback(async () => {
     if (window.pageYOffset > 10) {
       navRef.current?.classList.add(
-        ...["shadow", "backdrop-blur-xl", "bg-white/70", "dark:bg-gray-900"],
-      );
+        ...['shadow', 'backdrop-blur-xl', 'bg-white/70', 'dark:bg-gray-900'],
+      )
 
-      await control.start("visible");
+      await control.start('visible')
     } else {
       navRef.current?.classList.remove(
-        ...["shadow", "backdrop-blur-xl", "bg-white/70", "dark:bg-gray-900"],
-      );
-      await control.start("hidden");
+        ...['shadow', 'backdrop-blur-xl', 'bg-white/70', 'dark:bg-gray-900'],
+      )
+      await control.start('hidden')
     }
-  }, [control]);
+  }, [control])
 
   useEffect(() => {
-    window.addEventListener("scroll", addShadowToNavbar);
+    window.addEventListener('scroll', addShadowToNavbar)
     return () => {
-      window.removeEventListener("scroll", addShadowToNavbar);
-    };
-  }, [addShadowToNavbar]);
+      window.removeEventListener('scroll', addShadowToNavbar)
+    }
+  }, [addShadowToNavbar])
 
   return (
     <div className="flex flex-col justify-between">
@@ -69,7 +69,7 @@ const LayoutNavigation = () => {
             <div className="ml-[-0.60rem] lg:flex lg:items-center lg:justify-center">
               <ul className="hidden lg:flex">
                 {headerNavLinks.map(({ name, href }) => {
-                  const isActive = href === pathname;
+                  const isActive = href === pathname
                   return (
                     <li key={fancyId()}>
                       <Link
@@ -77,15 +77,15 @@ const LayoutNavigation = () => {
                         href={href}
                         className={clsx(
                           isActive
-                            ? "font-semibold text-gray-800 dark:text-gray-100"
-                            : "font-normal text-gray-600 dark:text-gray-300",
-                          "underlined mx-3 hidden px-1 transition-all md:inline-block",
+                            ? 'font-semibold text-gray-800 dark:text-gray-100'
+                            : 'font-normal text-gray-600 dark:text-gray-300',
+                          'underlined mx-3 hidden px-1 transition-all md:inline-block',
                         )}
                       >
                         {name}
                       </Link>
                     </li>
-                  );
+                  )
                 })}
               </ul>
             </div>
@@ -97,7 +97,7 @@ const LayoutNavigation = () => {
         </Grid>
       </nav>
     </div>
-  );
-};
+  )
+}
 
-export default LayoutNavigation;
+export default LayoutNavigation

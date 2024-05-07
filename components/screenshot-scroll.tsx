@@ -1,26 +1,26 @@
-"use client";
+'use client'
 
-import Image from "next/image";
+import Image from 'next/image'
 
-import { CSSProperties, Children, useCallback } from "react";
+import { CSSProperties, Children, useCallback } from 'react'
 
-import { defaultDimensions } from "@/config/projects";
-import ScrollContainer from "react-indiana-drag-scroll";
+import { defaultDimensions } from '@/config/projects'
+import ScrollContainer from 'react-indiana-drag-scroll'
 
 interface Props {
-  dimensions?: [number, number];
-  screenshots: string[];
+  dimensions?: [number, number]
+  screenshots: string[]
 }
 
 export default function ScreenshotScroll({ dimensions, screenshots }: Props) {
-  const [height, width] = dimensions ?? defaultDimensions;
+  const [height, width] = dimensions ?? defaultDimensions
 
   const renderScreenShotList = useCallback(
     (screenshot: string) => {
       const style: CSSProperties = {
         height,
         width,
-      };
+      }
 
       return (
         <div
@@ -39,10 +39,10 @@ export default function ScreenshotScroll({ dimensions, screenshots }: Props) {
             blurDataURL="data:..."
           />
         </div>
-      );
+      )
     },
     [height, width],
-  );
+  )
 
   return (
     <ScrollContainer
@@ -51,5 +51,5 @@ export default function ScreenshotScroll({ dimensions, screenshots }: Props) {
     >
       {Children.toArray(screenshots.map(renderScreenShotList))}
     </ScrollContainer>
-  );
+  )
 }

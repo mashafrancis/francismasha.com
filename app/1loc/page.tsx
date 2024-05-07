@@ -1,13 +1,13 @@
-import Link from "next/link";
+import Link from 'next/link'
 
-import { H2, Header } from "@/components/Form";
-import { getAllOneLoc } from "@/lib/db/oneLoc";
-import { fancyId } from "@/lib/utils/misc";
+import { H2, Header } from '@/components/Form'
+import { getAllOneLoc } from '@/lib/db/oneLoc'
+import { fancyId } from '@/lib/utils/misc'
 
 export const metadata = {
-  title: "1loc",
-  description: "Javascript utilities in single line of code.",
-};
+  title: '1loc',
+  description: 'Javascript utilities in single line of code.',
+}
 
 function ListTitles(category: string) {
   return (
@@ -21,7 +21,7 @@ function ListTitles(category: string) {
         {getAllOneLoc()
           .filter((snippet) => snippet.metadata.category === category)
           .map(({ slug, metadata: { layout, title } }) => {
-            const modifiedSlug = slug.split("/").at(-1);
+            const modifiedSlug = slug.split('/').at(-1)
             return (
               <li
                 key={fancyId()}
@@ -34,17 +34,17 @@ function ListTitles(category: string) {
                   {title}
                 </Link>
               </li>
-            );
+            )
           })}
       </ol>
     </div>
-  );
+  )
 }
 
 export default async function OneLineOfCodePage() {
   const allCategories = [
     ...new Set(getAllOneLoc().map((snippet) => snippet.metadata.category)),
-  ];
+  ]
 
   return (
     <section className="fade-in">
@@ -56,7 +56,7 @@ export default async function OneLineOfCodePage() {
 
       {allCategories.map((category) => ListTitles(category))}
     </section>
-  );
+  )
 }
 
 // <div className='mt-4 mb-8 grid grid-cols-[auto_1fr_auto] items-center text-sm'>

@@ -1,42 +1,42 @@
-import { NextRequest } from "next/server";
+import { NextRequest } from 'next/server'
 
-import { ImageResponse } from "@vercel/og";
+import { ImageResponse } from '@vercel/og'
 
-export const runtime = "edge";
+export const runtime = 'edge'
 
 const font = fetch(
-  new URL("/public/fonts/sf-pro-text-regular-webfont.woff2", import.meta.url),
-).then((res) => res.arrayBuffer());
+  new URL('/public/fonts/sf-pro-text-regular-webfont.woff2', import.meta.url),
+).then((res) => res.arrayBuffer())
 
 export async function GET(req: NextRequest): Promise<Response | ImageResponse> {
-  const { searchParams } = req.nextUrl;
-  const postTitle = searchParams.get("title");
-  const fontData = await font;
+  const { searchParams } = req.nextUrl
+  const postTitle = searchParams.get('title')
+  const fontData = await font
 
   return new ImageResponse(
     <div
       style={{
-        height: "100%",
-        width: "100%",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "flex-start",
-        justifyContent: "center",
-        backgroundImage: "url(https://francismasha.com/og-bg.svg)",
+        height: '100%',
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        justifyContent: 'center',
+        backgroundImage: 'url(https://francismasha.com/og-bg.svg)',
       }}
     >
       <div
         style={{
           marginLeft: 190,
           marginRight: 190,
-          display: "flex",
+          display: 'flex',
           fontSize: 130,
-          fontFamily: "SF Pro Text",
-          letterSpacing: "-0.05em",
-          fontStyle: "normal",
-          color: "white",
-          lineHeight: "120px",
-          whiteSpace: "pre-wrap",
+          fontFamily: 'SF Pro Text',
+          letterSpacing: '-0.05em',
+          fontStyle: 'normal',
+          color: 'white',
+          lineHeight: '120px',
+          whiteSpace: 'pre-wrap',
         }}
       >
         {postTitle}
@@ -47,11 +47,11 @@ export async function GET(req: NextRequest): Promise<Response | ImageResponse> {
       height: 1080,
       fonts: [
         {
-          name: "SF Pro Text",
+          name: 'SF Pro Text',
           data: fontData,
-          style: "normal",
+          style: 'normal',
         },
       ],
     },
-  );
+  )
 }

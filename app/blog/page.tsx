@@ -1,18 +1,18 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+import type { Metadata } from 'next'
+import Link from 'next/link'
 
-import { Header } from "@/components/Form";
-import { getBlogPosts } from "@/lib/db/blog";
-import { dateSortDesc } from "@/lib/misc";
-import Balancer from "react-wrap-balancer";
+import { Header } from '@/components/Form'
+import { getBlogPosts } from '@/lib/db/blog'
+import { dateSortDesc } from '@/lib/misc'
+import Balancer from 'react-wrap-balancer'
 
 export const metadata: Metadata = {
-  title: "Blog",
-  description: "Read my thoughts on software development, design, and more.",
-};
+  title: 'Blog',
+  description: 'Read my thoughts on software development, design, and more.',
+}
 
 export default async function BlogPage() {
-  let allBlogs = getBlogPosts();
+  const allBlogs = getBlogPosts()
   // const [searchValue, setSearchValue] = useState<string>('');
   // const filteredBlogPosts = allBlogs.filter(({title, summary, tags}) => {
   // 	const searchContent = title + summary + tags.join(' ');
@@ -71,9 +71,9 @@ export default async function BlogPage() {
               >
                 <article className="items-flex-start grid space-y-0 xl:grid-cols-6">
                   <div className="col-span-3 xl:col-span-6">
-                    <p className="text-neutral-900 dark:text-neutral-100 tracking-tight">
+                    <div className="text-neutral-900 text-base dark:text-neutral-100">
                       <Balancer>{title}</Balancer>
-                    </p>
+                    </div>
                     <div className="prose max-w-none text-gray-500 dark:text-gray-400 md:block">
                       {summary}
                     </div>
@@ -84,7 +84,7 @@ export default async function BlogPage() {
           ))}
       </ul>
     </section>
-  );
+  )
 }
 
 // <div className='mt-4 mb-8 grid grid-cols-[auto_1fr_auto] items-center text-sm'>

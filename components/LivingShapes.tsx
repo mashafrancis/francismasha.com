@@ -1,18 +1,17 @@
-"use client";
+'use client'
 
-import { useEffect } from "react";
+import { useEffect } from 'react'
 
 const LivingShapes = () => {
   useEffect(() => {
     const wrapper =
-      typeof window !== "undefined" ? document.getElementById("wrapper") : null;
-    const rand = (min, max) =>
-      Math.floor(Math.random() * (max - min + 1) + min);
+      typeof window !== 'undefined' ? document.getElementById('wrapper') : null
+    const rand = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
     const uniqueRand = (min, max, prev) => {
-      let next = prev;
-      while (prev === next) next = rand(min, max);
-      return next;
-    };
+      let next = prev
+      while (prev === next) next = rand(min, max)
+      return next
+    }
 
     const combinations = [
       { configuration: 1, roundness: 1 },
@@ -21,24 +20,24 @@ const LivingShapes = () => {
       { configuration: 2, roundness: 2 },
       { configuration: 2, roundness: 3 },
       { configuration: 3, roundness: 3 },
-    ];
+    ]
 
-    let prev = 0;
+    let prev = 0
 
     setInterval(() => {
       const index = uniqueRand(0, combinations.length - 1, prev),
-        combination = combinations[index];
+        combination = combinations[index]
 
       // @ts-ignore
       wrapper.dataset.configuration = String(
         combination.configuration as number,
-      );
+      )
       // @ts-ignore
-      wrapper.dataset.roundness = String(combination.roundness as number);
+      wrapper.dataset.roundness = String(combination.roundness as number)
 
-      prev = index;
-    }, 3000);
-  }, []);
+      prev = index
+    }, 3000)
+  }, [])
 
   return (
     <div
@@ -55,7 +54,7 @@ const LivingShapes = () => {
       <div className="shape"></div>
       <div className="shape"></div>
     </div>
-  );
-};
+  )
+}
 
-export default LivingShapes;
+export default LivingShapes

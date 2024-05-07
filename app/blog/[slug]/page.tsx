@@ -17,19 +17,19 @@ import readingTime from 'reading-time'
 
 interface Props {
   params: {
-    slug: string;
-  };
+    slug: string
+  }
 }
 
 export async function generateMetadata({
   params,
 }): Promise<Metadata | undefined> {
-  const post = getBlogPosts().find((post) => post.slug === params.slug);
+  const post = getBlogPosts().find((post) => post.slug === params.slug)
   if (!post) {
-    return;
+    return
   }
   if (!post) {
-    return;
+    return
   }
 
   const {
@@ -37,10 +37,10 @@ export async function generateMetadata({
     date: publishedTime,
     summary: description,
     image,
-  } = post.metadata;
+  } = post.metadata
   const ogImage = image
     ? `https://francismasha.com${image}`
-    : `https://francismasha.com/api/og?title=${title}`;
+    : `https://francismasha.com/api/og?title=${title}`
 
   return {
     title,
@@ -48,7 +48,7 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
-      type: "article",
+      type: 'article',
       publishedTime,
       url: `https://francismasha.com/blog/${post.slug}`,
       images: [
@@ -58,36 +58,36 @@ export async function generateMetadata({
       ],
     },
     twitter: {
-      card: "summary_large_image",
+      card: 'summary_large_image',
       title,
       description,
       images: [ogImage],
     },
-  };
+  }
 }
 
 export default async function Blog({ params }: Props) {
   const post = getBlogPosts().find(
-    ({ slug }) => slug.split("/").at(-1) === params.slug,
-  );
+    ({ slug }) => slug.split('/').at(-1) === params.slug,
+  )
 
   if (!post) {
-    notFound();
+    notFound()
   }
 
   const {
     metadata: { date, title },
     content,
     slug: rawSlug,
-  } = post;
+  } = post
 
-  const slug = rawSlug.split("/").at(-1);
+  const slug = rawSlug.split('/').at(-1)
 
   if (!slug) {
-    notFound();
+    notFound()
   }
 
-  const readTime = readingTime(content);
+  const readTime = readingTime(content)
 
   return (
     <section>
@@ -97,8 +97,8 @@ export default async function Blog({ params }: Props) {
         // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
+            '@context': 'https://schema.org',
+            '@type': 'BlogPosting',
             headline: post.metadata.title,
             datePublished: post.metadata.date,
             dateModified: post.metadata.date,
@@ -108,8 +108,8 @@ export default async function Blog({ params }: Props) {
               : `https://francismasha.com/og?title=${post.metadata.title}`,
             url: `https://francismasha.com/blog/${post.slug}`,
             author: {
-              "@type": "Person",
-              name: "Lee Robinson",
+              '@type': 'Person',
+              name: 'Lee Robinson',
             },
           }),
         }}
@@ -122,7 +122,7 @@ export default async function Blog({ params }: Props) {
       <div className="mb-8 mt-4 grid grid-cols-[auto_1fr_auto] items-center text-sm">
         <div
           className={
-            "rounded-md bg-neutral-100 px-2 py-1 tracking-tighter dark:bg-neutral-600"
+            'rounded-md bg-neutral-100 px-2 py-1 tracking-tighter dark:bg-neutral-600'
           }
         >
           {date}
@@ -153,14 +153,14 @@ export default async function Blog({ params }: Props) {
       {/*	</ul>*/}
       {/*</Grid>*/}
     </section>
-  );
+  )
 }
 
-const incrementViews = cache(increment);
+const incrementViews = cache(increment)
 
 async function Views({ slug }: { slug: string }) {
-  const views = await getViewsCount();
-  await incrementViews(slug);
+  const views = await getViewsCount()
+  await incrementViews(slug)
 
-  return <ViewCounter allViews={views} slug={slug} />;
+  return <ViewCounter allViews={views} slug={slug} />
 }

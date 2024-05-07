@@ -1,23 +1,23 @@
-import type { Metadata } from "next";
-import Image from "next/image";
+import type { Metadata } from 'next'
+import Image from 'next/image'
 
-import { Header } from "@/components/Form";
-import { Mdx } from "@/components/Mdx";
-import Resume from "@/components/Resume";
-import StackList from "@/components/list/StackList";
-import { WorkStack } from "@/config/stack";
-import { getAllMe } from "@/lib/db/allMe";
+import { Header } from '@/components/Form'
+import { Mdx } from '@/components/Mdx'
+import Resume from '@/components/Resume'
+import StackList from '@/components/list/StackList'
+import { WorkStack } from '@/config/stack'
+import { getAllMe } from '@/lib/db/allMe'
 
 export const metadata: Metadata = {
-  title: "About",
-  description: "SRE Engineer at Safaricom.",
-};
+  title: 'About',
+  description: 'SRE Engineer at Safaricom.',
+}
 
 export default function About() {
   const {
     content,
     metadata: { avatar, name, occupation, resume, company },
-  } = getAllMe()[0];
+  } = getAllMe()[0]
 
   return (
     <section className="fade-in divide-y divide-gray-200 dark:divide-gray-500">
@@ -53,5 +53,5 @@ export default function About() {
         </div>
       </div>
     </section>
-  );
+  )
 }

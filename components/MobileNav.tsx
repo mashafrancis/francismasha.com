@@ -1,15 +1,15 @@
-"use client";
+'use client'
 
-import Link from "next/link";
+import Link from 'next/link'
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react'
 
-import styles from "@/css/mobile-menu.module.css";
-import cn from "@/lib/classnames";
-import { lockScroll } from "@/lib/utils/lockScroll";
-import useDelayedRender from "use-delayed-render";
+import styles from '@/css/mobile-menu.module.css'
+import cn from '@/lib/classnames'
+import { lockScroll } from '@/lib/utils/lockScroll'
+import useDelayedRender from 'use-delayed-render'
 
-function MenuIcon(props: JSX.IntrinsicElements["svg"]) {
+function MenuIcon(props: JSX.IntrinsicElements['svg']) {
   return (
     <svg
       className="absolute h-7 w-7 text-gray-900 dark:text-gray-100"
@@ -34,10 +34,10 @@ function MenuIcon(props: JSX.IntrinsicElements["svg"]) {
         strokeLinejoin="round"
       />
     </svg>
-  );
+  )
 }
 
-function CrossIcon(props: JSX.IntrinsicElements["svg"]) {
+function CrossIcon(props: JSX.IntrinsicElements['svg']) {
   return (
     <svg
       className="absolute h-7 w-7 text-gray-900 dark:text-gray-100"
@@ -55,41 +55,41 @@ function CrossIcon(props: JSX.IntrinsicElements["svg"]) {
       <path d="M18 6L6 18" />
       <path d="M6 6l12 12" />
     </svg>
-  );
+  )
 }
 
 const MobileNav = () => {
-  const [navShow, setNavShow] = useState(false);
+  const [navShow, setNavShow] = useState(false)
   const { mounted: isMenuMounted, rendered: isMenuRendered } = useDelayedRender(
     navShow,
     {
       enterDelay: 20,
       exitDelay: 300,
     },
-  );
+  )
 
   const onToggleNav = () => {
     setNavShow((status) => {
       if (status) {
-        document.body.style.overflow = "";
+        document.body.style.overflow = ''
       } else {
-        document.body.style.overflow = "hidden";
+        document.body.style.overflow = 'hidden'
       }
-      return !status;
-    });
-    lockScroll();
-  };
+      return !status
+    })
+    lockScroll()
+  }
 
   useEffect(() => {
     return function cleanup() {
-      document.body.style.overflow = "";
-    };
-  }, []);
+      document.body.style.overflow = ''
+    }
+  }, [])
 
   return (
     <div className="sm:hidden">
       <button
-        className={cn(styles.burger, "visible md:hidden")}
+        className={cn(styles.burger, 'visible md:hidden')}
         aria-label="Toggle menu"
         type="button"
         onClick={onToggleNav}
@@ -101,14 +101,14 @@ const MobileNav = () => {
         <ul
           className={cn(
             styles.menu,
-            "absolute flex flex-col bg-white antialiased transition duration-500 dark:bg-gray-900",
+            'absolute flex flex-col bg-white antialiased transition duration-500 dark:bg-gray-900',
             isMenuRendered && styles.menuRendered,
           )}
         >
           <li
             onClick={onToggleNav}
             className="border-b border-gray-300 px-8 text-lg font-medium text-gray-900 dark:border-gray-700 dark:text-gray-100"
-            style={{ transitionDelay: "150ms" }}
+            style={{ transitionDelay: '150ms' }}
           >
             <Link href="/" className="flex w-auto pb-4">
               Home
@@ -117,7 +117,7 @@ const MobileNav = () => {
           <li
             onClick={onToggleNav}
             className="border-b border-gray-300 px-8 text-lg font-medium text-gray-900 dark:border-gray-700 dark:text-gray-100"
-            style={{ transitionDelay: "175ms" }}
+            style={{ transitionDelay: '175ms' }}
           >
             <Link href="/projects" className="flex w-auto pb-4">
               Projects
@@ -126,7 +126,7 @@ const MobileNav = () => {
           <li
             onClick={onToggleNav}
             className="border-b border-gray-300 px-8 text-lg font-medium text-gray-900 dark:border-gray-700 dark:text-gray-100"
-            style={{ transitionDelay: "200ms" }}
+            style={{ transitionDelay: '200ms' }}
           >
             <Link href="/blog" className="flex w-auto pb-4">
               Blog
@@ -135,7 +135,7 @@ const MobileNav = () => {
           <li
             onClick={onToggleNav}
             className="border-b border-gray-300 px-8 text-lg font-medium text-gray-900 dark:border-gray-700 dark:text-gray-100"
-            style={{ transitionDelay: "200ms" }}
+            style={{ transitionDelay: '200ms' }}
           >
             <Link href="/1loc" className="flex w-auto pb-4">
               1loc
@@ -143,7 +143,7 @@ const MobileNav = () => {
           </li>
           <li
             className="border-b border-gray-300 px-8 text-lg font-medium text-gray-900 dark:border-gray-700 dark:text-gray-100"
-            style={{ transitionDelay: "250ms" }}
+            style={{ transitionDelay: '250ms' }}
           >
             <Link
               href="https://notes.francismasha.com"
@@ -155,7 +155,7 @@ const MobileNav = () => {
           <li
             onClick={onToggleNav}
             className="border-b border-gray-300 px-8 text-lg font-medium text-gray-900 dark:border-gray-700 dark:text-gray-100"
-            style={{ transitionDelay: "300ms" }}
+            style={{ transitionDelay: '300ms' }}
           >
             <Link href="/about" className="flex w-auto pb-4">
               About
@@ -164,7 +164,7 @@ const MobileNav = () => {
           <li
             onClick={onToggleNav}
             className="border-b border-gray-300 px-8 text-lg font-medium text-gray-900 dark:border-gray-700 dark:text-gray-100"
-            style={{ transitionDelay: "350ms" }}
+            style={{ transitionDelay: '350ms' }}
           >
             <Link href="/contact" className="flex w-auto pb-4">
               Contact
@@ -173,7 +173,7 @@ const MobileNav = () => {
         </ul>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default MobileNav;
+export default MobileNav

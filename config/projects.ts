@@ -1,113 +1,113 @@
-import { Maybe, Tuple } from "@/types";
+import { Maybe, Tuple } from '@/types'
 
-import { Stack } from "./stack";
+import { Stack } from './stack'
 
 export type Deployment = {
-  web?: string;
-  android?: string;
-  ios?: string;
-  api?: string;
-};
+  web?: string
+  android?: string
+  ios?: string
+  api?: string
+}
 
 export interface SubProject {
-  title: string;
-  description: string;
-  repository?: Maybe<string>;
-  deployment?: Deployment;
+  title: string
+  description: string
+  repository?: Maybe<string>
+  deployment?: Deployment
 }
 
 export type BannerImage = {
-  src: string;
-  blurDataUrl: string;
-};
+  src: string
+  blurDataUrl: string
+}
 
-export const defaultDimensions: Tuple<number> = [450, 220];
+export const defaultDimensions: Tuple<number> = [450, 220]
 
 export interface Project {
-  title: string;
-  slug: string;
-  website?: string;
-  banner: string;
-  description: string;
-  shortDescription?: string;
-  repository: Maybe<string>;
-  stack: Stack[];
-  dimensions?: Tuple<number>; // Tuple of [height, width]
-  screenshots: string[];
-  deployment: Deployment;
-  subProjects: SubProject[];
+  title: string
+  slug: string
+  website?: string
+  banner: string
+  description: string
+  shortDescription?: string
+  repository: Maybe<string>
+  stack: Stack[]
+  dimensions?: Tuple<number> // Tuple of [height, width]
+  screenshots: string[]
+  deployment: Deployment
+  subProjects: SubProject[]
 }
 
 export const projects: Project[] = [
   {
-    title: "Heimdall",
-    slug: "heimdall",
-    banner: "/static/projects/heimdall/banner.png",
-    website: "https://heimdall.francismasha.com",
+    title: 'Heimdall',
+    slug: 'heimdall',
+    banner: '/static/projects/heimdall/banner.png',
+    website: 'https://heimdall.francismasha.com',
     description: `A utility tool for getting insights into your API's performance with global monitoring and analysis.`,
     shortDescription:
-      "Almond is a design sustainable solutions for hydroponic farmers and growing fresh food.",
+      'Almond is a design sustainable solutions for hydroponic farmers and growing fresh food.',
     repository: null,
     stack: [Stack.typescript, Stack.react, Stack.nextjs, Stack.tailwind],
     dimensions: [360, 640],
     screenshots: [
-      "https://res.cloudinary.com/almondgreen/image/upload/v1674294477/Portfolio/sanctissima/sanctissima-1_tv0dni.png",
-      "https://res.cloudinary.com/almondgreen/image/upload/v1674294479/Portfolio/sanctissima/sanctissima-2_v78twe.png",
-      "https://res.cloudinary.com/almondgreen/image/upload/v1674294476/Portfolio/sanctissima/sanctissima-3_draaa1.png",
+      'https://res.cloudinary.com/almondgreen/image/upload/v1674294477/Portfolio/sanctissima/sanctissima-1_tv0dni.png',
+      'https://res.cloudinary.com/almondgreen/image/upload/v1674294479/Portfolio/sanctissima/sanctissima-2_v78twe.png',
+      'https://res.cloudinary.com/almondgreen/image/upload/v1674294476/Portfolio/sanctissima/sanctissima-3_draaa1.png',
     ],
     deployment: {
-      web: "https://heimdall.francismasha.com",
+      web: 'https://heimdall.francismasha.com',
     },
     subProjects: [
       {
-        title: "notes",
-        description: "Personal notes and coding tips",
-        repository: "",
+        title: 'notes',
+        description: 'Personal notes and coding tips',
+        repository: '',
         deployment: {
-          web: "https://notes.francismasha.com/",
+          web: 'https://notes.francismasha.com/',
         },
       },
     ],
   },
   {
-    title: "Sanctissima",
-    slug: "sanctissima",
-    banner: "/static/projects/sanctissima/banner.png",
-    website: "https://francismasha.com",
+    title: 'Sanctissima',
+    slug: 'sanctissima',
+    banner: '/static/projects/sanctissima/banner.png',
+    website: 'https://francismasha.com',
     description: `A blog website design to interact with the church youth, through question and answer, accompanied with short articles.`,
     shortDescription:
-      "Almond is a design sustainable solutions for hydroponic farmers and growing fresh food.",
+      'Almond is a design sustainable solutions for hydroponic farmers and growing fresh food.',
     repository: null,
     stack: [Stack.typescript, Stack.react, Stack.nextjs, Stack.tailwind],
     dimensions: [360, 640],
     screenshots: [
-      "https://res.cloudinary.com/almondgreen/image/upload/v1674294477/Portfolio/sanctissima/sanctissima-1_tv0dni.png",
-      "https://res.cloudinary.com/almondgreen/image/upload/v1674294479/Portfolio/sanctissima/sanctissima-2_v78twe.png",
-      "https://res.cloudinary.com/almondgreen/image/upload/v1674294476/Portfolio/sanctissima/sanctissima-3_draaa1.png",
+      'https://res.cloudinary.com/almondgreen/image/upload/v1674294477/Portfolio/sanctissima/sanctissima-1_tv0dni.png',
+      'https://res.cloudinary.com/almondgreen/image/upload/v1674294479/Portfolio/sanctissima/sanctissima-2_v78twe.png',
+      'https://res.cloudinary.com/almondgreen/image/upload/v1674294476/Portfolio/sanctissima/sanctissima-3_draaa1.png',
     ],
     deployment: {
-      web: "https://sanctissima.co.ke",
+      web: 'https://sanctissima.co.ke',
     },
     subProjects: [
       {
-        title: "notes",
-        description: "Personal notes and coding tips",
-        repository: "",
+        title: 'notes',
+        description: 'Personal notes and coding tips',
+        repository: '',
         deployment: {
-          web: "https://notes.francismasha.com/",
+          web: 'https://notes.francismasha.com/',
         },
       },
     ],
   },
   {
-    title: "Dynatrace reporting tool",
-    slug: "dt-edge",
-    banner: "/static/projects/dt-edge/banner.png",
-    website: "#",
+    title: 'Dynatrace reporting tool',
+    slug: 'dt-edge',
+    banner: '/static/projects/dt-edge/banner.png',
+    website: '#',
     description:
-      "Better known internally as dt-edge, is a reporting tool built on top of Safaricom dynatrace APIs. This enables different teams to schedule generated reports for different entities such as host usage, cpu utilization, memory capacity, among others.",
+      'Better known internally as dt-edge, is a reporting tool built on top of Safaricom dynatrace APIs. This enables different teams to schedule generated reports for different entities such as host usage, cpu utilization, memory capacity, among others.',
     shortDescription:
-      "A reporting tool built on top of Safaricom dynatrace APIs.",
+      'A reporting tool built on top of Safaricom dynatrace APIs.',
     repository: null,
     stack: [
       Stack.typescript,
@@ -122,37 +122,37 @@ export const projects: Project[] = [
     ],
     dimensions: [360, 640],
     screenshots: [
-      "https://res.cloudinary.com/almondgreen/image/upload/v1667115349/Portfolio/dt-edge/dt-edge-1_elner5.png",
-      "https://res.cloudinary.com/almondgreen/image/upload/v1667115354/Portfolio/dt-edge/dt-edge-3_nahir6.png",
-      "https://res.cloudinary.com/almondgreen/image/upload/v1667115354/Portfolio/dt-edge/dt-edge-4_eg1qki.png",
-      "https://res.cloudinary.com/almondgreen/image/upload/v1667115357/Portfolio/dt-edge/dt-edge-5_yis4lm.png",
-      "https://res.cloudinary.com/almondgreen/image/upload/v1667115356/Portfolio/dt-edge/dt-edge-2_hvc0wu.png",
+      'https://res.cloudinary.com/almondgreen/image/upload/v1667115349/Portfolio/dt-edge/dt-edge-1_elner5.png',
+      'https://res.cloudinary.com/almondgreen/image/upload/v1667115354/Portfolio/dt-edge/dt-edge-3_nahir6.png',
+      'https://res.cloudinary.com/almondgreen/image/upload/v1667115354/Portfolio/dt-edge/dt-edge-4_eg1qki.png',
+      'https://res.cloudinary.com/almondgreen/image/upload/v1667115357/Portfolio/dt-edge/dt-edge-5_yis4lm.png',
+      'https://res.cloudinary.com/almondgreen/image/upload/v1667115356/Portfolio/dt-edge/dt-edge-2_hvc0wu.png',
     ],
     deployment: {
-      web: "#",
-      api: "https://www.dynatrace.com/support/help/dynatrace-api",
+      web: '#',
+      api: 'https://www.dynatrace.com/support/help/dynatrace-api',
     },
     subProjects: [
       {
-        title: "Dynatrace Reporting tool API",
+        title: 'Dynatrace Reporting tool API',
         description:
-          "These were built using Java Springboot application. The main purpose is to serialize and reshape the data fetched from Dynatrace API.",
+          'These were built using Java Springboot application. The main purpose is to serialize and reshape the data fetched from Dynatrace API.',
       },
       {
-        title: "Reports scheduler app",
+        title: 'Reports scheduler app',
         description:
-          "The scheduler app generates reports for various teams within the business and sends periodically depending on the time set by the team.",
+          'The scheduler app generates reports for various teams within the business and sends periodically depending on the time set by the team.',
       },
     ],
   },
   {
-    title: "Almond hydroponics",
-    slug: "almond-hydroponics",
-    banner: "/static/projects/almond/banner.png",
-    website: "#",
+    title: 'Almond hydroponics',
+    slug: 'almond-hydroponics',
+    banner: '/static/projects/almond/banner.png',
+    website: '#',
     description: `Almond is a design sustainable solutions for hydroponic farmers, empowering them to grow fresh, clean, and local food in their communities around the globe.`,
     shortDescription:
-      "Almond is a design sustainable solutions for hydroponic farmers and growing fresh food.",
+      'Almond is a design sustainable solutions for hydroponic farmers and growing fresh food.',
     repository: null,
     stack: [
       Stack.typescript,
@@ -166,46 +166,46 @@ export const projects: Project[] = [
     ],
     screenshots: [],
     deployment: {
-      web: "#",
+      web: '#',
     },
     subProjects: [],
   },
   {
-    title: "Personal portfolio",
-    slug: "portfolio",
-    banner: "/static/projects/portfolio/banner.png",
-    website: "https://francismasha.com",
+    title: 'Personal portfolio',
+    slug: 'portfolio',
+    banner: '/static/projects/portfolio/banner.png',
+    website: 'https://francismasha.com',
     description: `Simple portfolio web site to know about me, what I like to do and other fun stuff about coding and my personal notes made while working on some projects.`,
     shortDescription:
-      "Almond is a design sustainable solutions for hydroponic farmers and growing fresh food.",
+      'Almond is a design sustainable solutions for hydroponic farmers and growing fresh food.',
     repository: null,
     stack: [Stack.typescript, Stack.react, Stack.nextjs, Stack.tailwind],
     dimensions: [360, 640],
     screenshots: [
-      "https://res.cloudinary.com/almondgreen/image/upload/v1667035479/Portfolio/portfolio-5_c66e6q.png",
-      "https://res.cloudinary.com/almondgreen/image/upload/v1667035479/Portfolio/portfolio-1_iegynz.png",
-      "https://res.cloudinary.com/almondgreen/image/upload/v1667035478/Portfolio/portfolio-3_rik4iq.png",
-      "https://res.cloudinary.com/almondgreen/image/upload/v1667035477/Portfolio/portfolio-4_iza7kp.png",
-      "https://res.cloudinary.com/almondgreen/image/upload/v1667035475/Portfolio/portfolio-2_bvjfuf.png",
+      'https://res.cloudinary.com/almondgreen/image/upload/v1667035479/Portfolio/portfolio-5_c66e6q.png',
+      'https://res.cloudinary.com/almondgreen/image/upload/v1667035479/Portfolio/portfolio-1_iegynz.png',
+      'https://res.cloudinary.com/almondgreen/image/upload/v1667035478/Portfolio/portfolio-3_rik4iq.png',
+      'https://res.cloudinary.com/almondgreen/image/upload/v1667035477/Portfolio/portfolio-4_iza7kp.png',
+      'https://res.cloudinary.com/almondgreen/image/upload/v1667035475/Portfolio/portfolio-2_bvjfuf.png',
     ],
     deployment: {
-      web: "https://francismasha.com",
+      web: 'https://francismasha.com',
     },
     subProjects: [
       {
-        title: "notes",
-        description: "Personal notes and coding tips",
-        repository: "",
+        title: 'notes',
+        description: 'Personal notes and coding tips',
+        repository: '',
         deployment: {
-          web: "https://notes.francismasha.com/",
+          web: 'https://notes.francismasha.com/',
         },
       },
       {
-        title: "code",
-        description: "Coding algorithms and data structures",
-        repository: "",
+        title: 'code',
+        description: 'Coding algorithms and data structures',
+        repository: '',
         deployment: {
-          web: "https://code.francismasha.com/",
+          web: 'https://code.francismasha.com/',
         },
       },
     ],
@@ -430,4 +430,4 @@ export const projects: Project[] = [
   // 	website: 'https://kcards-server.herokuapp.com',
   // 	subProjects: [],
   // },
-];
+]

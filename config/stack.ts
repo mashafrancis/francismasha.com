@@ -1,4 +1,4 @@
-import { Colors } from "./colors";
+import { Colors } from './colors'
 
 export enum Stack {
   // Languages
@@ -72,120 +72,120 @@ export const WorkStack = [
   Stack.jenkins,
   Stack.materialui,
   Stack.tailwind,
-];
+]
 
 type StackInfoMap = {
-  value: string;
-  color: string;
-};
+  value: string
+  color: string
+}
 
 export const StackInfo: Record<Stack, StackInfoMap> = {
   [Stack.typescript]: {
-    value: "TypeScript",
+    value: 'TypeScript',
     color: Colors.typescript,
   },
   [Stack.javascript]: {
-    value: "JavaScript",
+    value: 'JavaScript',
     color: Colors.javascript,
   },
   [Stack.rust]: {
-    value: "Rust",
+    value: 'Rust',
     color: Colors.rust,
   },
   [Stack.java]: {
-    value: "Java",
+    value: 'Java',
     color: Colors.java,
   },
   [Stack.react]: {
-    value: "React",
+    value: 'React',
     color: Colors.react,
   },
   [Stack.nextjs]: {
-    value: "NextJS",
+    value: 'NextJS',
     color: Colors.nextjs,
   },
   [Stack.reactnative]: {
-    value: "React Native",
+    value: 'React Native',
     color: Colors.reactnative,
   },
   [Stack.graphql]: {
-    value: "GraphQL",
+    value: 'GraphQL',
     color: Colors.graphql,
   },
   [Stack.aws]: {
-    value: "AWS",
+    value: 'AWS',
     color: Colors.aws,
   },
   [Stack.gcp]: {
-    value: "Google Cloud",
+    value: 'Google Cloud',
     color: Colors.gcp,
   },
   [Stack.python]: {
-    value: "Python",
+    value: 'Python',
     color: Colors.python,
   },
   [Stack.node]: {
-    value: "Node",
+    value: 'Node',
     color: Colors.node,
   },
   [Stack.django]: {
-    value: "Django",
+    value: 'Django',
     color: Colors.django,
   },
   [Stack.kafka]: {
-    value: "Kafka",
+    value: 'Kafka',
     color: Colors.kafka,
   },
   [Stack.rabbitmq]: {
-    value: "RabbitMQ",
+    value: 'RabbitMQ',
     color: Colors.rabbitmq,
   },
   [Stack.mqtt]: {
-    value: "MQTT",
+    value: 'MQTT',
     color: Colors.mqtt,
   },
   [Stack.postgres]: {
-    value: "Postgres",
+    value: 'Postgres',
     color: Colors.postgres,
   },
   [Stack.redis]: {
-    value: "Redis",
+    value: 'Redis',
     color: Colors.redis,
   },
   [Stack.mongo]: {
-    value: "MongoDB",
+    value: 'MongoDB',
     color: Colors.mongo,
   },
   [Stack.docker]: {
-    value: "Docker",
+    value: 'Docker',
     color: Colors.docker,
   },
   [Stack.kubernetes]: {
-    value: "Kubernetes",
+    value: 'Kubernetes',
     color: Colors.kubernetes,
   },
   [Stack.terraform]: {
-    value: "Terraform",
+    value: 'Terraform',
     color: Colors.terraform,
   },
   [Stack.arduino]: {
-    value: "Arduino",
+    value: 'Arduino',
     color: Colors.arduino,
   },
   [Stack.jenkins]: {
-    value: "Jenkins",
+    value: 'Jenkins',
     color: Colors.jenkins,
   },
   [Stack.mysql]: {
-    value: "MySQL",
+    value: 'MySQL',
     color: Colors.mysql,
   },
   [Stack.materialui]: {
-    value: "MaterialUI",
+    value: 'MaterialUI',
     color: Colors.materialui,
   },
   [Stack.tailwind]: {
-    value: "TailwindCSS",
+    value: 'TailwindCSS',
     color: Colors.tailwind,
   },
-};
+}

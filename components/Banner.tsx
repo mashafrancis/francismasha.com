@@ -1,20 +1,20 @@
-"use client";
+'use client'
 
-import Link from "next/link";
+import Link from 'next/link'
 
-import { ReactElement, memo, useState } from "react";
+import { ReactElement, memo, useState } from 'react'
 
-import metadata from "@/app/metadata";
-import LivingShapes from "@/components/LivingShapes";
-import { useRandomColorPair } from "@/lib/hooks/useRandomColorPair";
-import { RoughNotation } from "react-rough-notation";
+import metadata from '@/app/metadata'
+import LivingShapes from '@/components/LivingShapes'
+import { useRandomColorPair } from '@/lib/hooks/useRandomColorPair'
+import { RoughNotation } from 'react-rough-notation'
 
 function Banner(): ReactElement {
-  const [aboutColor, contactColor] = useRandomColorPair();
-  const [clicked, setClicked] = useState(false);
+  const [aboutColor, contactColor] = useRandomColorPair()
+  const [clicked, setClicked] = useState(false)
 
   if (clicked) {
-    throw new Error("Oh no! Something went wrong.");
+    throw new Error('Oh no! Something went wrong.')
   }
 
   return (
@@ -67,7 +67,7 @@ function Banner(): ReactElement {
       </div>
       <LivingShapes />
     </div>
-  );
+  )
 }
 
-export default memo(Banner);
+export default memo(Banner)

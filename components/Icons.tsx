@@ -1,25 +1,25 @@
-import clsx from "clsx";
+import clsx from 'clsx'
 
 const arrowRotationMap = {
-  up: "rotate-180",
-  right: "-rotate-90",
-  down: "rotate-0",
-  left: "rotate-90",
-  "top-right": "-rotate-135",
-};
+  up: 'rotate-180',
+  right: '-rotate-90',
+  down: 'rotate-0',
+  left: 'rotate-90',
+  'top-right': '-rotate-135',
+}
 
 export function ArrowIcon({
   direction,
   size = 32,
   className,
 }: {
-  direction: "up" | "right" | "down" | "left" | "top-right";
-  size?: number;
-  className?: string;
+  direction: 'up' | 'right' | 'down' | 'left' | 'top-right'
+  size?: number
+  className?: string
 }) {
   return (
     <svg
-      className={clsx(className, "transform", arrowRotationMap[direction])}
+      className={clsx(className, 'transform', arrowRotationMap[direction])}
       width={size}
       height={size}
       viewBox="0 0 32 32"
@@ -33,5 +33,5 @@ export function ArrowIcon({
         fill="currentColor"
       />
     </svg>
-  );
+  )
 }

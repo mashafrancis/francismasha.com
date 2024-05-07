@@ -1,27 +1,23 @@
-"use client";
-
-import metadata from '@/app/metadata'
-
-import Plausible from './Plausible'
+'use client'
 
 declare global {
   interface Window {
     // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-    plausible?: (...args: any[]) => void;
+    plausible?: (...args: any[]) => void
   }
 }
 
-const isProduction = process.env.NODE_ENV === "production";
+const isProduction = process.env.NODE_ENV === 'production'
 
 const Analytics = () => {
   return (
     <>
       {/*{isProduction && loadSomeConsoleStuff()}*/}
-      {isProduction && metadata.analytics.plausibleDataDomain && <Plausible />}
+      {/*{isProduction && metadata.analytics.plausibleDataDomain && <Plausible />}*/}
       {/*<TinyBird />*/}
       {/*{isProduction && <VercelAnalytics />}*/}
     </>
-  );
-};
+  )
+}
 
-export default Analytics;
+export default Analytics

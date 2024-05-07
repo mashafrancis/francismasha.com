@@ -15,13 +15,13 @@ function Card({ title, description, banner, href }): ReactElement {
       placeholder="blur"
       blurDataURL="data:..."
     />
-  );
+  )
 
   return (
-    <div className="md p-4 md:w-1/2" style={{ maxWidth: "544px" }}>
+    <div className="md p-4 md:w-1/2" style={{ maxWidth: '544px' }}>
       <div
         className={`${
-          banner && "h-full"
+          banner && 'h-full'
         }  overflow-hidden rounded-lg border border-gray-200 border-opacity-80 dark:border-gray-800`}
       >
         {banner &&
@@ -57,7 +57,7 @@ function Card({ title, description, banner, href }): ReactElement {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Card;
+export default Card
