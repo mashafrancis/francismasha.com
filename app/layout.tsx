@@ -6,7 +6,6 @@ import Footer from '@/components/Footer'
 import { Grid } from '@/components/Grid'
 import LayoutNavigation from '@/components/LayoutNavigation'
 import { ThemeProvider } from '@/components/ThemeProvider'
-import Analytics from '@/components/analytics'
 import '@/css/fonts.css'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import clsx from 'clsx'
@@ -14,6 +13,7 @@ import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
 
 import './global.css'
+import { OpenpanelProvider } from '@openpanel/nextjs'
 
 const title = 'Masha Portfolio'
 const description = 'A software engineer learning'
@@ -56,6 +56,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         GeistSans.variable,
       )}
     >
+      <OpenpanelProvider
+        clientId={process.env.OPENPANEL_CLIENT_ID}
+        trackScreenViews={true}
+        trackAttributes={true}
+        trackOutgoingLinks={true}
+        // If you have a user id, you can pass it here to identify the user
+        // profileId={'123'}
+      />
       <body className="duration-400 bg-white text-black antialiased transition dark:bg-gray-800 dark:text-white">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="flex min-h-screen flex-col">
@@ -69,7 +77,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             </main>
             <Footer />
           </div>
-          <Analytics />
+          {/*<Analytics />*/}
           <SpeedInsights />
         </ThemeProvider>
       </body>
