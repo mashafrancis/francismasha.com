@@ -19,19 +19,14 @@ const title = 'Masha Portfolio'
 const description = 'A software engineer learning'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://safaricomobservability.com/'),
+  metadataBase: new URL('https://francismasha.com/'),
   title: {
     default: title,
     template: `%s | ${title}`,
   },
   description,
   manifest: '/manifest.json',
-  keywords: [
-    'Monitoring',
-    'Open Source app analytics',
-    'safaricom',
-    'safaricom observability',
-  ],
+  keywords: ['Portfolio'],
   icons: {
     icon: '/static/favicons/favicon.ico',
     shortcut: '/static/favicons/favicon-16x16.png',
