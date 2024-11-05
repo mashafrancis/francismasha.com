@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 
 import type { ReactNode } from 'react'
 
-import '@/css/fonts.css'
 import clsx from 'clsx'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
@@ -42,17 +41,17 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <html
         lang="en"
         className={clsx(
-          'scroll-smooth bg-white text-black dark:bg-[#111010] dark:text-white antialiased',
+          'scroll-smooth bg-white text-black antialiased',
           // fontSans.variable,
           GeistMono.variable,
           GeistSans.variable,
         )}
       >
         <OpenpanelProvider
-          clientId={process.env.NEXT_PUBLIC_OPENPANEL_CLIENT_ID}
-          trackScreenViews={true}
-          trackAttributes={true}
-          trackOutgoingLinks={true}
+          clientId={process.env.NEXT_PUBLIC_OPENPANEL_CLIENT_ID as string}
+          trackScreenViews
+          trackAttributes
+          trackOutgoingLinks
         />
         <body className="antialiased tracking-tight">
           <div className="min-h-screen flex flex-col justify-between pt-0 md:pt-8 p-8 bg-white text-gray-900">
