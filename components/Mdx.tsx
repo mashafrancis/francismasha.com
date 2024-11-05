@@ -1,5 +1,5 @@
+import { Link } from 'next-view-transitions'
 import Image from 'next/image'
-import Link from 'next/link'
 
 import { createElement } from 'react'
 
@@ -10,7 +10,7 @@ import { highlight } from 'sugar-high'
 import Pre from './Pre'
 
 function CustomLink(props) {
-  let href = props.href
+  const href = props.href
 
   if (href.startsWith('/')) {
     return (
@@ -43,7 +43,7 @@ function Callout(props) {
 function createHeading(level: number) {
   // eslint-disable-next-line react/display-name
   return ({ children }) => {
-    let slug = slugify(children)
+    const slug = slugify(children)
     return createElement(
       `h${level}`,
       { id: slug },
@@ -60,7 +60,7 @@ function createHeading(level: number) {
 }
 
 function Code({ children, ...props }) {
-  let codeHTML = highlight(children)
+  const codeHTML = highlight(children)
   return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />
 }
 

@@ -5,7 +5,7 @@
   "email": "francismasha96@gmail.com",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "NODE_OPTIONS='--inspect' next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "sitemap": "tsx ./scripts/generate-sitemap.ts",
@@ -14,52 +14,61 @@
     "format": "biome format --write .",
     "format:fix": "biome format --apply .",
     "lint:fix": "biome lint --apply .",
-    "preview": "pnpm build && pnpm serve",
+    "preview": "bun build && bun serve",
     "setup": "node lib/setup.mjs"
   },
   "dependencies": {
     "@biomejs/biome": "1.7.3",
+    "@mdx-js/loader": "^3.1.0",
+    "@mdx-js/react": "^3.1.0",
     "@openpanel/nextjs": "0.0.9-beta",
-    "@tailwindcss/forms": "^0.5.7",
-    "@tailwindcss/typography": "^0.5.13",
-    "@vercel/edge-config": "^1.1.1",
+    "@tailwindcss/forms": "^0.5.9",
+    "@tailwindcss/postcss": "^4.0.0-alpha.31",
+    "@tailwindcss/typography": "^0.5.15",
+    "@types/mdx": "^2.0.13",
+    "@vercel/edge-config": "^1.4.0",
     "@vercel/og": "0.6.2",
     "@vercel/speed-insights": "1.0.10",
-    "autoprefixer": "^10.4.19",
+    "autoprefixer": "^10.4.20",
     "clsx": "^2.1.1",
-    "framer-motion": "^11.2.6",
+    "framer-motion": "^11.11.11",
     "geist": "1.3.0",
-    "next": "14.2.3",
+    "next": "15.0.2",
     "next-mdx-remote": "5.0.0",
     "next-themes": "^0.3.0",
-    "postcss": "^8.4.38",
-    "postgres": "^3.4.4",
-    "react": "18.3.1",
-    "react-calendly": "^4.3.0",
-    "react-dom": "18.3.1",
-    "react-icons": "^5.2.1",
+    "next-view-transitions": "^0.3.2",
+    "postcss": "^8.4.47",
+    "postgres": "^3.4.5",
+    "react": "19.0.0-rc-02c0e824-20241028",
+    "react-calendly": "^4.3.1",
+    "react-dom": "19.0.0-rc-02c0e824-20241028",
+    "react-icons": "^5.3.0",
     "react-indiana-drag-scroll": "^2.2.0",
     "react-rough-notation": "^1.0.5",
-    "react-wrap-balancer": "^1.1.0",
+    "react-wrap-balancer": "^1.1.1",
     "reading-time": "^1.5.0",
-    "sharp": "^0.33.4",
+    "sharp": "^0.33.5",
     "sugar-high": "0.6.1",
-    "tailwindcss": "^3.4.3",
     "use-delayed-render": "^0.0.7",
-    "vite": "^5.2.11"
+    "vite": "^5.4.10"
   },
   "devDependencies": {
-    "@types/node": "^20.12.12",
-    "@types/react": "18.3.2",
+    "@types/node": "^20.17.6",
+    "@types/react": "npm:types-react@19.0.0-rc.1",
     "cross-env": "^7.0.3",
-    "cssnano": "^7.0.1",
-    "lint-staged": "^15.2.4",
-    "tsx": "^4.10.5",
-    "typescript": "5.4.5"
+    "cssnano": "^7.0.6",
+    "lint-staged": "^15.2.10",
+    "tsx": "^4.19.2",
+    "typescript": "5.4.5",
+    "tailwindcss": "^4.0.0-alpha.31"
   },
   "lint-staged": {
     "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": [
       "biome check --apply-unsafe --no-errors-on-unmatched"
     ]
+  },
+  "overrides": {
+    "@types/react": "npm:types-react@19.0.0-rc.1",
+    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1"
   }
 }

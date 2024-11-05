@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 
-import { useEffect, useState } from 'react'
+import { type JSX, useEffect, useState } from 'react'
 
 import styles from '@/css/mobile-menu.module.css'
 import cn from '@/lib/classnames'

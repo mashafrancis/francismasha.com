@@ -3,7 +3,7 @@
 import type { LinkProps } from 'next/link'
 import Link from 'next/link'
 
-import type { ComponentProps, ReactNode } from 'react'
+import type { ComponentProps, JSX, ReactNode } from 'react'
 
 import { ArrowIcon } from '@/components/Icons'
 import { ElementState, useElementState } from '@/lib/hooks/useElementState'

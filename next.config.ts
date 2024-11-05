@@ -1,3 +1,4 @@
+import { NextConfig } from 'next'
 import postgres from 'postgres'
 
 export const sql = postgres(process.env.POSTGRES_URL, {
@@ -54,17 +55,11 @@ const securityHeaders = [
   },
 ]
 
-/**
- * @type {import('next/dist/next-server/server/config').NextConfig}
- **/
-const nextConfig = {
+const nextConfig: NextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
-  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
-  logging: {
-    fetches: {
-      fullUrl: true,
-    },
+  pageExtensions: ['mdx', 'ts', 'tsx'],
+  experimental: {
+    mdxRs: true,
   },
   // experimental: {
   // 	ppr: true,
@@ -93,7 +88,7 @@ const nextConfig = {
       permanent: !!permanent,
     }))
   },
-  headers() {
+  async headers() {
     return [
       {
         source: '/(.*)',
