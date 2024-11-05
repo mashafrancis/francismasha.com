@@ -10,29 +10,16 @@ import './global.css'
 import { OpenpanelProvider } from '@openpanel/nextjs'
 import { ViewTransitions } from 'next-view-transitions'
 
-const title = 'Masha Portfolio'
-const description = 'A software engineer learning'
-
 export const metadata: Metadata = {
-  metadataBase: new URL('https://francismasha.com/'),
+  metadataBase: new URL('https://leerob.com'),
+  alternates: {
+    canonical: '/',
+  },
   title: {
-    default: title,
-    template: `%s | ${title}`,
+    default: 'Francis Masha',
+    template: '%s | Francis Masha',
   },
-  description,
-  manifest: '/manifest.json',
-  keywords: ['Portfolio'],
-  icons: {
-    icon: '/static/favicons/favicon.ico',
-    shortcut: '/static/favicons/favicon-16x16.png',
-    apple: '/static/favicons/apple-touch-icon.png',
-  },
-  appleWebApp: {
-    title,
-    capable: true,
-    statusBarStyle: 'black-translucent',
-    startupImage: ['/apple-touch-icon.png'],
-  },
+  description: 'Frontend developer, optimist, community builder.',
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
