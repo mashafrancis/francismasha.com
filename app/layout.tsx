@@ -7,6 +7,7 @@ import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
 
 import './global.css'
+import Analytics from '@/app/analytics'
 import { OpenpanelProvider } from '@openpanel/nextjs'
 import { ViewTransitions } from 'next-view-transitions'
 
@@ -34,6 +35,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           GeistSans.variable,
         )}
       >
+        <Analytics />
         <OpenpanelProvider
           clientId={process.env.NEXT_PUBLIC_OPENPANEL_CLIENT_ID as string}
           trackScreenViews

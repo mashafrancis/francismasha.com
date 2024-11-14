@@ -21,6 +21,7 @@
     "@biomejs/biome": "1.7.3",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
+    "@microsoft/clarity": "^1.0.0",
     "@next/mdx": "^15.0.2",
     "@openpanel/nextjs": "0.0.9-beta",
     "@tailwindcss/postcss": "^4.0.0-alpha.31",
@@ -40,10 +41,10 @@
     "@types/node": "^20.17.6",
     "@types/react": "npm:types-react@19.0.0-rc.1",
     "cross-env": "^7.0.3",
-    "tsx": "^4.19.2",
     "lint-staged": "^15.2.10",
-    "typescript": "5.4.5",
-    "tailwindcss": "^4.0.0-alpha.31"
+    "tailwindcss": "^4.0.0-alpha.31",
+    "tsx": "^4.19.2",
+    "typescript": "5.4.5"
   },
   "lint-staged": {
     "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": [
