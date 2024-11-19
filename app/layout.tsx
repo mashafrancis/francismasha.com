@@ -8,11 +8,11 @@ import { GeistSans } from 'geist/font/sans'
 
 import './global.css'
 import Analytics from '@/app/analytics'
-import { OpenpanelProvider } from '@openpanel/nextjs'
+import { OpenPanelComponent } from '@openpanel/nextjs'
 import { ViewTransitions } from 'next-view-transitions'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://leerob.com'),
+  metadataBase: new URL('https://francismasha.com'),
   alternates: {
     canonical: '/',
   },
@@ -36,7 +36,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         )}
       >
         <Analytics />
-        <OpenpanelProvider
+        <OpenPanelComponent
           clientId={process.env.NEXT_PUBLIC_OPENPANEL_CLIENT_ID as string}
           trackScreenViews
           trackAttributes
