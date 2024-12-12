@@ -3,13 +3,16 @@ import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 
 import clsx from 'clsx'
-import { GeistMono } from 'geist/font/mono'
-import { GeistSans } from 'geist/font/sans'
-
+import { Geist, Geist_Mono } from 'next/font/google'
+// import { GeistMono } from 'geist/font/mono'
+// import { GeistSans } from 'geist/font/sans'
 import './global.css'
 import Analytics from '@/app/analytics'
 import { OpenPanelComponent } from '@openpanel/nextjs'
 import { ViewTransitions } from 'next-view-transitions'
+
+const geist = Geist({ subsets: ['latin'] })
+const geistMono = Geist_Mono({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://francismasha.com'),
@@ -31,8 +34,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         className={clsx(
           'scroll-smooth bg-white text-black antialiased',
           // fontSans.variable,
-          GeistMono.variable,
-          GeistSans.variable,
+          geist.className,
+          geistMono.className,
         )}
       >
         <Analytics />
