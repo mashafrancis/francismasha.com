@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-import type { ReactNode } from 'react'
+import { ReactNode, Suspense } from 'react'
 
 import clsx from 'clsx'
 import { Geist, Geist_Mono } from 'next/font/google'
@@ -8,6 +8,7 @@ import { Geist, Geist_Mono } from 'next/font/google'
 // import { GeistSans } from 'geist/font/sans'
 import './global.css'
 import Analytics from '@/app/analytics'
+import Yandex from '@/components/yandex'
 import { OpenPanelComponent } from '@openpanel/nextjs'
 import { ViewTransitions } from 'next-view-transitions'
 
@@ -53,6 +54,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <Footer />
           </div>
         </body>
+        <Suspense fallback={null}>
+          <Yandex />
+        </Suspense>
       </html>
     </ViewTransitions>
   )
