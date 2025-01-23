@@ -1,5 +1,10 @@
 @import 'tailwindcss';
 
+@theme {
+    --font-family-sans: var(--font-sans), sans-serif;
+    --font-family-mono: var(--font-mono), monospace;
+}
+
 :root {
     --sh-class: #7aa2f7;
     --sh-sign: #89ddff;
@@ -46,7 +51,7 @@ pre {
 }
 
 code {
-    font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+    font-family: var(--font-sans), monospace;
     font-size: 14px;
     padding: 0.2em 0.4em;
     border-radius: 0.3em;

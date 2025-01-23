@@ -12,8 +12,8 @@ import Yandex from '@/components/yandex'
 import { OpenPanelComponent } from '@openpanel/nextjs'
 import { ViewTransitions } from 'next-view-transitions'
 
-const geist = Geist({ subsets: ['latin'] })
-const geistMono = Geist_Mono({ subsets: ['latin'] })
+const geist = Geist({ subsets: ['latin'], variable: '--font-sans' })
+const geist_mono = Geist_Mono({ subsets: ['latin'], variable: '--font-mono' })
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://francismasha.com'),
@@ -34,9 +34,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         lang="en"
         className={clsx(
           'scroll-smooth bg-white text-black antialiased',
-          // fontSans.variable,
-          geist.className,
-          geistMono.className,
+          geist.variable,
+          geist_mono.variable,
         )}
       >
         <Analytics />
