@@ -1,0 +1,34 @@
+
+  <rss version='2.0' xmlns:atom='http://www.w3.org/2005/Atom'>
+    <channel>
+      <title>Francis Masha</title>
+      <link>https://francismasha.com/blog</link>
+      <description>A software engineer who values learning and growing with people, teams, and technologies.</description>
+      <language>en-us</language>
+      <managingEditor>contact@francismasha.com (Francis Masha)</managingEditor>
+      <webMaster>contact@francismasha.com (Francis Masha)</webMaster>
+      <lastBuildDate>Fri, 21 Oct 2022 00:00:00 GMT</lastBuildDate>
+      <atom:link href='https://francismasha.com/tags/javascript/feed.xml' rel='self' type='application/rss+xml'/>
+      
+  <item>
+    <guid>https://francismasha.com/blog/amazing-placeholder-blurhash</guid>
+    <title>Amazing image placeholders with blurhash</title>
+    <link>https://francismasha.com/blog/amazing-placeholder-blurhash</link>
+    <description>Learn how to make amazing image placeholders with blurhash</description>
+    <pubDate>Fri, 21 Oct 2022 00:00:00 GMT</pubDate>
+    <author>contact@francismasha.com (Francis Masha)</author>
+    <category>react</category><category>javascript</category><category>typescript</category>
+  </item>
+
+  <item>
+    <guid>https://francismasha.com/blog/strategy-for-coding-solutions</guid>
+    <title>Strategy for coding solutions</title>
+    <link>https://francismasha.com/blog/strategy-for-coding-solutions</link>
+    <description>Familiarize with fast code solution strategies for DSA</description>
+    <pubDate>Tue, 11 Oct 2022 00:00:00 GMT</pubDate>
+    <author>contact@francismasha.com (Francis Masha)</author>
+    <category>rust</category><category>javascript</category>
+  </item>
+
+    </channel>
+  </rss>

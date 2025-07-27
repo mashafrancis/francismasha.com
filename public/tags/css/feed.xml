@@ -1,0 +1,24 @@
+
+  <rss version='2.0' xmlns:atom='http://www.w3.org/2005/Atom'>
+    <channel>
+      <title>Francis Masha</title>
+      <link>https://francismasha.com/blog</link>
+      <description>A software engineer who values learning and growing with people, teams, and technologies.</description>
+      <language>en-us</language>
+      <managingEditor>contact@francismasha.com (Francis Masha)</managingEditor>
+      <webMaster>contact@francismasha.com (Francis Masha)</webMaster>
+      <lastBuildDate>Fri, 20 Jan 2023 00:00:00 GMT</lastBuildDate>
+      <atom:link href='https://francismasha.com/tags/css/feed.xml' rel='self' type='application/rss+xml'/>
+      
+  <item>
+    <guid>https://francismasha.com/blog/trucate-string-with-css</guid>
+    <title>Truncate string with css</title>
+    <link>https://francismasha.com/blog/trucate-string-with-css</link>
+    <description>We shall use css to truncate strings and paragraphs</description>
+    <pubDate>Fri, 20 Jan 2023 00:00:00 GMT</pubDate>
+    <author>contact@francismasha.com (Francis Masha)</author>
+    <category>css</category>
+  </item>
+
+    </channel>
+  </rss>

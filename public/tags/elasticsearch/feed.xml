@@ -1,0 +1,74 @@
+
+  <rss version='2.0' xmlns:atom='http://www.w3.org/2005/Atom'>
+    <channel>
+      <title>Francis Masha</title>
+      <link>https://francismasha.com/blog</link>
+      <description>A software engineer who values learning and growing with people, teams, and technologies.</description>
+      <language>en-us</language>
+      <managingEditor>contact@francismasha.com (Francis Masha)</managingEditor>
+      <webMaster>contact@francismasha.com (Francis Masha)</webMaster>
+      <lastBuildDate>Thu, 17 Nov 2022 00:00:00 GMT</lastBuildDate>
+      <atom:link href='https://francismasha.com/tags/elasticsearch/feed.xml' rel='self' type='application/rss+xml'/>
+      
+  <item>
+    <guid>https://francismasha.com/blog/metricbeat-self-monitoring</guid>
+    <title>Metricbeat cluster self-monitoring</title>
+    <link>https://francismasha.com/blog/metricbeat-self-monitoring</link>
+    <description>Cluster overview with metricbeat</description>
+    <pubDate>Thu, 17 Nov 2022 00:00:00 GMT</pubDate>
+    <author>contact@francismasha.com (Francis Masha)</author>
+    <category>elasticsearch</category><category>monitoring</category><category>beats</category>
+  </item>
+
+  <item>
+    <guid>https://francismasha.com/blog/filebeat-installation-and-configuration-to-ingest-syslogs</guid>
+    <title>Filebeat installation and configuration to ingest syslogs</title>
+    <link>https://francismasha.com/blog/filebeat-installation-and-configuration-to-ingest-syslogs</link>
+    <description>Install and configure filebeat to ingest syslogs into elasticsearch</description>
+    <pubDate>Tue, 15 Nov 2022 00:00:00 GMT</pubDate>
+    <author>contact@francismasha.com (Francis Masha)</author>
+    <category>elasticsearch</category><category>monitoring</category>
+  </item>
+
+  <item>
+    <guid>https://francismasha.com/blog/creating-a-logstash-keystore</guid>
+    <title>Creating a logstash keystore</title>
+    <link>https://francismasha.com/blog/creating-a-logstash-keystore</link>
+    <description>When you create a configuration file in Logstash, it is more secure to hide your sensitive data, and reference it using a variable.You can do this by creating a keystore</description>
+    <pubDate>Mon, 14 Nov 2022 00:00:00 GMT</pubDate>
+    <author>contact@francismasha.com (Francis Masha)</author>
+    <category>elasticsearch</category><category>monitoring</category>
+  </item>
+
+  <item>
+    <guid>https://francismasha.com/blog/logstash-installation-and-configuration-to-ingest-syslogs</guid>
+    <title>Logstash installation and configuration to ingest syslogs</title>
+    <link>https://francismasha.com/blog/logstash-installation-and-configuration-to-ingest-syslogs</link>
+    <description>Configure Logstash to parse and index server syslogs</description>
+    <pubDate>Sun, 13 Nov 2022 00:00:00 GMT</pubDate>
+    <author>contact@francismasha.com (Francis Masha)</author>
+    <category>elasticsearch</category><category>monitoring</category><category>logstash</category>
+  </item>
+
+  <item>
+    <guid>https://francismasha.com/blog/kibana-server-not-ready</guid>
+    <title>Kibana server not ready yet</title>
+    <link>https://francismasha.com/blog/kibana-server-not-ready</link>
+    <description>Troubleshooting kibana server not ready</description>
+    <pubDate>Sat, 12 Nov 2022 00:00:00 GMT</pubDate>
+    <author>contact@francismasha.com (Francis Masha)</author>
+    <category>elasticsearch</category><category>kibana</category><category>troubleshooting</category>
+  </item>
+
+  <item>
+    <guid>https://francismasha.com/blog/elasticsearch-and-kibana-installation-and configuration</guid>
+    <title>Elasticsearch and Kibana installation and configuration</title>
+    <link>https://francismasha.com/blog/elasticsearch-and-kibana-installation-and configuration</link>
+    <description>We explore how to install and configure Elasticsearch and Kibana, to get a cluster ready for ingesting logs from any server</description>
+    <pubDate>Fri, 11 Nov 2022 00:00:00 GMT</pubDate>
+    <author>contact@francismasha.com (Francis Masha)</author>
+    <category>elasticsearch</category><category>monitoring</category>
+  </item>
+
+    </channel>
+  </rss>

@@ -1,0 +1,24 @@
+
+  <rss version='2.0' xmlns:atom='http://www.w3.org/2005/Atom'>
+    <channel>
+      <title>Francis Masha</title>
+      <link>https://francismasha.com/blog</link>
+      <description>A software engineer who values learning and growing with people, teams, and technologies.</description>
+      <language>en-us</language>
+      <managingEditor>contact@francismasha.com (Francis Masha)</managingEditor>
+      <webMaster>contact@francismasha.com (Francis Masha)</webMaster>
+      <lastBuildDate>Fri, 01 Oct 2021 00:00:00 GMT</lastBuildDate>
+      <atom:link href='https://francismasha.com/tags/node/feed.xml' rel='self' type='application/rss+xml'/>
+      
+  <item>
+    <guid>https://francismasha.com/blog/optimize-node-performance-clustering</guid>
+    <title>Optimize Node.js performance with clustering</title>
+    <link>https://francismasha.com/blog/optimize-node-performance-clustering</link>
+    <description>Optimize your Node.js application performance with clustering</description>
+    <pubDate>Fri, 01 Oct 2021 00:00:00 GMT</pubDate>
+    <author>contact@francismasha.com (Francis Masha)</author>
+    <category>node</category><category>typescript</category><category>javascript</category>
+  </item>
+
+    </channel>
+  </rss>

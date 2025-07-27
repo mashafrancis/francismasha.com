@@ -1,57 +1,57 @@
-import type { MDXComponents } from 'mdx/types'
-import { Link } from 'next-view-transitions'
-import { ComponentPropsWithoutRef } from 'react'
-import { highlight } from 'sugar-high'
+import type { MDXComponents } from "mdx/types";
+import { Link } from "next-view-transitions";
+import type { ComponentPropsWithoutRef } from "react";
+import { highlight } from "sugar-high";
 
-type HeadingProps = ComponentPropsWithoutRef<'h1'>
-type ParagraphProps = ComponentPropsWithoutRef<'p'>
-type ListProps = ComponentPropsWithoutRef<'ul'>
-type ListItemProps = ComponentPropsWithoutRef<'li'>
-type AnchorProps = ComponentPropsWithoutRef<'a'>
-type BlockquoteProps = ComponentPropsWithoutRef<'blockquote'>
+type HeadingProps = ComponentPropsWithoutRef<"h1">;
+type ParagraphProps = ComponentPropsWithoutRef<"p">;
+type ListProps = ComponentPropsWithoutRef<"ul">;
+type ListItemProps = ComponentPropsWithoutRef<"li">;
+type AnchorProps = ComponentPropsWithoutRef<"a">;
+type BlockquoteProps = ComponentPropsWithoutRef<"blockquote">;
 
 const components: MDXComponents = {
   h1: (props: HeadingProps) => (
-    <h1 className="font-medium pt-12 mb-0 fade-in" {...props} />
+    <h1 className="mb-0 pt-12 font-medium fade-in" {...props} />
   ),
   h2: (props: HeadingProps) => (
-    <h2 className="text-gray-800 font-medium mt-8 mb-3" {...props} />
+    <h2 className="mt-8 mb-3 font-medium text-gray-800" {...props} />
   ),
   h3: (props: HeadingProps) => (
-    <h3 className="text-gray-800 font-medium mt-8 mb-3" {...props} />
+    <h3 className="mt-8 mb-3 font-medium text-gray-800" {...props} />
   ),
   h4: (props: HeadingProps) => <h4 className="font-medium" {...props} />,
   p: (props: ParagraphProps) => (
-    <p className="text-gray-800 leading-snug" {...props} />
+    <p className="leading-snug text-gray-800" {...props} />
   ),
   ol: (props: ListProps) => (
-    <ol className="text-gray-800 list-decimal pl-5 space-y-2" {...props} />
+    <ol className="list-decimal space-y-2 pl-5 text-gray-800" {...props} />
   ),
   ul: (props: ListProps) => (
-    <ul className="text-gray-800 list-disc pl-5 space-y-1" {...props} />
+    <ul className="list-disc space-y-1 pl-5 text-gray-800" {...props} />
   ),
   li: (props: ListItemProps) => <li className="pl-1" {...props} />,
-  em: (props: ComponentPropsWithoutRef<'em'>) => (
+  em: (props: ComponentPropsWithoutRef<"em">) => (
     <em className="font-medium" {...props} />
   ),
-  strong: (props: ComponentPropsWithoutRef<'strong'>) => (
+  strong: (props: ComponentPropsWithoutRef<"strong">) => (
     <strong className="font-medium" {...props} />
   ),
   a: ({ href, children, ...props }: AnchorProps) => {
-    const className = 'text-blue-500 hover:text-blue-700'
-    if (href?.startsWith('/')) {
+    const className = "text-blue-500 hover:text-blue-700";
+    if (href?.startsWith("/")) {
       return (
         <Link href={href} className={className} {...props}>
           {children}
         </Link>
-      )
+      );
     }
-    if (href?.startsWith('#')) {
+    if (href?.startsWith("#")) {
       return (
         <a href={href} className={className} {...props}>
           {children}
         </a>
-      )
+      );
     }
     return (
       <a
@@ -63,11 +63,11 @@ const components: MDXComponents = {
       >
         {children}
       </a>
-    )
+    );
   },
-  code: ({ children, ...props }: ComponentPropsWithoutRef<'code'>) => {
-    const codeHTML = highlight(children as string)
-    return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />
+  code: ({ children, ...props }: ComponentPropsWithoutRef<"code">) => {
+    const codeHTML = highlight(children as string);
+    return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
   },
   Table: ({ data }: { data: { headers: string[]; rows: string[][] } }) => (
     <table>
@@ -95,13 +95,13 @@ const components: MDXComponents = {
       {...props}
     />
   ),
-}
+};
 
 export function useMDXComponents(
-  otherComponents: MDXComponents,
+  otherComponents: MDXComponents
 ): MDXComponents {
   return {
     ...otherComponents,
     ...components,
-  }
+  };
 }

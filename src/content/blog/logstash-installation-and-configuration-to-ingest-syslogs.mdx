@@ -1,0 +1,173 @@
+---
+title: "Logstash installation and configuration to ingest syslogs"
+date: "2022-11-13"
+tags: ["elasticsearch", "monitoring", "logstash"]
+draft: false
+summary: "Configure Logstash to parse and index server syslogs"
+image: "/static/blogs/logstash.png"
+---
+
+Logstash is a powerful free and open-source tool that receives data from different sources, parses it and sends it to a destination.
+In this post, I will show you how to install and configure Logstash to ingest Syslogs from a Fortinet firewall.
+
+## Setup Overview
+
+In a previous post, I talked about how to install Elasticsearch and Kibana and
+configure them so that we can login to the Kibana user interface and look at our data.
+Now we will see how Logstash will get us the data in Elasticsearch.
+
+## Installing Logstash
+
+I will try to keep this post short and straight to the point. There is a lot more to this rich tool explained in the documentation.
+
+Switch to superuser
+
+```bash
+sudo su
+```
+
+Update applications installed on a system
+
+```bash
+dnf update
+```
+
+Now we will start installing Logstash from a package repository. Run the following command to install the public signing key:
+
+```bash
+rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+```
+
+Create the following .repo file and add the content below:
+
+```bash
+vim /etc/yum.repos.d/logstash.repo
+```
+
+and paste the following then save the file:
+
+```bash
+[logstash-8.x]
+name=Elastic repository for 8.x packages
+baseurl=https://artifacts.elastic.co/packages/8.x/yum
+gpgcheck=1
+gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+enabled=1
+autorefresh=1
+type=rpm-md
+```
+
+The repository is ready to be installed:
+
+```bash
+dnf install logstash
+```
+
+## Configuring Logstash
+
+Configure the Syslog server using the commands below. My Logstash server IP is 192.168.25.110:
+
+```bash
+config log syslogd setting
+    set status enable
+    set server "192.168.25.110"
+    set mode udp
+    set port 5144
+    set facility local7
+    set source-ip ''
+    set format default
+    set priority default
+    set max-log-rate 0
+    set interface-select-method auto
+end
+```
+
+To configure Logstash, we need to create a new .conf file in the following directory:
+
+```bash
+vim /etc/logstash/conf.d/firewall.conf
+```
+
+The Logstash pipeline consists of inputs, filters, and outputs plugins.
+It receives data from a source on the input plugin, modifies the data using the filter plugins, and sends to Elasticsearch using the output plugin.
+Here is the configuration file that will receive logs from the FortiGate firewall, parse and send them to Elasticsearch:
+
+```bash
+# Input plugin that will receive the logs on port 5144
+# on the specified host interface IP
+######################################
+
+input {
+ udp {
+    host => "192.168.25.110"
+    port => 5144
+  }
+}
+
+# Filter plugins that will modify the logs
+##########################################
+
+filter {
+  grok {
+    match => {"message" => "%{SYSLOG5424PRI}%{GREEDYDATA:message}" }
+    overwrite => [ "message" ]
+  }
+  mutate {
+    remove_field => ["@timestamp","host","@version","event","log"]
+  }
+  kv {
+    field_split => " "
+  }
+  mutate {
+    remove_field => ["message"]
+    add_field => { "logdate" => "%{date} %{time}" }
+  }
+  date {
+    match => [ "logdate", "yyyy-MM-dd HH:mm:ss" ]
+    timezone => "America/Edmonton"
+    target => "@timestamp"
+  }
+  mutate {
+    remove_field => ["logdate","date","time"]
+    convert => { "rcvdbyte" => "integer" }
+    convert => { "sentbyte" => "integer" }
+  }
+}
+
+# Output plugin to send the logs to Elasticsearch
+#################################################
+
+output {
+  #stdout {}    # Use stdout to see the output on the console during testing
+  elasticsearch {
+    hosts => ["https://192.168.25.100"]
+    index => "firewall-%{+YYYY.MM.dd}"
+    user => "elastic"
+    password => "password"
+    ssl => true
+    cacert => "/etc/logstash/http_ca.crt"
+  }
+}
+```
+
+Configure the firewall on this machine, allow communication to port 9200/tcp:
+
+```bash
+firewall-cmd --add-port=5144/udp --permanent
+firewall-cmd --reload
+```
+
+To authenticate to Elasticsearch, I copied the CA certificate from the Elasticsearch node to the Logstash configuration directory /etc/logstash/
+
+I adjusted the permissions on http_ca.crt to give Logstash access to the certificate file:
+
+```bash
+chmod 660 /etc/logstash/http_ca.crt
+chown root:logstash /etc/logstash/http_ca.crt
+```
+
+Then we can start Logstash and run it as a service with:
+
+```bash
+systemctl start logstash
+```

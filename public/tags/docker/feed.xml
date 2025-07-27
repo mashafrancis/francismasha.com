@@ -1,0 +1,24 @@
+
+  <rss version='2.0' xmlns:atom='http://www.w3.org/2005/Atom'>
+    <channel>
+      <title>Francis Masha</title>
+      <link>https://francismasha.com/blog</link>
+      <description>A software engineer who values learning and growing with people, teams, and technologies.</description>
+      <language>en-us</language>
+      <managingEditor>contact@francismasha.com (Francis Masha)</managingEditor>
+      <webMaster>contact@francismasha.com (Francis Masha)</webMaster>
+      <lastBuildDate>Fri, 30 Jul 2021 00:00:00 GMT</lastBuildDate>
+      <atom:link href='https://francismasha.com/tags/docker/feed.xml' rel='self' type='application/rss+xml'/>
+      
+  <item>
+    <guid>https://francismasha.com/blog/art-of-building-small-container</guid>
+    <title>Art of building small containers</title>
+    <link>https://francismasha.com/blog/art-of-building-small-container</link>
+    <description>Learn how to build small and secure docker containers</description>
+    <pubDate>Fri, 30 Jul 2021 00:00:00 GMT</pubDate>
+    <author>contact@francismasha.com (Francis Masha)</author>
+    <category>docker</category><category>go</category><category>kubernetes</category><category>devops</category>
+  </item>
+
+    </channel>
+  </rss>

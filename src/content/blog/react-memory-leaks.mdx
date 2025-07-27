@@ -1,0 +1,53 @@
+---
+title: "React memory leaks"
+date: "2023-02-18"
+tags: ["react", "performance"]
+draft: false
+summary: "Install and configure filebeat to ingest syslogs into elasticsearch"
+image: "/static/blogs/elk-cluster.webp"
+---
+
+Computers don’t have unlimited resources and some browsers are eating a lot of memory even for a few open tabs.
+If most of them have memory leaks, it can really slow down your computer. For react developers, optimization can
+be a bit of a headache if not properly done, or not done at all. Memory leaks can destroy your project
+and cost a big amount of money and time. Let's try to understand why and how we can clean up memory leaks.
+
+## What is a memory leak?
+
+In React, a memory leak is a type of resource leak that occurs when an application
+incorrectly manages memory allocations. That memory, which is not needed anymore,
+is not released for other processes to use. A memory leak may also happen when an
+object is stored in a memory, but cannot be accessed by the running code.
+
+Once you have a memory leak, you will get a similar error in console log:
+
+_Warning: Can’t perform a React state update on an unmounted component. This is a no-op,
+but it indicates a memory leak in your application. To fix, cancel all subscriptions
+and asynchronous tasks in the componentWillUnmount method._
+
+## Why should you clean up memory leaks?
+
+Memory leaks are commonly faced issues when developing React applications. It causes many problems, including:
+
+- Affecting the project’s performance by reducing the amount of available memory;
+- Slowing down the application;
+- Refreshing the page randomly;
+- Crashing the system;
+- Overloading database with huge amounts of queries;
+
+Let’s say you are building an application with React and Firebase for database.
+You create your website which interacts with Firebase a lot. And just after a few hours,
+you hit 50k read limit of the day. You check that the only user was you.
+How is that possible?! Now your website is down and will not work for the day
+just because you didn’t clean up memory leaks.
+
+## What causes a memory leak?
+
+A memory leak appears when React applications created subscriptions that were
+made when a component was mounted and did not unsubscribe them when those components were unmounted.
+
+These subscriptions could be:
+
+- DOM Event listeners;
+- WebSocket subscriptions;
+- Requests to an API;

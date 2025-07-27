@@ -1,0 +1,24 @@
+
+  <rss version='2.0' xmlns:atom='http://www.w3.org/2005/Atom'>
+    <channel>
+      <title>Francis Masha</title>
+      <link>https://francismasha.com/blog</link>
+      <description>A software engineer who values learning and growing with people, teams, and technologies.</description>
+      <language>en-us</language>
+      <managingEditor>contact@francismasha.com (Francis Masha)</managingEditor>
+      <webMaster>contact@francismasha.com (Francis Masha)</webMaster>
+      <lastBuildDate>Fri, 30 Sep 2022 21:00:00 GMT</lastBuildDate>
+      <atom:link href='https://francismasha.com/tags/random/feed.xml' rel='self' type='application/rss+xml'/>
+      
+  <item>
+    <guid>https://francismasha.com/blog/hello-world</guid>
+    <title>Hello world</title>
+    <link>https://francismasha.com/blog/hello-world</link>
+    <description>Just a beginning of something great ahead.</description>
+    <pubDate>Fri, 30 Sep 2022 21:00:00 GMT</pubDate>
+    <author>contact@francismasha.com (Francis Masha)</author>
+    <category>random</category>
+  </item>
+
+    </channel>
+  </rss>

@@ -1,0 +1,24 @@
+
+  <rss version='2.0' xmlns:atom='http://www.w3.org/2005/Atom'>
+    <channel>
+      <title>Francis Masha</title>
+      <link>https://francismasha.com/blog</link>
+      <description>A software engineer who values learning and growing with people, teams, and technologies.</description>
+      <language>en-us</language>
+      <managingEditor>contact@francismasha.com (Francis Masha)</managingEditor>
+      <webMaster>contact@francismasha.com (Francis Masha)</webMaster>
+      <lastBuildDate>Sat, 05 Nov 2022 00:00:00 GMT</lastBuildDate>
+      <atom:link href='https://francismasha.com/tags/productivity/feed.xml' rel='self' type='application/rss+xml'/>
+      
+  <item>
+    <guid>https://francismasha.com/blog/tips-code-review</guid>
+    <title>Tips for better code review</title>
+    <link>https://francismasha.com/blog/tips-code-review</link>
+    <description>Tips for better code review to keep our code clean and efficient</description>
+    <pubDate>Sat, 05 Nov 2022 00:00:00 GMT</pubDate>
+    <author>contact@francismasha.com (Francis Masha)</author>
+    <category>git</category><category>productivity</category>
+  </item>
+
+    </channel>
+  </rss>
