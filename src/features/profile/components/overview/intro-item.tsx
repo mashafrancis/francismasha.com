@@ -10,7 +10,7 @@ export function IntroItem({
   href?: string;
 }) {
   return (
-    <div className="flex items-center gap-4 font-mono text-sm">
+    <div className="flex items-center gap-4 font-sans text-sm">
       <div
         className="flex size-6 shrink-0 items-center justify-center rounded-lg bg-muted dark:inset-shadow-[1px_1px_1px,0px_0px_1px] dark:inset-shadow-white/15"
         aria-hidden

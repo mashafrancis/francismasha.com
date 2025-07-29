@@ -9,8 +9,8 @@ export async function GET(request: Request) {
   const domain = searchParams.get("domain");
   const isForSale = searchParams.get("sale") === "true";
 
-  const magistralMedium = await readFile(
-    join(process.cwd(), "src/assets/fonts/Magistral-Medium.ttf")
+  const circularMedium = await readFile(
+    join(process.cwd(), "src/assets/fonts/CircularStd-Medium.woff2")
   );
 
   const robotoMedium = await readFile(
@@ -25,7 +25,7 @@ export async function GET(request: Request) {
             <h1
               tw="mt-8 mb-4 ml-8 mr-8 font-medium"
               style={{
-                fontFamily: "Magistral",
+                fontFamily: "CircularStd",
                 fontSize: 88,
               }}
             >
@@ -75,8 +75,8 @@ export async function GET(request: Request) {
       height: 630,
       fonts: [
         {
-          name: "Magistral",
-          data: magistralMedium,
+          name: "CircularStd",
+          data: circularMedium,
           weight: 500,
         },
         {

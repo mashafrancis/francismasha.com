@@ -57,7 +57,7 @@ export function FlipSentences({
       <motion.p
         key={`current-sentence-${currentSentence}`}
         className={cn(
-          "font-mono text-sm text-balance text-muted-foreground select-none",
+          "font-sans text-sm text-balance text-muted-foreground select-none",
           className
         )}
         initial={{

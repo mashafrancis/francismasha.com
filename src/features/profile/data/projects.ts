@@ -2,44 +2,39 @@ import type { Project } from "../types/projects";
 
 export const PROJECTS: Project[] = [
   {
-    id: "react-wheel-picker",
-    title: "React Wheel Picker",
+    id: "heimdall",
+    title: "Heimdall - Web Observability Performance Tool",
     period: {
-      start: "05.2025",
+      start: "05.2023",
     },
-    link: "https://react-wheel-picker.chanhdai.com",
+    link: "https://heimdall.francismasha.com",
     skills: [
       "Open Source",
-      "React",
+      "OpenTelemetry",
       "TypeScript",
       "Monorepo",
       "Turborepo",
       "pnpm-workspace",
-      "Package Publishing",
+      "Error $ bugs tracking",
       "NPM Registry",
       "GitHub Actions",
     ],
-    description: `iOS-like wheel picker for React with smooth inertia scrolling and infinite loop support.
-- 📱 Natural touch scrolling with smooth inertia effect
-- 🖱️ Mouse drag and scroll support for desktop
-- 🔄 Infinite loop scrolling
-- 🎨 Unstyled components for complete style customization
-- ⚡️ Easy installation via shadcn CLI
-
-This project is proudly supported by:
-
-[![Vercel OSS Program](https://vercel.com/oss/program-badge.svg)](https://vercel.com/oss)
+    description: `A global observability perspective for your web and API's performance with real-time monitoring.
+- Synthetic monitoring for web and API's'
+- Error and bugs tracking
+- Web analytics and vitals insights
+- Opentelemetry logs, metrics, and traces
 `,
-    logo: "https://assets.chanhdai.com/images/project-logos/react-wheel-picker.svg",
+    logo: "https://assets.francismasha.dev/images/project-logos/heimdall.svg",
     isExpanded: true,
   },
   {
-    id: "chanhdaidotcom",
-    title: "chanhdai.com",
+    id: "francismasha",
+    title: "francismasha.com",
     period: {
       start: "01.2025",
     },
-    link: "https://github.com/ncdai/chanhdai.com",
+    link: "https://github.com/mashafrancis/francismasha.com",
     skills: [
       "Open Source",
       "Next.js 15",
@@ -64,7 +59,7 @@ Blog Features:
 - Syntax Highlighting for better readability
 - RSS Feed for easy content distribution
 - Dynamic OG Images for rich previews`,
-    logo: "https://assets.chanhdai.com/images/project-logos/chanhdaidotcom.svg",
+    logo: "https://assets.francismasha.dev/images/project-logos/francismasha.svg",
     isExpanded: true,
   },
   {

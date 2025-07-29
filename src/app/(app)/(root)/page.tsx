@@ -5,6 +5,9 @@ import { USER } from "@/data/user";
 import { Overview } from "@/features/profile/components/overview";
 import { ProfileHeader } from "@/features/profile/components/profile-header";
 import { cn } from "@/lib/utils";
+import { About } from "@/features/profile/components/about";
+import { Experiences } from "@/features/profile/components/experiences";
+import { SocialLinks } from "@/features/profile/components/social-links";
 
 export default function Page() {
   return (
@@ -24,22 +27,22 @@ export default function Page() {
         <Overview />
         <Separator />
 
-        {/*<SocialLinks />*/}
-        {/*<Separator />*/}
+        <SocialLinks />
+        <Separator />
 
-        {/*<About />*/}
-        {/*<Separator />*/}
+        <About />
+        <Separator />
 
         {/*<TeckStack />*/}
         {/*<Separator />*/}
 
-        {/*<Blog />*/}
-        {/*<Separator />*/}
-
-        {/*<Experiences />*/}
-        {/*<Separator />*/}
+        <Experiences />
+        <Separator />
 
         {/*<Projects />*/}
+        {/*<Separator />*/}
+
+        {/*<Blog />*/}
         {/*<Separator />*/}
 
         {/*<Awards />*/}

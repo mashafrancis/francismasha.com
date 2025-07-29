@@ -3,9 +3,9 @@ import { getAllPosts } from "@/data/blog";
 
 const allPosts = getAllPosts();
 
-const content = `# chanhdai.com
+const content = `# francismasha.com
 
-> chanhdai.com is my minimal portfolio website, showcasing my work and experience as a Software Developer & UI/UX Designer.
+> francismasha.com is my minimal portfolio website, showcasing my work and experience as a Software Developer & UI/UX Designer.
 
 - [About](${SITE_INFO.url}/about.md): A quick intro to me, my tech stack, and how to connect.
 - [Experience](${SITE_INFO.url}/experience.md): Highlights from my career and key roles I've taken on.
