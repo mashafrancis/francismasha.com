@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import dayjs from "dayjs";
-import ReactConfetti from "react-confetti";
-import { useWindowSize } from "react-use";
+import dayjs from 'dayjs';
+import ReactConfetti from 'react-confetti';
+import { useWindowSize } from 'react-use';
 
-import { useIsClient } from "@/hooks/use-is-client";
+import { useIsClient } from '@/hooks/use-is-client';
 
 export function Confetti({
   datesWithoutYear = [],
@@ -17,14 +17,14 @@ export function Confetti({
 
   const { width, height } = useWindowSize();
 
-  const todayWithoutYear = dayjs().format("MM-DD");
-  const todayWithYear = dayjs().format("YYYY-MM-DD");
+  const todayWithoutYear = dayjs().format('MM-DD');
+  const todayWithYear = dayjs().format('YYYY-MM-DD');
   const shouldShow =
     datesWithoutYear.some(
-      (date) => dayjs(date).format("MM-DD") === todayWithoutYear
+      (date) => dayjs(date).format('MM-DD') === todayWithoutYear
     ) ||
     datesWithYear.some(
-      (date) => dayjs(date).format("YYYY-MM-DD") === todayWithYear
+      (date) => dayjs(date).format('YYYY-MM-DD') === todayWithYear
     );
 
   if (!isClient) {
@@ -38,11 +38,11 @@ export function Confetti({
   return (
     <ReactConfetti
       className="fixed inset-0 z-50"
-      width={width}
+      gravity={0.3}
       height={height}
       numberOfPieces={300}
-      gravity={0.3}
       recycle={false}
+      width={width}
     />
   );
 }

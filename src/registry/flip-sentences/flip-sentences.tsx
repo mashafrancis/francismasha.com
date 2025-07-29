@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { AnimatePresence } from "motion/react";
-import * as motion from "motion/react-m";
-import { useEffect, useRef, useState } from "react";
+import { AnimatePresence } from 'motion/react';
+import * as motion from 'motion/react-m';
+import { useEffect, useRef, useState } from 'react';
 
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
 
 export function FlipSentences({
   className,
@@ -30,12 +30,12 @@ export function FlipSentences({
     const { signal } = abortController;
 
     document.addEventListener(
-      "visibilitychange",
+      'visibilitychange',
       () => {
-        if (document.visibilityState !== "visible" && intervalRef.current) {
+        if (document.visibilityState !== 'visible' && intervalRef.current) {
           clearInterval(intervalRef.current); // Clear the interval when the tab is not visible
           intervalRef.current = null;
-        } else if (document.visibilityState === "visible") {
+        } else if (document.visibilityState === 'visible') {
           setCurrentSentence((prev) => (prev + 1) % sentences.length); // Show the next sentence immediately
           startAnimation(); // Restart the interval when the tab becomes visible
         }
@@ -50,31 +50,31 @@ export function FlipSentences({
       abortController.abort();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sentences]);
+  }, [sentences, startAnimation]);
 
   return (
-    <AnimatePresence mode="wait" initial={false}>
+    <AnimatePresence initial={false} mode="wait">
       <motion.p
-        key={`current-sentence-${currentSentence}`}
-        className={cn(
-          "font-sans text-sm text-balance text-muted-foreground select-none",
-          className
-        )}
-        initial={{
-          y: 8,
-          opacity: 0,
-        }}
         animate={{
           y: 0,
           opacity: 1,
         }}
+        className={cn(
+          'select-none text-balance font-sans text-muted-foreground text-sm',
+          className
+        )}
         exit={{
           y: -8,
           opacity: 0,
         }}
+        initial={{
+          y: 8,
+          opacity: 0,
+        }}
+        key={`current-sentence-${currentSentence}`}
         transition={{
           duration: 0.3,
-          ease: "linear",
+          ease: 'linear',
         }}
       >
         {sentences[currentSentence]}

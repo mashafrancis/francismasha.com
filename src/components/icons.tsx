@@ -1,4 +1,4 @@
-import { FileIcon, TerminalSquareIcon } from "lucide-react";
+import { FileIcon, TerminalSquareIcon } from 'lucide-react';
 
 type IconProps = React.HTMLAttributes<SVGElement>;
 
@@ -133,17 +133,17 @@ export const Icons = {
   shadcn: (props: IconProps) => (
     <svg viewBox="0 0 256 256" {...props}>
       <path
+        d="m208 128-80 80M192 40 40 192"
         fill="none"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="32"
-        d="m208 128-80 80M192 40 40 192"
       />
     </svg>
   ),
   v0: (props: IconProps) => (
-    <svg viewBox="0 0 40 20" fill="none" {...props}>
+    <svg fill="none" viewBox="0 0 40 20" {...props}>
       <path
         d="M23.3919 0H32.9188C36.7819 0 39.9136 3.13165 39.9136 6.99475V16.0805H36.0006V6.99475C36.0006 6.90167 35.9969 6.80925 35.9898 6.71766L26.4628 16.079C26.4949 16.08 26.5272 16.0805 26.5595 16.0805H36.0006V19.7762H26.5595C22.6964 19.7762 19.4788 16.6139 19.4788 12.7508V3.68923H23.3919V12.7508C23.3919 12.9253 23.4054 13.0977 23.4316 13.2668L33.1682 3.6995C33.0861 3.6927 33.003 3.68923 32.9188 3.68923H23.3919V0Z"
         fill="currentColor"
@@ -192,37 +192,37 @@ export const Icons = {
   // Source: https://ui.shadcn.com
   contrast: (props: IconProps) => (
     <svg
-      viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
       {...props}
     >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-      <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
-      <path d="M12 3l0 18"></path>
-      <path d="M12 9l4.65 -4.65"></path>
-      <path d="M12 14.3l7.37 -7.37"></path>
-      <path d="M12 19.6l8.85 -8.85"></path>
+      <path d="M0 0h24v24H0z" fill="none" stroke="none" />
+      <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+      <path d="M12 3l0 18" />
+      <path d="M12 9l4.65 -4.65" />
+      <path d="M12 14.3l7.37 -7.37" />
+      <path d="M12 19.6l8.85 -8.85" />
     </svg>
   ),
 };
 
 export function getIconForLanguageExtension(language: string) {
   switch (language) {
-    case "json":
+    case 'json':
       return <Icons.json />;
-    case "css":
+    case 'css':
       return <Icons.css />;
-    case "js":
+    case 'js':
       return <Icons.js />;
-    case "ts":
-    case "typescript":
+    case 'ts':
+    case 'typescript':
       return <Icons.ts />;
-    case "jsx":
-    case "tsx":
+    case 'jsx':
+    case 'tsx':
       return <Icons.react />;
     default:
       return <FileIcon />;
@@ -231,13 +231,13 @@ export function getIconForLanguageExtension(language: string) {
 
 export function getIconForPackageManager(manager: string) {
   switch (manager) {
-    case "pnpm":
+    case 'pnpm':
       return <Icons.pnpm />;
-    case "yarn":
+    case 'yarn':
       return <Icons.yarn />;
-    case "npm":
+    case 'npm':
       return <Icons.npm />;
-    case "bun":
+    case 'bun':
       return <Icons.bun />;
     default:
       return <TerminalSquareIcon />;
@@ -245,7 +245,9 @@ export function getIconForPackageManager(manager: string) {
 }
 
 export function getIcon(name: string | undefined) {
-  if (!name || !(name in Icons)) return null;
+  if (!(name && name in Icons)) {
+    return null;
+  }
   const Icon = Icons[name as keyof typeof Icons];
   return <Icon />;
 }

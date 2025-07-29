@@ -1,25 +1,25 @@
-;(function (m, e, t, r, i, k, a) {
+((m, e, t, r, i, k, a) => {
   m[i] =
     m[i] ||
-    function () {
-      ;(m[i].a = m[i].a || []).push(arguments)
-    }
-  m[i].l = 1 * new Date()
-  for (var j = 0; j < document.scripts.length; j++) {
+    (() => {
+      (m[i].a = m[i].a || []).push(arguments);
+    });
+  m[i].l = 1 * Date.now();
+  for (let j = 0; j < document.scripts.length; j++) {
     if (document.scripts[j].src === r) {
-      return
+      return;
     }
   }
-  ;(k = e.createElement(t)),
+  (k = e.createElement(t)),
     (a = e.getElementsByTagName(t)[0]),
     (k.async = 1),
     (k.src = r),
-    a.parentNode.insertBefore(k, a)
-})(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym')
+    a.parentNode.insertBefore(k, a);
+})(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
 
-ym(99246529, 'init', {
+ym(99_246_529, 'init', {
   clickmap: true,
   trackLinks: true,
   accurateTrackBounce: true,
   webvisor: true,
-})
+});

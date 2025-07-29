@@ -1,8 +1,7 @@
-import Image from "next/image";
-import React from "react";
+import Image from 'next/image';
 
-import type { Experience } from "../../types/experiences";
-import { ExperiencePositionItem } from "./experience-position-item";
+import type { Experience } from '../../types/experiences';
+import { ExperiencePositionItem } from './experience-position-item';
 
 export function ExperienceItem({ experience }: { experience: Experience }) {
   return (
@@ -11,21 +10,21 @@ export function ExperienceItem({ experience }: { experience: Experience }) {
         <div className="flex size-6 shrink-0 items-center justify-center">
           {experience.companyLogo ? (
             <Image
-              src={experience.companyLogo}
               alt={experience.companyName}
-              width={24}
+              aria-hidden
+              className="rounded-full"
               height={24}
               quality={100}
-              className="rounded-full"
+              src={experience.companyLogo}
               unoptimized
-              aria-hidden
+              width={24}
             />
           ) : (
             <span className="flex size-2 rounded-full bg-zinc-300 dark:bg-zinc-600" />
           )}
         </div>
 
-        <h3 className="text-lg leading-snug font-medium">
+        <h3 className="font-medium text-lg leading-snug">
           {experience.companyName}
         </h3>
 

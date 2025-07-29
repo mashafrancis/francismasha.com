@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import { Nav } from "@/components/nav";
-import { useMediaQuery } from "@/hooks/use-media-query";
-import type { NavItem } from "@/types/nav";
+import { Nav } from '@/components/nav';
+import { useMediaQuery } from '@/hooks/use-media-query';
+import type { NavItem } from '@/types/nav';
 
 export function NavScrollspy({
   items,
@@ -13,12 +13,12 @@ export function NavScrollspy({
   items: NavItem[];
   className?: string;
 }) {
-  const shouldObserve = useMediaQuery("(min-width: 48rem)"); // 768px
-  const itemIds = items.map((link) => link.href?.split("#")[1]).filter(Boolean);
+  const shouldObserve = useMediaQuery('(min-width: 48rem)'); // 768px
+  const itemIds = items.map((link) => link.href?.split('#')[1]).filter(Boolean);
   const activeItemId = useActiveItem(itemIds, shouldObserve);
 
   return (
-    <Nav className={className} items={items} activeId={`#${activeItemId}`} />
+    <Nav activeId={`#${activeItemId}`} className={className} items={items} />
   );
 }
 
@@ -38,7 +38,7 @@ function useActiveItem(itemIds: string[], enabled = true) {
           }
         });
       },
-      { rootMargin: `0% 0% -80% 0%` }
+      { rootMargin: '0% 0% -80% 0%' }
     );
 
     itemIds?.forEach((id) => {

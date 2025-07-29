@@ -1,8 +1,8 @@
-import fs from "fs";
-import matter from "gray-matter";
-import path from "path";
+import fs from 'node:fs';
+import path from 'node:path';
+import matter from 'gray-matter';
 
-import type { Post, PostMetadata } from "@/types/blog";
+import type { Post, PostMetadata } from '@/types/blog';
 
 function parseFrontmatter(fileContent: string) {
   const file = matter(fileContent);
@@ -14,11 +14,11 @@ function parseFrontmatter(fileContent: string) {
 }
 
 function getMDXFiles(dir: string) {
-  return fs.readdirSync(dir).filter((file) => path.extname(file) === ".mdx");
+  return fs.readdirSync(dir).filter((file) => path.extname(file) === '.mdx');
 }
 
 function readMDXFile(filePath: string) {
-  const rawContent = fs.readFileSync(filePath, "utf-8");
+  const rawContent = fs.readFileSync(filePath, 'utf-8');
   return parseFrontmatter(rawContent);
 }
 
@@ -39,7 +39,7 @@ function getMDXData(dir: string) {
 }
 
 export function getAllPosts() {
-  return getMDXData(path.join(process.cwd(), "src", "content", "blog")).sort(
+  return getMDXData(path.join(process.cwd(), 'src', 'content', 'blog')).sort(
     (a, b) =>
       new Date(b.metadata.createdAt).getTime() -
       new Date(a.metadata.createdAt).getTime()

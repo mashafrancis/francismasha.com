@@ -1,18 +1,18 @@
-import "@/styles/globals.css";
+import '@/styles/globals.css';
 
-import type { Metadata, Viewport } from "next";
-import Script from "next/script";
-import type { WebSite, WithContext } from "schema-dts";
+import type { Metadata, Viewport } from 'next';
+import Script from 'next/script';
+import type { WebSite, WithContext } from 'schema-dts';
 
-import { Providers } from "@/components/providers";
-import { META_THEME_COLORS, SITE_INFO } from "@/config/site";
-import { USER } from "@/data/user";
-import { fontMono, fontSans } from "@/lib/fonts";
+import { Providers } from '@/components/providers';
+import { META_THEME_COLORS, SITE_INFO } from '@/config/site';
+import { USER } from '@/data/user';
+import { fontMono, fontSans } from '@/lib/fonts';
 
 function getWebSiteJsonLd(): WithContext<WebSite> {
   return {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
     name: SITE_INFO.name,
     url: SITE_INFO.url,
     alternateName: [USER.username],
@@ -37,7 +37,7 @@ const darkModeScript = String.raw`
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_INFO.url),
   alternates: {
-    canonical: "/",
+    canonical: '/',
   },
   title: {
     template: `%s | ${SITE_INFO.name}`,
@@ -47,15 +47,15 @@ export const metadata: Metadata = {
   keywords: SITE_INFO.keywords,
   authors: [
     {
-      name: "francis",
+      name: 'francis',
       url: SITE_INFO.url,
     },
   ],
-  creator: "francis",
+  creator: 'francis',
   openGraph: {
     siteName: SITE_INFO.name,
-    url: "/",
-    type: "profile",
+    url: '/',
+    type: 'profile',
     firstName: USER.firstName,
     lastName: USER.lastName,
     username: USER.username,
@@ -70,33 +70,33 @@ export const metadata: Metadata = {
     ],
   },
   twitter: {
-    card: "summary_large_image",
-    creator: "@mashafrancis", // Twitter username
+    card: 'summary_large_image',
+    creator: '@mashafrancis', // Twitter username
     images: [SITE_INFO.ogImage],
   },
   icons: {
     icon: [
       {
-        url: "https://assets.chanhdai.com/images/favicon.ico",
-        sizes: "any",
+        url: 'https://assets.chanhdai.com/images/favicon.ico',
+        sizes: 'any',
       },
       {
-        url: "https://assets.chanhdai.com/images/favicon.svg",
-        type: "image/svg+xml",
+        url: 'https://assets.chanhdai.com/images/favicon.svg',
+        type: 'image/svg+xml',
       },
     ],
     apple: {
-      url: "https://assets.chanhdai.com/images/apple-touch-icon.png",
-      type: "image/png",
-      sizes: "180x180",
+      url: 'https://assets.chanhdai.com/images/apple-touch-icon.png',
+      type: 'image/png',
+      sizes: '180x180',
     },
   },
 };
 
 export const viewport: Viewport = {
-  width: "device-width",
+  width: 'device-width',
   initialScale: 1,
-  viewportFit: "cover",
+  viewportFit: 'cover',
   themeColor: META_THEME_COLORS.light,
 };
 
@@ -107,14 +107,14 @@ export default function RootLayout({
 }) {
   return (
     <html
-      lang="en"
       className={`${fontSans.variable} ${fontMono.variable}`}
+      lang="en"
       suppressHydrationWarning
     >
       <head>
         <script
-          type="text/javascript"
           dangerouslySetInnerHTML={{ __html: darkModeScript }}
+          type="text/javascript"
         />
         {/*
           Thanks @tailwindcss. We inject the script via the `<Script/>` tag again,
@@ -122,10 +122,10 @@ export default function RootLayout({
          */}
         <Script src={`data:text/javascript;base64,${btoa(darkModeScript)}`} />
         <script
-          type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(getWebSiteJsonLd()).replace(/</g, "\\u003c"),
+            __html: JSON.stringify(getWebSiteJsonLd()).replace(/</g, '\\u003c'),
           }}
+          type="application/ld+json"
         />
       </head>
 

@@ -1,22 +1,22 @@
-import dayjs from "dayjs";
-import { getTableOfContents } from "fumadocs-core/server";
-import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
-import type { Metadata } from "next";
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import type { BlogPosting as PageSchema, WithContext } from "schema-dts";
+import dayjs from 'dayjs';
+import { getTableOfContents } from 'fumadocs-core/server';
+import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import type { BlogPosting as PageSchema, WithContext } from 'schema-dts';
 
-import { InlineTOC } from "@/components/inline-toc";
-import { MDX } from "@/components/mdx";
-import { Button } from "@/components/ui/button";
-import { Prose } from "@/components/ui/typography";
-import { SITE_INFO } from "@/config/site";
-import { findNeighbour, getPostBySlug, getPostsByCategory } from "@/data/blog";
-import { USER } from "@/data/user";
-import type { Post } from "@/types/blog";
+import { InlineTOC } from '@/components/inline-toc';
+import { MDX } from '@/components/mdx';
+import { Button } from '@/components/ui/button';
+import { Prose } from '@/components/ui/typography';
+import { SITE_INFO } from '@/config/site';
+import { findNeighbour, getPostBySlug, getPostsByCategory } from '@/data/blog';
+import { USER } from '@/data/user';
+import type { Post } from '@/types/blog';
 
 export async function generateStaticParams() {
-  const posts = getPostsByCategory("components");
+  const posts = getPostsByCategory('components');
   return posts.map((post) => ({
     slug: post.slug,
   }));
@@ -47,7 +47,7 @@ export async function generateMetadata({
     },
     openGraph: {
       url: postUrl,
-      type: "article",
+      type: 'article',
       publishedTime: dayjs(createdAt).toISOString(),
       modifiedTime: dayjs(updatedAt).toISOString(),
       images: {
@@ -58,7 +58,7 @@ export async function generateMetadata({
       },
     },
     twitter: {
-      card: "summary_large_image",
+      card: 'summary_large_image',
       images: [ogImage],
     },
   };
@@ -66,8 +66,8 @@ export async function generateMetadata({
 
 function getPageJsonLd(post: Post): WithContext<PageSchema> {
   return {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
     headline: post.metadata.title,
     description: post.metadata.description,
     image:
@@ -77,7 +77,7 @@ function getPageJsonLd(post: Post): WithContext<PageSchema> {
     datePublished: dayjs(post.metadata.createdAt).toISOString(),
     dateModified: dayjs(post.metadata.updatedAt).toISOString(),
     author: {
-      "@type": "Person",
+      '@type': 'Person',
       name: USER.displayName,
       identifier: USER.username,
       image: USER.avatar,
@@ -99,26 +99,26 @@ export default async function Page({
     notFound();
   }
 
-  if (post.metadata.category !== "components") {
+  if (post.metadata.category !== 'components') {
     notFound();
   }
 
   const toc = getTableOfContents(post.content);
 
-  const allPosts = getPostsByCategory("components");
+  const allPosts = getPostsByCategory('components');
   const { previous, next } = findNeighbour(allPosts, slug);
 
   return (
     <>
       <script
-        type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(getPageJsonLd(post)).replace(/</g, "\\u003c"),
+          __html: JSON.stringify(getPageJsonLd(post)).replace(/</g, '\\u003c'),
         }}
+        type="application/ld+json"
       />
 
       <div className="flex items-center justify-between p-2 pl-4">
-        <Button className="px-0 text-muted-foreground" variant="link" asChild>
+        <Button asChild className="px-0 text-muted-foreground" variant="link">
           <Link href="/components">
             <ArrowLeftIcon />
             Components
@@ -127,7 +127,7 @@ export default async function Page({
 
         <div className="flex items-center gap-2">
           {previous && (
-            <Button variant="secondary" size="icon" asChild>
+            <Button asChild size="icon" variant="secondary">
               <Link href={`/components/${previous.slug}`}>
                 <ArrowLeftIcon />
                 <span className="sr-only">Previous</span>
@@ -136,7 +136,7 @@ export default async function Page({
           )}
 
           {next && (
-            <Button variant="secondary" size="icon" asChild>
+            <Button asChild size="icon" variant="secondary">
               <Link href={`/components/${next.slug}`}>
                 <span className="sr-only">Next</span>
                 <ArrowRightIcon />

@@ -1,11 +1,11 @@
-import { GlobeIcon, MapPinIcon } from "lucide-react";
+import { GlobeIcon, MapPinIcon } from 'lucide-react';
 
-import { USER } from "@/data/user";
-import { urlToName } from "@/utils/url";
+import { USER } from '@/data/user';
+import { urlToName } from '@/utils/url';
 
-import { Panel, PanelContent } from "../panel";
-import { IntroItem } from "./intro-item";
-import { JobItem } from "./job-item";
+import { Panel, PanelContent } from '../panel';
+import { IntroItem } from './intro-item';
+import { JobItem } from './job-item';
 
 export function Overview() {
   return (
@@ -16,24 +16,24 @@ export function Overview() {
         {USER.jobs.map((job, index) => {
           return (
             <JobItem
+              company={job.company}
               key={index}
               title={job.title}
-              company={job.company}
               website={job.website}
             />
           );
         })}
 
-        <IntroItem icon={MapPinIcon} content={USER.address} />
+        <IntroItem content={USER.address} icon={MapPinIcon} />
 
         {/*<PhoneItem phoneNumber={USER.phoneNumber} />*/}
 
         {/*<EmailItem email={USER.email} />*/}
 
         <IntroItem
-          icon={GlobeIcon}
           content={urlToName(USER.website)}
           href={USER.website}
+          icon={GlobeIcon}
         />
       </PanelContent>
     </Panel>

@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import * as motion from "motion/react-m";
-import { useState } from "react";
+import * as motion from 'motion/react-m';
+import { useState } from 'react';
 
-import { ChanhDaiMark } from "@/components/chanhdai-mark";
+import { ChanhDaiMark } from '@/components/chanhdai-mark';
 
 const variants = {
   show: {
@@ -28,24 +28,24 @@ export function LogoResizeAnimation({
     <motion.div
       className="relative"
       initial={{ width: maxWidth }}
-      whileInView={{ width: [maxWidth, minWidth, maxWidth] }}
-      viewport={{ once: true }}
-      transition={{ duration: 1, delay: 0.4 }}
-      onUpdate={(latest) => {
-        setWidth(latest.width as number);
-      }}
       onAnimationComplete={() => {
         setIsEnd(true);
       }}
+      onUpdate={(latest) => {
+        setWidth(latest.width as number);
+      }}
+      transition={{ duration: 1, delay: 0.4 }}
+      viewport={{ once: true }}
+      whileInView={{ width: [maxWidth, minWidth, maxWidth] }}
     >
       <motion.div
-        variants={variants}
-        animate={isEnd ? "hide" : "show"}
+        animate={isEnd ? 'hide' : 'show'}
+        className="-top-px -right-px -bottom-px -left-px absolute border border-blue-500 *:absolute *:size-[9px] *:border *:border-blue-500 *:bg-background dark:border-zinc-600 dark:*:border-zinc-600"
         transition={{
           duration: 0.6,
           delay: 0.2,
         }}
-        className="absolute -top-px -right-px -bottom-px -left-px border border-blue-500 *:absolute *:size-[9px] *:border *:border-blue-500 *:bg-background dark:border-zinc-600 dark:*:border-zinc-600"
+        variants={variants}
       >
         <div className="-top-[5px] -left-[5px]" />
         <div className="-top-[5px] -right-[5px]" />
@@ -54,13 +54,13 @@ export function LogoResizeAnimation({
       </motion.div>
 
       <motion.div
-        variants={variants}
-        animate={isEnd ? "hide" : "show"}
+        animate={isEnd ? 'hide' : 'show'}
+        className="-top-2 -translate-x-1/2 -translate-y-full absolute left-1/2 transform whitespace-nowrap rounded-sm bg-blue-600 px-1 font-mono text-sm text-white dark:bg-zinc-600"
         transition={{
           duration: 0.6,
           delay: 0.2,
         }}
-        className="absolute -top-2 left-1/2 -translate-x-1/2 -translate-y-full transform rounded-sm bg-blue-600 px-1 font-mono text-sm whitespace-nowrap text-white dark:bg-zinc-600"
+        variants={variants}
       >
         {Math.round(width)}x{Math.round(width / 2)}
       </motion.div>

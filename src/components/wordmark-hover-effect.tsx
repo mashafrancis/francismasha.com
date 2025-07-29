@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import * as motion from "motion/react-m";
-import React, { useEffect, useRef, useState } from "react";
+import * as motion from 'motion/react-m';
+import { useEffect, useRef, useState } from 'react';
 
 function WordmarkPaths() {
   return (
@@ -23,7 +23,7 @@ export function WordmarkHoverEffect() {
   const containerRef = useRef<SVGSVGElement>(null);
   const [cursor, setCursor] = useState({ x: 0, y: 0 });
   const [hovered, setHovered] = useState(false);
-  const [maskPosition, setMaskPosition] = useState({ cx: "50%", cy: "50%" });
+  const [maskPosition, setMaskPosition] = useState({ cx: '50%', cy: '50%' });
 
   useEffect(() => {
     if (containerRef.current && cursor.x !== null && cursor.y !== null) {
@@ -39,85 +39,85 @@ export function WordmarkHoverEffect() {
 
   return (
     <svg
-      ref={containerRef}
       className="size-full select-none"
-      viewBox="0 0 770 387"
-      xmlns="http://www.w3.org/2000/svg"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onMouseMove={(e) => setCursor({ x: e.clientX, y: e.clientY })}
+      ref={containerRef}
+      viewBox="0 0 770 387"
+      xmlns="http://www.w3.org/2000/svg"
     >
       <defs>
         <linearGradient
-          id="logoGradient"
-          gradientUnits="userSpaceOnUse"
           cx="50%"
           cy="50%"
+          gradientUnits="userSpaceOnUse"
+          id="logoGradient"
           r="25%"
         >
           {hovered && (
             <>
-              <stop offset="0%" stopColor={"var(--color-yellow-500)"} />
-              <stop offset="25%" stopColor={"var(--color-red-500)"} />
-              <stop offset="50%" stopColor={"var(--color-blue-500)"} />
-              <stop offset="75%" stopColor={"var(--color-cyan-500)"} />
-              <stop offset="100%" stopColor={"var(--color-violet-500)"} />
+              <stop offset="0%" stopColor={'var(--color-yellow-500)'} />
+              <stop offset="25%" stopColor={'var(--color-red-500)'} />
+              <stop offset="50%" stopColor={'var(--color-blue-500)'} />
+              <stop offset="75%" stopColor={'var(--color-cyan-500)'} />
+              <stop offset="100%" stopColor={'var(--color-violet-500)'} />
             </>
           )}
         </linearGradient>
 
         <motion.radialGradient
-          id="revealMask"
-          gradientUnits="userSpaceOnUse"
-          r="15%"
-          initial={{ cx: "50%", cy: "50%" }}
           animate={maskPosition}
-          transition={{ duration: 0, ease: "easeInOut" }}
+          gradientUnits="userSpaceOnUse"
+          id="revealMask"
+          initial={{ cx: '50%', cy: '50%' }}
+          r="15%"
+          transition={{ duration: 0, ease: 'easeInOut' }}
         >
           <stop offset="0%" stopColor="white" />
           <stop offset="100%" stopColor="black" />
         </motion.radialGradient>
 
         <mask
+          fill="black"
+          height="387"
           id="logoMask"
           maskUnits="userSpaceOnUse"
+          width="770"
           x="0"
           y="0"
-          width="770"
-          height="387"
-          fill="black"
         >
-          <rect fill="url(#revealMask)" width="770" height="387" />
+          <rect fill="url(#revealMask)" height="387" width="770" />
           <WordmarkPaths />
         </mask>
 
         <mask
+          fill="black"
+          height="387"
           id="pathOutsideMask"
           maskUnits="userSpaceOnUse"
+          width="770"
           x="0"
           y="0"
-          width="770"
-          height="387"
-          fill="black"
         >
-          <rect fill="white" width="770" height="387" />
+          <rect fill="white" height="387" width="770" />
           <WordmarkPaths />
         </mask>
       </defs>
 
       <g
         className="fill-transparent stroke-border"
-        strokeWidth="2"
         mask="url(#pathOutsideMask)"
+        strokeWidth="2"
       >
         <WordmarkPaths />
       </g>
 
       <g
         className="fill-transparent"
+        mask="url(#logoMask)"
         stroke="url(#logoGradient)"
         strokeWidth="2"
-        mask="url(#logoMask)"
       >
         <WordmarkPaths />
       </g>

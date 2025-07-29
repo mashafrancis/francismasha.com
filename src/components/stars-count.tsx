@@ -1,7 +1,6 @@
-"use client";
+'use client';
 
-import React from "react";
-import useSWR from "swr";
+import useSWR from 'swr';
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
@@ -10,7 +9,7 @@ type StarsCountResponse = {
 };
 
 export function StarsCount() {
-  const { data } = useSWR<StarsCountResponse>(`/api/stargazers_count`, fetcher);
+  const { data } = useSWR<StarsCountResponse>('/api/stargazers_count', fetcher);
 
   if (!data) {
     return <span className="h-3 w-7 rounded-full bg-muted" />;
@@ -21,7 +20,7 @@ export function StarsCount() {
   }
 
   return (
-    <span className="w-7 text-center font-mono text-xs/none text-muted-foreground tabular-nums">
+    <span className="w-7 text-center font-mono text-muted-foreground text-xs/none tabular-nums">
       {data.stargazers_count.toLocaleString()}
     </span>
   );

@@ -1,34 +1,39 @@
 if (!self.define) {
   let e,
-    a = {}
+    a = {};
   const s = (s, c) => (
-    (s = new URL(s + '.js', c).href),
+    (s = new URL(`${s}.js`, c).href),
     a[s] ||
       new Promise((a) => {
         if ('document' in self) {
-          const e = document.createElement('script')
-          ;(e.src = s), (e.onload = a), document.head.appendChild(e)
-        } else (e = s), importScripts(s), a()
+          const e = document.createElement('script');
+          (e.src = s), (e.onload = a), document.head.appendChild(e);
+        } else {
+          (e = s), importScripts(s), a();
+        }
       }).then(() => {
-        let e = a[s]
-        if (!e) throw new Error(`Module ${s} didn’t register its module`)
-        return e
+        const e = a[s];
+        if (!e) {
+          throw new Error(`Module ${s} didn’t register its module`);
+        }
+        return e;
       })
-  )
+  );
   self.define = (c, i) => {
     const n =
       e ||
       ('document' in self ? document.currentScript.src : '') ||
-      location.href
-    if (a[n]) return
-    let t = {}
+      location.href;
+    if (a[n]) {
+      return;
+    }
+    const t = {};
     const f = (e) => s(e, n),
-      d = { module: { uri: n }, exports: t, require: f }
-    a[n] = Promise.all(c.map((e) => d[e] || f(e))).then((e) => (i(...e), t))
-  }
+      d = { module: { uri: n }, exports: t, require: f };
+    a[n] = Promise.all(c.map((e) => d[e] || f(e))).then((e) => (i(...e), t));
+  };
 }
-define(['./workbox-2e6be583'], function (e) {
-  'use strict'
+define(['./workbox-2e6be583'], (e) => {
   importScripts(),
     self.skipWaiting(),
     e.clientsClaim(),
@@ -540,7 +545,7 @@ define(['./workbox-2e6be583'], function (e) {
           revision: '74f403ba8dbb254dea5612f9f0b4db71',
         },
       ],
-      { ignoreURLParametersMatching: [] },
+      { ignoreURLParametersMatching: [] }
     ),
     e.cleanupOutdatedCaches(),
     e.registerRoute(
@@ -555,7 +560,7 @@ define(['./workbox-2e6be583'], function (e) {
               event: s,
               state: c,
             }) =>
-              a && 'opaqueredirect' === a.type
+              a && a.type === 'opaqueredirect'
                 ? new Response(a.body, {
                     status: 200,
                     statusText: 'OK',
@@ -565,57 +570,57 @@ define(['./workbox-2e6be583'], function (e) {
           },
         ],
       }),
-      'GET',
+      'GET'
     ),
     e.registerRoute(
       /^https:\/\/fonts\.(?:gstatic)\.com\/.*/i,
       new e.CacheFirst({
         cacheName: 'google-fonts-webfonts',
         plugins: [
-          new e.ExpirationPlugin({ maxEntries: 4, maxAgeSeconds: 31536e3 }),
+          new e.ExpirationPlugin({ maxEntries: 4, maxAgeSeconds: 31_536e3 }),
         ],
       }),
-      'GET',
+      'GET'
     ),
     e.registerRoute(
       /^https:\/\/fonts\.(?:googleapis)\.com\/.*/i,
       new e.StaleWhileRevalidate({
         cacheName: 'google-fonts-stylesheets',
         plugins: [
-          new e.ExpirationPlugin({ maxEntries: 4, maxAgeSeconds: 604800 }),
+          new e.ExpirationPlugin({ maxEntries: 4, maxAgeSeconds: 604_800 }),
         ],
       }),
-      'GET',
+      'GET'
     ),
     e.registerRoute(
       /\.(?:eot|otf|ttc|ttf|woff|woff2|font.css)$/i,
       new e.StaleWhileRevalidate({
         cacheName: 'static-font-assets',
         plugins: [
-          new e.ExpirationPlugin({ maxEntries: 4, maxAgeSeconds: 604800 }),
+          new e.ExpirationPlugin({ maxEntries: 4, maxAgeSeconds: 604_800 }),
         ],
       }),
-      'GET',
+      'GET'
     ),
     e.registerRoute(
       /\.(?:jpg|jpeg|gif|png|svg|ico|webp)$/i,
       new e.StaleWhileRevalidate({
         cacheName: 'static-image-assets',
         plugins: [
-          new e.ExpirationPlugin({ maxEntries: 64, maxAgeSeconds: 86400 }),
+          new e.ExpirationPlugin({ maxEntries: 64, maxAgeSeconds: 86_400 }),
         ],
       }),
-      'GET',
+      'GET'
     ),
     e.registerRoute(
       /\/_next\/image\?url=.+$/i,
       new e.StaleWhileRevalidate({
         cacheName: 'next-image',
         plugins: [
-          new e.ExpirationPlugin({ maxEntries: 64, maxAgeSeconds: 86400 }),
+          new e.ExpirationPlugin({ maxEntries: 64, maxAgeSeconds: 86_400 }),
         ],
       }),
-      'GET',
+      'GET'
     ),
     e.registerRoute(
       /\.(?:mp3|wav|ogg)$/i,
@@ -623,10 +628,10 @@ define(['./workbox-2e6be583'], function (e) {
         cacheName: 'static-audio-assets',
         plugins: [
           new e.RangeRequestsPlugin(),
-          new e.ExpirationPlugin({ maxEntries: 32, maxAgeSeconds: 86400 }),
+          new e.ExpirationPlugin({ maxEntries: 32, maxAgeSeconds: 86_400 }),
         ],
       }),
-      'GET',
+      'GET'
     ),
     e.registerRoute(
       /\.(?:mp4)$/i,
@@ -634,79 +639,83 @@ define(['./workbox-2e6be583'], function (e) {
         cacheName: 'static-video-assets',
         plugins: [
           new e.RangeRequestsPlugin(),
-          new e.ExpirationPlugin({ maxEntries: 32, maxAgeSeconds: 86400 }),
+          new e.ExpirationPlugin({ maxEntries: 32, maxAgeSeconds: 86_400 }),
         ],
       }),
-      'GET',
+      'GET'
     ),
     e.registerRoute(
       /\.(?:js)$/i,
       new e.StaleWhileRevalidate({
         cacheName: 'static-js-assets',
         plugins: [
-          new e.ExpirationPlugin({ maxEntries: 32, maxAgeSeconds: 86400 }),
+          new e.ExpirationPlugin({ maxEntries: 32, maxAgeSeconds: 86_400 }),
         ],
       }),
-      'GET',
+      'GET'
     ),
     e.registerRoute(
       /\.(?:css|less)$/i,
       new e.StaleWhileRevalidate({
         cacheName: 'static-style-assets',
         plugins: [
-          new e.ExpirationPlugin({ maxEntries: 32, maxAgeSeconds: 86400 }),
+          new e.ExpirationPlugin({ maxEntries: 32, maxAgeSeconds: 86_400 }),
         ],
       }),
-      'GET',
+      'GET'
     ),
     e.registerRoute(
       /\/_next\/data\/.+\/.+\.json$/i,
       new e.StaleWhileRevalidate({
         cacheName: 'next-data',
         plugins: [
-          new e.ExpirationPlugin({ maxEntries: 32, maxAgeSeconds: 86400 }),
+          new e.ExpirationPlugin({ maxEntries: 32, maxAgeSeconds: 86_400 }),
         ],
       }),
-      'GET',
+      'GET'
     ),
     e.registerRoute(
       /\.(?:json|xml|csv)$/i,
       new e.NetworkFirst({
         cacheName: 'static-data-assets',
         plugins: [
-          new e.ExpirationPlugin({ maxEntries: 32, maxAgeSeconds: 86400 }),
+          new e.ExpirationPlugin({ maxEntries: 32, maxAgeSeconds: 86_400 }),
         ],
       }),
-      'GET',
+      'GET'
     ),
     e.registerRoute(
       ({ url: e }) => {
-        if (!(self.origin === e.origin)) return !1
-        const a = e.pathname
-        return !a.startsWith('/api/auth/') && !!a.startsWith('/api/')
+        if (!(self.origin === e.origin)) {
+          return !1;
+        }
+        const a = e.pathname;
+        return !a.startsWith('/api/auth/') && !!a.startsWith('/api/');
       },
       new e.NetworkFirst({
         cacheName: 'apis',
         networkTimeoutSeconds: 10,
         plugins: [
-          new e.ExpirationPlugin({ maxEntries: 16, maxAgeSeconds: 86400 }),
+          new e.ExpirationPlugin({ maxEntries: 16, maxAgeSeconds: 86_400 }),
         ],
       }),
-      'GET',
+      'GET'
     ),
     e.registerRoute(
       ({ url: e }) => {
-        if (!(self.origin === e.origin)) return !1
-        return !e.pathname.startsWith('/api/')
+        if (!(self.origin === e.origin)) {
+          return !1;
+        }
+        return !e.pathname.startsWith('/api/');
       },
       new e.NetworkFirst({
         cacheName: 'others',
         networkTimeoutSeconds: 10,
         plugins: [
-          new e.ExpirationPlugin({ maxEntries: 32, maxAgeSeconds: 86400 }),
+          new e.ExpirationPlugin({ maxEntries: 32, maxAgeSeconds: 86_400 }),
         ],
       }),
-      'GET',
+      'GET'
     ),
     e.registerRoute(
       ({ url: e }) => !(self.origin === e.origin),
@@ -717,6 +726,6 @@ define(['./workbox-2e6be583'], function (e) {
           new e.ExpirationPlugin({ maxEntries: 32, maxAgeSeconds: 3600 }),
         ],
       }),
-      'GET',
-    )
-})
+      'GET'
+    );
+});

@@ -1,6 +1,6 @@
-import dayjs from "dayjs";
+import dayjs from 'dayjs';
 
-import { getAllPosts } from "@/data/blog";
+import { getAllPosts } from '@/data/blog';
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
@@ -20,10 +20,10 @@ export async function GET(
   const post = allPosts.find((post) => post.slug === slug);
 
   if (!post) {
-    return new Response("Post not found", {
+    return new Response('Post not found', {
       status: 404,
       headers: {
-        "Content-Type": "text/plain",
+        'Content-Type': 'text/plain',
       },
     });
   }
@@ -35,11 +35,11 @@ ${post.metadata.description}
 
 ${post.content.trim()}
 
-Last updated on ${dayjs(post.metadata.updatedAt).format("MMMM D, YYYY")}
+Last updated on ${dayjs(post.metadata.updatedAt).format('MMMM D, YYYY')}
 `,
     {
       headers: {
-        "Content-Type": "text/markdown;charset=utf-8",
+        'Content-Type': 'text/markdown;charset=utf-8',
       },
     }
   );

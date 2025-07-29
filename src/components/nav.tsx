@@ -1,8 +1,8 @@
-import Link from "next/link";
-import React from "react";
+import Link from 'next/link';
+import type React from 'react';
 
-import { cn } from "@/lib/utils";
-import type { NavItem } from "@/types/nav";
+import { cn } from '@/lib/utils';
+import type { NavItem } from '@/types/nav';
 
 export function Nav({
   items,
@@ -14,13 +14,13 @@ export function Nav({
   className?: string;
 }) {
   return (
-    <nav className={cn("flex items-center gap-4", className)}>
+    <nav className={cn('flex items-center gap-4', className)}>
       {items.map(({ title, href }) => {
         const active =
-          activeId === href || (href !== "/" && activeId?.startsWith(href));
+          activeId === href || (href !== '/' && activeId?.startsWith(href));
 
         return (
-          <NavItem key={href} href={href} active={active}>
+          <NavItem active={active} href={href} key={href}>
             {title}
           </NavItem>
         );
@@ -38,8 +38,8 @@ export function NavItem({
   return (
     <Link
       className={cn(
-        "text-sm font-medium text-muted-foreground transition-all duration-300",
-        active && "text-foreground"
+        'font-medium text-muted-foreground text-sm transition-all duration-300',
+        active && 'text-foreground'
       )}
       {...props}
     />

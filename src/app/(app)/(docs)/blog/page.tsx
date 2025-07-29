@@ -1,12 +1,12 @@
-import dayjs from "dayjs";
-import type { Metadata } from "next";
+import dayjs from 'dayjs';
+import type { Metadata } from 'next';
 
-import { PostItem } from "@/components/post-item";
-import { getAllPosts } from "@/data/blog";
+import { PostItem } from '@/components/post-item';
+import { getAllPosts } from '@/data/blog';
 
 export const metadata: Metadata = {
-  title: "Blog",
-  description: "A collection of articles on development, design, and ideas.",
+  title: 'Blog',
+  description: 'A collection of articles on development, design, and ideas.',
 };
 
 export default function Page() {
@@ -15,19 +15,19 @@ export default function Page() {
   return (
     <>
       <div className="screen-line-after px-4">
-        <h1 className="text-3xl font-semibold">Blog</h1>
+        <h1 className="font-semibold text-3xl">Blog</h1>
       </div>
 
       <div className="screen-line-after p-4">
-        <p className="font-mono text-sm text-balance text-muted-foreground">
+        <p className="text-balance font-mono text-muted-foreground text-sm">
           {metadata.description}
         </p>
       </div>
 
       <div className="relative pt-4">
-        <div className="absolute inset-0 -z-1 grid grid-cols-1 gap-4 max-sm:hidden sm:grid-cols-2">
-          <div className="border-r border-edge"></div>
-          <div className="border-l border-edge"></div>
+        <div className="-z-1 absolute inset-0 grid grid-cols-1 gap-4 max-sm:hidden sm:grid-cols-2">
+          <div className="border-edge border-r" />
+          <div className="border-edge border-l" />
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">

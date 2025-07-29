@@ -2,21 +2,20 @@ import {
   ChevronsDownUpIcon,
   ChevronsUpDownIcon,
   InfinityIcon,
-} from "lucide-react";
-import React from "react";
+} from 'lucide-react';
 
-import { Markdown } from "@/components/markdown";
+import { Markdown } from '@/components/markdown';
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/collapsible";
-import { Separator } from "@/components/ui/separator";
-import { Tag } from "@/components/ui/tag";
-import { Prose } from "@/components/ui/typography";
+} from '@/components/ui/collapsible';
+import { Separator } from '@/components/ui/separator';
+import { Tag } from '@/components/ui/tag';
+import { Prose } from '@/components/ui/typography';
 
-import type { ExperiencePosition } from "../../types/experiences";
-import { ExperienceIcon } from "./experience-position-icon";
+import type { ExperiencePosition } from '../../types/experiences';
+import { ExperienceIcon } from './experience-position-icon';
 
 export function ExperiencePositionItem({
   position,
@@ -27,31 +26,31 @@ export function ExperiencePositionItem({
   const isOngoing = !end;
 
   return (
-    <Collapsible defaultOpen={position.isExpanded} asChild>
+    <Collapsible asChild defaultOpen={position.isExpanded}>
       <div className="relative last:before:absolute last:before:h-full last:before:w-4 last:before:bg-background">
-        <CollapsibleTrigger className="group/experience block w-full text-left select-none">
+        <CollapsibleTrigger className="group/experience block w-full select-none text-left">
           <div className="relative z-1 mb-1 flex items-center gap-3 bg-background">
             <div
-              className="flex size-6 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground dark:inset-shadow-[1px_1px_1px,0px_0px_1px] dark:inset-shadow-white/15"
               aria-hidden
+              className="flex size-6 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground dark:inset-shadow-[1px_1px_1px,0px_0px_1px] dark:inset-shadow-white/15"
             >
               <ExperienceIcon className="size-4" icon={position.icon} />
             </div>
 
-            <h4 className="flex-1 font-medium text-balance">
+            <h4 className="flex-1 text-balance font-medium">
               {position.title}
             </h4>
 
             <div
-              className="shrink-0 text-muted-foreground [&_svg]:size-4"
               aria-hidden
+              className="shrink-0 text-muted-foreground [&_svg]:size-4"
             >
               <ChevronsDownUpIcon className="hidden group-data-[state=open]/experience:block" />
               <ChevronsUpDownIcon className="hidden group-data-[state=closed]/experience:block" />
             </div>
           </div>
 
-          <div className="flex items-center gap-2 pl-9 text-sm text-muted-foreground">
+          <div className="flex items-center gap-2 pl-9 text-muted-foreground text-sm">
             {position.employmentType && (
               <>
                 <dl>
@@ -74,8 +73,8 @@ export function ExperiencePositionItem({
                 {isOngoing ? (
                   <>
                     <InfinityIcon
-                      className="size-4.5 translate-y-[0.5px]"
                       aria-hidden
+                      className="size-4.5 translate-y-[0.5px]"
                     />
                     <span className="sr-only">Present</span>
                   </>
@@ -97,7 +96,7 @@ export function ExperiencePositionItem({
           {Array.isArray(position.skills) && position.skills.length > 0 && (
             <ul className="flex flex-wrap gap-1.5 pt-2 pl-9">
               {position.skills.map((skill, index) => (
-                <li key={index} className="flex">
+                <li className="flex" key={index}>
                   <Tag>{skill}</Tag>
                 </li>
               ))}

@@ -1,10 +1,10 @@
-import dynamic from "next/dynamic";
+import dynamic from 'next/dynamic';
 
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from '@/components/site-footer';
+import { SiteHeader } from '@/components/site-header';
 
 const ScrollTop = dynamic(() =>
-  import("@/components/scroll-top").then((mod) => mod.ScrollTop)
+  import('@/components/scroll-top').then((mod) => mod.ScrollTop)
 );
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {

@@ -1,13 +1,12 @@
-import dayjs from "dayjs";
-import { ArrowUpRightIcon } from "lucide-react";
-import Image from "next/image";
-import React from "react";
+import dayjs from 'dayjs';
+import { ArrowUpRightIcon } from 'lucide-react';
+import Image from 'next/image';
 
-import { getIcon, Icons } from "@/components/icons";
-import { Separator } from "@/components/ui/separator";
-import { cn } from "@/lib/utils";
+import { getIcon, Icons } from '@/components/icons';
+import { Separator } from '@/components/ui/separator';
+import { cn } from '@/lib/utils';
 
-import type { Certification } from "../../types/certifications";
+import type { Certification } from '../../types/certifications';
 
 export function CertificationItem({
   className,
@@ -18,37 +17,37 @@ export function CertificationItem({
 }) {
   return (
     <a
-      className={cn("group/cert flex items-center pr-2", className)}
+      className={cn('group/cert flex items-center pr-2', className)}
       href={certification.credentialURL}
-      target="_blank"
       rel="noopener"
+      target="_blank"
     >
       {certification.issuerLogoURL ? (
         <Image
-          src={certification.issuerLogoURL}
           alt={certification.issuer}
-          width={32}
+          aria-hidden
+          className="mx-4 flex size-6 shrink-0"
           height={32}
           quality={100}
-          className="mx-4 flex size-6 shrink-0"
+          src={certification.issuerLogoURL}
           unoptimized
-          aria-hidden
+          width={32}
         />
       ) : (
         <div
-          className="mx-4 flex size-6 shrink-0 items-center justify-center [&_svg]:size-5 [&_svg]:text-muted-foreground"
           aria-hidden
+          className="mx-4 flex size-6 shrink-0 items-center justify-center [&_svg]:size-5 [&_svg]:text-muted-foreground"
         >
           {getIcon(certification.issuerIconName) ?? <Icons.certificate />}
         </div>
       )}
 
-      <div className="flex-1 space-y-1 border-l border-dashed border-edge p-4 pr-2">
-        <h3 className="leading-snug font-medium text-balance underline-offset-4 group-hover/cert:underline">
+      <div className="flex-1 space-y-1 border-edge border-l border-dashed p-4 pr-2">
+        <h3 className="text-balance font-medium leading-snug underline-offset-4 group-hover/cert:underline">
           {certification.title}
         </h3>
 
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-muted-foreground text-sm">
           <dl>
             <dt className="sr-only">Issued by</dt>
             <dd>
@@ -66,7 +65,7 @@ export function CertificationItem({
             <dt className="sr-only">Issued on</dt>
             <dd>
               <time dateTime={dayjs(certification.issueDate).toISOString()}>
-                {dayjs(certification.issueDate).format("DD.MM.YYYY")}
+                {dayjs(certification.issueDate).format('DD.MM.YYYY')}
               </time>
             </dd>
           </dl>
@@ -75,8 +74,8 @@ export function CertificationItem({
 
       {certification.credentialURL && (
         <ArrowUpRightIcon
-          className="size-4 text-muted-foreground"
           aria-hidden
+          className="size-4 text-muted-foreground"
         />
       )}
     </a>

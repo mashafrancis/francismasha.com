@@ -1,22 +1,22 @@
-import dayjs from "dayjs";
+import dayjs from 'dayjs';
 import {
   ChevronsDownUpIcon,
   ChevronsUpDownIcon,
   FileCheckIcon,
-} from "lucide-react";
+} from 'lucide-react';
 
-import { Icons } from "@/components/icons";
-import { Markdown } from "@/components/markdown";
+import { Icons } from '@/components/icons';
+import { Markdown } from '@/components/markdown';
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/collapsible";
-import { Separator } from "@/components/ui/separator";
-import { SimpleTooltip } from "@/components/ui/tooltip";
-import { Prose } from "@/components/ui/typography";
+} from '@/components/ui/collapsible';
+import { Separator } from '@/components/ui/separator';
+import { SimpleTooltip } from '@/components/ui/tooltip';
+import { Prose } from '@/components/ui/typography';
 
-import type { Award } from "../../types/awards";
+import type { Award } from '../../types/awards';
 
 export function AwardItem({
   className,
@@ -28,24 +28,24 @@ export function AwardItem({
   const canExpand = !!award.description;
 
   return (
-    <Collapsible disabled={!canExpand} asChild>
+    <Collapsible asChild disabled={!canExpand}>
       <div className={className}>
         <div className="flex items-center">
           <div
-            className="mx-4 flex size-6 shrink-0 items-center justify-center text-muted-foreground"
             aria-hidden
+            className="mx-4 flex size-6 shrink-0 items-center justify-center text-muted-foreground"
           >
             <Icons.award className="size-5" />
           </div>
 
-          <div className="flex-1 border-l border-dashed border-edge">
-            <CollapsibleTrigger className="group/award flex w-full items-center gap-4 p-4 pr-2 text-left select-none">
+          <div className="flex-1 border-edge border-l border-dashed">
+            <CollapsibleTrigger className="group/award flex w-full select-none items-center gap-4 p-4 pr-2 text-left">
               <div className="flex-1">
-                <h3 className="mb-1 leading-snug font-medium text-balance">
+                <h3 className="mb-1 text-balance font-medium leading-snug">
                   {award.title}
                 </h3>
 
-                <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
+                <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-muted-foreground text-sm">
                   <dl>
                     <dt className="sr-only">Prize</dt>
                     <dd>{award.prize}</dd>
@@ -60,7 +60,7 @@ export function AwardItem({
                     <dt className="sr-only">Awarded in</dt>
                     <dd>
                       <time dateTime={dayjs(award.date).toISOString()}>
-                        {dayjs(award.date).format("MM.YYYY")}
+                        {dayjs(award.date).format('MM.YYYY')}
                       </time>
                     </dd>
                   </dl>
@@ -82,12 +82,12 @@ export function AwardItem({
                   <a
                     className="flex size-6 shrink-0 items-center justify-center text-muted-foreground hover:text-foreground"
                     href={award.referenceLink}
-                    target="_blank"
                     rel="noopener"
+                    target="_blank"
                   >
                     <FileCheckIcon
-                      className="pointer-events-none size-4"
                       aria-hidden
+                      className="pointer-events-none size-4"
                     />
                     <span className="sr-only">Open Reference Attachment</span>
                   </a>
@@ -96,8 +96,8 @@ export function AwardItem({
 
               {canExpand && (
                 <div
-                  className="shrink-0 text-muted-foreground [&_svg]:size-4"
                   aria-hidden
+                  className="shrink-0 text-muted-foreground [&_svg]:size-4"
                 >
                   <ChevronsDownUpIcon className="hidden group-data-[state=open]/award:block" />
                   <ChevronsUpDownIcon className="hidden group-data-[state=closed]/award:block" />
@@ -109,7 +109,7 @@ export function AwardItem({
 
         {canExpand && (
           <CollapsibleContent className="overflow-hidden duration-300 data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
-            <Prose className="border-t border-dashed border-edge p-4">
+            <Prose className="border-edge border-t border-dashed p-4">
               <Markdown>{award.description}</Markdown>
             </Prose>
           </CollapsibleContent>

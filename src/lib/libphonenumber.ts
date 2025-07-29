@@ -1,7 +1,9 @@
-import type { MetadataJson } from "libphonenumber-js/core";
-import { formatIncompletePhoneNumber as _formatIncompletePhoneNumber } from "libphonenumber-js/core";
+import type { MetadataJson } from 'libphonenumber-js/core';
+import { formatIncompletePhoneNumber as _formatIncompletePhoneNumber } from 'libphonenumber-js/core';
 
-import metadataJson from "@/assets/libphonenumber.metadata.json";
+import metadataJson from '@/assets/libphonenumber.metadata.json' with {
+  type: 'json',
+};
 
 const metadata = metadataJson as MetadataJson;
 

@@ -1,15 +1,15 @@
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 
-import { Icons } from "./icons";
+import { Icons } from './icons';
 
 export function OpenInV0Button({ url }: { url: string }) {
   return (
-    <Button className="not-prose gap-1 font-sans" variant="default" asChild>
+    <Button asChild className="not-prose gap-1 font-sans" variant="default">
       <a
-        href={`https://v0.dev/chat/api/open?url=${url}`}
-        target="_blank"
-        rel="noopener noreferrer"
         aria-label="Open in v0"
+        href={`https://v0.dev/chat/api/open?url=${url}`}
+        rel="noopener noreferrer"
+        target="_blank"
       >
         Open in
         <Icons.v0 className="size-5" />

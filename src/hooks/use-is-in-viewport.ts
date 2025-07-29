@@ -1,12 +1,12 @@
-import type React from "react";
-import { useEffect, useMemo, useState } from "react";
+import type React from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 export function useIsInViewport(ref: React.RefObject<HTMLElement | null>) {
   const [isIntersecting, setIsIntersecting] = useState(false);
 
   const observer = useMemo(
     () =>
-      typeof window !== "undefined"
+      typeof window !== 'undefined'
         ? new IntersectionObserver(([entry]) =>
             setIsIntersecting(entry.isIntersecting)
           )
@@ -15,7 +15,7 @@ export function useIsInViewport(ref: React.RefObject<HTMLElement | null>) {
   );
 
   useEffect(() => {
-    if (!ref.current || !observer) {
+    if (!(ref.current && observer)) {
       return;
     }
 

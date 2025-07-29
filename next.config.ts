@@ -1,24 +1,24 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  transpilePackages: ["next-mdx-remote"],
-  allowedDevOrigins: ["francismasha-macbook.local"],
+  transpilePackages: ['next-mdx-remote'],
+  allowedDevOrigins: ['francismasha-macbook.local'],
   devIndicators: false,
   images: {
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "assets.francismasha.dev",
-        port: "",
+        protocol: 'https',
+        hostname: 'assets.francismasha.dev',
+        port: '',
       },
     ],
   },
   async rewrites() {
     return [
       {
-        source: "/blog/:slug.md",
-        destination: "/blog.md/:slug",
+        source: '/blog/:slug.md',
+        destination: '/blog.md/:slug',
       },
     ];
   },

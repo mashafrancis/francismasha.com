@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { usePathname } from "next/navigation";
+import { usePathname } from 'next/navigation';
 
-import { Nav } from "@/components/nav";
-import type { NavItem } from "@/types/nav";
+import { Nav } from '@/components/nav';
+import type { NavItem } from '@/types/nav';
 
 export function DesktopNav({ items }: { items: NavItem[] }) {
   const pathname = usePathname();
 
-  return <Nav className="max-sm:hidden" items={items} activeId={pathname} />;
+  return <Nav activeId={pathname} className="max-sm:hidden" items={items} />;
 }

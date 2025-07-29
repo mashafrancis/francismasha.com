@@ -1,13 +1,13 @@
-import { ChevronDownIcon } from "lucide-react";
-import { Slot as SlotPrimitive } from "radix-ui";
-import React from "react";
+import { ChevronDownIcon } from 'lucide-react';
+import { Slot as SlotPrimitive } from 'radix-ui';
+import type React from 'react';
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/collapsible";
+} from '@/components/ui/collapsible';
 
 const Slot = SlotPrimitive.Slot;
 
@@ -28,8 +28,8 @@ export function CollapsibleList<T>({
     <Collapsible>
       {items.slice(0, max).map((award, index) => (
         <Slot
-          key={typeof keyExtractor === "function" ? keyExtractor(award) : index}
-          className="border-b border-edge"
+          className="border-edge border-b"
+          key={typeof keyExtractor === 'function' ? keyExtractor(award) : index}
         >
           {renderItem(award)}
         </Slot>
@@ -38,12 +38,12 @@ export function CollapsibleList<T>({
       <CollapsibleContent>
         {items.slice(max).map((award, index) => (
           <Slot
+            className="border-edge border-b"
             key={
-              typeof keyExtractor === "function"
+              typeof keyExtractor === 'function'
                 ? keyExtractor(award)
                 : max + index
             }
-            className="border-b border-edge"
           >
             {renderItem(award)}
           </Slot>
@@ -66,8 +66,8 @@ export function CollapsibleList<T>({
               </span>
 
               <ChevronDownIcon
-                className="group-data-[state=open]/collapsible-trigger:rotate-180"
                 aria-hidden
+                className="group-data-[state=open]/collapsible-trigger:rotate-180"
               />
             </Button>
           </CollapsibleTrigger>

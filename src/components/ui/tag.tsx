@@ -1,12 +1,12 @@
-import React from "react";
+import type React from 'react';
 
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
 
-function Tag({ className, ...props }: React.ComponentProps<"span">) {
+function Tag({ className, ...props }: React.ComponentProps<'span'>) {
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-lg border bg-zinc-50 px-1.5 py-0.5 font-sans text-xs text-muted-foreground dark:bg-zinc-900",
+        'inline-flex items-center rounded-lg border bg-zinc-50 px-1.5 py-0.5 font-sans text-muted-foreground text-xs dark:bg-zinc-900',
         className
       )}
       {...props}

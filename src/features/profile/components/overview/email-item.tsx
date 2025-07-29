@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { MailIcon } from "lucide-react";
+import { MailIcon } from 'lucide-react';
 
-import { useIsClient } from "@/hooks/use-is-client";
-import { decodeEmail } from "@/utils/string";
+import { useIsClient } from '@/hooks/use-is-client';
+import { decodeEmail } from '@/utils/string';
 
-import { IntroItem } from "./intro-item";
+import { IntroItem } from './intro-item';
 
 export function EmailItem({ email }: { email: string }) {
   const isClient = useIsClient();
@@ -13,9 +13,9 @@ export function EmailItem({ email }: { email: string }) {
 
   return (
     <IntroItem
+      content={isClient ? emailDecoded : '[Email protected]'}
+      href={isClient ? `mailto:${emailDecoded}` : '#'}
       icon={MailIcon}
-      content={isClient ? emailDecoded : "[Email protected]"}
-      href={isClient ? `mailto:${emailDecoded}` : "#"}
     />
   );
 }

@@ -1,8 +1,8 @@
-import { CollapsibleList } from "@/components/collapsible-list";
+import { CollapsibleList } from '@/components/collapsible-list';
 
-import { PROJECTS } from "../../data/projects";
-import { Panel, PanelHeader, PanelTitle } from "../panel";
-import { ProjectItem } from "./project-item";
+import { PROJECTS } from '../../data/projects';
+import { Panel, PanelHeader, PanelTitle } from '../panel';
+import { ProjectItem } from './project-item';
 
 export function Projects() {
   return (
@@ -10,7 +10,7 @@ export function Projects() {
       <PanelHeader>
         <PanelTitle>
           Projects
-          <sup className="ml-1 font-mono text-sm text-muted-foreground select-none">
+          <sup className="ml-1 select-none font-mono text-muted-foreground text-sm">
             ({PROJECTS.length})
           </sup>
         </PanelTitle>

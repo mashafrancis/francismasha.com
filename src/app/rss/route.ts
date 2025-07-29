@@ -1,9 +1,9 @@
-import dayjs from "dayjs";
+import dayjs from 'dayjs';
 
-import { SITE_INFO } from "@/config/site";
-import { getAllPosts } from "@/data/blog";
+import { SITE_INFO } from '@/config/site';
+import { getAllPosts } from '@/data/blog';
 
-export const dynamic = "force-static";
+export const dynamic = 'force-static';
 
 export function GET() {
   const allPosts = getAllPosts();
@@ -14,11 +14,11 @@ export function GET() {
         `<item>
           <title>${post.metadata.title}</title>
           <link>${SITE_INFO.url}/blog/${post.slug}</link>
-          <description>${post.metadata.description || ""}</description>
+          <description>${post.metadata.description || ''}</description>
           <pubDate>${dayjs(post.metadata.createdAt).toISOString()}</pubDate>
         </item>`
     )
-    .join("\n");
+    .join('\n');
 
   const rssFeed = `<?xml version="1.0" encoding="UTF-8" ?>
   <rss version="2.0">
@@ -32,7 +32,7 @@ export function GET() {
 
   return new Response(rssFeed, {
     headers: {
-      "Content-Type": "text/xml",
+      'Content-Type': 'text/xml',
     },
   });
 }

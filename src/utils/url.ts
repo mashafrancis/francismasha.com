@@ -1,5 +1,5 @@
 export function urlToName(url: string) {
-  return url.replace(/(^\w+:|^)\/\//, "");
+  return url.replace(/(^\w+:|^)\/\//, '');
 }
 
 export function addQueryParams(

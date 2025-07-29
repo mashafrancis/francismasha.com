@@ -1,50 +1,50 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+import type { Metadata } from 'next';
+import Link from 'next/link';
 
-import { Icons } from "@/components/icons";
-import { getPostsByCategory } from "@/data/blog";
+import { Icons } from '@/components/icons';
+import { getPostsByCategory } from '@/data/blog';
 
 export const metadata: Metadata = {
-  title: "Components",
-  description: "A collection of reusable components.",
+  title: 'Components',
+  description: 'A collection of reusable components.',
 };
 
 export default function Page() {
-  const posts = getPostsByCategory("components");
+  const posts = getPostsByCategory('components');
 
   return (
     <div className="min-h-svh [--color-react:#087EA4] dark:[--color-react:#58C4DC]">
       <div className="screen-line-after px-4">
-        <h1 className="text-3xl font-semibold">Components</h1>
+        <h1 className="font-semibold text-3xl">Components</h1>
       </div>
 
       <div className="screen-line-after p-4">
-        <p className="font-mono text-sm text-balance text-muted-foreground">
+        <p className="text-balance font-mono text-muted-foreground text-sm">
           {metadata.description}
         </p>
       </div>
 
       {posts.map((post) => (
         <Link
-          key={post.slug}
+          className="group/post flex items-center border-edge border-b pr-4"
           href={`/components/${post.slug}`}
-          className="group/post flex items-center border-b border-edge pr-4"
+          key={post.slug}
         >
           <Icons.react
-            className="mx-4 size-5 shrink-0 text-(--color-react)"
             aria-hidden
+            className="mx-4 size-5 shrink-0 text-(--color-react)"
           />
 
-          <div className="border-l border-dashed border-edge p-4">
-            <h2 className="leading-snug font-medium text-balance underline-offset-4 group-hover/post:underline">
+          <div className="border-edge border-l border-dashed p-4">
+            <h2 className="text-balance font-medium leading-snug underline-offset-4 group-hover/post:underline">
               {post.metadata.title}
             </h2>
           </div>
 
           {post.metadata.new && (
             <span
-              className="shrink-0 rounded-md bg-info px-1.5 font-mono text-sm font-medium text-white text-shadow-xs"
               aria-hidden
+              className="shrink-0 rounded-md bg-info px-1.5 font-medium font-mono text-shadow-xs text-sm text-white"
             >
               New
             </span>

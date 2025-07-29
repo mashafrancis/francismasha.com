@@ -1,11 +1,11 @@
-import { NextResponse } from "next/server";
-import sharp from "sharp";
-import VCard from "vcard-creator";
+import { NextResponse } from 'next/server';
+import sharp from 'sharp';
+import VCard from 'vcard-creator';
 
-import { USER } from "@/data/user";
-import { decodeEmail, decodePhoneNumber } from "@/utils/string";
+import { USER } from '@/data/user';
+import { decodeEmail, decodePhoneNumber } from '@/utils/string';
 
-export const dynamic = "force-static";
+export const dynamic = 'force-static';
 
 export async function GET() {
   const card = new VCard();
@@ -30,8 +30,8 @@ export async function GET() {
   return new NextResponse(card.toString(), {
     status: 200,
     headers: {
-      "Content-Type": "text/x-vcard",
-      "Content-Disposition": `attachment; filename=${USER.username}-vcard.vcf`,
+      'Content-Type': 'text/x-vcard',
+      'Content-Disposition': `attachment; filename=${USER.username}-vcard.vcf`,
     },
   });
 }
@@ -49,17 +49,17 @@ async function getVCardPhoto(url: string) {
       return null;
     }
 
-    const contentType = res.headers.get("Content-Type") || "";
-    if (!contentType.startsWith("image/")) {
+    const contentType = res.headers.get('Content-Type') || '';
+    if (!contentType.startsWith('image/')) {
       return null;
     }
 
     const jpegBuffer = await convertImageToJpeg(buffer);
-    const image = jpegBuffer.toString("base64");
+    const image = jpegBuffer.toString('base64');
 
     return {
       image,
-      mine: "jpeg",
+      mine: 'jpeg',
     };
   } catch {
     return null;
@@ -67,18 +67,13 @@ async function getVCardPhoto(url: string) {
 }
 
 async function convertImageToJpeg(imageBuffer: Buffer): Promise<Buffer> {
-  try {
-    const jpegBuffer = await sharp(imageBuffer)
-      .jpeg({
-        quality: 90,
-        progressive: true,
-        mozjpeg: true,
-      })
-      .toBuffer();
+  const jpegBuffer = await sharp(imageBuffer)
+    .jpeg({
+      quality: 90,
+      progressive: true,
+      mozjpeg: true,
+    })
+    .toBuffer();
 
-    return jpegBuffer;
-  } catch (error) {
-    console.error("Error converting image to JPEG:", error);
-    throw error;
-  }
+  return jpegBuffer;
 }
