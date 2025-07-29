@@ -1,4 +1,4 @@
-import { Geist as FontSans, Geist_Mono as FontMono } from "next/font/google";
+import { Geist_Mono as FontMono, Geist as FontSans } from 'next/font/google';
 
 // export const fontSans = localFont({
 //   src: [
@@ -33,17 +33,17 @@ import { Geist as FontSans, Geist_Mono as FontMono } from "next/font/google";
 // });
 
 export const fontSans = FontSans({
-  weight: ["400", "500", "600", "700", "800"],
-  display: "swap",
-  subsets: ["latin"],
-  variable: "--font-sans",
+  weight: ['400', '500', '600', '700', '800'],
+  display: 'swap',
+  subsets: ['latin'],
+  variable: '--font-sans',
 });
 
 export const fontMono = FontMono({
-  weight: ["400", "500", "600"],
-  display: "swap",
-  subsets: ["latin"],
-  variable: "--font-mono",
+  weight: ['400', '500', '600'],
+  display: 'swap',
+  subsets: ['latin'],
+  variable: '--font-mono',
 });
 
 // import { Geist as FontSans, Geist_Mono as FontMono } from "next/font/google";

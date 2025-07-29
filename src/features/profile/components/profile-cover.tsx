@@ -1,6 +1,6 @@
-import { BrandContextMenu } from '@/components/brand-context-menu';
-import { ChanhDaiMark } from '@/components/chanhdai-mark';
-import { cn } from '@/lib/utils';
+import { BrandContextMenu } from "@/components/brand-context-menu";
+import { FrancisMashaMark } from "@/components/francis-masha-mark";
+import { cn } from "@/lib/utils";
 
 export function ProfileCover() {
   return (
@@ -13,7 +13,7 @@ export function ProfileCover() {
           'bg-[radial-gradient(var(--pattern-foreground)_1px,transparent_0)] bg-black/0.75 bg-center bg-size-[10px_10px] [--pattern-foreground:var(--color-zinc-950)]/5 dark:bg-white/0.75 dark:[--pattern-foreground:var(--color-white)]/5'
         )}
       >
-        <ChanhDaiMark className="h-1/4 w-auto" id="js-cover-mark" />
+        <FrancisMashaMark className="h-1/4 w-auto" id="js-cover-mark" />
       </div>
     </BrandContextMenu>
   );

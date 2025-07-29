@@ -1,8 +1,8 @@
-import dayjs from 'dayjs';
-import type { Metadata } from 'next';
+import dayjs from "dayjs";
+import type { Metadata } from "next";
 
-import { PostItem } from '@/components/post-item';
-import { getAllPosts } from '@/data/blog';
+import { PostItem } from "@/components/post-item";
+import { getAllPosts } from "@/data/blog";
 
 export const metadata: Metadata = {
   title: 'Blog',
@@ -19,7 +19,7 @@ export default function Page() {
       </div>
 
       <div className="screen-line-after p-4">
-        <p className="text-balance font-mono text-muted-foreground text-sm">
+        <p className="text-balance font-sans text-muted-foreground text-sm">
           {metadata.description}
         </p>
       </div>

@@ -1,13 +1,13 @@
-import { ArrowRightIcon } from 'lucide-react';
-import dynamic from 'next/dynamic';
-import Link from 'next/link';
+import { ArrowRightIcon } from "lucide-react";
+import dynamic from "next/dynamic";
+import Link from "next/link";
 
-import { ChanhDaiMark } from '@/components/chanhdai-mark';
-import { ChanhDaiWordmark } from '@/components/chanhdai-wordmark';
-import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
+import { FrancisMashaMark } from "@/components/francis-masha-mark";
+import { ChanhDaiWordmark } from "@/components/chanhdai-wordmark";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
-import { Panel, PanelHeader, PanelTitle } from './panel';
+import { Panel, PanelHeader, PanelTitle } from "./panel";
 
 const BrandContextMenu = dynamic(() =>
   import('@/components/brand-context-menu').then((mod) => mod.BrandContextMenu)
@@ -36,7 +36,7 @@ export function Brand() {
             </div>
 
             <div className="screen-line-after flex items-center justify-center pr-8 after:z-1">
-              <ChanhDaiMark className="h-8 w-auto sm:h-12" />
+              <FrancisMashaMark className="h-8 w-auto sm:h-12" />
             </div>
 
             <div className="flex h-28 items-center justify-center border-edge border-r border-dashed bg-background">

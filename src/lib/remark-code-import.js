@@ -62,7 +62,7 @@ export function remarkCodeImport(options = {}) {
           fileMeta
         );
 
-      if (!(res?.groups && res.groups.path)) {
+      if (!res?.groups?.path) {
         throw new Error(`Unable to parse file path ${fileMeta}`);
       }
 

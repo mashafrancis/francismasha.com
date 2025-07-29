@@ -1,14 +1,14 @@
 'use client';
 
-import { RepeatIcon } from 'lucide-react';
-import { AnimatePresence } from 'motion/react';
-import * as motion from 'motion/react-m';
-import { useCallback, useEffect, useState } from 'react';
+import { RepeatIcon } from "lucide-react";
+import { AnimatePresence } from "motion/react";
+import * as motion from "motion/react-m";
+import { useCallback, useEffect, useState } from "react";
 
-import { ChanhDaiMark } from '@/components/chanhdai-mark';
-import { Button } from '@/components/ui/button';
-import { SimpleTooltip } from '@/components/ui/tooltip';
-import { AppleHelloVietnameseEffect } from '@/registry/apple-hello-effect';
+import { FrancisMashaMark } from "@/components/francis-masha-mark";
+import { Button } from "@/components/ui/button";
+import { SimpleTooltip } from "@/components/ui/tooltip";
+import { AppleHelloVietnameseEffect } from "@/registry/apple-hello-effect";
 
 const layers = ['xin-chao', 'chanhdai-wordmark'] as const;
 
@@ -63,7 +63,7 @@ export function Hello() {
               initial={{ opacity: 0, scale: 0.8 }}
               transition={{ duration: 0.5 }}
             >
-              <ChanhDaiMark className="h-12 sm:h-16" />
+              <FrancisMashaMark className="h-12 sm:h-16" />
             </motion.div>
           )}
         </div>
