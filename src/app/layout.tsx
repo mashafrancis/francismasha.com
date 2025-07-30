@@ -1,13 +1,13 @@
-import '@/styles/globals.css';
+import "@/styles/globals.css";
 
-import type { Metadata, Viewport } from 'next';
-import Script from 'next/script';
-import type { WebSite, WithContext } from 'schema-dts';
+import type { Metadata, Viewport } from "next";
+import Script from "next/script";
+import type { WebSite, WithContext } from "schema-dts";
 
-import { Providers } from '@/components/providers';
-import { META_THEME_COLORS, SITE_INFO } from '@/config/site';
-import { USER } from '@/data/user';
-import { fontMono, fontSans } from '@/lib/fonts';
+import { Providers } from "@/components/providers";
+import { META_THEME_COLORS, SITE_INFO } from "@/config/site";
+import { USER } from "@/data/user";
+import { fontMono, fontSans } from "@/lib/fonts";
 
 function getWebSiteJsonLd(): WithContext<WebSite> {
   return {
@@ -73,23 +73,6 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     creator: '@mashafrancis', // Twitter username
     images: [SITE_INFO.ogImage],
-  },
-  icons: {
-    icon: [
-      {
-        url: 'https://assets.chanhdai.com/images/favicon.ico',
-        sizes: 'any',
-      },
-      {
-        url: 'https://assets.chanhdai.com/images/favicon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: {
-      url: 'https://assets.chanhdai.com/images/apple-touch-icon.png',
-      type: 'image/png',
-      sizes: '180x180',
-    },
   },
 };
 
