@@ -1,13 +1,13 @@
-# [chanhdai.com](https://chanhdai.com)
+# [francismasha](https://francismasha.com)
 
 A minimal portfolio, component registry, and blog to showcase my work as a Software Developer & UI/UX Designer.
 
-Check out the live site: [chanhdai.com](https://chanhdai.com)
+Check out the live site: [francismasha](https://francismasha)
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://assets.chanhdai.com/images/screenshot-desktop-dark.webp">
-  <source media="(prefers-color-scheme: light)" srcset="https://assets.chanhdai.com/images/screenshot-desktop-light.webp">
-  <img src="https://assets.chanhdai.com/images/screenshot-desktop-light.webp" alt="Screenshot">
+  <source media="(prefers-color-scheme: dark)" srcset="https://assets.francismasha.dev/images/screenshot-desktop-dark.webp">
+  <source media="(prefers-color-scheme: light)" srcset="https://assets.francismasha.dev/images/screenshot-desktop-light.webp">
+  <img src="https://assets.francismasha.dev/images/screenshot-desktop-light.webp" alt="Screenshot">
 </picture>
 
 ## Overview

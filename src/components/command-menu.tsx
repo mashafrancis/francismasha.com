@@ -213,10 +213,10 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
 
         <span className="font-medium font-sans text-sm/4">Search</span>
 
-        <CommandMenuKbd className="hidden tracking-wider sm:in-[.os-macos_&]:flex">
+        <CommandMenuKbd className="rounded-full hidden tracking-wider sm:in-[.os-macos_&]:flex">
           ⌘K
         </CommandMenuKbd>
-        <CommandMenuKbd className="hidden sm:not-[.os-macos_&]:flex">
+        <CommandMenuKbd className="rounded-full hidden sm:not-[.os-macos_&]:flex">
           Ctrl K
         </CommandMenuKbd>
       </Button>

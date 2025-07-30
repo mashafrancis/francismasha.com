@@ -1,11 +1,11 @@
-import type { ExperienceItemType } from '@/registry/work-experience';
-import { WorkExperience } from '@/registry/work-experience';
+import type { ExperienceItemType } from "@/registry/work-experience";
+import { WorkExperience } from "@/registry/work-experience";
 
 const WORK_EXPERIENCE: ExperienceItemType[] = [
   {
     id: 'quaric',
     companyName: 'Quaric Co., Ltd.',
-    companyLogo: 'https://assets.chanhdai.com/images/companies/quaric.svg',
+    companyLogo: 'https://assets.francismasha/images/companies/quaric.svg',
     positions: [
       {
         id: '30d3a9fb-021d-452a-9d27-83655369b4b9',

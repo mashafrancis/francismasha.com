@@ -1,8 +1,8 @@
-import fs from 'node:fs';
-import path from 'node:path';
-import matter from 'gray-matter';
+import fs from "node:fs";
+import path from "node:path";
+import matter from "gray-matter";
 
-import type { Post, PostMetadata } from '@/types/blog';
+import type { Post, PostMetadata } from "@/types/blog";
 
 function parseFrontmatter(fileContent: string) {
   const file = matter(fileContent);
@@ -67,4 +67,12 @@ export function findNeighbour(posts: Post[], slug: string) {
   }
 
   return { previous: null, next: null };
+}
+
+export function getAllLoc() {
+  return getMDXData(path.join(process.cwd(), 'src', 'content', '1loc')).sort(
+    (a, b) =>
+      new Date(b.metadata.createdAt).getTime() -
+      new Date(a.metadata.createdAt).getTime()
+  );
 }

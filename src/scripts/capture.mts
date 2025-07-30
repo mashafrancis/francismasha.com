@@ -1,13 +1,13 @@
-import fs from 'node:fs';
-import path from 'node:path';
+import fs from "node:fs";
+import path from "node:path";
 
-import type { Browser } from 'puppeteer-core';
-import puppeteer from 'puppeteer-core';
+import type { Browser } from "puppeteer-core";
+import puppeteer from "puppeteer-core";
 
 const executablePath =
   '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
-const url = process.env.URL || 'http://localhost:1408';
-const outputDir = path.join(process.cwd(), '.ncdai/screenshots');
+const url = process.env.URL || 'http://localhost:3000';
+const outputDir = path.join(process.cwd(), '.francismasha/screenshots');
 
 const SIZE = {
   // Full HD

@@ -1,16 +1,18 @@
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 
-import { DesktopNav } from '@/components/desktop-nav';
-import { MobileNav } from '@/components/mobile-nav';
-import { NavItemGitHub } from '@/components/nav-item-github';
-import { ToggleTheme } from '@/components/toggle-theme';
-import { MAIN_NAV } from '@/config/site';
-import { getAllPosts } from '@/data/blog';
-import { cn } from '@/lib/utils';
+import { DesktopNav } from "@/components/desktop-nav";
+import { MobileNav } from "@/components/mobile-nav";
+import { NavItemGitHub } from "@/components/nav-item-github";
+import { ToggleTheme } from "@/components/toggle-theme";
+import { MAIN_NAV } from "@/config/site";
+import { getAllPosts } from "@/data/blog";
+import { cn } from "@/lib/utils";
 
-import { SiteHeaderWrapper } from './site-header-wrapper';
+import { SiteHeaderWrapper } from "./site-header-wrapper";
+import Link from "next/link";
+import { SiteHeaderMark } from "@/components/site-header-mark";
 
-const _BrandContextMenu = dynamic(() =>
+const BrandContextMenu = dynamic(() =>
   import('@/components/brand-context-menu').then((mod) => mod.BrandContextMenu)
 );
 
@@ -34,11 +36,11 @@ export function SiteHeader() {
         className="screen-line-before screen-line-after mx-auto flex h-12 items-center justify-between gap-2 border-edge border-x px-2 after:z-1 after:transition-[background-color] sm:gap-4 md:max-w-3xl"
         data-header-container
       >
-        {/*<BrandContextMenu>*/}
-        {/*  <Link href="/" aria-label="Home" className="[&_svg]:h-8">*/}
-        {/*    <SiteHeaderMark />*/}
-        {/*  </Link>*/}
-        {/*</BrandContextMenu>*/}
+        <BrandContextMenu>
+          <Link href="/" aria-label="Home" className="[&_svg]:h-8">
+            <SiteHeaderMark />
+          </Link>
+        </BrandContextMenu>
 
         <div className="flex-1" />
 

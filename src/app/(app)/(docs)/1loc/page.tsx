@@ -2,20 +2,20 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { Icons } from "@/components/icons";
-import { getPostsByCategory } from "@/data/blog";
+import { getAllLoc } from "@/data/blog";
 
 export const metadata: Metadata = {
-  title: 'Components',
-  description: 'A collection of reusable components.',
+  title: '1loc',
+  description: 'A collection of one line of code utilities.',
 };
 
 export default function Page() {
-  const posts = getPostsByCategory('components');
+  const posts = getAllLoc();
 
   return (
     <div className="min-h-svh [--color-react:#087EA4] dark:[--color-react:#58C4DC]">
       <div className="screen-line-after px-4">
-        <h1 className="font-semibold text-3xl">Components</h1>
+        <h1 className="font-semibold text-3xl">1loc</h1>
       </div>
 
       <div className="screen-line-after p-4">

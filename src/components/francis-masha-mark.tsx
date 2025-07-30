@@ -1,17 +1,9 @@
 export function FrancisMashaMark(props: React.ComponentProps<'svg'>) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#007da4" viewBox="0 0 256 256" {...props}><path d="M160,96v64H96V96Z" opacity="0.2"></path><path d="M216,152H168V104h48a8,8,0,0,0,0-16H168V40a8,8,0,0,0-16,0V88H104V40a8,8,0,0,0-16,0V88H40a8,8,0,0,0,0,16H88v48H40a8,8,0,0,0,0,16H88v48a8,8,0,0,0,16,0V168h48v48a8,8,0,0,0,16,0V168h48a8,8,0,0,0,0-16Zm-112,0V104h48v48Z"></path></svg>
-    // <svg
-    //   fill="none"
-    //   viewBox="0 0 512 256"
-    //   xmlns="http://www.w3.org/2000/svg"
-    //   {...props}
-    // >
-    //   <path
-    //     d="M192 256H64v-64h128v64ZM448 64H320v128h128v64H256V0h192v64ZM64 192H0V64h64v128ZM512 192h-64V64h64v128ZM192 64H64V0h128v64Z"
-    //     fill="currentColor"
-    //   />
-    // </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#007da4" viewBox="0 0 256 256" {...props}>
+      <path d="M160,96v64H96V96Z" opacity="0.2"></path>
+      <path d="M216,152H168V104h48a8,8,0,0,0,0-16H168V40a8,8,0,0,0-16,0V88H104V40a8,8,0,0,0-16,0V88H40a8,8,0,0,0,0,16H88v48H40a8,8,0,0,0,0,16H88v48a8,8,0,0,0,16,0V168h48v48a8,8,0,0,0,16,0V168h48a8,8,0,0,0,0-16Zm-112,0V104h48v48Z"></path>
+    </svg>
   );
 }
 

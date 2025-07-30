@@ -1,11 +1,11 @@
-import type { Registry } from 'shadcn/registry';
+import type { Registry } from "shadcn/registry";
 
 export const lib: Registry['items'] = [
   {
     name: 'utils',
     type: 'registry:lib',
     title: 'Utility Functions',
-    author: 'ncdai <dai@chanhdai.com>',
+    author: 'francismasha <masha@francismasha.com>',
     dependencies: ['clsx', 'tailwind-merge'],
     files: [
       {

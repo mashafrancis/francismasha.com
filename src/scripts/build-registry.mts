@@ -1,12 +1,12 @@
-import { promises as fs } from 'node:fs';
-import path from 'node:path';
+import { promises as fs } from "node:fs";
+import path from "node:path";
 
-import { rimraf } from 'rimraf';
-import type { Registry } from 'shadcn/registry';
-import { registrySchema } from 'shadcn/registry';
+import { rimraf } from "rimraf";
+import type { Registry } from "shadcn/registry";
+import { registrySchema } from "shadcn/registry";
 
-import { registryConfig } from '../config/registry';
-import { registry } from '../registry';
+const { registry } = await import("../registry");
+const { registryConfig } = await import("../config/registry");
 
 const REGISTRY_PATH = path.join(process.cwd(), 'src/__registry__');
 
@@ -58,8 +58,8 @@ export const Index: Record<string, any> = {`;
   let registryJSON = JSON.stringify(
     {
       $schema: 'https://ui.shadcn.com/schema/registry.json',
-      name: 'ncdai',
-      homepage: 'https://chanhdai.com',
+      name: 'francismasha',
+      homepage: 'https://francismasha.com',
       items: registry.items
         .filter((item) => item.type !== 'registry:example')
         .map((item) => {
@@ -108,5 +108,6 @@ try {
 
   await buildRegistry(result.data);
 } catch (_error) {
+  console.error(_error);
   process.exit(1);
 }

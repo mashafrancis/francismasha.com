@@ -7,8 +7,8 @@ export const USER = {
   bio: 'Creating with code, driven by passion.',
   flipSentences: ['Software Engineer', 'Site Reliability Engineer'],
   address: 'Nairobi, Kenya',
-  phoneNumber: 'Kzg0Nzc3ODg4MTQ4', // E.164 format, base64 encoded (https://t.io.vn/base64-string-converter)
-  email: 'ZGFpQGNoYW5oZGFpLmNvbQ==', // base64 encoded
+  phoneNumber: 'MDcyNDIzNDM3Mw==', // E.164 format, base64 encoded (https://t.io.vn/base64-string-converter)
+  email: 'ZnJhbmNpc21hc2hhOTZAZ21haWwuY29t', // base64 encoded
   website: 'https://francismasha.com',
   otherWebsites: [
     'https://plutus.francismasha.com',

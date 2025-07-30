@@ -1,7 +1,7 @@
 'use client';
 
-import { Command as CommandPrimitive } from 'cmdk';
-import type * as React from 'react';
+import { Command as CommandPrimitive } from "cmdk";
+import type * as React from "react";
 
 import {
   Dialog,
@@ -9,8 +9,8 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog';
-import { cn } from '@/lib/utils';
+} from "@/components/ui/dialog";
+import { cn } from "@/lib/utils";
 
 function Command({
   className,
@@ -97,7 +97,7 @@ function CommandInput({
 
       <CommandPrimitive.Input
         className={cn(
-          'flex h-10 w-full rounded-lg bg-transparent py-3 font-mono text-sm outline-hidden placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50',
+          'flex h-10 w-full rounded-lg bg-transparent py-3 font-sans text-sm outline-hidden placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50',
           className
         )}
         data-slot="command-input"
@@ -128,7 +128,7 @@ function CommandEmpty({
 }: React.ComponentProps<typeof CommandPrimitive.Empty>) {
   return (
     <CommandPrimitive.Empty
-      className="py-8 text-center font-mono text-sm"
+      className="py-8 text-center font-sans text-sm"
       data-slot="command-empty"
       {...props}
     />
