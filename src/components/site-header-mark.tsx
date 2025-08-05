@@ -1,11 +1,11 @@
 'use client';
 
-import { useMotionValueEvent, useScroll } from "motion/react";
-import * as motion from "motion/react-m";
-import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useMotionValueEvent, useScroll } from 'motion/react';
+import * as motion from 'motion/react-m';
+import { usePathname } from 'next/navigation';
+import { useEffect, useRef, useState } from 'react';
 
-import { FrancisMashaMark } from "./francis-masha-mark";
+import { FrancisMashaMark } from './francis-masha-mark';
 
 export function SiteHeaderMark() {
   const pathname = usePathname();
@@ -53,8 +53,8 @@ function FrancisMashaMarkMotion() {
       viewBox="0 0 512 256"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path d="M160,96v64H96V96Z" opacity="0.2"></path>
-      <path d="M216,152H168V104h48a8,8,0,0,0,0-16H168V40a8,8,0,0,0-16,0V88H104V40a8,8,0,0,0-16,0V88H40a8,8,0,0,0,0,16H88v48H40a8,8,0,0,0,0,16H88v48a8,8,0,0,0,16,0V168h48v48a8,8,0,0,0,16,0V168h48a8,8,0,0,0,0-16Zm-112,0V104h48v48Z"></path>
+      <path d="M160,96v64H96V96Z" opacity="0.2" />
+      <path d="M216,152H168V104h48a8,8,0,0,0,0-16H168V40a8,8,0,0,0-16,0V88H104V40a8,8,0,0,0-16,0V88H40a8,8,0,0,0,0,16H88v48H40a8,8,0,0,0,0,16H88v48a8,8,0,0,0,16,0V168h48v48a8,8,0,0,0,16,0V168h48a8,8,0,0,0,0-16Zm-112,0V104h48v48Z" />
     </motion.svg>
   );
 }

@@ -1,16 +1,14 @@
-import dynamic from "next/dynamic";
-
-import { DesktopNav } from "@/components/desktop-nav";
-import { MobileNav } from "@/components/mobile-nav";
-import { NavItemGitHub } from "@/components/nav-item-github";
-import { ToggleTheme } from "@/components/toggle-theme";
-import { MAIN_NAV } from "@/config/site";
-import { getAllPosts } from "@/data/blog";
-import { cn } from "@/lib/utils";
-
-import { SiteHeaderWrapper } from "./site-header-wrapper";
-import Link from "next/link";
-import { SiteHeaderMark } from "@/components/site-header-mark";
+import dynamic from 'next/dynamic';
+import Link from 'next/link';
+import { DesktopNav } from '@/components/desktop-nav';
+import { MobileNav } from '@/components/mobile-nav';
+import { NavItemGitHub } from '@/components/nav-item-github';
+import { SiteHeaderMark } from '@/components/site-header-mark';
+import { ToggleTheme } from '@/components/toggle-theme';
+import { MAIN_NAV } from '@/config/site';
+import { getAllPosts } from '@/data/blog';
+import { cn } from '@/lib/utils';
+import { SiteHeaderWrapper } from './site-header-wrapper';
 
 const BrandContextMenu = dynamic(() =>
   import('@/components/brand-context-menu').then((mod) => mod.BrandContextMenu)
@@ -37,7 +35,7 @@ export function SiteHeader() {
         data-header-container
       >
         <BrandContextMenu>
-          <Link href="/" aria-label="Home" className="[&_svg]:h-8">
+          <Link aria-label="Home" className="[&_svg]:h-8" href="/">
             <SiteHeaderMark />
           </Link>
         </BrandContextMenu>

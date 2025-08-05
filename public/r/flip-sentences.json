@@ -4,12 +4,8 @@
   "type": "registry:component",
   "title": "Flip Sentences",
   "author": "mashafrancis <masha@francismasha.com>",
-  "dependencies": [
-    "motion"
-  ],
-  "registryDependencies": [
-    "https://francismasha.com/r/utils.json"
-  ],
+  "dependencies": ["motion"],
+  "registryDependencies": ["https://francismasha.com/r/utils.json"],
   "files": [
     {
       "path": "src/registry/flip-sentences/flip-sentences.tsx",

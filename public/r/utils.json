@@ -4,10 +4,7 @@
   "type": "registry:lib",
   "title": "Utility Functions",
   "author": "francismasha <masha@francismasha.com>",
-  "dependencies": [
-    "clsx",
-    "tailwind-merge"
-  ],
+  "dependencies": ["clsx", "tailwind-merge"],
   "files": [
     {
       "path": "src/lib/utils.ts",

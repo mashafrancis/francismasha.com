@@ -57,9 +57,10 @@ Licensed under the [MIT license](./LICENSE).
 
 > You're free to use my code! Just make sure to remove all my personal information before publishing your website. It's awesome to see my code being useful to someone!
 
-## Star History
+[//]: # (## Star History)
 
-[![Star History](https://starchart.cc/ncdai/chanhdai.com.svg?variant=adaptive)](https://starchart.cc/ncdai/chanhdai.com)
+[//]: # ()
+[//]: # ([![Star History]&#40;https://starchart.cc/ncdai/chanhdai.com.svg?variant=adaptive&#41;]&#40;https://starchart.cc/ncdai/chanhdai.com&#41;)
 
 ## Acknowledgments
 
@@ -73,9 +74,3 @@ Licensed under the [MIT license](./LICENSE).
 - [Lucide](https://lucide.dev)
 - [Fumadocs](https://fumadocs.dev)
 - And many other open-source libraries used in `package.json`
-
-## GitAds Sponsored
-
-[![Sponsored by GitAds](https://gitads.dev/v1/ad-serve?source=ncdai/chanhdai.com@github)](https://gitads.dev/v1/ad-track?source=ncdai/chanhdai.com@github)
-
-<!-- GitAds-Verify: QICCAB4PFWV9MHUGPGPN5B2I8SAXLAOK -->

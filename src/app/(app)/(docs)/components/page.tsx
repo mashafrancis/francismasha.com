@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+import type { Metadata } from 'next';
+import Link from 'next/link';
 
-import { Icons } from "@/components/icons";
-import { getPostsByCategory } from "@/data/blog";
+import { Icons } from '@/components/icons';
+import { getPostsByCategory } from '@/data/blog';
 
 export const metadata: Metadata = {
   title: 'Components',

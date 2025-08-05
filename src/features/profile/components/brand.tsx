@@ -1,13 +1,12 @@
-import { ArrowRightIcon } from "lucide-react";
-import dynamic from "next/dynamic";
-import Link from "next/link";
+import { ArrowRightIcon } from 'lucide-react';
+import dynamic from 'next/dynamic';
+import Link from 'next/link';
+import { ChanhDaiWordmark } from '@/components/chanhdai-wordmark';
+import { FrancisMashaMark } from '@/components/francis-masha-mark';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
-import { FrancisMashaMark } from "@/components/francis-masha-mark";
-import { ChanhDaiWordmark } from "@/components/chanhdai-wordmark";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-
-import { Panel, PanelHeader, PanelTitle } from "./panel";
+import { Panel, PanelHeader, PanelTitle } from './panel';
 
 const BrandContextMenu = dynamic(() =>
   import('@/components/brand-context-menu').then((mod) => mod.BrandContextMenu)

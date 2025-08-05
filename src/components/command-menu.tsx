@@ -1,7 +1,7 @@
 'use client';
 
-import { useCommandState } from "cmdk";
-import type { LucideProps } from "lucide-react";
+import { useCommandState } from 'cmdk';
+import type { LucideProps } from 'lucide-react';
 import {
   BriefcaseBusinessIcon,
   CircleUserIcon,
@@ -14,12 +14,12 @@ import {
   TextIcon,
   TriangleDashedIcon,
   TypeIcon,
-} from "lucide-react";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { useTheme } from "next-themes";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { toast } from "sonner";
+} from 'lucide-react';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import { useTheme } from 'next-themes';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { toast } from 'sonner';
 
 import {
   CommandDialog,
@@ -29,17 +29,16 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from "@/components/ui/command";
-import { SOCIAL_LINKS } from "@/features/profile/data/social-links";
-import { cn } from "@/lib/utils";
-import type { Post } from "@/types/blog";
-import { copyText } from "@/utils/copy";
-
-import { FrancisMashaMark, getMarkSVG } from "./francis-masha-mark";
-import { getWordmarkSVG } from "./chanhdai-wordmark";
-import { Icons } from "./icons";
-import { Button } from "./ui/button";
-import { Separator } from "./ui/separator";
+} from '@/components/ui/command';
+import { SOCIAL_LINKS } from '@/features/profile/data/social-links';
+import { cn } from '@/lib/utils';
+import type { Post } from '@/types/blog';
+import { copyText } from '@/utils/copy';
+import { getWordmarkSVG } from './chanhdai-wordmark';
+import { FrancisMashaMark, getMarkSVG } from './francis-masha-mark';
+import { Icons } from './icons';
+import { Button } from './ui/button';
+import { Separator } from './ui/separator';
 
 type CommandLinkItem = {
   title: string;
@@ -213,10 +212,10 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
 
         <span className="font-medium font-sans text-sm/4">Search</span>
 
-        <CommandMenuKbd className="rounded-full hidden tracking-wider sm:in-[.os-macos_&]:flex">
+        <CommandMenuKbd className="hidden rounded-full tracking-wider sm:in-[.os-macos_&]:flex">
           ⌘K
         </CommandMenuKbd>
-        <CommandMenuKbd className="rounded-full hidden sm:not-[.os-macos_&]:flex">
+        <CommandMenuKbd className="hidden rounded-full sm:not-[.os-macos_&]:flex">
           Ctrl K
         </CommandMenuKbd>
       </Button>
@@ -439,7 +438,10 @@ function CommandMenuFooter() {
       <div className="flex h-10" />
 
       <div className="absolute inset-x-0 bottom-0 flex h-10 items-center justify-between gap-2 border-t bg-zinc-100/30 px-4 font-medium text-xs dark:bg-zinc-800/30">
-        <FrancisMashaMark aria-hidden className="size-6 text-muted-foreground" />
+        <FrancisMashaMark
+          aria-hidden
+          className="size-6 text-muted-foreground"
+        />
 
         <div className="flex shrink-0 items-center gap-2">
           <span>{ENTER_ACTION_LABELS[selectedCommandKind]}</span>

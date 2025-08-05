@@ -5,14 +5,8 @@
   "title": "Theme Switcher",
   "author": "mashafrancis <masha@francismasha.com>",
   "description": "A theme switcher component for Next.js apps with next-themes and Tailwind CSS, supporting system, light, and dark modes.",
-  "dependencies": [
-    "next-themes",
-    "lucide-react",
-    "motion"
-  ],
-  "registryDependencies": [
-    "https://francismasha.com/r/utils.json"
-  ],
+  "dependencies": ["next-themes", "lucide-react", "motion"],
+  "registryDependencies": ["https://francismasha.com/r/utils.json"],
   "files": [
     {
       "path": "src/registry/theme-switcher/theme-switcher.tsx",

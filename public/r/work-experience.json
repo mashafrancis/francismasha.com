@@ -5,13 +5,8 @@
   "title": "Work Experience",
   "author": "mashafrancis <masha@francismasha.com>",
   "description": "Displays a list of work experiences with role details and durations.",
-  "dependencies": [
-    "react-markdown",
-    "lucide-react"
-  ],
-  "devDependencies": [
-    "@tailwindcss/typography"
-  ],
+  "dependencies": ["react-markdown", "lucide-react"],
+  "devDependencies": ["@tailwindcss/typography"],
   "registryDependencies": [
     "https://francismasha.com/r/utils.json",
     "collapsible",

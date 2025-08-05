@@ -1,6 +1,6 @@
-import { BrandContextMenu } from "@/components/brand-context-menu";
-import { FrancisMashaMark } from "@/components/francis-masha-mark";
-import { cn } from "@/lib/utils";
+import { BrandContextMenu } from '@/components/brand-context-menu';
+import { FrancisMashaMark } from '@/components/francis-masha-mark';
+import { cn } from '@/lib/utils';
 
 export function ProfileCover() {
   return (

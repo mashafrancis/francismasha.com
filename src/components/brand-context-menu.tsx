@@ -1,20 +1,19 @@
 'use client';
 
-import { DownloadIcon, TriangleDashedIcon, TypeIcon } from "lucide-react";
-import Link from "next/link";
-import { useTheme } from "next-themes";
-import { toast } from "sonner";
+import { DownloadIcon, TriangleDashedIcon, TypeIcon } from 'lucide-react';
+import Link from 'next/link';
+import { useTheme } from 'next-themes';
+import { toast } from 'sonner';
 
-import { copyText } from "@/utils/copy";
-
-import { FrancisMashaMark, getMarkSVG } from "./francis-masha-mark";
-import { getWordmarkSVG } from "./chanhdai-wordmark";
+import { copyText } from '@/utils/copy';
+import { getWordmarkSVG } from './chanhdai-wordmark';
+import { FrancisMashaMark, getMarkSVG } from './francis-masha-mark';
 import {
   ContextMenu,
   ContextMenuContent,
   ContextMenuItem,
   ContextMenuTrigger,
-} from "./ui/context-menu";
+} from './ui/context-menu';
 
 export function BrandContextMenu({ children }: { children: React.ReactNode }) {
   const { resolvedTheme } = useTheme();

@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -23,10 +19,8 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
-    },
+      "@/*": ["./src/*"]
+    }
   },
   "include": [
     "next-env.d.ts",
@@ -35,8 +29,5 @@
     ".next/types/**/*.ts",
     "./src/scripts/**/*.ts"
   ],
-  "exclude": [
-    "node_modules",
-    "./src/__registry__"
-  ]
+  "exclude": ["node_modules", "./src/__registry__"]
 }

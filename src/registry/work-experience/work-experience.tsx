@@ -5,18 +5,18 @@ import {
   CodeXmlIcon,
   DraftingCompassIcon,
   GraduationCapIcon,
-} from "lucide-react";
-import Image from "next/image";
-import React from "react";
-import ReactMarkdown from "react-markdown";
+} from 'lucide-react';
+import Image from 'next/image';
+import type React from 'react';
+import ReactMarkdown from 'react-markdown';
 
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/collapsible";
-import { Separator } from "@/components/ui/separator";
-import { cn } from "@/lib/utils";
+} from '@/components/ui/collapsible';
+import { Separator } from '@/components/ui/separator';
+import { cn } from '@/lib/utils';
 
 const iconMap = {
   code: CodeXmlIcon,
@@ -71,9 +71,9 @@ export function WorkExperience({
   experiences: ExperienceItemType[];
 }) {
   return (
-    <div className={cn("bg-background px-4", className)}>
+    <div className={cn('bg-background px-4', className)}>
       {experiences.map((experience) => (
-        <ExperienceItem key={experience.id} experience={experience} />
+        <ExperienceItem experience={experience} key={experience.id} />
       ))}
     </div>
   );
@@ -88,25 +88,25 @@ export function ExperienceItem({
     <div className="space-y-4 py-4">
       <div className="not-prose flex items-center gap-3">
         <div
-          className="flex size-6 shrink-0 items-center justify-center"
           aria-hidden
+          className="flex size-6 shrink-0 items-center justify-center"
         >
           {experience.companyLogo ? (
             <Image
-              src={experience.companyLogo}
               alt={experience.companyName}
-              width={24}
+              className="rounded-full"
               height={24}
               quality={100}
-              className="rounded-full"
+              src={experience.companyLogo}
               unoptimized
+              width={24}
             />
           ) : (
             <span className="flex size-2 rounded-full bg-zinc-300 dark:bg-zinc-600" />
           )}
         </div>
 
-        <h3 className="text-lg leading-snug font-medium">
+        <h3 className="font-medium text-lg leading-snug">
           {experience.companyName}
         </h3>
 
@@ -133,34 +133,34 @@ export function ExperiencePositionItem({
 }: {
   position: ExperiencePositionItemType;
 }) {
-  const ExperienceIcon = iconMap[position.icon || "business"];
+  const ExperienceIcon = iconMap[position.icon || 'business'];
 
   return (
-    <Collapsible defaultOpen={position.isExpanded} asChild>
+    <Collapsible asChild defaultOpen={position.isExpanded}>
       <div className="relative last:before:absolute last:before:h-full last:before:w-4 last:before:bg-background">
-        <CollapsibleTrigger className="group/experience not-prose block w-full text-left select-none">
+        <CollapsibleTrigger className="group/experience not-prose block w-full select-none text-left">
           <div className="relative z-1 mb-1 flex items-center gap-3 bg-background">
             <div
-              className="flex size-6 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground"
               aria-hidden
+              className="flex size-6 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground"
             >
               <ExperienceIcon className="size-4" />
             </div>
 
-            <h4 className="flex-1 text-base font-medium text-balance">
+            <h4 className="flex-1 text-balance font-medium text-base">
               {position.title}
             </h4>
 
             <div
-              className="shrink-0 text-muted-foreground [&_svg]:size-4"
               aria-hidden
+              className="shrink-0 text-muted-foreground [&_svg]:size-4"
             >
               <ChevronsDownUpIcon className="hidden group-data-[state=open]/experience:block" />
               <ChevronsUpDownIcon className="hidden group-data-[state=closed]/experience:block" />
             </div>
           </div>
 
-          <div className="flex items-center gap-2 pl-9 text-sm text-muted-foreground">
+          <div className="flex items-center gap-2 pl-9 text-muted-foreground text-sm">
             {position.employmentType && (
               <>
                 <dl>
@@ -192,7 +192,7 @@ export function ExperiencePositionItem({
           {Array.isArray(position.skills) && position.skills.length > 0 && (
             <ul className="not-prose flex flex-wrap gap-1.5 pt-2 pl-9">
               {position.skills.map((skill, index) => (
-                <li key={index} className="flex">
+                <li className="flex" key={index}>
                   <Skill>{skill}</Skill>
                 </li>
               ))}
@@ -204,13 +204,13 @@ export function ExperiencePositionItem({
   );
 }
 
-function Prose({ className, ...props }: React.ComponentProps<"div">) {
+function Prose({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
       className={cn(
-        "prose prose-sm max-w-none font-mono text-foreground prose-zinc dark:prose-invert",
-        "prose-a:font-medium prose-a:break-words prose-a:text-foreground prose-a:underline prose-a:underline-offset-4",
-        "prose-code:rounded-md prose-code:border prose-code:bg-muted/50 prose-code:px-[0.3rem] prose-code:py-[0.2rem] prose-code:text-sm prose-code:font-normal prose-code:before:content-none prose-code:after:content-none",
+        'prose prose-sm prose-zinc dark:prose-invert max-w-none font-mono text-foreground',
+        'prose-a:break-words prose-a:font-medium prose-a:text-foreground prose-a:underline prose-a:underline-offset-4',
+        'prose-code:rounded-md prose-code:border prose-code:bg-muted/50 prose-code:px-[0.3rem] prose-code:py-[0.2rem] prose-code:font-normal prose-code:text-sm prose-code:before:content-none prose-code:after:content-none',
         className
       )}
       {...props}
@@ -218,11 +218,11 @@ function Prose({ className, ...props }: React.ComponentProps<"div">) {
   );
 }
 
-function Skill({ className, ...props }: React.ComponentProps<"span">) {
+function Skill({ className, ...props }: React.ComponentProps<'span'>) {
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-lg border bg-muted/50 px-1.5 py-0.5 font-mono text-xs text-muted-foreground",
+        'inline-flex items-center rounded-lg border bg-muted/50 px-1.5 py-0.5 font-mono text-muted-foreground text-xs',
         className
       )}
       {...props}

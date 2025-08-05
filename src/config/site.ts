@@ -1,5 +1,5 @@
-import { USER } from "@/data/user";
-import type { NavItem } from "@/types/nav";
+import { USER } from '@/data/user';
+import type { NavItem } from '@/types/nav';
 
 export const SITE_INFO = {
   name: USER.displayName,

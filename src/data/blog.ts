@@ -1,8 +1,8 @@
-import fs from "node:fs";
-import path from "node:path";
-import matter from "gray-matter";
+import fs from 'node:fs';
+import path from 'node:path';
+import matter from 'gray-matter';
 
-import type { Post, PostMetadata } from "@/types/blog";
+import type { Post, PostMetadata } from '@/types/blog';
 
 function parseFrontmatter(fileContent: string) {
   const file = matter(fileContent);

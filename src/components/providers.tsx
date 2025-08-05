@@ -1,13 +1,14 @@
 'use client';
 
-import { AppProgressProvider } from '@bprogress/next';
-import { Analytics } from '@vercel/analytics/next';
-import { SpeedInsights } from '@vercel/speed-insights/next';
-import { Provider as JotaiProvider } from 'jotai';
-import { LazyMotion } from 'motion/react';
-import { ThemeProvider } from 'next-themes';
+import { AppProgressProvider } from "@bprogress/next";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Provider as JotaiProvider } from "jotai";
+import { LazyMotion } from "motion/react";
+import { ThemeProvider } from "next-themes";
 
-import { Toaster } from '@/components/ui/sonner';
+import { Toaster } from "@/components/ui/sonner";
+import { AxiomWebVitals } from "next-axiom";
 
 const loadFeatures = () => import('motion/react').then((res) => res.domMax);
 
@@ -35,6 +36,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
 
         <Toaster />
         <Analytics />
+        <AxiomWebVitals />
         <SpeedInsights />
       </ThemeProvider>
     </JotaiProvider>

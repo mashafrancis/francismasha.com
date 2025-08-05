@@ -1,9 +1,9 @@
 'use client';
 
-import * as motion from "motion/react-m";
-import { useState } from "react";
+import * as motion from 'motion/react-m';
+import { useState } from 'react';
 
-import { FrancisMashaMark } from "@/components/francis-masha-mark";
+import { FrancisMashaMark } from '@/components/francis-masha-mark';
 
 const variants = {
   show: {

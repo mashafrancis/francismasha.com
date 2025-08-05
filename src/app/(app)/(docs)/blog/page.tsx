@@ -1,8 +1,8 @@
-import dayjs from "dayjs";
-import type { Metadata } from "next";
+import dayjs from 'dayjs';
+import type { Metadata } from 'next';
 
-import { PostItem } from "@/components/post-item";
-import { getAllPosts } from "@/data/blog";
+import { PostItem } from '@/components/post-item';
+import { getAllPosts } from '@/data/blog';
 
 export const metadata: Metadata = {
   title: 'Blog',

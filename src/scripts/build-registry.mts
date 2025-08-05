@@ -1,12 +1,12 @@
-import { promises as fs } from "node:fs";
-import path from "node:path";
+import { promises as fs } from 'node:fs';
+import path from 'node:path';
 
-import { rimraf } from "rimraf";
-import type { Registry } from "shadcn/registry";
-import { registrySchema } from "shadcn/registry";
+import { rimraf } from 'rimraf';
+import type { Registry } from 'shadcn/registry';
+import { registrySchema } from 'shadcn/registry';
 
-const { registry } = await import("../registry");
-const { registryConfig } = await import("../config/registry");
+const { registry } = await import('../registry');
+const { registryConfig } = await import('../config/registry');
 
 const REGISTRY_PATH = path.join(process.cwd(), 'src/__registry__');
 
@@ -108,6 +108,5 @@ try {
 
   await buildRegistry(result.data);
 } catch (_error) {
-  console.error(_error);
   process.exit(1);
 }
