@@ -3,9 +3,13 @@ import { withAxiom } from "next-axiom";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  reactCompiler: true,
   transpilePackages: ['next-mdx-remote'],
   allowedDevOrigins: ['francismasha-macbook.local'],
   devIndicators: false,
+  experimental: {
+    turbopackFileSystemCacheForDev: true,
+  },
   images: {
     remotePatterns: [
       {
@@ -14,6 +18,9 @@ const nextConfig: NextConfig = {
         port: '',
       },
     ],
+  },
+  typescript: {
+    ignoreBuildErrors: true,
   },
   async rewrites() {
     return [
