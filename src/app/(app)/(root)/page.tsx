@@ -1,15 +1,16 @@
-import dayjs from 'dayjs';
-import type { ProfilePage as PageSchema, WithContext } from 'schema-dts';
+import dayjs from "dayjs";
+import type { ProfilePage as PageSchema, WithContext } from "schema-dts";
 
-import { USER } from '@/data/user';
-import { About } from '@/features/profile/components/about';
-import { Blog } from '@/features/profile/components/blog';
-import { Experiences } from '@/features/profile/components/experiences';
-import { Overview } from '@/features/profile/components/overview';
-import { ProfileHeader } from '@/features/profile/components/profile-header';
-import { Projects } from '@/features/profile/components/projects';
-import { SocialLinks } from '@/features/profile/components/social-links';
-import { cn } from '@/lib/utils';
+import { USER } from "@/data/user";
+import { About } from "@/features/profile/components/about";
+import { Blog } from "@/features/profile/components/blog";
+import { Experiences } from "@/features/profile/components/experiences";
+import { Overview } from "@/features/profile/components/overview";
+import { ProfileHeader } from "@/features/profile/components/profile-header";
+import { Projects } from "@/features/profile/components/projects";
+import { SocialLinks } from "@/features/profile/components/social-links";
+import { cn } from "@/lib/utils";
+import { Certifications } from "@/features/profile/components/certifications";
 
 export default function Page() {
   return (
@@ -47,8 +48,8 @@ export default function Page() {
         {/*<Awards />*/}
         {/*<Separator />*/}
 
-        {/*<Certifications />*/}
-        {/*<Separator />*/}
+        <Certifications />
+        <Separator />
 
         {/*<Brand />*/}
         {/*<Separator />*/}

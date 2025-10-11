@@ -1,13 +1,14 @@
-import '@/styles/globals.css';
+import "@/styles/globals.css";
 
-import type { Metadata, Viewport } from 'next';
-import Script from 'next/script';
-import type { WebSite, WithContext } from 'schema-dts';
+import type { Metadata, Viewport } from "next";
+import Script from "next/script";
+import type { WebSite, WithContext } from "schema-dts";
 
-import { Providers } from '@/components/providers';
-import { META_THEME_COLORS, SITE_INFO } from '@/config/site';
-import { USER } from '@/data/user';
-import { fontMono, fontSans } from '@/lib/fonts';
+import { Providers } from "@/components/providers";
+import { META_THEME_COLORS, SITE_INFO } from "@/config/site";
+import { USER } from "@/data/user";
+import { fontMono, fontSans } from "@/lib/fonts";
+import { BotIdClient } from "botid/client";
 
 function getWebSiteJsonLd(): WithContext<WebSite> {
   return {
@@ -95,6 +96,14 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <BotIdClient
+          protect={[
+            {
+              path: "/api/generate",
+              method: "POST",
+            },
+          ]}
+        />
         <script
           dangerouslySetInnerHTML={{ __html: darkModeScript }}
           type="text/javascript"
