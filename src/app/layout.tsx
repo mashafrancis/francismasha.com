@@ -113,6 +113,7 @@ export default function RootLayout({
           since we found the regular `<script>` tag to not execute when rendering a not-found page.
          */}
         <Script src={`data:text/javascript;base64,${btoa(darkModeScript)}`} />
+	      <Script src="https://cdn.visitors.now/v.js" data-token="c1ad25c4-1587-42ec-8a8c-357580a634f3"></Script>
         <script
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(getWebSiteJsonLd()).replace(/</g, '\\u003c'),

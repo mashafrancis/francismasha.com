@@ -1,5 +1,4 @@
 import dayjs from 'dayjs';
-import { getTableOfContents } from 'fumadocs-core/server';
 import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
@@ -14,6 +13,7 @@ import { SITE_INFO } from '@/config/site';
 import { findNeighbour, getAllPosts, getPostBySlug } from '@/data/blog';
 import { USER } from '@/data/user';
 import type { Post } from '@/types/blog';
+import { getTableOfContents } from "fumadocs-core/content/toc"
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
