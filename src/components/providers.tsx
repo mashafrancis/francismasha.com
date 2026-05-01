@@ -42,11 +42,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
 		      trackHashChanges
 		      trackOutgoingLinks
 		      trackScreenViews
-	      />
-
-	      <BklitComponent
-		      projectId="cmiipfuw000075xcscl7smmg2"
-		      apiKey="bk_live_1f10eb2d2eae438041aa556946a0fe22fe1729f5273342af163bb6aa6643f4ac"
+		      sessionReplay={{
+					enabled: true
+		      }}
 	      />
         <Toaster />
         <Analytics />

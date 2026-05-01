@@ -8,7 +8,6 @@ import { Providers } from "@/components/providers";
 import { META_THEME_COLORS, SITE_INFO } from "@/config/site";
 import { USER } from "@/data/user";
 import { fontMono, fontSans } from "@/lib/fonts";
-import { BotIdClient } from "botid/client";
 
 function getWebSiteJsonLd(): WithContext<WebSite> {
   return {
@@ -96,17 +95,9 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <BotIdClient
-          protect={[
-            {
-              path: "/api/generate",
-              method: "POST",
-            },
-          ]}
-        />
         <script
-          dangerouslySetInnerHTML={{ __html: darkModeScript }}
           type="text/javascript"
+          dangerouslySetInnerHTML={{ __html: darkModeScript }}
         />
         {/*
           Thanks @tailwindcss. We inject the script via the `<Script/>` tag again,

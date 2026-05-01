@@ -2,6 +2,7 @@ import Image from 'next/image';
 
 import type { Experience } from '../../types/experiences';
 import { ExperiencePositionItem } from './experience-position-item';
+import {Suspense} from "react";
 
 export function ExperienceItem({ experience }: { experience: Experience }) {
   return (
