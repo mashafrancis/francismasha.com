@@ -3,6 +3,7 @@ import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { cacheLife, cacheTag } from 'next/cache';
 import type { BlogPosting as PageSchema, WithContext } from 'schema-dts';
 
 import { InlineTOC } from '@/components/inline-toc';
@@ -16,7 +17,7 @@ import type { Post } from '@/types/blog';
 import { getTableOfContents } from "fumadocs-core/content/toc"
 
 export async function generateStaticParams() {
-  const posts = getAllPosts();
+  const posts = await getAllPosts();
   return posts.map((post) => ({
     slug: post.slug,
   }));
@@ -27,8 +28,12 @@ export async function generateMetadata({
 }: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
+  'use cache';
+  cacheLife('max');
+  cacheTag('blog');
+
   const slug = (await params).slug;
-  const post = getPostBySlug(slug);
+  const post = await getPostBySlug(slug);
 
   if (!post) {
     return notFound();
@@ -92,8 +97,12 @@ export default async function Page({
     slug: string;
   }>;
 }) {
+  'use cache';
+  cacheLife('max');
+  cacheTag('blog');
+
   const slug = (await params).slug;
-  const post = getPostBySlug(slug);
+  const post = await getPostBySlug(slug);
 
   if (!post) {
     notFound();
@@ -101,7 +110,7 @@ export default async function Page({
 
   const toc = getTableOfContents(post.content);
 
-  const allPosts = getAllPosts();
+  const allPosts = await getAllPosts();
   const { previous, next } = findNeighbour(allPosts, slug);
 
   return (

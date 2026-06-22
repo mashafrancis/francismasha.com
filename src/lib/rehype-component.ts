@@ -7,6 +7,13 @@ import { visit } from 'unist-util-visit';
 import { Index } from '@/__registry__';
 import type { UnistNode, UnistTree } from '@/types/unist';
 
+const SRC_ROOT = path.join(/* turbopackIgnore: true */ process.cwd(), 'src');
+
+function resolveProjectPath(relativePath: string): string {
+  const normalized = relativePath.replace(/^src\//, '');
+  return path.join(SRC_ROOT, normalized);
+}
+
 export function rehypeComponent() {
   // Thanks @shadcn/ui
   return async (tree: UnistTree) => {
@@ -33,7 +40,7 @@ export function rehypeComponent() {
           let src: string;
 
           if (srcPath) {
-            src = path.join(process.cwd(), srcPath);
+            src = resolveProjectPath(srcPath);
           } else {
             const component = Index[name];
             src = fileName
@@ -50,7 +57,7 @@ export function rehypeComponent() {
           }
 
           // Read the source file.
-          const filePath = src;
+          const filePath = resolveProjectPath(src);
           let source = fs.readFileSync(filePath, 'utf8');
 
           // Replace imports.
@@ -108,7 +115,7 @@ export function rehypeComponent() {
           const src = component.files[0]?.path;
 
           // Read the source file.
-          const filePath = src;
+          const filePath = resolveProjectPath(src);
           let source = fs.readFileSync(filePath, 'utf8');
 
           // Replace imports.

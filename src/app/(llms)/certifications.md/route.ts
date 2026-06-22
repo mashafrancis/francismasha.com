@@ -1,13 +1,8 @@
-import { CERTIFICATIONS } from '@/features/profile/data/certifications';
-
-const content = `# Certifications
-
-${CERTIFICATIONS.map((item) => `- [${item.title}](${item.credentialURL})`).join('\n')}
-`;
-
-export const dynamic = 'force-static';
+import { getCertificationsMarkdown } from '@/lib/cached-routes';
 
 export async function GET() {
+  const content = await getCertificationsMarkdown();
+
   return new Response(content, {
     headers: {
       'Content-Type': 'text/markdown;charset=utf-8',

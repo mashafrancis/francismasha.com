@@ -9,8 +9,8 @@ export const metadata: Metadata = {
   description: 'A collection of articles on development, design, and ideas.',
 };
 
-export default function Page() {
-  const allPosts = getAllPosts();
+export default async function Page() {
+  const allPosts = await getAllPosts();
 
   return (
     <>

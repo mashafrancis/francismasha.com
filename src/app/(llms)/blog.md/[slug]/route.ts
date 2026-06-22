@@ -1,9 +1,9 @@
 import dayjs from 'dayjs';
 
-import { getAllPosts } from '@/data/blog';
+import { getAllPosts, getPostBySlug } from '@/data/blog';
 
 export async function generateStaticParams() {
-  const posts = getAllPosts();
+  const posts = await getAllPosts();
 
   return posts.map((post) => ({
     slug: post.slug,
@@ -16,8 +16,7 @@ export async function GET(
 ) {
   const { slug } = await params;
 
-  const allPosts = getAllPosts();
-  const post = allPosts.find((post) => post.slug === slug);
+  const post = await getPostBySlug(slug);
 
   if (!post) {
     return new Response('Post not found', {

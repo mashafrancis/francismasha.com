@@ -18,8 +18,8 @@ const CommandMenu = dynamic(() =>
   import('@/components/command-menu').then((mod) => mod.CommandMenu)
 );
 
-export function SiteHeader() {
-  const posts = getAllPosts();
+export async function SiteHeader() {
+  const posts = await getAllPosts();
 
   return (
     <SiteHeaderWrapper

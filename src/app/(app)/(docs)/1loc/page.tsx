@@ -9,8 +9,8 @@ export const metadata: Metadata = {
   description: 'A collection of one line of code utilities.',
 };
 
-export default function Page() {
-  const posts = getAllLoc();
+export default async function Page() {
+  const posts = await getAllLoc();
 
   return (
     <div className="min-h-svh [--color-react:#087EA4] dark:[--color-react:#58C4DC]">

@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
+import { cacheLife, cacheTag } from 'next/cache';
 
 import type { Post, PostMetadata } from '@/types/blog';
 
@@ -22,7 +23,10 @@ function readMDXFile(filePath: string) {
   return parseFrontmatter(rawContent);
 }
 
-function getMDXData(dir: string) {
+async function getMDXData(dir: string) {
+  'use cache';
+  cacheLife('max');
+
   const mdxFiles = getMDXFiles(dir);
 
   return mdxFiles.map<Post>((file) => {
@@ -38,20 +42,28 @@ function getMDXData(dir: string) {
   });
 }
 
-export function getAllPosts() {
-  return getMDXData(path.join(process.cwd(), 'src', 'content', 'blog')).sort(
+export async function getAllPosts() {
+  'use cache';
+  cacheLife('max');
+  cacheTag('blog');
+
+  return (
+    await getMDXData(path.join(process.cwd(), 'src', 'content', 'blog'))
+  ).sort(
     (a, b) =>
       new Date(b.metadata.createdAt).getTime() -
       new Date(a.metadata.createdAt).getTime()
   );
 }
 
-export function getPostBySlug(slug: string) {
-  return getAllPosts().find((post) => post.slug === slug);
+export async function getPostBySlug(slug: string) {
+  const posts = await getAllPosts();
+  return posts.find((post) => post.slug === slug);
 }
 
-export function getPostsByCategory(category: string) {
-  return getAllPosts().filter((post) => post.metadata?.category === category);
+export async function getPostsByCategory(category: string) {
+  const posts = await getAllPosts();
+  return posts.filter((post) => post.metadata?.category === category);
 }
 
 export function findNeighbour(posts: Post[], slug: string) {
@@ -69,8 +81,14 @@ export function findNeighbour(posts: Post[], slug: string) {
   return { previous: null, next: null };
 }
 
-export function getAllLoc() {
-  return getMDXData(path.join(process.cwd(), 'src', 'content', '1loc')).sort(
+export async function getAllLoc() {
+  'use cache';
+  cacheLife('max');
+  cacheTag('1loc');
+
+  return (
+    await getMDXData(path.join(process.cwd(), 'src', 'content', '1loc'))
+  ).sort(
     (a, b) =>
       new Date(b.metadata.createdAt).getTime() -
       new Date(a.metadata.createdAt).getTime()

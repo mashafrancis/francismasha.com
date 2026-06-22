@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 import { withAxiom } from "next-axiom";
 
 const nextConfig: NextConfig = {
+  cacheComponents: true,
   reactStrictMode: true,
   reactCompiler: true,
   transpilePackages: ['next-mdx-remote'],
@@ -11,6 +12,7 @@ const nextConfig: NextConfig = {
     turbopackFileSystemCacheForDev: true,
   },
   images: {
+    qualities: [75, 100],
     remotePatterns: [
       {
         protocol: 'https',
