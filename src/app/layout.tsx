@@ -110,6 +110,7 @@ export default function RootLayout({
           }}
           type="application/ld+json"
         />
+        <Script strategy="afterInteractive" defer src="https://mrkr.app/tracker.js" data-site="site_e2169d1b7c48d365"></Script>
       </head>
 
       <body>

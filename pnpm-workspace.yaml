@@ -1,3 +1,7 @@
+allowBuilds:
+  esbuild: true
+  msw: true
+  sharp: true
 onlyBuiltDependencies:
   - '@tailwindcss/oxide'
   - '@vercel/speed-insights'
