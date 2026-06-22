@@ -6,9 +6,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Provider as JotaiProvider } from "jotai";
 import { LazyMotion } from "motion/react";
 import { ThemeProvider } from "next-themes";
-import { BklitComponent } from '@bklit/sdk/nextjs';
 import { OpenPanelComponent } from "@openpanel/nextjs";
-
 import { Toaster } from "@/components/ui/sonner";
 import { AxiomWebVitals } from "next-axiom";
 
