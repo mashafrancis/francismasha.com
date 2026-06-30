@@ -1,4 +1,4 @@
-export function VerifiedIcon(props: React.ComponentProps<'svg'>) {
+export function VerifiedIcon(props: React.ComponentProps<"svg">) {
   return (
     <svg
       fill="none"

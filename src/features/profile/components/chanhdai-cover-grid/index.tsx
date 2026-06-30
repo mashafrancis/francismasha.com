@@ -1,18 +1,18 @@
-import { cn } from '@/lib/utils';
+import { cn } from "@/lib/utils";
 
-import { LogoResizeAnimation } from './logo-resize-animation';
+import { LogoResizeAnimation } from "./logo-resize-animation";
 
 export function ChanhDaiCoverGrid() {
   return (
     <div
       className={cn(
-        'aspect-2/1 w-full select-none border-edge border-x',
-        'screen-line-before screen-line-after after:-bottom-px',
-        'bg-[radial-gradient(var(--pattern-foreground)_1px,transparent_0)] bg-size-[10px_10px] bg-zinc-950/0.75 [--pattern-foreground:var(--color-zinc-950)]/5 dark:bg-white/0.75 dark:[--pattern-foreground:var(--color-white)]/5'
+        "aspect-2/1 w-full select-none border-edge border-x",
+        "screen-line-before screen-line-after after:-bottom-px",
+        "bg-[radial-gradient(var(--pattern-foreground)_1px,transparent_0)] bg-size-[10px_10px] bg-zinc-950/0.75 [--pattern-foreground:var(--color-zinc-950)]/5 dark:bg-white/0.75 dark:[--pattern-foreground:var(--color-white)]/5"
       )}
     >
       <div className="flex size-full justify-center">
-        <div className="-translate-y-1/2 absolute top-1/2 box-content h-16 w-full border-edge border-y sm:h-20" />
+        <div className="absolute top-1/2 box-content h-16 w-full -translate-y-1/2 border-edge border-y sm:h-20" />
 
         <div className="flex items-center justify-center text-black dark:text-white">
           <div className="h-full border-edge border-r" />

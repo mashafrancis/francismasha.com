@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useCommandState } from 'cmdk';
-import type { LucideProps } from 'lucide-react';
+import { useCommandState } from "cmdk";
+import type { LucideProps } from "lucide-react";
 import {
   BriefcaseBusinessIcon,
   CircleUserIcon,
@@ -14,12 +14,12 @@ import {
   TextIcon,
   TriangleDashedIcon,
   TypeIcon,
-} from 'lucide-react';
-import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-import { useTheme } from 'next-themes';
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { toast } from 'sonner';
+} from "lucide-react";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useTheme } from "next-themes";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { toast } from "sonner";
 
 import {
   CommandDialog,
@@ -29,16 +29,16 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from '@/components/ui/command';
-import { SOCIAL_LINKS } from '@/features/profile/data/social-links';
-import { cn } from '@/lib/utils';
-import type { Post } from '@/types/blog';
-import { copyText } from '@/utils/copy';
-import { getWordmarkSVG } from './chanhdai-wordmark';
-import { FrancisMashaMark, getMarkSVG } from './francis-masha-mark';
-import { Icons } from './icons';
-import { Button } from './ui/button';
-import { Separator } from './ui/separator';
+} from "@/components/ui/command";
+import { SOCIAL_LINKS } from "@/features/profile/data/social-links";
+import { cn } from "@/lib/utils";
+import type { Post } from "@/types/blog";
+import { copyText } from "@/utils/copy";
+import { getWordmarkSVG } from "./chanhdai-wordmark";
+import { FrancisMashaMark, getMarkSVG } from "./francis-masha-mark";
+import { Icons } from "./icons";
+import { Button } from "./ui/button";
+import { Separator } from "./ui/separator";
 
 type CommandLinkItem = {
   title: string;
@@ -52,56 +52,56 @@ type CommandLinkItem = {
 
 const MENU_LINKS: CommandLinkItem[] = [
   {
-    title: 'Francis',
-    href: '/',
+    title: "Francis",
+    href: "/",
     icon: FrancisMashaMark,
   },
   {
-    title: 'Blog',
-    href: '/blog',
+    title: "Blog",
+    href: "/blog",
     icon: RssIcon,
   },
   {
-    title: 'Components',
-    href: '/components',
+    title: "Components",
+    href: "/components",
     icon: Icons.react,
   },
 ];
 
 const FRANCIS_LINKS: CommandLinkItem[] = [
   {
-    title: 'About',
-    href: '/#about',
+    title: "About",
+    href: "/#about",
     icon: LetterTextIcon,
   },
   {
-    title: 'Tech Stack',
-    href: '/#stack',
+    title: "Tech Stack",
+    href: "/#stack",
     icon: Icons.ts,
   },
   {
-    title: 'Experience',
-    href: '/#experience',
+    title: "Experience",
+    href: "/#experience",
     icon: BriefcaseBusinessIcon,
   },
   {
-    title: 'Projects',
-    href: '/#projects',
+    title: "Projects",
+    href: "/#projects",
     icon: Icons.project,
   },
   {
-    title: 'Honors & Awards',
-    href: '/#awards',
+    title: "Honors & Awards",
+    href: "/#awards",
     icon: Icons.award,
   },
   {
-    title: 'Certifications',
-    href: '/#certs',
+    title: "Certifications",
+    href: "/#certs",
     icon: Icons.certificate,
   },
   {
-    title: 'Download vCard',
-    href: '/vcard',
+    title: "Download vCard",
+    href: "/vcard",
     icon: CircleUserIcon,
   },
 ];
@@ -125,9 +125,9 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
     const { signal } = abortController;
 
     document.addEventListener(
-      'keydown',
+      "keydown",
       (e: KeyboardEvent) => {
-        if ((e.key === 'k' && (e.metaKey || e.ctrlKey)) || e.key === '/') {
+        if ((e.key === "k" && (e.metaKey || e.ctrlKey)) || e.key === "/") {
           if (
             (e.target instanceof HTMLElement && e.target.isContentEditable) ||
             e.target instanceof HTMLInputElement ||
@@ -152,7 +152,7 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
       setOpen(false);
 
       if (openInNewTab) {
-        window.open(href, '_blank', 'noopener');
+        window.open(href, "_blank", "noopener");
       } else {
         router.push(href);
       }
@@ -167,7 +167,7 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
   }, []);
 
   const handleThemeChange = useCallback(
-    (theme: 'light' | 'dark' | 'system') => {
+    (theme: "light" | "dark" | "system") => {
       setOpen(false);
       setTheme(theme);
     },
@@ -177,10 +177,10 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
   const { blogLinks, componentLinks } = useMemo(
     () => ({
       blogLinks: posts
-        .filter((post) => post.metadata?.category !== 'components')
+        .filter((post) => post.metadata?.category !== "components")
         .map(postToCommandLinkItem),
       componentLinks: posts
-        .filter((post) => post.metadata?.category === 'components')
+        .filter((post) => post.metadata?.category === "components")
         .map(postToCommandLinkItem),
     }),
     [posts]
@@ -190,8 +190,8 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
     <>
       <Button
         className={cn(
-          'h-8 select-none gap-1.5 rounded-full bg-zinc-50 px-2.5 text-muted-foreground hover:bg-zinc-50 dark:bg-zinc-900 dark:hover:bg-zinc-900',
-          'not-dark:border dark:inset-shadow-[1px_1px_1px,0px_0px_1px] dark:inset-shadow-white/15'
+          "h-8 select-none gap-1.5 rounded-full bg-zinc-50 px-2.5 text-muted-foreground hover:bg-zinc-50 dark:bg-zinc-900 dark:hover:bg-zinc-900",
+          "not-dark:border dark:inset-shadow-[1px_1px_1px,0px_0px_1px] dark:inset-shadow-white/15"
         )}
         onClick={() => setOpen(true)}
         variant="secondary"
@@ -272,8 +272,8 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
             <CommandItem
               onSelect={() => {
                 handleCopyText(
-                  getMarkSVG(resolvedTheme === 'light' ? '#000' : '#fff'),
-                  'Copied Mark as SVG'
+                  getMarkSVG(resolvedTheme === "light" ? "#000" : "#fff"),
+                  "Copied Mark as SVG"
                 );
               }}
             >
@@ -284,8 +284,8 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
             <CommandItem
               onSelect={() => {
                 handleCopyText(
-                  getWordmarkSVG(resolvedTheme === 'light' ? '#000' : '#fff'),
-                  'Copied Logotype as SVG'
+                  getWordmarkSVG(resolvedTheme === "light" ? "#000" : "#fff"),
+                  "Copied Logotype as SVG"
                 );
               }}
             >
@@ -294,7 +294,7 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
             </CommandItem>
 
             <CommandItem
-              onSelect={() => handleOpenLink('/blog/chanhdai-brand')}
+              onSelect={() => handleOpenLink("/blog/chanhdai-brand")}
             >
               <TriangleDashedIcon />
               Brand Guidelines
@@ -312,22 +312,22 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
 
           <CommandGroup heading="Theme">
             <CommandItem
-              keywords={['theme']}
-              onSelect={() => handleThemeChange('light')}
+              keywords={["theme"]}
+              onSelect={() => handleThemeChange("light")}
             >
               <SunIcon />
               Light
             </CommandItem>
             <CommandItem
-              keywords={['theme']}
-              onSelect={() => handleThemeChange('dark')}
+              keywords={["theme"]}
+              onSelect={() => handleThemeChange("dark")}
             >
               <MoonStarIcon />
               Dark
             </CommandItem>
             <CommandItem
-              keywords={['theme']}
-              onSelect={() => handleThemeChange('system')}
+              keywords={["theme"]}
+              onSelect={() => handleThemeChange("system")}
             >
               <Icons.contrast />
               Auto
@@ -383,7 +383,7 @@ function CommandLinkGroup({
   );
 }
 
-type CommandKind = 'command' | 'page' | 'link';
+type CommandKind = "command" | "page" | "link";
 
 type CommandMetaMap = Map<
   string,
@@ -395,25 +395,25 @@ type CommandMetaMap = Map<
 function buildCommandMetaMap() {
   const commandMetaMap: CommandMetaMap = new Map();
 
-  commandMetaMap.set('Download vCard', { commandKind: 'command' });
+  commandMetaMap.set("Download vCard", { commandKind: "command" });
 
-  commandMetaMap.set('Light', { commandKind: 'command' });
-  commandMetaMap.set('Dark', { commandKind: 'command' });
-  commandMetaMap.set('Auto', { commandKind: 'command' });
+  commandMetaMap.set("Light", { commandKind: "command" });
+  commandMetaMap.set("Dark", { commandKind: "command" });
+  commandMetaMap.set("Auto", { commandKind: "command" });
 
-  commandMetaMap.set('Copy Mark as SVG', {
-    commandKind: 'command',
+  commandMetaMap.set("Copy Mark as SVG", {
+    commandKind: "command",
   });
-  commandMetaMap.set('Copy Logotype as SVG', {
-    commandKind: 'command',
+  commandMetaMap.set("Copy Logotype as SVG", {
+    commandKind: "command",
   });
-  commandMetaMap.set('Download Brand Assets', {
-    commandKind: 'command',
+  commandMetaMap.set("Download Brand Assets", {
+    commandKind: "command",
   });
 
   SOCIAL_LINK_ITEMS.forEach((item) => {
     commandMetaMap.set(item.title, {
-      commandKind: 'link',
+      commandKind: "link",
     });
   });
 
@@ -423,14 +423,14 @@ function buildCommandMetaMap() {
 const COMMAND_META_MAP = buildCommandMetaMap();
 
 const ENTER_ACTION_LABELS: Record<CommandKind, string> = {
-  command: 'Run Command',
-  page: 'Go to Page',
-  link: 'Open Link',
+  command: "Run Command",
+  page: "Go to Page",
+  link: "Open Link",
 };
 
 function CommandMenuFooter() {
   const selectedCommandKind = useCommandState(
-    (state) => COMMAND_META_MAP.get(state.value)?.commandKind ?? 'page'
+    (state) => COMMAND_META_MAP.get(state.value)?.commandKind ?? "page"
   );
 
   return (
@@ -460,7 +460,7 @@ function CommandMenuFooter() {
   );
 }
 
-function CommandMenuKbd({ className, ...props }: React.ComponentProps<'kbd'>) {
+function CommandMenuKbd({ className, ...props }: React.ComponentProps<"kbd">) {
   return (
     <kbd
       className={cn(
@@ -473,11 +473,11 @@ function CommandMenuKbd({ className, ...props }: React.ComponentProps<'kbd'>) {
 }
 
 function postToCommandLinkItem(post: Post): CommandLinkItem {
-  const isComponent = post.metadata?.category === 'components';
+  const isComponent = post.metadata?.category === "components";
 
   return {
     title: post.metadata.title,
     href: isComponent ? `/components/${post.slug}` : `/blog/${post.slug}`,
-    keywords: isComponent ? ['component'] : undefined,
+    keywords: isComponent ? ["component"] : undefined,
   };
 }

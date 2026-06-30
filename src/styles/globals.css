@@ -65,8 +65,8 @@
 @utility step {
   counter-increment: step;
   &::before {
-    @apply mr-2 inline-flex size-7 items-center justify-center rounded-full bg-muted text-center -indent-px text-sm font-medium text-muted-foreground md:absolute md:-mt-0.5 md:-ml-11.5 md:size-8;
     content: counter(step);
+    @apply mr-2 inline-flex size-7 items-center justify-center rounded-full bg-muted text-center -indent-px text-sm font-medium text-muted-foreground md:absolute md:-mt-0.5 md:-ml-11.5 md:size-8;
   }
 }
 
@@ -244,9 +244,9 @@
   }
 
   body {
-    @apply overscroll-y-none bg-background font-sans text-foreground antialiased;
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;
+    @apply overscroll-y-none bg-background font-sans text-foreground antialiased;
   }
 
   /* Custom scrollbar styling. Thanks @shadcn-ui */
@@ -261,8 +261,8 @@
     border-radius: 5px;
   }
   * {
-    scrollbar-width: thin;
     scrollbar-color: var(--border) transparent;
+    scrollbar-width: thin;
   }
 
   [id] {
@@ -300,8 +300,8 @@
   }
 
   [data-line-numbers] > [data-line]::before {
-    counter-increment: line;
     content: counter(line);
+    counter-increment: line;
     @apply sticky left-0 inline-block w-16 bg-code pr-6 text-right text-sm text-code-number;
   }
 

@@ -1,15 +1,20 @@
-import dayjs from 'dayjs';
-import type { Metadata } from 'next';
+import dayjs from "dayjs";
+import type { Metadata } from "next";
+import { cacheLife, cacheTag } from "next/cache";
 
-import { PostItem } from '@/components/post-item';
-import { getAllPosts } from '@/data/blog';
+import { PostItem } from "@/components/post-item";
+import { getAllPosts } from "@/data/blog";
 
 export const metadata: Metadata = {
-  title: 'Blog',
-  description: 'A collection of articles on development, design, and ideas.',
+  title: "Blog",
+  description: "A collection of articles on development, design, and ideas.",
 };
 
 export default async function Page() {
+  "use cache";
+  cacheLife("max");
+  cacheTag("blog");
+
   const allPosts = await getAllPosts();
 
   return (
@@ -25,7 +30,7 @@ export default async function Page() {
       </div>
 
       <div className="relative pt-4">
-        <div className="-z-1 absolute inset-0 grid grid-cols-1 gap-4 max-sm:hidden sm:grid-cols-2">
+        <div className="absolute inset-0 -z-1 grid grid-cols-1 gap-4 max-sm:hidden sm:grid-cols-2">
           <div className="border-edge border-r" />
           <div className="border-edge border-l" />
         </div>

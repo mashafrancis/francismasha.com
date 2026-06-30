@@ -5,8 +5,8 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   reactStrictMode: true,
   reactCompiler: true,
-  transpilePackages: ['next-mdx-remote'],
-  allowedDevOrigins: ['francismasha-macbook.local'],
+  transpilePackages: ["next-mdx-remote"],
+  allowedDevOrigins: ["francismasha-macbook.local"],
   devIndicators: false,
   experimental: {
     turbopackFileSystemCacheForDev: true,
@@ -15,9 +15,9 @@ const nextConfig: NextConfig = {
     qualities: [75, 100],
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'assets.francismasha.dev',
-        port: '',
+        protocol: "https",
+        hostname: "assets.francismasha.dev",
+        port: "",
       },
     ],
   },
@@ -27,8 +27,8 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
-        source: '/blog/:slug.md',
-        destination: '/blog.md/:slug',
+        source: "/blog/:slug.md",
+        destination: "/blog.md/:slug",
       },
     ];
   },

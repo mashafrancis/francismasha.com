@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import * as motion from 'motion/react-m';
-import { useState } from 'react';
+import * as motion from "motion/react-m";
+import { useState } from "react";
 
-import { FrancisMashaMark } from '@/components/francis-masha-mark';
+import { FrancisMashaMark } from "@/components/francis-masha-mark";
 
 const variants = {
   show: {
@@ -39,8 +39,8 @@ export function LogoResizeAnimation({
       whileInView={{ width: [maxWidth, minWidth, maxWidth] }}
     >
       <motion.div
-        animate={isEnd ? 'hide' : 'show'}
-        className="-top-px -right-px -bottom-px -left-px absolute border border-blue-500 *:absolute *:size-[9px] *:border *:border-blue-500 *:bg-background dark:border-zinc-600 dark:*:border-zinc-600"
+        animate={isEnd ? "hide" : "show"}
+        className="absolute -top-px -right-px -bottom-px -left-px border border-blue-500 *:absolute *:size-[9px] *:border *:border-blue-500 *:bg-background dark:border-zinc-600 dark:*:border-zinc-600"
         transition={{
           duration: 0.6,
           delay: 0.2,
@@ -54,8 +54,8 @@ export function LogoResizeAnimation({
       </motion.div>
 
       <motion.div
-        animate={isEnd ? 'hide' : 'show'}
-        className="-top-2 -translate-x-1/2 -translate-y-full absolute left-1/2 transform whitespace-nowrap rounded-sm bg-blue-600 px-1 font-mono text-sm text-white dark:bg-zinc-600"
+        animate={isEnd ? "hide" : "show"}
+        className="absolute -top-2 left-1/2 -translate-x-1/2 -translate-y-full transform whitespace-nowrap rounded-sm bg-blue-600 px-1 font-mono text-sm text-white dark:bg-zinc-600"
         transition={{
           duration: 0.6,
           delay: 0.2,

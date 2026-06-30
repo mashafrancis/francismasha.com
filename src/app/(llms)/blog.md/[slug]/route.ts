@@ -1,6 +1,5 @@
-import dayjs from 'dayjs';
-
-import { getAllPosts, getPostBySlug } from '@/data/blog';
+import { getAllPosts } from "@/data/blog";
+import { getPostMarkdown } from "@/lib/cached-routes";
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();
@@ -15,31 +14,20 @@ export async function GET(
   { params }: { params: Promise<{ slug: string }> }
 ) {
   const { slug } = await params;
+  const content = await getPostMarkdown(slug);
 
-  const post = await getPostBySlug(slug);
-
-  if (!post) {
-    return new Response('Post not found', {
+  if (!content) {
+    return new Response("Post not found", {
       status: 404,
       headers: {
-        'Content-Type': 'text/plain',
+        "Content-Type": "text/plain",
       },
     });
   }
 
-  return new Response(
-    `# ${post.metadata.title}
-
-${post.metadata.description}
-
-${post.content.trim()}
-
-Last updated on ${dayjs(post.metadata.updatedAt).format('MMMM D, YYYY')}
-`,
-    {
-      headers: {
-        'Content-Type': 'text/markdown;charset=utf-8',
-      },
-    }
-  );
+  return new Response(content, {
+    headers: {
+      "Content-Type": "text/markdown;charset=utf-8",
+    },
+  });
 }

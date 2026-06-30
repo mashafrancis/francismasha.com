@@ -3,23 +3,23 @@ import {
   ChevronsUpDownIcon,
   InfinityIcon,
   LinkIcon,
-} from 'lucide-react';
-import Image from 'next/image';
+} from "lucide-react";
+import Image from "next/image";
 
-import { Icons } from '@/components/icons';
-import { Markdown } from '@/components/markdown';
+import { Icons } from "@/components/icons";
+import { Markdown } from "@/components/markdown";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from '@/components/ui/collapsible';
-import { Tag } from '@/components/ui/tag';
-import { SimpleTooltip } from '@/components/ui/tooltip';
-import { Prose } from '@/components/ui/typography';
-import { UTM_PARAMS } from '@/config/site';
-import { addQueryParams } from '@/utils/url';
+} from "@/components/ui/collapsible";
+import { Tag } from "@/components/ui/tag";
+import { SimpleTooltip } from "@/components/ui/tooltip";
+import { Prose } from "@/components/ui/typography";
+import { UTM_PARAMS } from "@/config/site";
+import { addQueryParams } from "@/utils/url";
 
-import type { Project } from '../../types/projects';
+import type { Project } from "../../types/projects";
 
 export function ProjectItem({
   className,

@@ -1,9 +1,9 @@
-import dayjs from 'dayjs';
-import Image from 'next/image';
-import Link from 'next/link';
+import dayjs from "dayjs";
+import Image from "next/image";
+import Link from "next/link";
 
-import { cn } from '@/lib/utils';
-import type { Post } from '@/types/blog';
+import { cn } from "@/lib/utils";
+import type { Post } from "@/types/blog";
 
 export function PostItem({
   post,
@@ -15,9 +15,9 @@ export function PostItem({
   return (
     <Link
       className={cn(
-        'group/post flex flex-col gap-2 p-2',
-        'max-sm:screen-line-before max-sm:screen-line-after',
-        'sm:nth-[2n+1]:screen-line-before sm:nth-[2n+1]:screen-line-after'
+        "group/post flex flex-col gap-2 p-2",
+        "max-sm:screen-line-before max-sm:screen-line-after",
+        "sm:nth-[2n+1]:screen-line-before sm:nth-[2n+1]:screen-line-after"
       )}
       href={`/blog/${post.slug}`}
     >
@@ -52,7 +52,7 @@ export function PostItem({
           <dt className="sr-only">Published on</dt>
           <dd className="text-muted-foreground text-sm">
             <time dateTime={dayjs(post.metadata.createdAt).toISOString()}>
-              {dayjs(post.metadata.createdAt).format('DD.MM.YYYY')}
+              {dayjs(post.metadata.createdAt).format("DD.MM.YYYY")}
             </time>
           </dd>
         </dl>

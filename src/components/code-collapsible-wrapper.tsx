@@ -1,13 +1,13 @@
-import { ChevronsDownUpIcon, ChevronsUpDownIcon } from 'lucide-react';
+import { ChevronsDownUpIcon, ChevronsUpDownIcon } from "lucide-react";
 
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from '@/components/ui/collapsible';
-import { Separator } from '@/components/ui/separator';
-import { cn } from '@/lib/utils';
+} from "@/components/ui/collapsible";
+import { Separator } from "@/components/ui/separator";
+import { cn } from "@/lib/utils";
 
 export function CodeCollapsibleWrapper({
   className,
@@ -16,7 +16,7 @@ export function CodeCollapsibleWrapper({
 }: React.ComponentProps<typeof Collapsible>) {
   return (
     <Collapsible
-      className={cn('group/collapsible not-prose relative my-6', className)}
+      className={cn("group/collapsible not-prose relative my-6", className)}
       {...props}
     >
       <CollapsibleTrigger asChild>

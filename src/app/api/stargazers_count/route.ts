@@ -1,6 +1,6 @@
-import { connection } from 'next/server';
+import { connection } from "next/server";
 
-import { getStargazersCount } from '@/lib/cached-routes';
+import { getStargazersCount } from "@/lib/cached-routes";
 
 export async function GET() {
   await connection();

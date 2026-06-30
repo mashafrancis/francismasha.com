@@ -1,13 +1,13 @@
-import { ChevronDownIcon } from 'lucide-react';
-import { Slot as SlotPrimitive } from 'radix-ui';
-import type React from 'react';
+import { ChevronDownIcon } from "lucide-react";
+import { Slot as SlotPrimitive } from "radix-ui";
+import type React from "react";
 
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from '@/components/ui/collapsible';
+} from "@/components/ui/collapsible";
 
 const Slot = SlotPrimitive.Slot;
 
@@ -29,7 +29,7 @@ export function CollapsibleList<T>({
       {items.slice(0, max).map((award, index) => (
         <Slot
           className="border-edge border-b"
-          key={typeof keyExtractor === 'function' ? keyExtractor(award) : index}
+          key={typeof keyExtractor === "function" ? keyExtractor(award) : index}
         >
           {renderItem(award)}
         </Slot>
@@ -40,7 +40,7 @@ export function CollapsibleList<T>({
           <Slot
             className="border-edge border-b"
             key={
-              typeof keyExtractor === 'function'
+              typeof keyExtractor === "function"
                 ? keyExtractor(award)
                 : max + index
             }

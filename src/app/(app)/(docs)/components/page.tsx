@@ -1,16 +1,21 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
+import type { Metadata } from "next";
+import { cacheLife, cacheTag } from "next/cache";
+import Link from "next/link";
 
-import { Icons } from '@/components/icons';
-import { getPostsByCategory } from '@/data/blog';
+import { Icons } from "@/components/icons";
+import { getPostsByCategory } from "@/data/blog";
 
 export const metadata: Metadata = {
-  title: 'Components',
-  description: 'A collection of reusable components.',
+  title: "Components",
+  description: "A collection of reusable components.",
 };
 
 export default async function Page() {
-  const posts = await getPostsByCategory('components');
+  "use cache";
+  cacheLife("max");
+  cacheTag("blog");
+
+  const posts = await getPostsByCategory("components");
 
   return (
     <div className="min-h-svh [--color-react:#087EA4] dark:[--color-react:#58C4DC]">

@@ -1,4 +1,4 @@
-import { FileIcon, TerminalSquareIcon } from 'lucide-react';
+import { FileIcon, TerminalSquareIcon } from "lucide-react";
 
 type IconProps = React.HTMLAttributes<SVGElement>;
 
@@ -212,17 +212,17 @@ export const Icons = {
 
 export function getIconForLanguageExtension(language: string) {
   switch (language) {
-    case 'json':
+    case "json":
       return <Icons.json />;
-    case 'css':
+    case "css":
       return <Icons.css />;
-    case 'js':
+    case "js":
       return <Icons.js />;
-    case 'ts':
-    case 'typescript':
+    case "ts":
+    case "typescript":
       return <Icons.ts />;
-    case 'jsx':
-    case 'tsx':
+    case "jsx":
+    case "tsx":
       return <Icons.react />;
     default:
       return <FileIcon />;
@@ -231,13 +231,13 @@ export function getIconForLanguageExtension(language: string) {
 
 export function getIconForPackageManager(manager: string) {
   switch (manager) {
-    case 'pnpm':
+    case "pnpm":
       return <Icons.pnpm />;
-    case 'yarn':
+    case "yarn":
       return <Icons.yarn />;
-    case 'npm':
+    case "npm":
       return <Icons.npm />;
-    case 'bun':
+    case "bun":
       return <Icons.bun />;
     default:
       return <TerminalSquareIcon />;

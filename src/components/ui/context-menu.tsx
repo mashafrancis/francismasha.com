@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { CheckIcon, ChevronRightIcon, CircleIcon } from 'lucide-react';
-import { ContextMenu as ContextMenuPrimitive } from 'radix-ui';
-import type * as React from 'react';
+import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react";
+import { ContextMenu as ContextMenuPrimitive } from "radix-ui";
+import type * as React from "react";
 
-import { cn } from '@/lib/utils';
+import { cn } from "@/lib/utils";
 
 function ContextMenu({
   ...props
@@ -84,7 +84,7 @@ function ContextMenuSubContent({
   return (
     <ContextMenuPrimitive.SubContent
       className={cn(
-        'data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 z-50 min-w-32 origin-(--radix-context-menu-content-transform-origin) overflow-hidden rounded-2xl bg-popover p-1 text-popover-foreground shadow-popover ring ring-popover-border backdrop-blur-md data-[state=closed]:animate-out data-[state=open]:animate-in supports-backdrop-filter:bg-popover/90',
+        "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 z-50 min-w-32 origin-(--radix-context-menu-content-transform-origin) overflow-hidden rounded-2xl bg-popover p-1 text-popover-foreground shadow-popover ring ring-popover-border backdrop-blur-md data-[state=closed]:animate-out data-[state=open]:animate-in supports-backdrop-filter:bg-popover/90",
         className
       )}
       data-slot="context-menu-sub-content"
@@ -101,7 +101,7 @@ function ContextMenuContent({
     <ContextMenuPrimitive.Portal>
       <ContextMenuPrimitive.Content
         className={cn(
-          'data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 z-50 max-h-(--radix-context-menu-content-available-height) min-w-32 origin-(--radix-context-menu-content-transform-origin) overflow-y-auto overflow-x-hidden rounded-2xl bg-popover p-1 text-popover-foreground shadow-popover ring ring-popover-border backdrop-blur-md data-[state=closed]:animate-out data-[state=open]:animate-in supports-backdrop-filter:bg-popover/90',
+          "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 z-50 max-h-(--radix-context-menu-content-available-height) min-w-32 origin-(--radix-context-menu-content-transform-origin) overflow-y-auto overflow-x-hidden rounded-2xl bg-popover p-1 text-popover-foreground shadow-popover ring ring-popover-border backdrop-blur-md data-[state=closed]:animate-out data-[state=open]:animate-in supports-backdrop-filter:bg-popover/90",
           className
         )}
         data-slot="context-menu-content"
@@ -114,11 +114,11 @@ function ContextMenuContent({
 function ContextMenuItem({
   className,
   inset,
-  variant = 'default',
+  variant = "default",
   ...props
 }: React.ComponentProps<typeof ContextMenuPrimitive.Item> & {
   inset?: boolean;
-  variant?: 'default' | 'destructive';
+  variant?: "default" | "destructive";
 }) {
   return (
     <ContextMenuPrimitive.Item
@@ -194,7 +194,7 @@ function ContextMenuLabel({
   return (
     <ContextMenuPrimitive.Label
       className={cn(
-        'px-2 py-1.5 font-medium text-foreground text-sm data-inset:pl-8',
+        "px-2 py-1.5 font-medium text-foreground text-sm data-inset:pl-8",
         className
       )}
       data-inset={inset}
@@ -210,7 +210,7 @@ function ContextMenuSeparator({
 }: React.ComponentProps<typeof ContextMenuPrimitive.Separator>) {
   return (
     <ContextMenuPrimitive.Separator
-      className={cn('-mx-1 my-1 h-px bg-border', className)}
+      className={cn("-mx-1 my-1 h-px bg-border", className)}
       data-slot="context-menu-separator"
       {...props}
     />
@@ -220,11 +220,11 @@ function ContextMenuSeparator({
 function ContextMenuShortcut({
   className,
   ...props
-}: React.ComponentProps<'span'>) {
+}: React.ComponentProps<"span">) {
   return (
     <span
       className={cn(
-        'ml-auto text-muted-foreground text-xs tracking-widest',
+        "ml-auto text-muted-foreground text-xs tracking-widest",
         className
       )}
       data-slot="context-menu-shortcut"

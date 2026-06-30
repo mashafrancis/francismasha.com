@@ -1,22 +1,22 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // This code comes from https://github.com/radix-ui/primitives/blob/main/packages/react/use-controllable-state/src/use-controllable-state.tsx
 
-import * as React from 'react';
+import * as React from "react";
 
-import { useLayoutEffect } from '@/hooks/use-layout-effect';
+import { useLayoutEffect } from "@/hooks/use-layout-effect";
 
 // Prevent bundlers from trying to optimize the import
 const useInsertionEffect: typeof useLayoutEffect =
-  (React as any)[' useInsertionEffect '.trim().toString()] || useLayoutEffect;
+  (React as any)[" useInsertionEffect ".trim().toString()] || useLayoutEffect;
 
 type ChangeHandler<T> = (state: T) => void;
 type SetStateFn<T> = React.Dispatch<React.SetStateAction<T>>;
 
 interface UseControllableStateParams<T> {
-  prop?: T | undefined;
+  caller?: string;
   defaultProp: T;
   onChange?: ChangeHandler<T>;
-  caller?: string;
+  prop?: T | undefined;
 }
 
 export function useControllableState<T>({
@@ -37,13 +37,13 @@ export function useControllableState<T>({
   // consistently in the same environment. Bundlers should be able to remove the
   // code block entirely in production.
   /* eslint-disable react-hooks/rules-of-hooks */
-  if (process.env.NODE_ENV !== 'production') {
+  if (process.env.NODE_ENV !== "production") {
     const isControlledRef = React.useRef(prop !== undefined);
     React.useEffect(() => {
       const wasControlled = isControlledRef.current;
       if (wasControlled !== isControlled) {
-        const _from = wasControlled ? 'controlled' : 'uncontrolled';
-        const _to = isControlled ? 'controlled' : 'uncontrolled';
+        const _from = wasControlled ? "controlled" : "uncontrolled";
+        const _to = isControlled ? "controlled" : "uncontrolled";
       }
       isControlledRef.current = isControlled;
     }, [isControlled]);
@@ -70,7 +70,7 @@ export function useControllableState<T>({
 function useUncontrolledState<T>({
   defaultProp,
   onChange,
-}: Omit<UseControllableStateParams<T>, 'prop'>): [
+}: Omit<UseControllableStateParams<T>, "prop">): [
   Value: T,
   setValue: React.Dispatch<React.SetStateAction<T>>,
   OnChangeRef: React.RefObject<ChangeHandler<T> | undefined>,
@@ -94,5 +94,5 @@ function useUncontrolledState<T>({
 }
 
 function isFunction(value: unknown): value is (...args: any[]) => any {
-  return typeof value === 'function';
+  return typeof value === "function";
 }

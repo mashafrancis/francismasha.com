@@ -1,25 +1,25 @@
-import type { Registry } from 'shadcn/registry';
+import type { Registry } from "shadcn/schema";
 
-export const examples: Registry['items'] = [
+export const examples: Registry["items"] = [
   {
-    name: 'theme-switcher-demo',
-    type: 'registry:example',
-    registryDependencies: ['<registryBaseUrl>/theme-switcher.json'],
+    name: "theme-switcher-demo",
+    type: "registry:example",
+    registryDependencies: ["<registryBaseUrl>/theme-switcher.json"],
     files: [
       {
-        path: 'examples/theme-switcher-demo.tsx',
-        type: 'registry:example',
+        path: "examples/theme-switcher-demo.tsx",
+        type: "registry:example",
       },
     ],
   },
   {
-    name: 'work-experience-demo',
-    type: 'registry:example',
-    registryDependencies: ['<registryBaseUrl>/work-experience.json'],
+    name: "work-experience-demo",
+    type: "registry:example",
+    registryDependencies: ["<registryBaseUrl>/work-experience.json"],
     files: [
       {
-        path: 'examples/work-experience-demo.tsx',
-        type: 'registry:example',
+        path: "examples/work-experience-demo.tsx",
+        type: "registry:example",
       },
     ],
   },

@@ -1,15 +1,15 @@
-import { ArrowRightIcon } from 'lucide-react';
-import dynamic from 'next/dynamic';
-import Link from 'next/link';
-import { ChanhDaiWordmark } from '@/components/chanhdai-wordmark';
-import { FrancisMashaMark } from '@/components/francis-masha-mark';
-import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
+import { ArrowRightIcon } from "lucide-react";
+import dynamic from "next/dynamic";
+import Link from "next/link";
+import { ChanhDaiWordmark } from "@/components/chanhdai-wordmark";
+import { FrancisMashaMark } from "@/components/francis-masha-mark";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
-import { Panel, PanelHeader, PanelTitle } from './panel';
+import { Panel, PanelHeader, PanelTitle } from "./panel";
 
 const BrandContextMenu = dynamic(() =>
-  import('@/components/brand-context-menu').then((mod) => mod.BrandContextMenu)
+  import("@/components/brand-context-menu").then((mod) => mod.BrandContextMenu)
 );
 
 export function Brand() {
@@ -22,9 +22,9 @@ export function Brand() {
       <BrandContextMenu>
         <div
           className={cn(
-            '[--pattern-foreground:var(--color-zinc-950)]/5 dark:[--pattern-foreground:var(--color-white)]/5',
-            'bg-[radial-gradient(var(--pattern-foreground)_1px,transparent_0)] bg-center bg-size-[10px_10px]',
-            'bg-zinc-950/0.75 dark:bg-white/0.75'
+            "[--pattern-foreground:var(--color-zinc-950)]/5 dark:[--pattern-foreground:var(--color-white)]/5",
+            "bg-[radial-gradient(var(--pattern-foreground)_1px,transparent_0)] bg-center bg-size-[10px_10px]",
+            "bg-zinc-950/0.75 dark:bg-white/0.75"
           )}
         >
           <div className="grid grid-cols-[2.5rem_1fr]">

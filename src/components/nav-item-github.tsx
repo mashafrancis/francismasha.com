@@ -1,7 +1,7 @@
-import { Button } from '@/components/ui/button';
-import { SOURCE_CODE_GITHUB_URL } from '@/config/site';
+import { Button } from "@/components/ui/button";
+import { SOURCE_CODE_GITHUB_URL } from "@/config/site";
 
-import { Icons } from './icons';
+import { Icons } from "./icons";
 
 export function NavItemGitHub() {
   return (

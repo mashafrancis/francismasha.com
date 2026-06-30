@@ -1,14 +1,14 @@
-import { ArrowRightIcon } from 'lucide-react';
-import Link from 'next/link';
+import { ArrowRightIcon } from "lucide-react";
+import Link from "next/link";
 
-import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export function NotFound({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        'flex h-[calc(100svh-5.5rem)] flex-col items-center justify-center',
+        "flex h-[calc(100svh-5.5rem)] flex-col items-center justify-center",
         className
       )}
     >
