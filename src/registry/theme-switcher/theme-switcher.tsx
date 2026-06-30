@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { MonitorIcon, MoonStarIcon, SunIcon } from 'lucide-react';
-import * as motion from 'motion/react-m';
-import { useTheme } from 'next-themes';
-import type { JSX } from 'react';
-import { useEffect, useState } from 'react';
+import { MonitorIcon, MoonStarIcon, SunIcon } from "lucide-react";
+import * as motion from "motion/react-m";
+import { useTheme } from "next-themes";
+import type { JSX } from "react";
+import { useEffect, useState } from "react";
 
-import { cn } from '@/lib/utils';
+import { cn } from "@/lib/utils";
 
 function ThemeOption({
   icon,
@@ -24,10 +24,10 @@ function ThemeOption({
       aria-checked={isActive}
       aria-label={`Switch to ${value} theme`}
       className={cn(
-        'relative flex size-8 cursor-default items-center justify-center rounded-full transition-all [&_svg]:size-4',
+        "relative flex size-8 cursor-default items-center justify-center rounded-full transition-all [&_svg]:size-4",
         isActive
-          ? 'text-zinc-950 dark:text-zinc-50'
-          : 'text-zinc-400 hover:text-zinc-950 dark:text-zinc-500 dark:hover:text-zinc-50'
+          ? "text-zinc-950 dark:text-zinc-50"
+          : "text-zinc-400 hover:text-zinc-950 dark:text-zinc-500 dark:hover:text-zinc-50"
       )}
       onClick={() => onClick(value)}
       role="radio"
@@ -38,7 +38,7 @@ function ThemeOption({
         <motion.div
           className="absolute inset-0 rounded-full border border-zinc-200 dark:border-zinc-700"
           layoutId="theme-option"
-          transition={{ type: 'spring', bounce: 0.3, duration: 0.6 }}
+          transition={{ type: "spring", bounce: 0.3, duration: 0.6 }}
         />
       )}
     </button>
@@ -48,15 +48,15 @@ function ThemeOption({
 const THEME_OPTIONS = [
   {
     icon: <MonitorIcon />,
-    value: 'system',
+    value: "system",
   },
   {
     icon: <SunIcon />,
-    value: 'light',
+    value: "light",
   },
   {
     icon: <MoonStarIcon />,
-    value: 'dark',
+    value: "dark",
   },
 ];
 

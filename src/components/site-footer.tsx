@@ -1,9 +1,9 @@
-import { RssIcon } from 'lucide-react';
+import { RssIcon } from "lucide-react";
 
-import { SITE_INFO, SOURCE_CODE_GITHUB_URL } from '@/config/site';
-import { cn } from '@/lib/utils';
+import { SITE_INFO, SOURCE_CODE_GITHUB_URL } from "@/config/site";
+import { cn } from "@/lib/utils";
 
-import { Icons } from './icons';
+import { Icons } from "./icons";
 
 export function SiteFooter() {
   return (
@@ -14,7 +14,7 @@ export function SiteFooter() {
         </p>
 
         <p className="mb-4 text-balance px-4 text-center font-sans text-muted-foreground text-sm">
-          Built by{' '}
+          Built by{" "}
           <a
             className="link"
             href="https://x.com/mashafrancis"
@@ -23,7 +23,7 @@ export function SiteFooter() {
           >
             mashafrancis
           </a>
-          . The source code is available on{' '}
+          . The source code is available on{" "}
           <a
             className="link"
             href={SOURCE_CODE_GITHUB_URL}
@@ -37,8 +37,8 @@ export function SiteFooter() {
 
         <div
           className={cn(
-            'screen-line-before screen-line-after flex w-full before:z-1 after:z-1',
-            'bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] bg-size-[10px_10px] [--pattern-foreground:var(--color-edge)]/56'
+            "screen-line-before screen-line-after flex w-full before:z-1 after:z-1",
+            "bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] bg-size-[10px_10px] [--pattern-foreground:var(--color-edge)]/56"
           )}
         >
           <div className="mx-auto flex items-center justify-center gap-3 border-edge border-x bg-background px-4">
@@ -69,7 +69,7 @@ export function SiteFooter() {
               className="flex text-muted-foreground transition-colors hover:text-foreground"
               href={
                 process.env.NEXT_PUBLIC_DMCA_URL ||
-                'https://www.dmca.com/ProtectionPro.aspx'
+                "https://www.dmca.com/ProtectionPro.aspx"
               }
               rel="noopener noreferrer"
               target="_blank"

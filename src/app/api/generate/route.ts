@@ -1,12 +1,11 @@
 import { checkBotId } from "botid/server";
 import { NextResponse } from "next/server";
 
-const expensiveOperation = async () => {
-  return new Promise((resolve) => {
+const expensiveOperation = async () =>
+  new Promise((resolve) => {
     const randomNumber = Math.random() * 100;
     resolve(randomNumber);
   });
-};
 
 export async function POST(req: Request) {
   const { isBot } = await checkBotId();

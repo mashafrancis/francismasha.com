@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { CheckIcon, CopyIcon } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { CheckIcon, CopyIcon } from "lucide-react";
+import { useEffect, useState } from "react";
 
-import { cn } from '@/lib/utils';
-import { copyText } from '@/utils/copy';
+import { cn } from "@/lib/utils";
+import { copyText } from "@/utils/copy";
 
-import { Button } from './ui/button';
+import { Button } from "./ui/button";
 
 export function CopyButton({
   value,
@@ -26,7 +26,7 @@ export function CopyButton({
 
   return (
     <Button
-      className={cn('z-10 size-6 rounded-md', className)}
+      className={cn("z-10 size-6 rounded-md", className)}
       onClick={() => {
         copyText(value);
         setHasCopied(true);

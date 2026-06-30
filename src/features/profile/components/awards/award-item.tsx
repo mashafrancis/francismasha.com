@@ -1,22 +1,22 @@
-import dayjs from 'dayjs';
+import dayjs from "dayjs";
 import {
   ChevronsDownUpIcon,
   ChevronsUpDownIcon,
   FileCheckIcon,
-} from 'lucide-react';
+} from "lucide-react";
 
-import { Icons } from '@/components/icons';
-import { Markdown } from '@/components/markdown';
+import { Icons } from "@/components/icons";
+import { Markdown } from "@/components/markdown";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from '@/components/ui/collapsible';
-import { Separator } from '@/components/ui/separator';
-import { SimpleTooltip } from '@/components/ui/tooltip';
-import { Prose } from '@/components/ui/typography';
+} from "@/components/ui/collapsible";
+import { Separator } from "@/components/ui/separator";
+import { SimpleTooltip } from "@/components/ui/tooltip";
+import { Prose } from "@/components/ui/typography";
 
-import type { Award } from '../../types/awards';
+import type { Award } from "../../types/awards";
 
 export function AwardItem({
   className,
@@ -60,7 +60,7 @@ export function AwardItem({
                     <dt className="sr-only">Awarded in</dt>
                     <dd>
                       <time dateTime={dayjs(award.date).toISOString()}>
-                        {dayjs(award.date).format('MM.YYYY')}
+                        {dayjs(award.date).format("MM.YYYY")}
                       </time>
                     </dd>
                   </dl>

@@ -11,8 +11,8 @@ import { fontMono, fontSans } from "@/lib/fonts";
 
 function getWebSiteJsonLd(): WithContext<WebSite> {
   return {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
+    "@context": "https://schema.org",
+    "@type": "WebSite",
     name: SITE_INFO.name,
     url: SITE_INFO.url,
     alternateName: [USER.username],
@@ -37,7 +37,7 @@ const darkModeScript = String.raw`
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_INFO.url),
   alternates: {
-    canonical: '/',
+    canonical: "/",
   },
   title: {
     template: `%s | ${SITE_INFO.name}`,
@@ -47,15 +47,15 @@ export const metadata: Metadata = {
   keywords: SITE_INFO.keywords,
   authors: [
     {
-      name: 'francis',
+      name: "francis",
       url: SITE_INFO.url,
     },
   ],
-  creator: 'francis',
+  creator: "francis",
   openGraph: {
     siteName: SITE_INFO.name,
-    url: '/',
-    type: 'profile',
+    url: "/",
+    type: "profile",
     firstName: USER.firstName,
     lastName: USER.lastName,
     username: USER.username,
@@ -70,16 +70,16 @@ export const metadata: Metadata = {
     ],
   },
   twitter: {
-    card: 'summary_large_image',
-    creator: '@mashafrancis', // Twitter username
+    card: "summary_large_image",
+    creator: "@mashafrancis", // Twitter username
     images: [SITE_INFO.ogImage],
   },
 };
 
 export const viewport: Viewport = {
-  width: 'device-width',
+  width: "device-width",
   initialScale: 1,
-  viewportFit: 'cover',
+  viewportFit: "cover",
   themeColor: META_THEME_COLORS.light,
 };
 
@@ -96,8 +96,8 @@ export default function RootLayout({
     >
       <head>
         <script
-          type="text/javascript"
           dangerouslySetInnerHTML={{ __html: darkModeScript }}
+          type="text/javascript"
         />
         {/*
           Thanks @tailwindcss. We inject the script via the `<Script/>` tag again,
@@ -106,11 +106,16 @@ export default function RootLayout({
         <Script src={`data:text/javascript;base64,${btoa(darkModeScript)}`} />
         <script
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(getWebSiteJsonLd()).replace(/</g, '\\u003c'),
+            __html: JSON.stringify(getWebSiteJsonLd()).replace(/</g, "\\u003c"),
           }}
           type="application/ld+json"
         />
-        <Script strategy="afterInteractive" defer src="https://mrkr.app/tracker.js" data-site="site_e2169d1b7c48d365"></Script>
+        <Script
+          data-site="site_e2169d1b7c48d365"
+          defer
+          src="https://mrkr.app/tracker.js"
+          strategy="afterInteractive"
+        />
       </head>
 
       <body>

@@ -5,18 +5,18 @@ import {
   CodeXmlIcon,
   DraftingCompassIcon,
   GraduationCapIcon,
-} from 'lucide-react';
-import Image from 'next/image';
-import type React from 'react';
-import ReactMarkdown from 'react-markdown';
+} from "lucide-react";
+import Image from "next/image";
+import type React from "react";
+import ReactMarkdown from "react-markdown";
 
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from '@/components/ui/collapsible';
-import { Separator } from '@/components/ui/separator';
-import { cn } from '@/lib/utils';
+} from "@/components/ui/collapsible";
+import { Separator } from "@/components/ui/separator";
+import { cn } from "@/lib/utils";
 
 const iconMap = {
   code: CodeXmlIcon,
@@ -71,7 +71,7 @@ export function WorkExperience({
   experiences: ExperienceItemType[];
 }) {
   return (
-    <div className={cn('bg-background px-4', className)}>
+    <div className={cn("bg-background px-4", className)}>
       {experiences.map((experience) => (
         <ExperienceItem experience={experience} key={experience.id} />
       ))}
@@ -133,7 +133,7 @@ export function ExperiencePositionItem({
 }: {
   position: ExperiencePositionItemType;
 }) {
-  const ExperienceIcon = iconMap[position.icon || 'business'];
+  const ExperienceIcon = iconMap[position.icon || "business"];
 
   return (
     <Collapsible asChild defaultOpen={position.isExpanded}>
@@ -204,13 +204,13 @@ export function ExperiencePositionItem({
   );
 }
 
-function Prose({ className, ...props }: React.ComponentProps<'div'>) {
+function Prose({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       className={cn(
-        'prose prose-sm prose-zinc dark:prose-invert max-w-none font-mono text-foreground',
-        'prose-a:break-words prose-a:font-medium prose-a:text-foreground prose-a:underline prose-a:underline-offset-4',
-        'prose-code:rounded-md prose-code:border prose-code:bg-muted/50 prose-code:px-[0.3rem] prose-code:py-[0.2rem] prose-code:font-normal prose-code:text-sm prose-code:before:content-none prose-code:after:content-none',
+        "prose prose-sm prose-zinc dark:prose-invert max-w-none font-mono text-foreground",
+        "prose-a:break-words prose-a:font-medium prose-a:text-foreground prose-a:underline prose-a:underline-offset-4",
+        "prose-code:rounded-md prose-code:border prose-code:bg-muted/50 prose-code:px-[0.3rem] prose-code:py-[0.2rem] prose-code:font-normal prose-code:text-sm prose-code:before:content-none prose-code:after:content-none",
         className
       )}
       {...props}
@@ -218,11 +218,11 @@ function Prose({ className, ...props }: React.ComponentProps<'div'>) {
   );
 }
 
-function Skill({ className, ...props }: React.ComponentProps<'span'>) {
+function Skill({ className, ...props }: React.ComponentProps<"span">) {
   return (
     <span
       className={cn(
-        'inline-flex items-center rounded-lg border bg-muted/50 px-1.5 py-0.5 font-mono text-muted-foreground text-xs',
+        "inline-flex items-center rounded-lg border bg-muted/50 px-1.5 py-0.5 font-mono text-muted-foreground text-xs",
         className
       )}
       {...props}

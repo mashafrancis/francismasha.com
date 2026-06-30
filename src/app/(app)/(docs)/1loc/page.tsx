@@ -1,15 +1,20 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
+import type { Metadata } from "next";
+import { cacheLife, cacheTag } from "next/cache";
+import Link from "next/link";
 
-import { Icons } from '@/components/icons';
-import { getAllLoc } from '@/data/blog';
+import { Icons } from "@/components/icons";
+import { getAllLoc } from "@/data/blog";
 
 export const metadata: Metadata = {
-  title: '1loc',
-  description: 'A collection of one line of code utilities.',
+  title: "1loc",
+  description: "A collection of one line of code utilities.",
 };
 
 export default async function Page() {
+  "use cache";
+  cacheLife("max");
+  cacheTag("1loc");
+
   const posts = await getAllLoc();
 
   return (

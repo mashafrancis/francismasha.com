@@ -1,12 +1,12 @@
-import type { TOCItemType } from "fumadocs-core/server"
-import { ChevronsDownUpIcon, ChevronsUpDownIcon } from 'lucide-react';
+import type { TOCItemType } from "fumadocs-core/toc";
+import { ChevronsDownUpIcon, ChevronsUpDownIcon } from "lucide-react";
 
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from '@/components/ui/collapsible';
-import { cn } from '@/lib/utils';
+} from "@/components/ui/collapsible";
+import { cn } from "@/lib/utils";
 
 export function InlineTOC({
   items,
@@ -22,11 +22,11 @@ export function InlineTOC({
 
   return (
     <Collapsible
-      className={cn('not-prose rounded-lg bg-code font-sans', className)}
+      className={cn("not-prose rounded-lg bg-code font-sans", className)}
       {...props}
     >
       <CollapsibleTrigger className="group/toc inline-flex w-full items-center justify-between px-4 py-3 font-medium text-sm">
-        {children ?? 'Table of Contents'}
+        {children ?? "Table of Contents"}
         <div
           aria-hidden
           className="shrink-0 text-muted-foreground [&_svg]:size-4"

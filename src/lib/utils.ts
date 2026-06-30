@@ -1,7 +1,3 @@
-import { clsx as type, ClassValue } from 'cnfast';
-import { clsx } from 'cnfast';
-import { twMerge } from 'cnfast';
+import { type ClassValue, clsx, twMerge } from "cnfast";
 
-export const cn = (...inputs: ClassValue[]) => {
-  return twMerge(clsx(inputs));
-};
+export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs));

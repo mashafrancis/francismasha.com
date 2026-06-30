@@ -4,9 +4,22 @@ allowBuilds:
   sharp: true
 minimumReleaseAgeExclude:
   - cnfast@0.0.8
+  - '@next/env@16.3.0-canary.71'
+  - '@next/swc-darwin-arm64@16.3.0-canary.71'
+  - '@next/swc-darwin-x64@16.3.0-canary.71'
+  - '@next/swc-linux-arm64-gnu@16.3.0-canary.71'
+  - '@next/swc-linux-arm64-musl@16.3.0-canary.71'
+  - '@next/swc-linux-x64-gnu@16.3.0-canary.71'
+  - '@next/swc-linux-x64-musl@16.3.0-canary.71'
+  - '@next/swc-win32-arm64-msvc@16.3.0-canary.71'
+  - '@next/swc-win32-x64-msvc@16.3.0-canary.71'
+  - next@16.3.0-canary.71
 onlyBuiltDependencies:
   - '@tailwindcss/oxide'
   - '@vercel/speed-insights'
   - esbuild
   - msw
   - sharp
+overrides:
+  '@types/react': 19.2.17
+  '@types/react-dom': 19.2.3

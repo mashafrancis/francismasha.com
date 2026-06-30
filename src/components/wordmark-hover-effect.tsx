@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import * as motion from 'motion/react-m';
-import { useEffect, useRef, useState } from 'react';
+import * as motion from "motion/react-m";
+import { useEffect, useRef, useState } from "react";
 
 function WordmarkPaths() {
   return (
@@ -23,7 +23,7 @@ export function WordmarkHoverEffect() {
   const containerRef = useRef<SVGSVGElement>(null);
   const [cursor, setCursor] = useState({ x: 0, y: 0 });
   const [hovered, setHovered] = useState(false);
-  const [maskPosition, setMaskPosition] = useState({ cx: '50%', cy: '50%' });
+  const [maskPosition, setMaskPosition] = useState({ cx: "50%", cy: "50%" });
 
   useEffect(() => {
     if (containerRef.current && cursor.x !== null && cursor.y !== null) {
@@ -57,11 +57,11 @@ export function WordmarkHoverEffect() {
         >
           {hovered && (
             <>
-              <stop offset="0%" stopColor={'var(--color-yellow-500)'} />
-              <stop offset="25%" stopColor={'var(--color-red-500)'} />
-              <stop offset="50%" stopColor={'var(--color-blue-500)'} />
-              <stop offset="75%" stopColor={'var(--color-cyan-500)'} />
-              <stop offset="100%" stopColor={'var(--color-violet-500)'} />
+              <stop offset="0%" stopColor={"var(--color-yellow-500)"} />
+              <stop offset="25%" stopColor={"var(--color-red-500)"} />
+              <stop offset="50%" stopColor={"var(--color-blue-500)"} />
+              <stop offset="75%" stopColor={"var(--color-cyan-500)"} />
+              <stop offset="100%" stopColor={"var(--color-violet-500)"} />
             </>
           )}
         </linearGradient>
@@ -70,9 +70,9 @@ export function WordmarkHoverEffect() {
           animate={maskPosition}
           gradientUnits="userSpaceOnUse"
           id="revealMask"
-          initial={{ cx: '50%', cy: '50%' }}
+          initial={{ cx: "50%", cy: "50%" }}
           r="15%"
-          transition={{ duration: 0, ease: 'easeInOut' }}
+          transition={{ duration: 0, ease: "easeInOut" }}
         >
           <stop offset="0%" stopColor="white" />
           <stop offset="100%" stopColor="black" />

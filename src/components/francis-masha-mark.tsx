@@ -1,4 +1,4 @@
-export function FrancisMashaMark(props: React.ComponentProps<'svg'>) {
+export function FrancisMashaMark(props: React.ComponentProps<"svg">) {
   return (
     <svg
       fill="#007da4"

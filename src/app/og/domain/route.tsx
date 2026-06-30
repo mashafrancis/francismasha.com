@@ -1,20 +1,20 @@
-import { readFile } from 'node:fs/promises';
-import { join } from 'node:path';
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 
-import { ImageResponse } from 'next/og';
+import { ImageResponse } from "next/og";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
 
-  const domain = searchParams.get('domain');
-  const isForSale = searchParams.get('sale') === 'true';
+  const domain = searchParams.get("domain");
+  const isForSale = searchParams.get("sale") === "true";
 
   const circularMedium = await readFile(
-    join(process.cwd(), 'src/assets/fonts/CircularStd-Medium.woff2')
+    join(process.cwd(), "src/assets/fonts/CircularStd-Medium.woff2")
   );
 
   const robotoMedium = await readFile(
-    join(process.cwd(), 'src/assets/fonts/Roboto-Medium.ttf')
+    join(process.cwd(), "src/assets/fonts/Roboto-Medium.ttf")
   );
 
   return new ImageResponse(
@@ -23,7 +23,7 @@ export async function GET(request: Request) {
         <div tw="flex justify-center border-t border-b border-zinc-200">
           <h1
             style={{
-              fontFamily: 'CircularStd',
+              fontFamily: "CircularStd",
               fontSize: 88,
             }}
             tw="mt-8 mb-4 ml-8 mr-8 font-medium"
@@ -35,15 +35,15 @@ export async function GET(request: Request) {
         <div tw="flex justify-center border-b border-zinc-200">
           <p
             style={{
-              fontFamily: 'Roboto',
+              fontFamily: "Roboto",
               fontSize: 32,
-              color: isForSale ? '#22c55e' : '#71717a',
+              color: isForSale ? "#22c55e" : "#71717a",
             }}
             tw="mt-0 mb-0 pt-4 pb-4 pl-8 pr-8 font-medium"
           >
             {isForSale
-              ? 'The domain name is for sale'
-              : 'The website will be launched soon'}
+              ? "The domain name is for sale"
+              : "The website will be launched soon"}
           </p>
         </div>
       </div>
@@ -73,12 +73,12 @@ export async function GET(request: Request) {
       height: 630,
       fonts: [
         {
-          name: 'CircularStd',
+          name: "CircularStd",
           data: circularMedium,
           weight: 500,
         },
         {
-          name: 'Roboto',
+          name: "Roboto",
           data: robotoMedium,
           weight: 500,
         },

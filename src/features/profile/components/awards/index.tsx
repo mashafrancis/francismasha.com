@@ -1,14 +1,14 @@
-import dayjs from 'dayjs';
+import dayjs from "dayjs";
 
-import { CollapsibleList } from '@/components/collapsible-list';
+import { CollapsibleList } from "@/components/collapsible-list";
 
-import { AWARDS } from '../../data/awards';
-import { Panel, PanelHeader, PanelTitle } from '../panel';
-import { AwardItem } from './award-item';
+import { AWARDS } from "../../data/awards";
+import { Panel, PanelHeader, PanelTitle } from "../panel";
+import { AwardItem } from "./award-item";
 
-const SORTED_AWARDS = [...AWARDS].sort((a, b) => {
-  return dayjs(b.date).diff(dayjs(a.date));
-});
+const SORTED_AWARDS = [...AWARDS].sort((a, b) =>
+  dayjs(b.date).diff(dayjs(a.date))
+);
 
 export function Awards() {
   return (

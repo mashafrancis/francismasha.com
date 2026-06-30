@@ -2,20 +2,20 @@ import {
   ChevronsDownUpIcon,
   ChevronsUpDownIcon,
   InfinityIcon,
-} from 'lucide-react';
+} from "lucide-react";
 
-import { Markdown } from '@/components/markdown';
+import { Markdown } from "@/components/markdown";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from '@/components/ui/collapsible';
-import { Separator } from '@/components/ui/separator';
-import { Tag } from '@/components/ui/tag';
-import { Prose } from '@/components/ui/typography';
+} from "@/components/ui/collapsible";
+import { Separator } from "@/components/ui/separator";
+import { Tag } from "@/components/ui/tag";
+import { Prose } from "@/components/ui/typography";
 
-import type { ExperiencePosition } from '../../types/experiences';
-import { ExperienceIcon } from './experience-position-icon';
+import type { ExperiencePosition } from "../../types/experiences";
+import { ExperienceIcon } from "./experience-position-icon";
 
 export function ExperiencePositionItem({
   position,

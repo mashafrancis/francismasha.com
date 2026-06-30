@@ -1,11 +1,11 @@
-import { ArrowRightIcon } from 'lucide-react';
-import Link from 'next/link';
+import { ArrowRightIcon } from "lucide-react";
+import Link from "next/link";
 
-import { PostItem } from '@/components/post-item';
-import { Button } from '@/components/ui/button';
-import { getAllPosts } from '@/data/blog';
+import { PostItem } from "@/components/post-item";
+import { Button } from "@/components/ui/button";
+import { getAllPosts } from "@/data/blog";
 
-import { Panel, PanelHeader, PanelTitle } from './panel';
+import { Panel, PanelHeader, PanelTitle } from "./panel";
 
 export async function Blog() {
   const allPosts = await getAllPosts();
@@ -17,7 +17,7 @@ export async function Blog() {
       </PanelHeader>
 
       <div className="relative py-4">
-        <div className="-z-1 pointer-events-none absolute inset-0 grid grid-cols-1 gap-4 max-sm:hidden sm:grid-cols-2">
+        <div className="pointer-events-none absolute inset-0 -z-1 grid grid-cols-1 gap-4 max-sm:hidden sm:grid-cols-2">
           <div className="border-edge border-r" />
           <div className="border-edge border-l" />
         </div>

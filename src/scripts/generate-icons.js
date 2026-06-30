@@ -1,6 +1,6 @@
-import fs from 'node:fs/promises';
-import path from 'node:path';
-import sharp from 'sharp';
+import fs from "node:fs/promises";
+import path from "node:path";
+import sharp from "sharp";
 
 // SVG content as a string
 const svgContent = `
@@ -22,7 +22,7 @@ const maskableSvgContent = `
 `;
 
 async function generateIcons() {
-  const publicDir = path.join(process.cwd(), 'src', 'app');
+  const publicDir = path.join(process.cwd(), "src", "app");
 
   try {
     await fs.mkdir(publicDir, { recursive: true });
@@ -31,25 +31,25 @@ async function generateIcons() {
     await sharp(Buffer.from(svgContent))
       .resize(192, 192)
       .png()
-      .toFile(path.join(publicDir, 'icon-192x192.png'));
+      .toFile(path.join(publicDir, "icon-192x192.png"));
 
     // Generate 512x512 PNG
     await sharp(Buffer.from(svgContent))
       .resize(512, 512)
       .png()
-      .toFile(path.join(publicDir, 'icon-512x512.png'));
+      .toFile(path.join(publicDir, "icon-512x512.png"));
 
     // Generate maskable icon
     await sharp(Buffer.from(maskableSvgContent))
       .resize(512, 512)
       .png()
-      .toFile(path.join(publicDir, 'maskable-icon.png'));
+      .toFile(path.join(publicDir, "maskable-icon.png"));
 
     // Generate favicon.ico (32x32)
     await sharp(Buffer.from(svgContent))
       .resize(32, 32)
       .png()
-      .toFile(path.join(publicDir, 'favicon.ico'));
+      .toFile(path.join(publicDir, "favicon.ico"));
   } catch (_error) {}
 }
 

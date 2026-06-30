@@ -1,9 +1,9 @@
-import fs from 'node:fs';
-import path from 'node:path';
-import matter from 'gray-matter';
-import { cacheLife, cacheTag } from 'next/cache';
+import fs from "node:fs";
+import path from "node:path";
+import matter from "gray-matter";
+import { cacheLife, cacheTag } from "next/cache";
 
-import type { Post, PostMetadata } from '@/types/blog';
+import type { Post, PostMetadata } from "@/types/blog";
 
 function parseFrontmatter(fileContent: string) {
   const file = matter(fileContent);
@@ -15,17 +15,17 @@ function parseFrontmatter(fileContent: string) {
 }
 
 function getMDXFiles(dir: string) {
-  return fs.readdirSync(dir).filter((file) => path.extname(file) === '.mdx');
+  return fs.readdirSync(dir).filter((file) => path.extname(file) === ".mdx");
 }
 
 function readMDXFile(filePath: string) {
-  const rawContent = fs.readFileSync(filePath, 'utf-8');
+  const rawContent = fs.readFileSync(filePath, "utf-8");
   return parseFrontmatter(rawContent);
 }
 
 async function getMDXData(dir: string) {
-  'use cache';
-  cacheLife('max');
+  "use cache";
+  cacheLife("max");
 
   const mdxFiles = getMDXFiles(dir);
 
@@ -43,12 +43,12 @@ async function getMDXData(dir: string) {
 }
 
 export async function getAllPosts() {
-  'use cache';
-  cacheLife('max');
-  cacheTag('blog');
+  "use cache";
+  cacheLife("max");
+  cacheTag("blog");
 
   return (
-    await getMDXData(path.join(process.cwd(), 'src', 'content', 'blog'))
+    await getMDXData(path.join(process.cwd(), "src", "content", "blog"))
   ).sort(
     (a, b) =>
       new Date(b.metadata.createdAt).getTime() -
@@ -82,12 +82,12 @@ export function findNeighbour(posts: Post[], slug: string) {
 }
 
 export async function getAllLoc() {
-  'use cache';
-  cacheLife('max');
-  cacheTag('1loc');
+  "use cache";
+  cacheLife("max");
+  cacheTag("1loc");
 
   return (
-    await getMDXData(path.join(process.cwd(), 'src', 'content', '1loc'))
+    await getMDXData(path.join(process.cwd(), "src", "content", "1loc"))
   ).sort(
     (a, b) =>
       new Date(b.metadata.createdAt).getTime() -

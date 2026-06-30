@@ -1,15 +1,15 @@
-import { readFile } from 'node:fs/promises';
-import { join } from 'node:path';
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 
-import { ImageResponse } from 'next/og';
+import { ImageResponse } from "next/og";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
 
-  const title = searchParams.get('title');
+  const title = searchParams.get("title");
 
   const robotoCondensedMedium = await readFile(
-    join(process.cwd(), 'src/assets/fonts/RobotoCondensed-Medium.ttf')
+    join(process.cwd(), "src/assets/fonts/RobotoCondensed-Medium.ttf")
   );
 
   return new ImageResponse(
@@ -68,7 +68,7 @@ export async function GET(request: Request) {
 
       <h1
         style={{
-          fontFamily: 'RobotoCondensed',
+          fontFamily: "RobotoCondensed",
           fontSize: 64,
         }}
         tw="text-center font-medium"
@@ -81,7 +81,7 @@ export async function GET(request: Request) {
       height: 630,
       fonts: [
         {
-          name: 'RobotoCondensed',
+          name: "RobotoCondensed",
           data: robotoCondensedMedium,
           weight: 500,
         },

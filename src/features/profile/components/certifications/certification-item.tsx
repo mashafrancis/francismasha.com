@@ -1,12 +1,12 @@
-import dayjs from 'dayjs';
-import { ArrowUpRightIcon } from 'lucide-react';
-import Image from 'next/image';
+import dayjs from "dayjs";
+import { ArrowUpRightIcon } from "lucide-react";
+import Image from "next/image";
 
-import { getIcon, Icons } from '@/components/icons';
-import { Separator } from '@/components/ui/separator';
-import { cn } from '@/lib/utils';
+import { getIcon, Icons } from "@/components/icons";
+import { Separator } from "@/components/ui/separator";
+import { cn } from "@/lib/utils";
 
-import type { Certification } from '../../types/certifications';
+import type { Certification } from "../../types/certifications";
 
 export function CertificationItem({
   className,
@@ -17,7 +17,7 @@ export function CertificationItem({
 }) {
   return (
     <a
-      className={cn('group/cert flex items-center pr-2', className)}
+      className={cn("group/cert flex items-center pr-2", className)}
       href={certification.credentialURL}
       rel="noopener"
       target="_blank"
@@ -65,7 +65,7 @@ export function CertificationItem({
             <dt className="sr-only">Issued on</dt>
             <dd>
               <time dateTime={dayjs(certification.issueDate).toISOString()}>
-                {dayjs(certification.issueDate).format('DD.MM.YYYY')}
+                {dayjs(certification.issueDate).format("DD.MM.YYYY")}
               </time>
             </dd>
           </dl>

@@ -1,23 +1,23 @@
-import dayjs from 'dayjs';
+import dayjs from "dayjs";
 import { getTableOfContents } from "fumadocs-core/content/toc";
-import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react';
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import { notFound } from 'next/navigation';
-import { cacheLife, cacheTag } from 'next/cache';
-import type { BlogPosting as PageSchema, WithContext } from 'schema-dts';
+import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
+import type { Metadata } from "next";
+import { cacheLife, cacheTag } from "next/cache";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import type { BlogPosting as PageSchema, WithContext } from "schema-dts";
 
-import { InlineTOC } from '@/components/inline-toc';
-import { MDX } from '@/components/mdx';
-import { Button } from '@/components/ui/button';
-import { Prose } from '@/components/ui/typography';
-import { SITE_INFO } from '@/config/site';
-import { findNeighbour, getPostBySlug, getPostsByCategory } from '@/data/blog';
-import { USER } from '@/data/user';
-import type { Post } from '@/types/blog';
+import { InlineTOC } from "@/components/inline-toc";
+import { MDX } from "@/components/mdx";
+import { Button } from "@/components/ui/button";
+import { Prose } from "@/components/ui/typography";
+import { SITE_INFO } from "@/config/site";
+import { findNeighbour, getPostBySlug, getPostsByCategory } from "@/data/blog";
+import { USER } from "@/data/user";
+import type { Post } from "@/types/blog";
 
 export async function generateStaticParams() {
-  const posts = await getPostsByCategory('components');
+  const posts = await getPostsByCategory("components");
   return posts.map((post) => ({
     slug: post.slug,
   }));
@@ -28,9 +28,9 @@ export async function generateMetadata({
 }: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  'use cache';
-  cacheLife('max');
-  cacheTag('blog');
+  "use cache";
+  cacheLife("max");
+  cacheTag("blog");
 
   const slug = (await params).slug;
   const post = await getPostBySlug(slug);
@@ -52,7 +52,7 @@ export async function generateMetadata({
     },
     openGraph: {
       url: postUrl,
-      type: 'article',
+      type: "article",
       publishedTime: dayjs(createdAt).toISOString(),
       modifiedTime: dayjs(updatedAt).toISOString(),
       images: {
@@ -63,7 +63,7 @@ export async function generateMetadata({
       },
     },
     twitter: {
-      card: 'summary_large_image',
+      card: "summary_large_image",
       images: [ogImage],
     },
   };
@@ -71,8 +71,8 @@ export async function generateMetadata({
 
 function getPageJsonLd(post: Post): WithContext<PageSchema> {
   return {
-    '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
     headline: post.metadata.title,
     description: post.metadata.description,
     image:
@@ -82,7 +82,7 @@ function getPageJsonLd(post: Post): WithContext<PageSchema> {
     datePublished: dayjs(post.metadata.createdAt).toISOString(),
     dateModified: dayjs(post.metadata.updatedAt).toISOString(),
     author: {
-      '@type': 'Person',
+      "@type": "Person",
       name: USER.displayName,
       identifier: USER.username,
       image: USER.avatar,
@@ -97,9 +97,9 @@ export default async function Page({
     slug: string;
   }>;
 }) {
-  'use cache';
-  cacheLife('max');
-  cacheTag('blog');
+  "use cache";
+  cacheLife("max");
+  cacheTag("blog");
 
   const slug = (await params).slug;
   const post = await getPostBySlug(slug);
@@ -108,20 +108,20 @@ export default async function Page({
     notFound();
   }
 
-  if (post.metadata.category !== 'components') {
+  if (post.metadata.category !== "components") {
     notFound();
   }
 
   const toc = getTableOfContents(post.content);
 
-  const allPosts = await getPostsByCategory('components');
+  const allPosts = await getPostsByCategory("components");
   const { previous, next } = findNeighbour(allPosts, slug);
 
   return (
     <>
       <script
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(getPageJsonLd(post)).replace(/</g, '\\u003c'),
+          __html: JSON.stringify(getPageJsonLd(post)).replace(/</g, "\\u003c"),
         }}
         type="application/ld+json"
       />

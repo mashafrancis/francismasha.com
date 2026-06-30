@@ -1,9 +1,8 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.1.2/schema.json",
-  "extends": ["ultracite"],
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "extends": ["ultracite/biome/next", "ultracite/biome/core"],
   "files": {
     "includes": [
-      "**",
       "!**/dist",
       "!**/script",
       "!**/public",

@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { useMotionValueEvent, useScroll } from 'motion/react';
-import * as motion from 'motion/react-m';
-import { usePathname } from 'next/navigation';
-import { useEffect, useRef, useState } from 'react';
+import { useMotionValueEvent, useScroll } from "motion/react";
+import * as motion from "motion/react-m";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 
-import { FrancisMashaMark } from './francis-masha-mark';
+import { FrancisMashaMark } from "./francis-masha-mark";
 
 export function SiteHeaderMark() {
   const pathname = usePathname();
-  return pathname === '/' ? <FrancisMashaMarkMotion /> : <FrancisMashaMark />;
+  return pathname === "/" ? <FrancisMashaMarkMotion /> : <FrancisMashaMark />;
 }
 
 function FrancisMashaMarkMotion() {
@@ -17,12 +17,12 @@ function FrancisMashaMarkMotion() {
   const [visible, setVisible] = useState(false);
   const distanceRef = useRef(160);
 
-  useMotionValueEvent(scrollY, 'change', (latestValue) => {
+  useMotionValueEvent(scrollY, "change", (latestValue) => {
     setVisible(latestValue >= distanceRef.current);
   });
 
   useEffect(() => {
-    const coverMark = document.getElementById('js-cover-mark');
+    const coverMark = document.getElementById("js-cover-mark");
     if (!coverMark) {
       return;
     }
@@ -43,11 +43,11 @@ function FrancisMashaMarkMotion() {
     <motion.svg
       animate={{
         opacity: visible ? 1 : 0,
-        transform: visible ? 'translateY(0px)' : 'translateY(8px)',
+        transform: visible ? "translateY(0px)" : "translateY(8px)",
       }}
       initial={{
         opacity: 0,
-        transform: 'translateY(8px)',
+        transform: "translateY(8px)",
       }}
       transition={{ duration: 0.3 }}
       viewBox="0 0 512 256"
