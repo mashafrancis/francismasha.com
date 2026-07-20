@@ -8,6 +8,7 @@ import { Provider as JotaiProvider } from "jotai";
 import { LazyMotion } from "motion/react";
 import { AxiomWebVitals } from "next-axiom";
 import { ThemeProvider } from "next-themes";
+// import { MapleBrowserInit } from "@/components/maple-browser";
 import { Toaster } from "@/components/ui/sonner";
 
 const loadFeatures = () => import("motion/react").then((res) => res.domMax);

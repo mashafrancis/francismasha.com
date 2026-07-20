@@ -1,6 +1,7 @@
 allowBuilds:
   esbuild: true
   msw: true
+  protobufjs: true
   sharp: true
 minimumReleaseAgeExclude:
   - cnfast@0.0.8

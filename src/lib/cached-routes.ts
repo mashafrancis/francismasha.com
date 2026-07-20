@@ -13,6 +13,12 @@ import { PROJECTS } from "@/features/profile/data/projects";
 import { SOCIAL_LINKS } from "@/features/profile/data/social-links";
 import { TECH_STACK } from "@/features/profile/data/tech-stack";
 import { decodeEmail, decodePhoneNumber } from "@/utils/string";
+import {
+  githubStarsFetchCounter,
+  githubStarsLatencyHistogram,
+  withSpan,
+} from "@/lib/telemetry";
+import { trace } from "@opentelemetry/api";
 
 export async function getAboutMarkdown() {
   "use cache";
@@ -146,29 +152,31 @@ export async function getVCardContent() {
   "use cache";
   cacheLife("weeks");
 
-  const card = new VCard();
-  const [locality = "", country = ""] = USER.address
-    .split(",")
-    .map((part) => part.trim());
+  return await withSpan("vcard.generate", async () => {
+    const card = new VCard();
+    const [locality = "", country = ""] = USER.address
+      .split(",")
+      .map((part) => part.trim());
 
-  card
-    .addName({ familyName: USER.lastName, givenName: USER.firstName })
-    .addPhoneNumber({ number: decodePhoneNumber(USER.phoneNumber) })
-    .addAddress({ locality, country })
-    .addEmail({ address: decodeEmail(USER.email) })
-    .addUrl({ url: USER.website });
+    card
+      .addName({ familyName: USER.lastName, givenName: USER.firstName })
+      .addPhoneNumber({ number: decodePhoneNumber(USER.phoneNumber) })
+      .addAddress({ locality, country })
+      .addEmail({ address: decodeEmail(USER.email) })
+      .addUrl({ url: USER.website });
 
-  const photo = await getVCardPhoto(USER.avatar);
-  if (photo) {
-    card.addPhoto({ image: photo.image, mime: "JPEG" });
-  }
+    const photo = await getVCardPhoto(USER.avatar);
+    if (photo) {
+      card.addPhoto({ image: photo.image, mime: "JPEG" });
+    }
 
-  if (USER.jobs.length > 0) {
-    const job = USER.jobs[0];
-    card.addCompany({ name: job.company }).addJobtitle(job.title);
-  }
+    if (USER.jobs.length > 0) {
+      const job = USER.jobs[0];
+      card.addCompany({ name: job.company }).addJobtitle(job.title);
+    }
 
-  return card.toString();
+    return card.toString();
+  });
 }
 
 export async function getStargazersCount() {
@@ -176,18 +184,45 @@ export async function getStargazersCount() {
   cacheLife("days");
   cacheTag("github-stars");
 
-  const data = await fetch(
-    "https://api.github.com/repos/mashafrancis/francismasha.com",
-    {
-      headers: {
-        Accept: "application/vnd.github+json",
-        Authorization: `Bearer ${process.env.GITHUB_API_TOKEN}`,
-        "X-GitHub-Api-Version": "2022-11-28",
-      },
+  return await withSpan("github.stars.fetch", async () => {
+    const repo = "mashafrancis/francismasha.com";
+    const start = Date.now();
+    const span = trace.getActiveSpan();
+    span?.setAttribute("github.repo", repo);
+
+    const data = await fetch(
+      `https://api.github.com/repos/${repo}`,
+      {
+        headers: {
+          Accept: "application/vnd.github+json",
+          Authorization: `Bearer ${process.env.GITHUB_API_TOKEN}`,
+          "X-GitHub-Api-Version": "2022-11-28",
+        },
+      }
+    );
+
+    const latencyMs = Date.now() - start;
+    githubStarsLatencyHistogram.record(latencyMs);
+
+    if (!data.ok) {
+      githubStarsFetchCounter.add(1, {
+        outcome: "failure",
+        status: String(data.status),
+      });
+      span?.setAttribute("http.status_code", data.status);
+      throw new Error(`GitHub API returned ${data.status}`);
     }
-  );
-  const json = await data.json();
-  return json?.stargazers_count ?? -1;
+
+    const json = await data.json();
+    const count = json?.stargazers_count ?? -1;
+
+    githubStarsFetchCounter.add(1, {
+      outcome: count >= 0 ? "success" : "failure",
+    });
+    span?.setAttribute("github.stars.count", count);
+
+    return count;
+  });
 }
 
 async function getVCardPhoto(url: string) {
