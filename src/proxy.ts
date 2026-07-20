@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-export function middleware(req) {
+export function proxy(req) {
   // fire-and-forget — never blocks the response
   fetch("https://mrkr.app/api/data/crawl", {
     method: "POST",
