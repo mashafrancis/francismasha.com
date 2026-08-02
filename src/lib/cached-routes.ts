@@ -1,8 +1,8 @@
+import { trace } from "@opentelemetry/api";
 import dayjs from "dayjs";
 import { cacheLife, cacheTag } from "next/cache";
 import sharp from "sharp";
 import VCard from "vcard-creator";
-
 import { SITE_INFO } from "@/config/site";
 import { getAllPosts, getPostBySlug } from "@/data/blog";
 import { USER } from "@/data/user";
@@ -12,13 +12,12 @@ import { EXPERIENCES } from "@/features/profile/data/experiences";
 import { PROJECTS } from "@/features/profile/data/projects";
 import { SOCIAL_LINKS } from "@/features/profile/data/social-links";
 import { TECH_STACK } from "@/features/profile/data/tech-stack";
-import { decodeEmail, decodePhoneNumber } from "@/utils/string";
 import {
   githubStarsFetchCounter,
   githubStarsLatencyHistogram,
   withSpan,
 } from "@/lib/telemetry";
-import { trace } from "@opentelemetry/api";
+import { decodeEmail, decodePhoneNumber } from "@/utils/string";
 
 export async function getAboutMarkdown() {
   "use cache";
@@ -190,16 +189,13 @@ export async function getStargazersCount() {
     const span = trace.getActiveSpan();
     span?.setAttribute("github.repo", repo);
 
-    const data = await fetch(
-      `https://api.github.com/repos/${repo}`,
-      {
-        headers: {
-          Accept: "application/vnd.github+json",
-          Authorization: `Bearer ${process.env.GITHUB_API_TOKEN}`,
-          "X-GitHub-Api-Version": "2022-11-28",
-        },
-      }
-    );
+    const data = await fetch(`https://api.github.com/repos/${repo}`, {
+      headers: {
+        Accept: "application/vnd.github+json",
+        Authorization: `Bearer ${process.env.GITHUB_API_TOKEN}`,
+        "X-GitHub-Api-Version": "2022-11-28",
+      },
+    });
 
     const latencyMs = Date.now() - start;
     githubStarsLatencyHistogram.record(latencyMs);

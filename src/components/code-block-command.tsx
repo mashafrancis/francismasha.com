@@ -48,7 +48,7 @@ export function CodeBlockCommand({
 
             {Object.entries(tabs).map(([key]) => (
               <TabsTrigger
-                className="h-10 rounded-none border-transparent border-b p-0 font-mono data-[state=active]:border-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none dark:data-[state=active]:bg-transparent"
+                className="h-10 rounded-none border-transparent border-b p-0 font-mono data-active:border-foreground data-active:bg-transparent data-active:shadow-none dark:data-active:bg-transparent"
                 key={key}
                 value={key}
               >

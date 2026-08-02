@@ -28,11 +28,9 @@ export function NotFound({ className }: { className?: string }) {
 
       <h1 className="mt-8 mb-6 font-medium text-8xl">404</h1>
 
-      <Button asChild variant="link">
-        <Link href="/">
-          Go to Home
-          <ArrowRightIcon />
-        </Link>
+      <Button render={<Link href="/" />} variant="link">
+        Go to Home
+        <ArrowRightIcon />
       </Button>
     </div>
   );

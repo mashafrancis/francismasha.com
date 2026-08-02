@@ -126,29 +126,35 @@ export default async function Page({
       />
 
       <div className="flex items-center justify-between p-2 pl-4">
-        <Button asChild className="px-0 text-muted-foreground" variant="link">
-          <Link href="/components">
-            <ArrowLeftIcon />
-            Components
-          </Link>
+        <Button
+          className="px-0 text-muted-foreground"
+          render={<Link href="/components" />}
+          variant="link"
+        >
+          <ArrowLeftIcon />
+          Components
         </Button>
 
         <div className="flex items-center gap-2">
           {previous && (
-            <Button asChild size="icon" variant="secondary">
-              <Link href={`/components/${previous.slug}`}>
-                <ArrowLeftIcon />
-                <span className="sr-only">Previous</span>
-              </Link>
+            <Button
+              render={<Link href={`/components/${previous.slug}`} />}
+              size="icon"
+              variant="secondary"
+            >
+              <ArrowLeftIcon />
+              <span className="sr-only">Previous</span>
             </Button>
           )}
 
           {next && (
-            <Button asChild size="icon" variant="secondary">
-              <Link href={`/components/${next.slug}`}>
-                <span className="sr-only">Next</span>
-                <ArrowRightIcon />
-              </Link>
+            <Button
+              render={<Link href={`/components/${next.slug}`} />}
+              size="icon"
+              variant="secondary"
+            >
+              <span className="sr-only">Next</span>
+              <ArrowRightIcon />
             </Button>
           )}
         </div>

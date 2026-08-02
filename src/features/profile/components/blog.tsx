@@ -30,11 +30,9 @@ export async function Blog() {
       </div>
 
       <div className="screen-line-before flex justify-center py-2">
-        <Button asChild variant="default">
-          <Link href="/blog">
-            All Posts
-            <ArrowRightIcon />
-          </Link>
+        <Button render={<Link href="/blog" />} variant="default">
+          All Posts
+          <ArrowRightIcon />
         </Button>
       </div>
     </Panel>

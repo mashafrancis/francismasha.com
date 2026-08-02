@@ -1,36 +1,35 @@
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
 import { LinkIcon } from "lucide-react";
-import { Slot as SlotPrimitive } from "radix-ui";
 import type React from "react";
 
 import { cn } from "@/lib/utils";
 
-const Slot = SlotPrimitive.Slot;
-
 function Prose({
   className,
-  asChild = false,
+  render,
   ...props
-}: React.ComponentProps<"div"> & {
-  asChild?: boolean;
-}) {
-  const Comp = asChild ? Slot : "div";
-
-  return (
-    <Comp
-      className={cn(
-        "prose prose-sm prose-zinc dark:prose-invert max-w-none font-sans text-foreground",
-        "prose-headings:text-balance prose-headings:font-sans prose-headings:font-semibold",
-        "prose-h2:border-edge prose-h2:border-b prose-h2:pb-2 prose-h2:text-2xl",
-        "prose-lead:text-base",
-        "prose-a:break-words prose-a:font-medium prose-a:text-foreground prose-a:underline prose-a:underline-offset-4",
-        "prose-code:rounded-md prose-code:border prose-code:bg-muted/50 prose-code:px-[0.3rem] prose-code:py-[0.2rem] prose-code:font-normal prose-code:text-sm prose-code:before:content-none prose-code:after:content-none",
-        "prose-hr:border-edge",
-        className
-      )}
-      data-slot="prose"
-      {...props}
-    />
-  );
+}: useRender.ComponentProps<"div">) {
+  return useRender({
+    defaultTagName: "div",
+    render,
+    props: mergeProps(
+      {
+        className: cn(
+          "prose prose-sm prose-zinc dark:prose-invert max-w-none font-sans text-foreground",
+          "prose-headings:text-balance prose-headings:font-sans prose-headings:font-semibold",
+          "prose-h2:border-edge prose-h2:border-b prose-h2:pb-2 prose-h2:text-2xl",
+          "prose-lead:text-base",
+          "prose-a:break-words prose-a:font-medium prose-a:text-foreground prose-a:underline prose-a:underline-offset-4",
+          "prose-code:rounded-md prose-code:border prose-code:bg-muted/50 prose-code:px-[0.3rem] prose-code:py-[0.2rem] prose-code:font-normal prose-code:text-sm prose-code:before:content-none prose-code:after:content-none",
+          "prose-hr:border-edge",
+          className
+        ),
+        "data-slot": "prose",
+      },
+      props
+    ),
+  });
 }
 
 function Code({ className, ...props }: React.ComponentProps<"code">) {

@@ -29,7 +29,6 @@ export function ScrollTop({
     <AnimatePresence>
       {visible && (
         <Button
-          asChild
           className={cn(
             "[--bottom:1rem] lg:[--bottom:2rem]",
             "fixed right-4 bottom-[calc(var(--bottom,1rem)+env(safe-area-inset-bottom,0px))] z-50 lg:right-8",
@@ -37,22 +36,23 @@ export function ScrollTop({
           )}
           key="scroll-top"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          size="icon:lg"
+          render={
+            <motion.button
+              animate={{
+                opacity: scrollDirection === "up" ? 1 : 0.3,
+                transform: "translateY(0px)",
+              }}
+              exit={{ transform: "translateY(16px)", opacity: 0 }}
+              initial={{ opacity: 0, transform: "translateY(16px)" }}
+              transition={{ duration: 0.5 }}
+            />
+          }
+          size="icon-lg"
           variant="secondary"
           {...props}
         >
-          <motion.button
-            animate={{
-              opacity: scrollDirection === "up" ? 1 : 0.3,
-              transform: "translateY(0px)",
-            }}
-            exit={{ transform: "translateY(16px)", opacity: 0 }}
-            initial={{ opacity: 0, transform: "translateY(16px)" }}
-            transition={{ duration: 0.5 }}
-          >
-            <ChevronUpIcon className="size-6" />
-            <span className="sr-only">Scroll to top</span>
-          </motion.button>
+          <ChevronUpIcon className="size-6" />
+          <span className="sr-only">Scroll to top</span>
         </Button>
       )}
     </AnimatePresence>

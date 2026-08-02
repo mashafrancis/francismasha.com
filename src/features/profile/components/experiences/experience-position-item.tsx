@@ -26,84 +26,85 @@ export function ExperiencePositionItem({
   const isOngoing = !end;
 
   return (
-    <Collapsible asChild defaultOpen={position.isExpanded}>
-      <div className="relative last:before:absolute last:before:h-full last:before:w-4 last:before:bg-background">
-        <CollapsibleTrigger className="group/experience block w-full select-none text-left">
-          <div className="relative z-1 mb-1 flex items-center gap-3 bg-background">
-            <div
-              aria-hidden
-              className="flex size-6 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground dark:inset-shadow-[1px_1px_1px,0px_0px_1px] dark:inset-shadow-white/15"
-            >
-              <ExperienceIcon className="size-4" icon={position.icon} />
-            </div>
-
-            <h4 className="flex-1 text-balance font-medium">
-              {position.title}
-            </h4>
-
-            <div
-              aria-hidden
-              className="shrink-0 text-muted-foreground [&_svg]:size-4"
-            >
-              <ChevronsDownUpIcon className="hidden group-data-[state=open]/experience:block" />
-              <ChevronsUpDownIcon className="hidden group-data-[state=closed]/experience:block" />
-            </div>
+    <Collapsible
+      defaultOpen={position.isExpanded}
+      render={
+        <div className="relative last:before:absolute last:before:h-full last:before:w-4 last:before:bg-background" />
+      }
+    >
+      <CollapsibleTrigger className="group/experience block w-full select-none text-left">
+        <div className="relative z-1 mb-1 flex items-center gap-3 bg-background">
+          <div
+            aria-hidden
+            className="flex size-6 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground dark:inset-shadow-[1px_1px_1px,0px_0px_1px] dark:inset-shadow-white/15"
+          >
+            <ExperienceIcon className="size-4" icon={position.icon} />
           </div>
 
-          <div className="flex items-center gap-2 pl-9 text-muted-foreground text-sm">
-            {position.employmentType && (
-              <>
-                <dl>
-                  <dt className="sr-only">Employment Type</dt>
-                  <dd>{position.employmentType}</dd>
-                </dl>
+          <h4 className="flex-1 text-balance font-medium">{position.title}</h4>
 
-                <Separator
-                  className="data-[orientation=vertical]:h-4"
-                  orientation="vertical"
-                />
-              </>
-            )}
-
-            <dl>
-              <dt className="sr-only">Employment Period</dt>
-              <dd className="flex items-center gap-0.5">
-                <span>{start}</span>
-                <span className="font-mono">—</span>
-                {isOngoing ? (
-                  <>
-                    <InfinityIcon
-                      aria-hidden
-                      className="size-4.5 translate-y-[0.5px]"
-                    />
-                    <span className="sr-only">Present</span>
-                  </>
-                ) : (
-                  <span>{end}</span>
-                )}
-              </dd>
-            </dl>
+          <div
+            aria-hidden
+            className="shrink-0 text-muted-foreground [&_svg]:size-4"
+          >
+            <ChevronsDownUpIcon className="hidden group-data-open/experience:block" />
+            <ChevronsUpDownIcon className="hidden group-data-closed/experience:block" />
           </div>
-        </CollapsibleTrigger>
+        </div>
 
-        <CollapsibleContent className="overflow-hidden duration-300 data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
-          {position.description && (
-            <Prose className="pt-2 pl-9">
-              <Markdown>{position.description}</Markdown>
-            </Prose>
+        <div className="flex items-center gap-2 pl-9 text-muted-foreground text-sm">
+          {position.employmentType && (
+            <>
+              <dl>
+                <dt className="sr-only">Employment Type</dt>
+                <dd>{position.employmentType}</dd>
+              </dl>
+
+              <Separator
+                className="data-[orientation=vertical]:h-4"
+                orientation="vertical"
+              />
+            </>
           )}
 
-          {Array.isArray(position.skills) && position.skills.length > 0 && (
-            <ul className="flex flex-wrap gap-1.5 pt-2 pl-9">
-              {position.skills.map((skill, index) => (
-                <li className="flex" key={index}>
-                  <Tag>{skill}</Tag>
-                </li>
-              ))}
-            </ul>
-          )}
-        </CollapsibleContent>
-      </div>
+          <dl>
+            <dt className="sr-only">Employment Period</dt>
+            <dd className="flex items-center gap-0.5">
+              <span>{start}</span>
+              <span className="font-mono">—</span>
+              {isOngoing ? (
+                <>
+                  <InfinityIcon
+                    aria-hidden
+                    className="size-4.5 translate-y-[0.5px]"
+                  />
+                  <span className="sr-only">Present</span>
+                </>
+              ) : (
+                <span>{end}</span>
+              )}
+            </dd>
+          </dl>
+        </div>
+      </CollapsibleTrigger>
+
+      <CollapsibleContent className="overflow-hidden duration-300 data-closed:animate-collapsible-up data-open:animate-collapsible-down">
+        {position.description && (
+          <Prose className="pt-2 pl-9">
+            <Markdown>{position.description}</Markdown>
+          </Prose>
+        )}
+
+        {Array.isArray(position.skills) && position.skills.length > 0 && (
+          <ul className="flex flex-wrap gap-1.5 pt-2 pl-9">
+            {position.skills.map((skill, index) => (
+              <li className="flex" key={index}>
+                <Tag>{skill}</Tag>
+              </li>
+            ))}
+          </ul>
+        )}
+      </CollapsibleContent>
     </Collapsible>
   );
 }
