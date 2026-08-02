@@ -3,9 +3,12 @@ import { metrics, SpanStatusCode, trace } from "@opentelemetry/api";
 export const tracer = trace.getTracer("francismasha.com");
 export const meter = metrics.getMeter("francismasha.com");
 
-export const githubStarsFetchCounter = meter.createCounter("github.stars.fetch", {
-  description: "GitHub stars fetch attempts",
-});
+export const githubStarsFetchCounter = meter.createCounter(
+  "github.stars.fetch",
+  {
+    description: "GitHub stars fetch attempts",
+  }
+);
 
 export const githubStarsLatencyHistogram = meter.createHistogram(
   "github.stars.latency_ms",

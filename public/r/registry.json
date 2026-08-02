@@ -7,7 +7,10 @@
       "name": "utils",
       "title": "Utility Functions",
       "author": "francismasha <masha@francismasha.com>",
-      "dependencies": ["clsx", "tailwind-merge"],
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
       "files": [
         {
           "path": "src/lib/utils.ts",
@@ -36,8 +39,14 @@
       "title": "Theme Switcher",
       "author": "mashafrancis <masha@francismasha.com>",
       "description": "A theme switcher component for Next.js apps with next-themes and Tailwind CSS, supporting system, light, and dark modes.",
-      "dependencies": ["next-themes", "lucide-react", "motion"],
-      "registryDependencies": ["https://francismasha.com/r/utils.json"],
+      "dependencies": [
+        "next-themes",
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://francismasha.com/r/utils.json"
+      ],
       "files": [
         {
           "path": "src/registry/theme-switcher/theme-switcher.tsx",
@@ -51,8 +60,12 @@
       "name": "flip-sentences",
       "title": "Flip Sentences",
       "author": "mashafrancis <masha@francismasha.com>",
-      "dependencies": ["motion"],
-      "registryDependencies": ["https://francismasha.com/r/utils.json"],
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://francismasha.com/r/utils.json"
+      ],
       "files": [
         {
           "path": "src/registry/flip-sentences/flip-sentences.tsx",
@@ -66,8 +79,13 @@
       "title": "Work Experience",
       "author": "mashafrancis <masha@francismasha.com>",
       "description": "Displays a list of work experiences with role details and durations.",
-      "dependencies": ["react-markdown", "lucide-react"],
-      "devDependencies": ["@tailwindcss/typography"],
+      "dependencies": [
+        "react-markdown",
+        "lucide-react"
+      ],
+      "devDependencies": [
+        "@tailwindcss/typography"
+      ],
       "registryDependencies": [
         "https://francismasha.com/r/utils.json",
         "collapsible",

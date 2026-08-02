@@ -31,12 +31,12 @@ export function InlineTOC({
           aria-hidden
           className="shrink-0 text-muted-foreground [&_svg]:size-4"
         >
-          <ChevronsDownUpIcon className="hidden group-data-[state=open]/toc:block" />
-          <ChevronsUpDownIcon className="hidden group-data-[state=closed]/toc:block" />
+          <ChevronsDownUpIcon className="hidden group-data-open/toc:block" />
+          <ChevronsUpDownIcon className="hidden group-data-closed/toc:block" />
         </div>
       </CollapsibleTrigger>
 
-      <CollapsibleContent className="overflow-hidden duration-300 data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
+      <CollapsibleContent className="overflow-hidden duration-300 data-closed:animate-collapsible-up data-open:animate-collapsible-down">
         <ul className="flex flex-col px-4 pb-3 text-muted-foreground text-sm">
           {items.map((item) => (
             <li

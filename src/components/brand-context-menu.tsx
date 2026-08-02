@@ -3,6 +3,7 @@
 import { DownloadIcon, TriangleDashedIcon, TypeIcon } from "lucide-react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
+import type React from "react";
 import { toast } from "sonner";
 
 import { copyText } from "@/utils/copy";
@@ -20,7 +21,7 @@ export function BrandContextMenu({ children }: { children: React.ReactNode }) {
 
   return (
     <ContextMenu>
-      <ContextMenuTrigger asChild>{children}</ContextMenuTrigger>
+      <ContextMenuTrigger render={children as React.ReactElement} />
 
       <ContextMenuContent className="w-64">
         <ContextMenuItem
@@ -47,18 +48,18 @@ export function BrandContextMenu({ children }: { children: React.ReactNode }) {
           Copy Logotype as SVG
         </ContextMenuItem>
 
-        <ContextMenuItem asChild>
-          <Link href="/blog/chanhdai-brand">
-            <TriangleDashedIcon />
-            Brand Guidelines
-          </Link>
+        <ContextMenuItem render={<Link href="/blog/chanhdai-brand" />}>
+          <TriangleDashedIcon />
+          Brand Guidelines
         </ContextMenuItem>
 
-        <ContextMenuItem asChild>
-          <a download href="https://assets.chanhdai.com/chanhdai-brand.zip">
-            <DownloadIcon />
-            Download Brand Assets
-          </a>
+        <ContextMenuItem
+          render={
+            <a download href="https://assets.chanhdai.com/chanhdai-brand.zip" />
+          }
+        >
+          <DownloadIcon />
+          Download Brand Assets
         </ContextMenuItem>
       </ContextMenuContent>
     </ContextMenu>

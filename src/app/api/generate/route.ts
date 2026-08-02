@@ -1,11 +1,8 @@
+import { trace } from "@opentelemetry/api";
 import { checkBotId } from "botid/server";
 import { NextResponse } from "next/server";
-import { trace } from "@opentelemetry/api";
 
-import {
-  apiGenerateRequestsCounter,
-  withSpan,
-} from "@/lib/telemetry";
+import { apiGenerateRequestsCounter, withSpan } from "@/lib/telemetry";
 
 const expensiveOperation = async () =>
   new Promise((resolve) => {

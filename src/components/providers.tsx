@@ -10,6 +10,7 @@ import { AxiomWebVitals } from "next-axiom";
 import { ThemeProvider } from "next-themes";
 // import { MapleBrowserInit } from "@/components/maple-browser";
 import { Toaster } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const loadFeatures = () => import("motion/react").then((res) => res.domMax);
 
@@ -31,7 +32,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
           options={{ showSpinner: false }}
         >
           <LazyMotion features={loadFeatures} strict>
-            {children}
+            <TooltipProvider>{children}</TooltipProvider>
           </LazyMotion>
         </AppProgressProvider>
 

@@ -1,7 +1,6 @@
-import { Slot as SlotPrimitive } from "radix-ui";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
 import type React from "react";
-
-const Slot = SlotPrimitive.Slot;
 
 import { cn } from "@/lib/utils";
 
@@ -30,18 +29,20 @@ function PanelHeader({ className, ...props }: React.ComponentProps<"div">) {
 
 function PanelTitle({
   className,
-  asChild = false,
+  render,
   ...props
-}: React.ComponentProps<"h2"> & { asChild?: boolean }) {
-  const Comp = asChild ? Slot : "h2";
-
-  return (
-    <Comp
-      className={cn("font-semibold text-3xl", className)}
-      data-slot="panel-title"
-      {...props}
-    />
-  );
+}: useRender.ComponentProps<"h2">) {
+  return useRender({
+    defaultTagName: "h2",
+    render,
+    props: mergeProps(
+      {
+        className: cn("font-semibold text-3xl", className),
+        "data-slot": "panel-title",
+      },
+      props
+    ),
+  });
 }
 
 function PanelContent({ className, ...props }: React.ComponentProps<"div">) {
