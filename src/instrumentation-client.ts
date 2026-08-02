@@ -2,7 +2,7 @@
 import { MapleBrowser } from "@maple-dev/browser";
 
 MapleBrowser.init({
-  ingestKey: "maple_pk_c8R1Zey38I6t-b4DD_eeTvlZksbfJfgu",
+  ingestKey: "maple_pk_Fm-4vxgt-mPWv39JOBA4jg2oX9_9qiUV",
   serviceName: "francismasha.com",
   endpoint: "https://ingest.maple.dev",
   environment: process.env.NODE_ENV,
