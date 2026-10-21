@@ -11,7 +11,3 @@ MapleBrowser.init({
   replay: { enabled: true, sampleRate: 1.0 },
   privacy: { maskAllInputs: true, maskAllText: false },
 });
-
-// initSDK({
-//   appID: "9iikz",
-// });
